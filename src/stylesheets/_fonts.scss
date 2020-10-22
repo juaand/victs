@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Kufam:wght@400;900&family=Raleway:wght@300;400;700&display=swap');
+
+/*
+font-family: 'Permanent Marker', cursive;
+font-family: 'Raleway', sans-serif;
+*/
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  color: $text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: 'Kufam', cursive;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+.bg {
+  h1 {
+    font-size: 6rem;
+    color: $yellow;
+
+    strong {
+      font-weight: 900;
+      color: $dark-blue;
+    }
+  }
+
+  &.scroll {
+    h1 {
+      color: white;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@media (max-width: 576px) {
+  html {
+    font-size: 8px;
+  }
+
+  .navbar-collapse {
+    background: rgba($dark-blue, 0.95);
+    padding: 3rem 0;
+
+    ul {
+      li {
+        a {
+          margin: 0.8rem 0;
+        }
+      }
+    }
+  }
+}

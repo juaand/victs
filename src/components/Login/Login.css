@@ -1,0 +1,31 @@
+.navbar.dark {
+  background: #211E35;
+}
+
+.login-block {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 6rem;
+  align-self: center;
+}
+
+.alert.alert-danger {
+  background: none;
+  border: 0;
+  color: #211E35;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.options {
+  margin: 3rem auto 0 auto;
+}
+
+.options a {
+  color: #333;
+}
+
+.options a:first-child {
+  border-right: solid 0.1rem #333;
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
