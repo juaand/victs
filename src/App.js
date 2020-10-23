@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed={confirmed} />} />
-        <AuthenticatedRoute exact path="/my-info" component={MyInfo} />
+        <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
         <Redirect to='/' />
         {!user && <Redirect to='/' />}
       </Switch>

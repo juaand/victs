@@ -137,7 +137,7 @@ const Login = (props) => {
                                 type="submit"
                                 className="Button Button__enter"
                                 disabled={isError}
-                            >Submit</Button>
+                            >Log in</Button>
                         </form>
                         <div className="col-12 d-flex justify-content-center options">
                             <Link to="/register"><strong>Register here</strong></Link>
