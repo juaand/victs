@@ -6,31 +6,36 @@ import Button from '../Form/Button/Button'
 import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
 import backImage from '../../images/fondo-login.jpg'
 import {useHistory} from 'react-router-dom'
+import {useFormState} from '../../hooks/useFormState'
 
-const validations = {
-    name: v => v.length,
-    email: v => v.length,
-    password: v => v.length,
-    role: v => v.length
-}
+
 
 const Register = () => {
-    const [state, setState] = useState({
-        data: {
-            name: "",
-            email: "",
-            password: "",
-            role: ""
-        },
-        error: {
-            name: true,
-            email: true,
-            password: true
-        },
-        touch: {},
-    })
 
-    const history = useHistory();
+    const {state, onBlur, onChange} = useFormState(
+        {
+            data: {
+                name: "",
+                email: "",
+                password: "",
+                role: ""
+            },
+            error: {
+                name: true,
+                email: true,
+                password: true
+            },
+            touch: {},
+        },
+        {
+            name: v => v.length,
+            email: v => v.length,
+            password: v => v.length,
+            role: v => v.length
+        }
+    )
+
+    const history = useHistory()
 
     const [registerError, setRegisterError] = useState(null)
 
@@ -45,43 +50,6 @@ const Register = () => {
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
-    }
-
-    const handleChange = (event) => {
-        setRegisterError(null)
-        const {name, value} = event.target
-
-        const validationFn = validations[name]
-
-        const isValid = validationFn(value)
-
-        setState(prev => {
-            return {
-                ...prev,
-                data: {
-                    ...prev.data,
-                    [name]: value,
-                },
-                error: {
-                    ...prev.error,
-                    [name]: !isValid,
-                }
-            }
-        })
-    }
-
-    const handleBlur = (event) => {
-        const {name} = event.target
-
-        setState(prev => {
-            return {
-                ...prev,
-                touch: {
-                    ...touch,
-                    [name]: true
-                }
-            }
-        })
     }
 
     const isError = Object.values(error).some(err => err)
@@ -105,8 +73,8 @@ const Register = () => {
 
                             <InputWithLabel
                                 value={data.name}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
+                                onBlur={onBlur}
+                                onChange={onChange}
                                 name="name"
                                 type="text"
                                 className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
@@ -117,8 +85,8 @@ const Register = () => {
 
                             <InputWithLabel
                                 value={data.email}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
+                                onBlur={onBlur}
+                                onChange={onChange}
                                 name="email"
                                 type="text"
                                 className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
@@ -128,8 +96,8 @@ const Register = () => {
 
                             <InputWithLabel
                                 value={data.password}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
+                                onBlur={onBlur}
+                                onChange={onChange}
                                 name="password"
                                 type="password"
                                 className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
@@ -139,7 +107,7 @@ const Register = () => {
                             <SelectWithLabel
                                 name="role"
                                 value={data.role}
-                                onChange={handleChange}
+                                onChange={onChange}
                             />
 
                             {registerError && <div className="alert alert-danger">{registerError}</div>}

@@ -1,5 +1,5 @@
 import './Login.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useAuthContext} from '../../contexts/AuthContext'
 import {login} from '../../services/ApiClient'
 import {activateUser} from '../../services/ApiClient'
@@ -7,29 +7,38 @@ import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Form/Button/Button'
 import {Link, Redirect} from 'react-router-dom'
 import backImage from '../../images/fondo-login.jpg'
+import {useFormState} from '../../hooks/useFormState'
 
-const validations = {
-    email: v => v.length,
-    password: v => v.length
-} 
 
 const Login = (props) => {
-    const [state, setState] = useState({
-        data: {
-            email: "",
-            password: ""
-        },
-        error: {
-            email: true,
-            password: true
-        },
-        touch: {},
-    })
 
-    if (props.confirmed) {
-        const token = props.match.params.token
-        activateUser(token)
-    }
+    const {state, onBlur, onChange} = useFormState(
+        {
+            data: {
+                email: "",
+                password: ""
+            },
+            error: {
+                email: true,
+                password: true
+            },
+            touch: {},
+        },
+        {
+            email: v => v.length,
+            password: v => v.length
+        }
+    )
+
+    const [activate, setActivate] = useState(false)
+
+    useEffect(() => {
+        if (props.confirmed) {
+            const token = props.match.params.token
+            activateUser(token)
+                .then(() => setActivate(true))
+        }
+    }, [])
 
     const {user} = useAuthContext()
 
@@ -50,41 +59,6 @@ const Login = (props) => {
         }
     }
 
-    const handleChange = (event) => {
-        setLoginError(null)
-        const {name, value} = event.target
-
-        const validationFn = validations[name]
-        const isValid = validationFn(value)
-
-        setState(prev => {
-            return {
-                ...prev,
-                data: {
-                    ...prev.data,
-                    [name]: value,
-                },
-                error: {
-                    ...prev.error,
-                    [name]: !isValid,
-                }
-            }
-        })
-    }
-
-    const handleBlur = (event) => {
-        const {name} = event.target
-
-        setState(prev => {
-            return {
-                ...prev,
-                touch: {
-                    ...touch,
-                    [name]: true
-                }
-            }
-        })
-    }
 
     const isError = Object.values(error).some(err => err)
 
@@ -106,12 +80,14 @@ const Login = (props) => {
                     <div className="col-sm-6 col-xl-4 col-11 login-block">
                         <h1>log in</h1>
 
+                        {activate && <div className="message">User has been activated succesfully, please log in</div>}
+
                         <form onSubmit={handleSubmit}>
 
                             <InputWithLabel
                                 value={data.email}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
+                                onBlur={onBlur}
+                                onChange={onChange}
                                 name="email"
                                 type="text"
                                 className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
@@ -121,8 +97,8 @@ const Login = (props) => {
 
                             <InputWithLabel
                                 value={data.password}
-                                onBlur={handleBlur}
-                                onChange={handleChange}
+                                onBlur={onBlur}
+                                onChange={onChange}
                                 name="password"
                                 type="password"
                                 className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
@@ -131,7 +107,6 @@ const Login = (props) => {
 
                             {loginError && <div className="alert alert-danger">{loginError}</div>}
 
-                            {/* {message && <div className="alert alert-danger">{message}</div>} */}
 
                             <Button
                                 type="submit"

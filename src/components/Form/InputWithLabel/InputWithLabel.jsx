@@ -1,7 +1,10 @@
 import './InputWithLabel.css'
 import React from 'react'
 
-export default function InputWithLabel({value, name, onChange, onBlur, type, className}) {
+export default function InputWithLabel({value, name, onChange, onBlur, type, className, placeholder}) {
+
+
+
     return (
         <div className="form-group">
             <label className="label" htmlFor={name}>{name}</label>
@@ -13,7 +16,7 @@ export default function InputWithLabel({value, name, onChange, onBlur, type, cla
                 className={className}
                 name={name}
                 type={type}
-                placeholder={`Enter ${name}`}
+                placeholder={placeholder}
             />
 
             <div className="invalid-feedback">{name} is required</div>

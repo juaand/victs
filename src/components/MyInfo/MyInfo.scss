@@ -1,6 +1,8 @@
 @import '../../stylesheets/variables';
 
 .my-info {
+  margin-top: 10rem;
+
   .center {
     height: 100vh;
     justify-content: center;
@@ -11,4 +13,9 @@
 .gym-name {
   height: 20rem;
   border-top: solid 0.1rem #ddd;
+}
+
+.avatar {
+  width: 20rem;
+  height: 20rem;
 }

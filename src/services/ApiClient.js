@@ -24,4 +24,8 @@ export const register = ({name, avatar, email, password, role}) => http.post('/r
 
 export const activateUser = (token) => http.get(`/activate/${token}`)
 
-// export const getTweets = () => http.get('/tweets')
+export const updateUser = ({name, role, address, phone, city, zipcode, id}) => http.patch(`/user-profile/${id}/edit`, {name, role, address, phone, city, zipcode, id})
+
+// export const updateUserAvatar = (id) => http.patch(`/user-profile/${id}/edit-avatar`)
+
+export const updatePassword = ({password, newpassword, id}) => http.post(`/update-password/${id}`, {password, newpassword})

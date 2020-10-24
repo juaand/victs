@@ -12,8 +12,6 @@ function App() {
 
   const {user} = useAuthContext()
 
-  const confirmed = true
-
   return (
     <div className="App">
       <Header />
@@ -21,7 +19,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed={confirmed} />} />
+        <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
         <Redirect to='/' />
         {!user && <Redirect to='/' />}
