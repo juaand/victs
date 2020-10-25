@@ -1,6 +1,6 @@
 import './MyInfo.css'
 import React, {useState, useEffect} from 'react'
-import InputFile from '../Form/InputWithLabel/InputWithLabel'
+import InputFile from '../Form/InputFile/InputFile'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../hooks/useFormState'
 import Button from '../Button/Button'
@@ -21,8 +21,8 @@ const MyInfo = (props) => {
                 phone: props.user.phone,
                 address: props.user.address,
                 city: props.user.city,
-                zipcode: props.user.zipcode,
                 avatar: props.user.avatar,
+                zipcode: props.user.zipcode,
                 password: props.user.password,
                 newpassword: ''
             },
@@ -32,7 +32,6 @@ const MyInfo = (props) => {
                 address: true,
                 city: true,
                 zipcode: true,
-                avatar: true,
                 password: true,
                 newpassword: true
             },
@@ -78,6 +77,7 @@ const MyInfo = (props) => {
 
     const updateProfile = async (event) => {
         console.log('UPDATE PROFILE ')
+        console.log(data)
 
         setEdit(false)
         event.preventDefault()
@@ -197,7 +197,7 @@ const MyInfo = (props) => {
                                         />
 
                                         <InputFile
-                                            value={data.avatar}
+                                            onChange={onChange}
                                             name="avatar"
                                             type="file"
                                             className="form-control"
