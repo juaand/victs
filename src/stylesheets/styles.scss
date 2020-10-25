@@ -36,69 +36,6 @@ a {
     margin: auto;
 }
 
-.navbar {
-  font-weight: 400;
-  align-items: center;
-  position: absolute;
-  z-index: 5;
-  width: 100%;
-  padding: 0;
-
-  .navbar-brand {
-    padding: 3rem;
-
-    .victs-logo {
-        width: 10rem;
-        height: 2.5rem;
-    }
-  }
-
-  .logo {
-    width: 10rem;
-  }
-
-  .navbar-collapse {
-    justify-content: flex-end;
-
-    ul {
-      justify-content: flex-end;
-    }
-  }
-
-  .nav-item {
-    margin: 0 3rem;
-    a {
-      color: $white;
-      transition: all 200ms ease;
-
-      &:hover {
-        color: $yellow;
-      }
-    }
-  }
-
-  .user-logs {
-    border-left: solid 0.1rem $yellow;
-    display: flex;
-
-    .login {
-      background: $yellow;
-      padding: 0.8rem 3.2rem;
-      border-radius: 2.6rem 2.1rem 1.7rem 2rem;
-      position: relative;
-    }
-  }
-
-  .navbar-toggler {
-    color: $white;
-    outline: none;
-    margin-right: 1.6rem;
-    svg {
-      width: 2.4rem;
-    }
-  }
-}
-
 .accordeon {
   .card {
     background: none;

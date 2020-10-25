@@ -13,13 +13,3 @@ export default function InputFile({value, name, type, className}) {
         </div>
     )
 }
-
-
-
-
-{/* <InputFile
-value={data.avatar}
-name="avatar"
-type="file"
-className="form-control"
-/> */}

@@ -1,0 +1,16 @@
+.button.__yellow-btn {
+  background: #ffcc00;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  border: 0;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.button.__yellow-btn.__avatar-upd {
+  position: absolute;
+  left: 50%;
+  bottom: -4rem;
+  margin-left: -7.5rem;
+}

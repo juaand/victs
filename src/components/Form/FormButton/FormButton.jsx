@@ -1,4 +1,4 @@
-import './Button.css'
+import './FormButton.css'
 import React from 'react'
 
 export default function Button({type, className, disabled, children}) {

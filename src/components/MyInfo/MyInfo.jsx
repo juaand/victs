@@ -1,8 +1,9 @@
 import './MyInfo.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import InputFile from '../Form/InputWithLabel/InputWithLabel'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../hooks/useFormState'
-import Button from '../Form/Button/Button'
+import Button from '../Button/Button'
 import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
 import {updateUser} from '../../services/ApiClient'
 import {updatePassword} from '../../services/ApiClient'
@@ -21,6 +22,7 @@ const MyInfo = (props) => {
                 address: props.user.address,
                 city: props.user.city,
                 zipcode: props.user.zipcode,
+                avatar: props.user.avatar,
                 password: props.user.password,
                 newpassword: ''
             },
@@ -30,6 +32,7 @@ const MyInfo = (props) => {
                 address: true,
                 city: true,
                 zipcode: true,
+                avatar: true,
                 password: true,
                 newpassword: true
             },
@@ -42,6 +45,7 @@ const MyInfo = (props) => {
             address: v => v.length,
             city: v => v.length,
             zipcode: v => v.length,
+            avatar: v => v.length,
             password: v => v.length,
             newpassword: v => v.length
         }
@@ -116,79 +120,88 @@ const MyInfo = (props) => {
         }
     }
 
+    useEffect(() => {
+        document.querySelector('.navbar').classList.add('__grayHeader')
+    }, [])
+
 
     return (
-        <div className="container my-info">
-            <div className="row">
-                <div className="col-12">
-                    <h1>VICTS USER LOGGED</h1>
-
-                    <a className="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <p>{profileData.name}</p>
-                        <p>{profileData.role}</p>
-                        <p>{profileData.packages}</p>
-                    </a>
+        <>
+            <div className="container-fluid acordeon-bar">
+                <a className="acordeon-toggle" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <h1>{profileData.name}
+                        <span className="role">{profileData.role}</span>
+                    </h1>
+                </a>
 
 
-                    <div className="collapse" id="collapseExample">
-                        <div className="card card-body">
+                <div className="collapse" id="collapseExample">
+                    <div className="card card-body">
+                        <div className="container">
                             {edit ?
                                 <>
                                     <form onSubmit={updateProfile}>
-                                        
-                                            <InputWithLabel
-                                                value={data.name}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="name"
-                                                type="text"
-                                                className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                placeholder={props.user.name}
-                                            />
-                                        
-                                        
-                                            <SelectWithLabel
-                                                name="role"
-                                                value={data.role}
-                                                onChange={onChange}
-                                            /> 
-                                        
-                                            <InputWithLabel
-                                                value={data.phone}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="phone"
-                                                type="text"
-                                                className={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
-                                                placeholder={props.user.phone}
-                                            />
-                                            <InputWithLabel
-                                                value={data.address}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="address"
-                                                type="text"
-                                                className={`form-control ${touch.address && error.address ? "is-invalid" : ""}`}
-                                                placeholder={props.user.address}
-                                            />
-                                            <InputWithLabel
-                                                value={data.city}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="city"
-                                                type="text"
-                                                className={`form-control ${touch.city && error.city ? "is-invalid" : ""}`}
-                                                placeholder={props.user.city}
-                                            />
-                                            <InputWithLabel
-                                                value={data.zipcode}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="zipcode"
-                                                type="text"
-                                                className={`form-control ${touch.zipcode && error.zipcode ? "is-invalid" : ""}`}
-                                                placeholder={props.user.zipcode}
-                                            />
+
+                                        <InputWithLabel
+                                            value={data.name}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="name"
+                                            type="text"
+                                            className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                            placeholder={props.user.name}
+                                        />
+
+
+                                        <SelectWithLabel
+                                            name="role"
+                                            value={data.role}
+                                            onChange={onChange}
+                                        />
+
+                                        <InputWithLabel
+                                            value={data.phone}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="phone"
+                                            type="text"
+                                            className={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
+                                            placeholder={props.user.phone}
+                                        />
+                                        <InputWithLabel
+                                            value={data.address}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="address"
+                                            type="text"
+                                            className={`form-control ${touch.address && error.address ? "is-invalid" : ""}`}
+                                            placeholder={props.user.address}
+                                        />
+                                        <InputWithLabel
+                                            value={data.city}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="city"
+                                            type="text"
+                                            className={`form-control ${touch.city && error.city ? "is-invalid" : ""}`}
+                                            placeholder={props.user.city}
+                                        />
+                                        <InputWithLabel
+                                            value={data.zipcode}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="zipcode"
+                                            type="text"
+                                            className={`form-control ${touch.zipcode && error.zipcode ? "is-invalid" : ""}`}
+                                            placeholder={props.user.zipcode}
+                                        />
+
+                                        <InputFile
+                                            value={data.avatar}
+                                            name="avatar"
+                                            type="file"
+                                            className="form-control"
+                                        />
 
                                         {registerError && <div className="alert alert-danger">{registerError}</div>}
 
@@ -206,46 +219,52 @@ const MyInfo = (props) => {
                                     </form>
                                 </>
                                 :
-                                <>
-                                    <p><strong>Nombre</strong> {profileData.name}</p>
-                                    <p><strong>Role</strong> {profileData.role}
-                                    </p>
-                                    <p><strong>Email</strong> {props.user.email}</p>
-                                    <p><strong>Phone</strong> {profileData.phone}</p>
-                                    <p><strong>Address</strong> {profileData.address} - {profileData.city} - {profileData.zipcode}</p>
+                                <div className="row">
+                                    <div className="col-12 col-sm-6 profile-info">
+                                        <p><strong>Name</strong> {profileData.name}</p>
+                                        <p><strong>Packages</strong> {profileData.packages}</p>
+                                        <p><strong>Role</strong> {profileData.role}
+                                        </p>
+                                        <p><strong>Email</strong> {props.user.email}</p>
+                                        <p><strong>Phone</strong> {profileData.phone}</p>
+                                        <p><strong>Address</strong> {profileData.address} - {profileData.city} - {profileData.zipcode}</p>
 
-                                    <div className="avatar" style={{background: `url(${props.user.avatar}) no-repeat center center / cover`}}></div>
+                                        <Button className="button __yellow-btn" onClick={editProfile}>Edit Profile</Button>
 
-                                    <button onClick={editProfile}>Edit Profile</button>
-
-                                    <button onClick={passwordForm}>Change password</button>
-                                </>
+                                        <Button className="button __yellow-btn" onClick={passwordForm}>Change password</Button>
+                                    </div>
+                                    <div className="col-12 col-sm-6 profile-avatar">
+                                        <div className="avatar" style={{background: `url(${props.user.avatar}) no-repeat center center / cover`}}>
+                                            <Button className="button __yellow-btn __avatar-upd" onClick={updateAvatar}>update avatar</Button>
+                                        </div>
+                                    </div>
+                                </div>
                             }
 
                             {passChange ?
                                 <>
                                     <form onSubmit={updatePass}>
-                                        
-                                            <InputWithLabel
-                                                value={data.password}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="password"
-                                                type="password"
-                                                className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
-                                                placeholder={props.user.password}
-                                            />
 
-                                            <InputWithLabel
-                                                value={data.newpassword}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="newpassword"
-                                                type="password"
-                                                className={`form-control ${touch.newpassword && error.newpassword ? "is-invalid" : ""}`}
-                                                placeholder={props.user.newpassword}
-                                            />
-                                        
+                                        <InputWithLabel
+                                            value={data.password}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="password"
+                                            type="password"
+                                            className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
+                                            placeholder={props.user.password}
+                                        />
+
+                                        <InputWithLabel
+                                            value={data.newpassword}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="newpassword"
+                                            type="password"
+                                            className={`form-control ${touch.newpassword && error.newpassword ? "is-invalid" : ""}`}
+                                            placeholder={props.user.newpassword}
+                                        />
+
                                         <Button
                                             type="submit"
                                             className="Button Button__enter"
@@ -257,29 +276,34 @@ const MyInfo = (props) => {
                             }
                         </div>
                     </div>
-
-                    {getGymName(props.user.lessons).map(el =>
-                        <div className="row gym-name">
-                            <div className="col-4">
-                                {el.gym.user.name}
-                            </div>
-                            <div className="col-8">
-                                <div className="row">
-                                    {Object.keys(byLessons).map(key =>
-                                        key === el.gym.id ?
-                                            byLessons[key].map(el =>
-                                                <div className="col-3">
-                                                    {el.name}
-                                                </div>
-                                            ) : ''
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
-        </div>
+            <div className="container my-info" >
+                <div className="row">
+                    <div className="col-12">
+                        {getGymName(props.user.lessons).map(el =>
+                            <div className="row gym-name">
+                                <div className="col-4">
+                                    {el.gym.user.name}
+                                </div>
+                                <div className="col-8">
+                                    <div className="row">
+                                        {Object.keys(byLessons).map(key =>
+                                            key === el.gym.id ?
+                                                byLessons[key].map(el =>
+                                                    <div className="col-3">
+                                                        {el.name}
+                                                    </div>
+                                                ) : ''
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 

@@ -1,0 +1,20 @@
+@import '../../stylesheets/variables';
+
+.button {
+  &.__yellow-btn {
+    background: $yellow;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    border: 0;
+    margin: 2rem;
+    padding: 1rem;
+
+    &.__avatar-upd {
+      position: absolute;
+      left: 50%;
+      bottom: -4rem;
+      margin-left: -7.5rem;
+    }
+  }
+}
