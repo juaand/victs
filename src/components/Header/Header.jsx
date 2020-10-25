@@ -1,3 +1,4 @@
+import './Header.css'
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import {useAuthContext} from '../../contexts/AuthContext'
@@ -14,9 +15,12 @@ const Header = () => {
             <div className="container-fluid">
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
-                        <Link className="navbar-brand" to="/">
-                            <div className="victs-logo"></div>
-                        </Link>
+                        <div className="header-user">
+                            <Link className="navbar-brand" to="/">
+                                <div className="victs-logo"></div>
+                            </Link>
+                            {user && <div className="user-hi">Hi {user.name}</div>}
+                        </div>
                         <button
                             className="navbar-toggler"
                             type="button"
@@ -46,38 +50,37 @@ const Header = () => {
                             <ul className="navbar-nav col-12 col-sm-10 p-0">
                                 {user && user.role === 'Guest' ?
                                     <>
-                                        <li>
+                                        <li className="nav-item">
                                             <NavLink className="nav-link" to="/calendar">Calendar</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className="nav-link" to="/profile">Profile</NavLink>
                                         </li>
                                     </> : ''}
 
                                 {user && user.role === 'Gym' ?
                                     <>
-                                        <li>
+                                        <li className="nav-item">
                                             <NavLink className="nav-link" to="/lessons">Add lesson</NavLink>
                                         </li>
-                                        <li>
+                                        <li className="nav-item">
                                             <NavLink className="nav-link" to="/instructors">My Instructors</NavLink>
                                         </li>
                                     </> : ''}
 
                                 {user && user.role === 'Instructor' ?
                                     <>
-                                        <li>
+                                        <li className="nav-item">
                                             <NavLink className="nav-link" to="/lessons">Add lesson</NavLink>
                                         </li>
-                                        <li>
+                                        <li className="nav-item">
                                             <NavLink className="nav-link" to="/history">History</NavLink>
                                         </li>
                                     </> : ''}
 
                                 {user ?
-                                    <li>
-                                        <button className="logout" onClick={logout}>Logout</button>
-                                    </li> : ''}
+                                    <span className="user-logs">
+                                        <li>
+                                            <NavLink to="/" className="nav-link login" onClick={logout}>Logout</NavLink>
+                                        </li>
+                                    </span> : ''}
 
 
                                 {!user ?

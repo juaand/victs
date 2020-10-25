@@ -10,6 +10,75 @@
   }
 }
 
+.acordeon-bar {
+  margin-top: $margin-top;
+  width: 100%;
+  background: $acordeon-bar;
+  text-align: center;
+  padding: 0;
+  padding-top: 8rem;
+
+  .card-body {
+    background: $acordeon-body;
+    padding-top: 4rem;
+
+    .profile-info {
+      text-align: left;
+      color: $white;
+
+      strong {
+        font-size: 1.6rem;
+        color: $yellow;
+        font-weight: 700;
+      }
+    }
+
+    .profile-avatar {
+      .avatar {
+        width: 30rem;
+        height: 29rem;
+        margin: 2rem auto;
+        border: solid 0.4rem $yellow;
+        border-radius: 39.6rem 41.5rem 44.2rem 43.4rem;
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: -1.2rem;
+          left: -1.1rem;
+          width: 31.4rem;
+          height: 31rem;
+          display: block;
+          border: solid 0.4rem #ffcc00;
+          border-radius: 39.6rem 41.5rem 44.2rem 43.4rem;
+        }
+      }
+    }
+  }
+
+  .acordeon-toggle {
+    color: $white;
+
+    h1 {
+      font-size: 8rem;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 4rem;
+
+      .role {
+        background: $yellow;
+        color: $text;
+        padding: 0.8rem;
+        position: absolute;
+        font-size: 1.8rem;
+        right: -4rem;
+        bottom: 0rem;
+      }
+    }
+  }
+}
+
 .gym-name {
   height: 20rem;
   border-top: solid 0.1rem #ddd;

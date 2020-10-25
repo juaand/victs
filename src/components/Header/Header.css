@@ -1,0 +1,89 @@
+.navbar {
+  font-weight: 400;
+  align-items: center;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  padding: 0;
+}
+
+.navbar.__grayHeader {
+  background: #393939;
+  padding-right: 2rem;
+}
+
+.navbar.__grayHeader .user-logs {
+  border-left: 0;
+}
+
+.navbar .header-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .header-user .user-hi {
+  color: #fff;
+  border-left: solid 0.1rem #ffcc00;
+  padding-left: 2rem;
+}
+
+.navbar .navbar-brand {
+  padding: 3rem 1rem 3rem 3rem;
+}
+
+.navbar .navbar-brand .victs-logo {
+  width: 10rem;
+  height: 2.5rem;
+}
+
+.navbar .logo {
+  width: 10rem;
+}
+
+.navbar .navbar-collapse {
+  justify-content: flex-end;
+}
+
+.navbar .navbar-collapse ul {
+  justify-content: flex-end;
+}
+
+.navbar .nav-item {
+  margin: 0 3rem;
+}
+
+.navbar .nav-item a {
+  color: #fff;
+  transition: all 200ms ease;
+}
+
+.navbar .nav-item a:hover {
+  color: #ffcc00;
+}
+
+.navbar .user-logs {
+  border-left: solid 0.1rem #ffcc00;
+  display: flex;
+}
+
+.navbar .user-logs .login {
+  background: #ffcc00;
+  padding: 0.8rem 3.2rem;
+  border-radius: 2.6rem 2.1rem 1.7rem 2rem;
+  position: relative;
+}
+
+.navbar .user-logs .login.active {
+  color: #333;
+}
+
+.navbar .navbar-toggler {
+  color: #fff;
+  outline: none;
+  margin-right: 1.6rem;
+}
+
+.navbar .navbar-toggler svg {
+  width: 2.4rem;
+}
