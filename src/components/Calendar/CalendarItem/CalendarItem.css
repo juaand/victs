@@ -1,0 +1,28 @@
+.calendar-item {
+  font-size: 1.4rem;
+  border-right: solid 0.1rem #e8e8e8;
+  min-height: 20rem;
+}
+
+.calendar-item span {
+  display: block;
+}
+
+.calendar-item .cal-item.__date {
+  padding: 2rem 0 1rem 0;
+  font-weight: 400;
+}
+
+.calendar-item .cal-item.__hour {
+  font-weight: 600;
+  color: #ffcc00;
+}
+
+.calendar-item .cal-item.__discipline {
+  font-weight: 900;
+}
+
+.calendar-item .cal-item.__instructor {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
