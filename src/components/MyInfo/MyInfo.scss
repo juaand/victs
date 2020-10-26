@@ -10,6 +10,24 @@
   }
 }
 
+.profile-title {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    top: 2rem;
+    left: -5rem;
+    content: '';
+    background: url(../../images/bars.svg) no-repeat center center / contain;
+  }
+}
+
+small {
+  font-size: 1.1rem;
+}
+
 .acordeon-bar {
   margin-top: $margin-top;
   width: 100%;
@@ -21,22 +39,57 @@
   .card-body {
     background: $acordeon-body;
     padding-top: 4rem;
+    position: relative;
+    border-top: solid 0.1rem $yellow;
+
+    .close {
+      position: absolute;
+      width: 4rem;
+      height: 4rem;
+      top: 3rem;
+      right: 3rem;
+      content: '';
+      background: url(../../images/close.svg) no-repeat center center / contain;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
 
     .profile-info {
       text-align: left;
       color: $white;
 
-      strong {
-        font-size: 1.6rem;
-        color: $yellow;
-        font-weight: 700;
+      .content-block {
+        display: flex;
+        align-items: center;
+        margin: 2rem 0;
+        font-size: 1.8rem;
+
+        strong {
+          font-size: 1.6rem;
+          color: $yellow;
+          font-weight: 700;
+        }
+      }
+
+      .form-group {
+        display: flex;
+
+        label {
+          display: none;
+        }
       }
     }
 
     .profile-avatar {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
       .avatar {
-        width: 30rem;
-        height: 29rem;
+        width: 20rem;
+        height: 19rem;
         margin: 2rem auto;
         border: solid 0.4rem $yellow;
         border-radius: 39.6rem 41.5rem 44.2rem 43.4rem;
@@ -47,11 +100,49 @@
           position: absolute;
           top: -1.2rem;
           left: -1.1rem;
-          width: 31.4rem;
-          height: 31rem;
+          width: 21.4rem;
+          height: 21rem;
           display: block;
           border: solid 0.4rem #ffcc00;
           border-radius: 39.6rem 41.5rem 44.2rem 43.4rem;
+        }
+      }
+
+      .button {
+        position: absolute;
+        bottom: -4rem;
+        left: -2rem;
+      }
+
+      .cancel {
+        position: absolute;
+        bottom: -4rem;
+        right: -2rem;
+        left: unset;
+      }
+    }
+
+    .message {
+      position: absolute;
+      background: $yellow;
+      color: $white;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 4rem 0;
+      z-index: 5;
+      animation: fadein 2s linear;
+      opacity: 0;
+    }
+  }
+
+  .edit-profile {
+    .profile-info {
+      .content-block {
+        margin: 0;
+
+        .form-group {
+          margin: 0.5rem 0;
         }
       }
     }
@@ -80,11 +171,28 @@
 }
 
 .gym-name {
-  height: 20rem;
   border-top: solid 0.1rem #ddd;
 }
 
 .avatar {
   width: 20rem;
   height: 20rem;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

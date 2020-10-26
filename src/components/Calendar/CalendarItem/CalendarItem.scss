@@ -1,0 +1,32 @@
+@import '../../../stylesheets/variables';
+
+.calendar-item {
+  font-size: 1.4rem;
+  border-right: solid 0.1rem $light-gray;
+  min-height: 20rem;
+
+  span {
+    display: block;
+  }
+
+  .cal-item {
+    &.__date {
+      padding: 2rem 0 1rem 0;
+      font-weight: 400;
+    }
+
+    &.__hour {
+      font-weight: 600;
+      color: $yellow;
+    }
+
+    &.__discipline {
+      font-weight: 900;
+    }
+
+    &.__instructor {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+  }
+}
