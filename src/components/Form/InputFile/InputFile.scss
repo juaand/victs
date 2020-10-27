@@ -1,5 +1,9 @@
 @import '../../../stylesheets/variables';
 
+input {
+  overflow: hidden;
+}
+
 .file-group {
   .custom-file-label {
     &:after {

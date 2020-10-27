@@ -120,6 +120,13 @@ small {
         right: -2rem;
         left: unset;
       }
+
+      .center {
+        position: absolute;
+        bottom: -4rem;
+        left: 50%;
+        margin-left: -7.5rem;
+      }
     }
 
     .message {

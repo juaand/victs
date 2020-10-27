@@ -9,5 +9,10 @@
     border: 0;
     margin: 2rem;
     padding: 1rem;
+
+    &.disabled {
+      pointer-events: none;
+      color: rgba($text, 0.3);
+    }
   }
 }
