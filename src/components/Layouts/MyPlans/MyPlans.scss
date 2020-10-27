@@ -1,0 +1,58 @@
+@import '../../../stylesheets/variables';
+
+.my-plans {
+  border-bottom: solid 0.1rem $light-gray;
+  min-height: 20.1rem;
+
+  .item {
+    padding: 6rem 0 4rem 0;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    display: inline-block;
+  }
+
+  h4 {
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .purple {
+    color: $purple;
+  }
+
+  .add-plans {
+    color: $text;
+    display: flex;
+    align-items: center;
+
+    &:after {
+      content: '';
+      width: 1.6rem;
+      height: 1.6rem;
+      background: url(../../../images/next.svg) no-repeat center center /
+        contain;
+      display: block;
+      margin-left: 0.6rem;
+      transition: all 200ms ease-in-out;
+    }
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+
+      &:after {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  .plans-block {
+    .plans-item {
+      padding: 2rem;
+    }
+  }
+}

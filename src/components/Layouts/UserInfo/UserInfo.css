@@ -1,0 +1,13 @@
+.user-info {
+  min-height: 20rem;
+}
+
+.user-info .title {
+  padding-top: 2rem;
+}
+
+.user-info .title h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  display: inline-block;
+}

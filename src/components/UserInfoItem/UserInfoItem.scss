@@ -1,0 +1,22 @@
+@import '../../stylesheets/variables';
+
+.user-info-item {
+  border-left: solid 0.1rem $light-gray;
+  min-height: 20rem;
+}
+
+.title {
+    font-weight: 800;
+
+    &.__yellow-title {
+        color: $yellow;
+    }
+
+    &.__blue-title {
+        color: $blue;
+    }
+
+    &.__purple-title {
+        color: $purple;
+    }
+}

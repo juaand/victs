@@ -1,0 +1,28 @@
+@import '../../../stylesheets/variables';
+
+.empty-row {
+  border-bottom: solid 0.1rem $light-gray;
+  min-height: 20rem;
+
+  .title {
+    padding-top: 2rem;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      display: inline-block;
+      color: $yellow;
+    }
+  }
+
+  .message {
+    padding-top: 3rem;
+    font-size: 2rem;
+    font-weight: 400;
+
+    strong {
+      font-weight: 900;
+      font-size: 2.4rem;
+    }
+  }
+}

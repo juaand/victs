@@ -1,16 +1,20 @@
 import './MyInfo.css'
 import React, {useState, useEffect} from 'react'
-import InputFile from '../Form/InputFile/InputFile'
-import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../hooks/useFormState'
-import Button from '../Button/Button'
-import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
 import {updateUser} from '../../services/ApiClient'
 import {updatePassword} from '../../services/ApiClient'
 import {updateUserAvatar} from '../../services/ApiClient'
-import disciplines from '../../data/disciplines'
+import {getDisciplines} from '../../services/ApiClient'
+import InputFile from '../Form/InputFile/InputFile'
+import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
+import Button from '../Button/Button'
+import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
 import services from '../../data/services'
 import CalendarItem from '../Calendar/CalendarItem/CalendarItem'
+import MyPlans from '../Layouts/MyPlans/MyPlans'
+import AttendedLessons from '../Layouts/AttendedLessons/AttendedLessons'
+import WaitingLessons from '../Layouts/WaitingLessons/WaitingLessons'
+import UserInfo from '../Layouts/UserInfo/UserInfo'
 
 const MyInfo = (props) => {
 
@@ -115,23 +119,6 @@ const MyInfo = (props) => {
         document.querySelector('.disabled').classList.remove('disabled')
     }
 
-    const updateProfile = async (event) => {
-        event.preventDefault()
-
-        try {
-            await updateUser(data)
-            setProfileData(data)
-            showProfile()
-            document.querySelector('.message').classList.remove('d-none')
-            setMessage('User has been update')
-            setTimeout(() => {
-                document.querySelector('.message').classList.add('d-none')
-            }, 3000)
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
-        }
-    }
-
     const updatePass = async (event) => {
         event.preventDefault()
 
@@ -149,6 +136,25 @@ const MyInfo = (props) => {
         }
     }
 
+    const updateProfile = async (event) => {
+        event.preventDefault()
+
+        try {
+            await updateUser(data)
+                .then(user => {
+                    setProfileData(user)
+                })
+            showProfile()
+            document.querySelector('.message').classList.remove('d-none')
+            setMessage('User has been update')
+            setTimeout(() => {
+                document.querySelector('.message').classList.add('d-none')
+            }, 3000)
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
+    }
+
     const postAvatar = async (event) => {
         event.preventDefault()
 
@@ -157,7 +163,9 @@ const MyInfo = (props) => {
             data.avatar = avatarFile.files[0]
 
             await updateUserAvatar(data.avatar, data.id)
-            setProfileData(data)
+                .then(user => {
+                    setProfileData(user)
+                })
             hideUpdateAvatar()
             document.querySelector('.message').classList.remove('d-none')
             setMessage('Avatar has been updated')
@@ -171,8 +179,13 @@ const MyInfo = (props) => {
 
     useEffect(() => {
         document.querySelector('.navbar').classList.add('__grayHeader')
-        console.log(data)
+        setProfileData(data)
     }, [data])
+
+    useEffect(() => {
+        getDisciplines()
+            .then(res => console.log(res))
+    })
 
 
     return (
@@ -266,7 +279,6 @@ const MyInfo = (props) => {
                                                                 name="disciplines"
                                                                 value={data.disciplines}
                                                                 onChange={onChange}
-                                                                options={disciplines}
                                                             />
                                                         </div>
                                                     </div>
@@ -420,7 +432,7 @@ const MyInfo = (props) => {
                                                 <strong>Phone</strong>
                                             </div>
                                             <div className="col-8">
-                                                <span>{profileData.phone}</span>
+                                                <span>{profileData.phone ? profileData.phone : 'No phone provided'}</span>
                                             </div>
                                         </div>
                                         <div className="row content-block">
@@ -428,8 +440,13 @@ const MyInfo = (props) => {
                                                 <strong>Address</strong>
                                             </div>
                                             <div className="col-8">
-                                                <span>{profileData.address}</span> - <span>{profileData.city}</span> -
-                                            <span>{profileData.zipcode}</span>
+                                                {profileData.address ?
+                                                    <>
+                                                        <span>{profileData.address}</span>
+                                                        <br />
+                                                        <span>{profileData.city}</span> - <span>{profileData.zipcode}</span>
+                                                    </>
+                                                    : 'No address provided'}
                                             </div>
                                         </div>
 
@@ -438,7 +455,7 @@ const MyInfo = (props) => {
                                         <Button className="button __yellow-btn" onClick={passwordForm}>Change password</Button>
                                     </div>
                                     <div className="col-12 col-sm-6 profile-avatar">
-                                        <div className="avatar" style={{background: `url(${data.avatar}) no-repeat center center / cover`}}>
+                                        <div className="avatar" style={{background: `url(${profileData.avatar ? profileData.avatar : 'https://res.cloudinary.com/dutvbml2i/image/upload/v1603784830/victs/foto-perfil.jpg'}) no-repeat center center / cover`}}>
                                             {changeAvatar ?
                                                 <>
                                                     <Button className="button __yellow-btn disabled" onClick={postAvatar}>Update</Button>
@@ -466,35 +483,50 @@ const MyInfo = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="container my-info" >
-                <div className="row">
-                    <div className="col-12">
-                        {getGymName(props.user.lessons).map(el =>
-                            <div className="row gym-name">
-                                <div className="col-4">
-                                    <h1 className="big-yellow">Upcoming classes scheduled in <span>{el.gym.user.name}</span></h1>
-                                </div>
-                                <div className="col-8">
-                                    <div className="row">
-                                        {Object.keys(byLessons).map(key =>
-                                            key === el.gym.id ?
-                                                byLessons[key].map(el =>
-                                                    <CalendarItem
-                                                        lessonInstructor={el.instructor.user.name}
-                                                        lessonDate={el.inithour}
-                                                        lessonHour={el.inithour}
-                                                        lessonDiscipline={el.discipline}
-                                                        InstructorAvatar={el.instructor.user.avatar}
-                                                    />
-                                                ) : ''
-                                        )}
+            {props.user.lessons.length ?
+                <>
+                    <MyPlans plans={profileData.packages} />
+                    <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
+                    <div className="container my-info" >
+                        <div className="row">
+                            <div className="col-12">
+                                {getGymName(props.user.lessons).map(el =>
+                                    <div className="row gym-name">
+                                        <div className="col-4">
+                                            <h1 className="big-yellow">Upcoming classes scheduled in <span>{el.gym.user.name}</span></h1>
+                                        </div>
+                                        <div className="col-8">
+                                            <div className="row">
+                                                {Object.keys(byLessons).map(key =>
+                                                    key === el.gym.id ?
+                                                        byLessons[key].map(el =>
+                                                            <CalendarItem
+                                                                lessonInstructor={el.instructor.user.name}
+                                                                lessonDate={el.inithour}
+                                                                lessonHour={el.inithour}
+                                                                lessonDiscipline={el.discipline}
+                                                                InstructorAvatar={el.instructor.user.avatar}
+                                                            />
+                                                        ) : ''
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
-                        )}
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="Keep calm and move on" />
+                    <UserInfo title="My info"/>
+                </>
+                :
+                <>
+                    <MyPlans plans={profileData.packages} />
+                    <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
+                    <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's a good news" />
+                    <UserInfo title="My info"/>
+                </>
+            }
         </>
     )
 }

@@ -1,7 +1,6 @@
 @import '../../stylesheets/variables';
 
 .my-info {
-  margin-top: 10rem;
 
   .center {
     height: 100vh;
@@ -178,7 +177,15 @@ small {
 }
 
 .gym-name {
-  border-top: solid 0.1rem #ddd;
+  border-top: solid 0.1rem $light-gray;
+
+  &:first-child {
+    border: 0;
+  }
+
+  &:last-child {
+    border-bottom: solid 0.1rem $light-gray;
+  }
 }
 
 .avatar {

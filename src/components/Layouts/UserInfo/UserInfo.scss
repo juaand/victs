@@ -1,0 +1,15 @@
+@import '../../../stylesheets/variables';
+
+.user-info {
+  min-height: 20rem;
+
+  .title {
+    padding-top: 2rem;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      display: inline-block;
+    }
+  }
+}

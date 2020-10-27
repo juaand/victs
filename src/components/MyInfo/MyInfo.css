@@ -1,7 +1,3 @@
-.my-info {
-  margin-top: 10rem;
-}
-
 .my-info .center {
   height: 100vh;
   justify-content: center;
@@ -172,7 +168,15 @@ small {
 }
 
 .gym-name {
-  border-top: solid 0.1rem #ddd;
+  border-top: solid 0.1rem #e8e8e8;
+}
+
+.gym-name:first-child {
+  border: 0;
+}
+
+.gym-name:last-child {
+  border-bottom: solid 0.1rem #e8e8e8;
 }
 
 .avatar {

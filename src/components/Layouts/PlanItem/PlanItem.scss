@@ -1,0 +1,38 @@
+@import '../../../stylesheets/variables';
+
+.plans-item {
+  border-left: solid 0.1rem $light-gray;
+  min-height: 20rem;
+
+  .button {
+    transition: all 200ms ease;
+    &.__yellow-btn {
+      margin: 0;
+      margin-top: 1rem;
+    }
+
+    &:hover {
+      background: $text;
+      color: $white;
+    }
+  }
+
+  small {
+    display: block;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  &:first-child {
+    .save {
+      display: none;
+    }
+  }
+
+  .save {
+    font-weight: 800;
+    font-size: 2rem;
+    color: $yellow;
+  }
+}

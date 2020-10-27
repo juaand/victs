@@ -1,0 +1,20 @@
+.user-info-item {
+  border-left: solid 0.1rem #e8e8e8;
+  min-height: 20rem;
+}
+
+.title {
+  font-weight: 800;
+}
+
+.title.__yellow-title {
+  color: #ffcc00;
+}
+
+.title.__blue-title {
+  color: #00a9ad;
+}
+
+.title.__purple-title {
+  color: #7A0054;
+}

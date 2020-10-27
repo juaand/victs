@@ -108,6 +108,7 @@ const Register = () => {
                                 name="role"
                                 value={data.role}
                                 onChange={onChange}
+                                options={['Guest', 'Gym', 'Instructor']}
                             />
 
                             {registerError && <div className="alert alert-danger">{registerError}</div>}

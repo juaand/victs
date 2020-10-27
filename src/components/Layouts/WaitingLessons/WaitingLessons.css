@@ -1,0 +1,26 @@
+.waiting-row {
+  border-bottom: solid 0.1rem #e8e8e8;
+  min-height: 20rem;
+}
+
+.waiting-row .title {
+  padding-top: 2rem;
+}
+
+.waiting-row .title h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  display: inline-block;
+  color: #00a9ad;
+}
+
+.waiting-row .message {
+  padding-top: 3rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.waiting-row .message strong {
+  font-weight: 900;
+  font-size: 2.4rem;
+}

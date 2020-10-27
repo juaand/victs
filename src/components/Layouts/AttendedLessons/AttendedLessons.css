@@ -1,0 +1,26 @@
+.empty-row {
+  border-bottom: solid 0.1rem #e8e8e8;
+  min-height: 20rem;
+}
+
+.empty-row .title {
+  padding-top: 2rem;
+}
+
+.empty-row .title h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  display: inline-block;
+  color: #ffcc00;
+}
+
+.empty-row .message {
+  padding-top: 3rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.empty-row .message strong {
+  font-weight: 900;
+  font-size: 2.4rem;
+}

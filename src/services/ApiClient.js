@@ -16,6 +16,8 @@ http.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
+export const getDisciplines = () => http.get('/disciplines')
+
 export const login = ({email, password}) => http.post('/login', {email, password})
 
 export const logOut = () => http.post('/logout')
