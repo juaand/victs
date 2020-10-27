@@ -99,12 +99,20 @@ const MyInfo = (props) => {
         setProfileInfo(true)
     }
 
+    const hideUpdateAvatar = () => {
+        setChangeAvatar(false)
+    }
+
     const updateAvatar = () => {
         setChangeAvatar(true)
     }
 
     const cancelAvatarUpdate = () => {
         setChangeAvatar(false)
+    }
+
+    const removeDisabled = () => {
+        document.querySelector('.disabled').classList.remove('disabled')
     }
 
     const updateProfile = async (event) => {
@@ -141,19 +149,21 @@ const MyInfo = (props) => {
         }
     }
 
-    const postUpdateAvatar = async (event) => {
+    const postAvatar = async (event) => {
         event.preventDefault()
 
         try {
-            const avatarFile = document.querySelector('.input-file').files[0].name
-            await updateUserAvatar(avatarFile, data.id)
-            // setProfileData(data)
-            // cancelPasswordForm()
-            // document.querySelector('.message').classList.remove('d-none')
-            // setMessage('Password has been update')
-            // setTimeout(() => {
-            //     document.querySelector('.message').classList.add('d-none')
-            // }, 3000)
+            const avatarFile = document.querySelector('.input-file')
+            data.avatar = avatarFile.files[0]
+
+            await updateUserAvatar(data.avatar, data.id)
+            setProfileData(data)
+            hideUpdateAvatar()
+            document.querySelector('.message').classList.remove('d-none')
+            setMessage('Avatar has been updated')
+            setTimeout(() => {
+                document.querySelector('.message').classList.add('d-none')
+            }, 3000)
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
@@ -161,6 +171,7 @@ const MyInfo = (props) => {
 
     useEffect(() => {
         document.querySelector('.navbar').classList.add('__grayHeader')
+        console.log(data)
     }, [data])
 
 
@@ -427,20 +438,20 @@ const MyInfo = (props) => {
                                         <Button className="button __yellow-btn" onClick={passwordForm}>Change password</Button>
                                     </div>
                                     <div className="col-12 col-sm-6 profile-avatar">
-                                        <div className="avatar" style={{background: `url(${props.user.avatar}) no-repeat center center / cover`}}>
+                                        <div className="avatar" style={{background: `url(${data.avatar}) no-repeat center center / cover`}}>
                                             {changeAvatar ?
                                                 <>
-                                                    <Button className="button __yellow-btn" onClick={postUpdateAvatar}>Update</Button>
+                                                    <Button className="button __yellow-btn disabled" onClick={postAvatar}>Update</Button>
                                                     <Button className="button cancel __yellow-btn" onClick={cancelAvatarUpdate}>Cancel</Button>
                                                 </> :
-                                                <Button className="button __yellow-btn" onClick={updateAvatar}>Change avatar</Button>
+                                                <Button className="button center __yellow-btn" onClick={updateAvatar}>Change avatar</Button>
                                             }
                                         </div>
                                         {changeAvatar &&
                                             <div className="row content-block">
                                                 <div className="col-12">
                                                     <InputFile
-                                                        onChange={onChange}
+                                                        onChange={removeDisabled}
                                                         name="avatar"
                                                         type="file"
                                                         className="form-control input-file"
@@ -473,6 +484,7 @@ const MyInfo = (props) => {
                                                         lessonDate={el.inithour}
                                                         lessonHour={el.inithour}
                                                         lessonDiscipline={el.discipline}
+                                                        InstructorAvatar={el.instructor.user.avatar}
                                                     />
                                                 ) : ''
                                         )}

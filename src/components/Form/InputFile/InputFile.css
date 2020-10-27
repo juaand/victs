@@ -1,3 +1,7 @@
+input {
+  overflow: hidden;
+}
+
 .file-group .custom-file-label:after {
   background: #211E35;
   color: #fff;

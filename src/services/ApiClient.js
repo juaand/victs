@@ -26,6 +26,12 @@ export const activateUser = (token) => http.get(`/activate/${token}`)
 
 export const updateUser = ({name, role, address, phone, city, zipcode, id}) => http.patch(`/user-profile/${id}/edit`, {name, role, address, phone, city, zipcode, id})
 
-export const updateUserAvatar = ({avatar, id}) => http.post(`/user-profile/${id}/edit-avatar`, {avatar, id})
+export const updateUserAvatar = (data, id) => {
+  let fd = new FormData()
+  fd.append('file', data)
+
+  const config = {headers: {'Content-Type': 'multipart/form-data'}}
+  return http.post(`/user-profile/${id}/edit-avatar`, fd, config)
+}
 
 export const updatePassword = ({password, newpassword, id}) => http.post(`/update-password/${id}`, {password, newpassword})

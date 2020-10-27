@@ -122,6 +122,13 @@ small {
   left: unset;
 }
 
+.acordeon-bar .card-body .profile-avatar .center {
+  position: absolute;
+  bottom: -4rem;
+  left: 50%;
+  margin-left: -7.5rem;
+}
+
 .acordeon-bar .card-body .message {
   position: absolute;
   background: #ffcc00;
