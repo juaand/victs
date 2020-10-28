@@ -1,3 +1,4 @@
+import './UserAccordeon.css'
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../hooks/useFormState'
 import {updateUser} from '../../services/ApiClient'
@@ -64,6 +65,7 @@ const UserAccordeon = (props) => {
     const [registerError, setRegisterError] = useState(null)
     const [profileInfo, setProfileInfo] = useState(true)
     const [profileData, setProfileData] = useState(props.user)
+    const [gymdata, setGymData] = useState(props.gym)
     const [message, setMessage] = useState('')
     const [changeAvatar, setChangeAvatar] = useState(false)
     const [disciplinesList, setDisciplinesList] = useState([])
@@ -125,9 +127,10 @@ const UserAccordeon = (props) => {
     const updateProfile = async (event) => {
         event.preventDefault()
 
-        try {
+        try {            
             await updateUser(data)
                 .then(user => {
+                    console.log(user)
                     setProfileData(user)
                 })
             showProfile()
@@ -422,6 +425,7 @@ const UserAccordeon = (props) => {
                                             <span>{profileData.name}</span>
                                         </div>
                                     </div>
+                                    {!props.user.role === 'Guest' &&
                                     <div className="row content-block">
                                         <div className="col-4">
                                             <strong>Packages</strong>
@@ -430,6 +434,7 @@ const UserAccordeon = (props) => {
                                             <span>{profileData.packages}</span>
                                         </div>
                                     </div>
+                                    }
                                     <div className="row content-block">
                                         <div className="col-4">
                                             <strong>Role</strong>
@@ -450,6 +455,29 @@ const UserAccordeon = (props) => {
                                                 }
                                             </div>
                                         </div>
+                                    }
+                                    {profileData.role === 'Instructor' &&
+                                    <>
+                                        <div className="row content-block">
+                                            <div className="col-4">
+                                                <strong>Disciplines</strong>
+                                            </div>
+                                            <div className="col-8">
+                                                {
+                                                    props.instructorInfo &&
+                                                    props.instructorInfo.disciplines.map(el => <p>{el}, </p>)
+                                                }
+                                            </div>
+                                        </div>
+                                        <div className="row content-block">
+                                            <div className="col-4">
+                                                <strong>Quote</strong>
+                                            </div>
+                                            <div className="col-8">
+                                                <p>"{props.instructorInfo.quote}"</p>
+                                            </div>
+                                        </div>
+                                        </>
                                     }
                                     <div className="row content-block">
                                         <div className="col-4">

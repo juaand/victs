@@ -1,0 +1,34 @@
+{
+    "id":"5f996327611443b67cdc5caf",
+    "name":"Cleo Quitzon II",
+    "role":"Gym",
+    "services":["Elevator","Free weight"],
+    "packages":0,
+    "phone":"1-895-050-9543 x449",
+    "address":"96718 Maggio Inlet",
+    "city":"Volkmanfurtgerb",
+    "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mastermindesign/128.jpg",
+    "zipcode":28104,
+    "password":"$2b$10$aaLdji9b.afO3a.ZLSHzS.VMa98XGcnTrwXSrMoHQyLSKXpqLyYh6",
+    "newpassword":""
+}
+
+{
+    "services":["Elevator","Free weight"],
+    "role":"Gym",
+    "user":{
+        "activation":{
+            "active":true,"token":"Lwe0e2m4otZRBPpchl1WDEBKr"},
+            "packages":0,
+            "role":"Gym",
+            "name":"Cleo Quitzon II",
+            "email":"laney.lynch@hotmail.com",
+            "password":"$2b$10$aaLdji9b.afO3a.ZLSHzS.VMa98XGcnTrwXSrMoHQyLSKXpqLyYh6",
+            "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mastermindesign/128.jpg",
+            "address":"96718 Maggio Inlet",
+            "zipcode":28104,
+            "city":"Volkmanfurtgerb",
+            "phone":"1-895-050-9543 x449",
+            "id":"5f996327611443b67cdc5caf"},
+            "id":"5f996327611443b67cdc5ceb"
+        }

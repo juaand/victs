@@ -28,7 +28,7 @@ export const register = ({name, email, password, role}) => http.post('/register'
 
 export const activateUser = (token) => http.get(`/activate/${token}`)
 
-export const updateUser = ({name, role, address, phone, city, zipcode, id}) => http.patch(`/user-profile/${id}/edit`, {name, role, address, phone, city, zipcode, id})
+export const updateUser = ({name, role, address, phone, city, zipcode, id, quote, services, disciplines}) => http.patch(`/user-profile/${id}/edit`, {name, role, address, phone, city, zipcode, id, quote, services, disciplines})
 
 export const updateUserAvatar = (data, id) => {
   let fd = new FormData()
