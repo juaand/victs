@@ -38,7 +38,7 @@ const Login = (props) => {
             activateUser(token)
                 .then(() => setActivate(true))
         }
-    }, [])
+    }, [props.match.params.token, props.confirmed])
 
     const {user} = useAuthContext()
 
@@ -61,9 +61,14 @@ const Login = (props) => {
 
 
     const isError = Object.values(error).some(err => err)
-
-    if (user) {
+    if (user && user.role === 'Guest') {
         return <Redirect to="/my-info" />
+    }
+    if (user && user.user && user.user.role === 'Instructor') {
+        return <Redirect to="/my-info-instructor" />
+    }
+    if (user && user.user && user.user.role === 'Gym') {
+        return <Redirect to="/my-info-gym" />
     }
 
     return (
