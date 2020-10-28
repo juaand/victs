@@ -39,3 +39,5 @@ export const updateUserAvatar = (data, id) => {
 }
 
 export const updatePassword = ({password, newpassword, id}) => http.post(`/update-password/${id}`, {password, newpassword})
+
+export const stripeInfo = ({data, id}) => http.post('/stripe/checkout', {id, amount: 10000, data})
