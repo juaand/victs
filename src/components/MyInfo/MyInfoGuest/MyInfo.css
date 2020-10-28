@@ -15,7 +15,7 @@
   top: 2rem;
   left: -5rem;
   content: '';
-  background: url(../../images/bars.svg) no-repeat center center/contain;
+  background: url(../../../images/bars.svg) no-repeat center center/contain;
 }
 
 small {
@@ -45,7 +45,7 @@ small {
   top: 3rem;
   right: 3rem;
   content: '';
-  background: url(../../images/close.svg) no-repeat center center/contain;
+  background: url(../../../images/close.svg) no-repeat center center/contain;
 }
 
 .acordeon-bar .card-body .close:hover {

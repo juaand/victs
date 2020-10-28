@@ -1,5 +1,5 @@
 import './Header.css'
-import React from 'react'
+import React  from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import {useAuthContext} from '../../contexts/AuthContext'
 
@@ -19,7 +19,9 @@ const Header = () => {
                             <Link className="navbar-brand" to="/">
                                 <div className="victs-logo"></div>
                             </Link>
-                            {user && <div className="user-hi">Hi {user.name}</div>}
+                            {user && user.role === 'Guest' && <div className="user-hi">Hi {user.name}</div>}
+                            {user && user.role === 'Gym' && <div className="user-hi">Hi {user.user.name}</div>}
+                            {user && user.role === 'Instructor' && <div className="user-hi">Hi {user.user.name}</div>}
                         </div>
                         <button
                             className="navbar-toggler"
@@ -48,14 +50,14 @@ const Header = () => {
 
                         <div className="collapse navbar-collapse" id="navbarToggle">
                             <ul className="navbar-nav col-12 col-sm-10 p-0">
-                                {user && user.role === 'Guest' ?
+                                {user && user.role === 'Guest' &&
                                     <>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/calendar">Calendar</NavLink>
                                         </li>
-                                    </> : ''}
+                                    </> }
 
-                                {user && user.role === 'Gym' ?
+                                {user && user.user && user.user.role === 'Gym' &&
                                     <>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/lessons">Add lesson</NavLink>
@@ -63,9 +65,9 @@ const Header = () => {
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/instructors">My Instructors</NavLink>
                                         </li>
-                                    </> : ''}
+                                    </>}
 
-                                {user && user.role === 'Instructor' ?
+                                {user && user.user && user.user.role === 'Instructor' &&
                                     <>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/lessons">Add lesson</NavLink>
@@ -73,17 +75,17 @@ const Header = () => {
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/history">History</NavLink>
                                         </li>
-                                    </> : ''}
+                                    </>}
 
-                                {user ?
+                                {user &&
                                     <span className="user-logs">
                                         <li>
                                             <NavLink to="/" className="nav-link login" onClick={logout}>Logout</NavLink>
                                         </li>
-                                    </span> : ''}
+                                    </span> }
 
 
-                                {!user ?
+                                {!user &&
                                     <>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/trainers">Trainers & Centers</NavLink>
@@ -102,7 +104,7 @@ const Header = () => {
                                                 <NavLink className="nav-link" to="/register">Register</NavLink>
                                             </li>
                                         </span>
-                                    </> : ''
+                                    </>
                                 }
 
                             </ul>

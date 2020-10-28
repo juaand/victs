@@ -1,10 +1,204 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {useFormState} from '../../hooks/useFormState'
+import {updateUser} from '../../services/ApiClient'
+import {updatePassword} from '../../services/ApiClient'
+import {updateUserAvatar} from '../../services/ApiClient'
+import {getDisciplines} from '../../services/ApiClient'
+import {getServices} from '../../services/ApiClient'
+import InputFile from '../Form/InputFile/InputFile'
+import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
+import Button from '../Button/Button'
+import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
+import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
-const UserAccordeon = () => {
+const UserAccordeon = (props) => {
 
+    const {state, onBlur, onChange, role} = useFormState(
+        {
+            data: {
+                id: props.user.id,
+                name: props.user.name,
+                role: props.user.role,
+                disciplines: [],
+                services: [],
+                quote: '',
+                packages: props.user.packages,
+                phone: props.user.phone,
+                address: props.user.address,
+                city: props.user.city,
+                avatar: props.user.avatar,
+                zipcode: props.user.zipcode,
+                password: props.user.password,
+                newpassword: ''
+            },
+            error: {
+                name: true,
+                phone: true,
+                address: true,
+                city: true,
+                zipcode: true,
+                password: true,
+                newpassword: true
+            },
+            touch: {},
+        },
+        {
+            name: v => v.length,
+            role: v => v.length,
+            disciplines: v => v.length,
+            quote: v => v.quote,
+            services: v => v.length,
+            phone: v => v.length,
+            address: v => v.length,
+            city: v => v.length,
+            zipcode: v => v.length,
+            avatar: v => v.length,
+            password: v => v.length,
+            newpassword: v => v.length
+        }
+    )
 
+    const {data, error, touch} = state
+    const [edit, setEdit] = useState(false)
+    const [passChange, setPassChange] = useState(false)
+    const [registerError, setRegisterError] = useState(null)
+    const [profileInfo, setProfileInfo] = useState(true)
+    const [profileData, setProfileData] = useState(props.user)
+    const [message, setMessage] = useState('')
+    const [changeAvatar, setChangeAvatar] = useState(false)
+    const [disciplinesList, setDisciplinesList] = useState([])
+    const [servicesList, setServicesList] = useState([])
 
+    const hideProfile = () => {
+        setEdit(true)
+        setProfileInfo(false)
+    }
 
+    const showProfile = () => {
+        setEdit(false)
+        setProfileInfo(true)
+    }
+
+    const passwordForm = () => {
+        setPassChange(true)
+        setProfileInfo(false)
+    }
+
+    const cancelPasswordForm = () => {
+        setPassChange(false)
+        setProfileInfo(true)
+    }
+
+    const hideUpdateAvatar = () => {
+        setChangeAvatar(false)
+    }
+
+    const updateAvatar = () => {
+        setChangeAvatar(true)
+    }
+
+    const cancelAvatarUpdate = () => {
+        setChangeAvatar(false)
+    }
+
+    const removeDisabled = () => {
+        document.querySelector('.disabled').classList.remove('disabled')
+    }
+
+    const updatePass = async (event) => {
+        event.preventDefault()
+
+        try {
+            await updatePassword(data)
+            setProfileData(data)
+            cancelPasswordForm()
+            document.querySelector('.message').classList.remove('d-none')
+            setMessage('Password has been update')
+            setTimeout(() => {
+                document.querySelector('.message').classList.add('d-none')
+            }, 3000)
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
+    }
+
+    const updateProfile = async (event) => {
+        event.preventDefault()
+
+        try {
+            await updateUser(data)
+                .then(user => {
+                    setProfileData(user)
+                })
+            showProfile()
+            document.querySelector('.message').classList.remove('d-none')
+            setMessage('User has been update')
+            setTimeout(() => {
+                document.querySelector('.message').classList.add('d-none')
+            }, 3000)
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
+    }
+
+    const postAvatar = async (event) => {
+        event.preventDefault()
+
+        try {
+            const avatarFile = document.querySelector('.input-file')
+            data.avatar = avatarFile.files[0]
+
+            await updateUserAvatar(data.avatar, data.id)
+                .then(user => {
+                    setProfileData(user)
+                })
+            hideUpdateAvatar()
+            document.querySelector('.message').classList.remove('d-none')
+            setMessage('Avatar has been updated')
+            setTimeout(() => {
+                document.querySelector('.message').classList.add('d-none')
+            }, 3000)
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
+    }
+
+    const getServicesItems = (e) => {
+        let newArray = [...data.services, e.target.id]
+        if (data.services.includes(e.target.id)) {
+            newArray = newArray.filter(day => day !== e.target.id)
+        }
+        data.services = newArray
+        console.log(newArray)
+    }
+
+    const getDisciplinesItems = (e) => {
+        let newArray = [...data.disciplines, e.target.id]
+        if (data.disciplines.includes(e.target.id)) {
+            newArray = newArray.filter(day => day !== e.target.id)
+        }
+        data.disciplines = newArray
+        console.log(newArray)
+    }
+
+    useEffect(() => {
+        document.querySelector('.navbar').classList.add('__grayHeader')
+        setProfileData(data)
+    }, [data])
+
+    useEffect(() => {
+        getDisciplines()
+            .then(res => {
+                setDisciplinesList(res)
+            })
+    }, [data.disciplines])
+
+    useEffect(() => {
+        getServices()
+            .then(res => {
+                setServicesList(res)
+            })
+    }, [data.services])
 
     return (
         <div className="container-fluid acordeon-bar">
@@ -39,19 +233,23 @@ const UserAccordeon = () => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="row content-block">
-                                                <div className="col-4">
-                                                    <strong>Role</strong>
+                                            {props.user && props.user.role === 'Guest' &&
+                                                <div className="row content-block">
+                                                    <div className="col-4">
+                                                        <strong>Role</strong>
+                                                    </div>
+                                                    <div className="col-8">
+
+                                                        <SelectWithLabel
+                                                            name="role"
+                                                            value={data.role}
+                                                            onChange={onChange}
+                                                            options={['Guest', 'Gym', 'Instructor']}
+                                                        />
+
+                                                    </div>
                                                 </div>
-                                                <div className="col-8">
-                                                    <SelectWithLabel
-                                                        name="role"
-                                                        value={data.role}
-                                                        onChange={onChange}
-                                                        options={['Guest', 'Gym', 'Instructor']}
-                                                    />
-                                                </div>
-                                            </div>
+                                            }
                                             <div className="row content-block">
                                                 <div className="col-4">
                                                     <strong>Phone</strong>
@@ -111,7 +309,7 @@ const UserAccordeon = () => {
 
                                         </div>
                                         <div className="col-12 col-sm-6 profile-info">
-                                            {role === 'Gym' &&
+                                            {(props.user.role === 'Gym' || role === 'Gym') &&
                                                 <div className="row content-block d-flex align-items-start">
                                                     <div className="col-4">
                                                         <strong className="mt-5">Services</strong>
@@ -126,7 +324,7 @@ const UserAccordeon = () => {
                                                     </div>
                                                 </div>
                                             }
-                                            {role === 'Instructor' &&
+                                            {(props.user.role === 'Instructor' || role === 'Instructor') &&
                                                 <>
                                                     <div className="row content-block">
                                                         <div className="col-4">
@@ -246,11 +444,10 @@ const UserAccordeon = () => {
                                                 <strong>Services</strong>
                                             </div>
                                             <div className="col-8">
-                                                <ul>
-                                                    {
-                                                        console.log(props.user)
-                                                    }
-                                                </ul>
+                                                {
+                                                    props.gymInfo &&
+                                                    props.gymInfo.services.map(el => <p>{el}, </p>)
+                                                }
                                             </div>
                                         </div>
                                     }

@@ -1,7 +1,6 @@
-@import '../../stylesheets/variables';
+@import '../../../stylesheets/variables';
 
 .my-info {
-
   .center {
     height: 100vh;
     justify-content: center;
@@ -19,7 +18,7 @@
     top: 2rem;
     left: -5rem;
     content: '';
-    background: url(../../images/bars.svg) no-repeat center center / contain;
+    background: url(../../../images/bars.svg) no-repeat center center / contain;
   }
 }
 
@@ -48,7 +47,8 @@ small {
       top: 3rem;
       right: 3rem;
       content: '';
-      background: url(../../images/close.svg) no-repeat center center / contain;
+      background: url(../../../images/close.svg) no-repeat center center /
+        contain;
 
       &:hover {
         cursor: pointer;
