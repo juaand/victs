@@ -4,7 +4,7 @@ import AuthenticatedRoute from './AuthenticatedRoute'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import Login from './components/Login/Login'
-import MyInfo from './components/MyInfo/MyInfo'
+import MyInfo from './components/MyInfo/MyInfoGuest/MyInfo'
 import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
 import MyInfoInstructor from './components/MyInfo/MyInfoInstructor/MyInfoInstructor'
 import Register from './components/Register/Register'
@@ -23,8 +23,8 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
-        <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user} />} />
-        <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user} />} />
+        <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
+        <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         {!user && <Redirect to='/' />}
       </Switch>
     </div>

@@ -64,10 +64,10 @@ const Login = (props) => {
     if (user && user.role === 'Guest') {
         return <Redirect to="/my-info" />
     }
-    if (user && user.user && user.user.role === 'Instructor') {
+    if (user && user.role === 'Instructor') {
         return <Redirect to="/my-info-instructor" />
     }
-    if (user && user.user && user.user.role === 'Gym') {
+    if (user && user.role === 'Gym') {
         return <Redirect to="/my-info-gym" />
     }
 
