@@ -5,16 +5,17 @@ import {updateUser} from '../../services/ApiClient'
 import {updatePassword} from '../../services/ApiClient'
 import {updateUserAvatar} from '../../services/ApiClient'
 import {getDisciplines} from '../../services/ApiClient'
+import {getServices} from '../../services/ApiClient'
 import InputFile from '../Form/InputFile/InputFile'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Button/Button'
 import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
-import services from '../../data/services'
 import CalendarItem from '../Calendar/CalendarItem/CalendarItem'
 import MyPlans from '../Layouts/MyPlans/MyPlans'
 import AttendedLessons from '../Layouts/AttendedLessons/AttendedLessons'
 import WaitingLessons from '../Layouts/WaitingLessons/WaitingLessons'
 import UserInfo from '../Layouts/UserInfo/UserInfo'
+import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
 const MyInfo = (props) => {
 
@@ -24,8 +25,8 @@ const MyInfo = (props) => {
                 id: props.user.id,
                 name: props.user.name,
                 role: props.user.role,
-                disciplines: '',
-                services: '',
+                disciplines: [],
+                services: [],
                 quote: '',
                 packages: props.user.packages,
                 phone: props.user.phone,
@@ -82,6 +83,8 @@ const MyInfo = (props) => {
     const [profileData, setProfileData] = useState(props.user)
     const [message, setMessage] = useState('')
     const [changeAvatar, setChangeAvatar] = useState(false)
+    const [disciplinesList, setDisciplinesList] = useState([])
+    const [servicesList, setServicesList] = useState([])
 
     const hideProfile = () => {
         setEdit(true)
@@ -177,6 +180,24 @@ const MyInfo = (props) => {
         }
     }
 
+    const getServicesItems = (e) => {
+        let newArray = [...data.services, e.target.id]
+        if (data.services.includes(e.target.id)) {
+            newArray = newArray.filter(day => day !== e.target.id)
+        }
+        data.services = newArray
+        console.log(newArray)
+    }
+
+    const getDisciplinesItems = (e) => {
+        let newArray = [...data.disciplines, e.target.id]
+        if (data.disciplines.includes(e.target.id)) {
+            newArray = newArray.filter(day => day !== e.target.id)
+        }
+        data.disciplines = newArray
+        console.log(newArray)
+    }
+
     useEffect(() => {
         document.querySelector('.navbar').classList.add('__grayHeader')
         setProfileData(data)
@@ -184,8 +205,17 @@ const MyInfo = (props) => {
 
     useEffect(() => {
         getDisciplines()
-            .then(res => console.log(res))
-    })
+            .then(res => {
+                setDisciplinesList(res)
+            })
+    }, [data.disciplines])
+
+    useEffect(() => {
+        getServices()
+            .then(res => {
+                setServicesList(res)
+            })
+    }, [data.services])
 
 
     return (
@@ -205,143 +235,149 @@ const MyInfo = (props) => {
                             <div className="close" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample"></div>
                             {edit &&
                                 <div className="row edit-profile">
-                                    <div className="col-12 col-sm-6 profile-info">
-                                        <form onSubmit={updateProfile}>
-                                            <div className="row content-block">
-                                                <div className="col-4">
-                                                    <strong>Name</strong>
-                                                </div>
-                                                <div className="col-8">
-                                                    <InputWithLabel
-                                                        value={data.name}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="name"
-                                                        type="text"
-                                                        className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                        placeholder={props.user.name}
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="row content-block">
-                                                <div className="col-4">
-                                                    <strong>Role</strong>
-                                                </div>
-                                                <div className="col-8">
-                                                    <SelectWithLabel
-                                                        name="role"
-                                                        value={data.role}
-                                                        onChange={onChange}
-                                                        options={['Guest', 'Gym', 'Instructor']}
-                                                    />
-                                                </div>
-                                            </div>
-                                            {role === 'Gym' &&
+                                    <form className="col-12" onSubmit={updateProfile}>
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 profile-info">
                                                 <div className="row content-block">
                                                     <div className="col-4">
-                                                        <strong>Services</strong>
+                                                        <strong>Name</strong>
                                                     </div>
                                                     <div className="col-8">
-                                                        <SelectWithLabel
-                                                            name="services"
-                                                            value={data.services}
+                                                        <InputWithLabel
+                                                            value={data.name}
+                                                            onBlur={onBlur}
                                                             onChange={onChange}
-                                                            options={services}
+                                                            name="name"
+                                                            type="text"
+                                                            className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                            placeholder={props.user.name}
                                                         />
                                                     </div>
                                                 </div>
-                                            }
-                                            {role === 'Instructor' &&
-                                                <>
-                                                    <div className="row content-block">
+                                                <div className="row content-block">
+                                                    <div className="col-4">
+                                                        <strong>Role</strong>
+                                                    </div>
+                                                    <div className="col-8">
+                                                        <SelectWithLabel
+                                                            name="role"
+                                                            value={data.role}
+                                                            onChange={onChange}
+                                                            options={['Guest', 'Gym', 'Instructor']}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="row content-block">
+                                                    <div className="col-4">
+                                                        <strong>Phone</strong>
+                                                    </div>
+                                                    <div className="col-8">
+                                                        <InputWithLabel
+                                                            value={data.phone}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="phone"
+                                                            type="text"
+                                                            className={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
+                                                            placeholder={props.user.phone ? props.user.phone : 'Insert your phone'}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="row content-block d-flex align-items-start">
+                                                    <div className="col-4">
+                                                        <strong>Address</strong>
+                                                    </div>
+                                                    <div className="col-8">
+                                                        <InputWithLabel
+                                                            value={data.address}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="address"
+                                                            type="text"
+                                                            className={`form-control ${touch.address && error.address ? "is-invalid" : ""}`}
+                                                            placeholder={props.user.address ? props.user.address : 'Insert your address'}
+                                                        />
+                                                        <InputWithLabel
+                                                            value={data.city}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="city"
+                                                            type="text"
+                                                            className={`form-control ${touch.city && error.city ? "is-invalid" : ""}`}
+                                                            placeholder={props.user.city ? props.user.city : 'Insert your city'}
+                                                        />
+                                                        <InputWithLabel
+                                                            value={data.zipcode}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="zipcode"
+                                                            type="text"
+                                                            className={`form-control ${touch.zipcode && error.zipcode ? "is-invalid" : ""}`}
+                                                            placeholder={props.user.zipcode ? props.user.zipcode : 'Insert your zipcode'}
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+
+                                                <Button className="button __yellow-btn" >Edit Profile</Button>
+
+                                                <Button onClick={showProfile} className="button __yellow-btn" >Cancel</Button>
+
+                                            </div>
+                                            <div className="col-12 col-sm-6 profile-info">
+                                                {role === 'Gym' &&
+                                                    <div className="row content-block d-flex align-items-start">
                                                         <div className="col-4">
-                                                            <strong>Quote</strong>
-                                                            <small className="d-block">A phrase you indentify with</small>
+                                                            <strong className="mt-5">Services</strong>
                                                         </div>
                                                         <div className="col-8">
-                                                            <InputWithLabel
-                                                                value={data.quote}
-                                                                onBlur={onBlur}
-                                                                onChange={onChange}
-                                                                name="quote"
-                                                                type="text"
-                                                                className={`form-control ${touch.quote && error.quote ? "is-invalid" : ""}`}
-                                                                placeholder={props.user.quote}
+                                                            <CheckBoxWithLabel
+                                                                name="services"
+                                                                data={servicesList}
+                                                                value={data.services}
+                                                                onChange={getServicesItems}
                                                             />
                                                         </div>
                                                     </div>
-                                                    <div className="row content-block">
-                                                        <div className="col-4">
-                                                            <strong>Disciplines</strong>
+                                                }
+                                                {role === 'Instructor' &&
+                                                    <>
+                                                        <div className="row content-block">
+                                                            <div className="col-4">
+                                                                <strong>Quote</strong>
+                                                                <small className="d-block">A phrase you indentify with</small>
+                                                            </div>
+                                                            <div className="col-8">
+                                                                <InputWithLabel
+                                                                    value={data.quote}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="quote"
+                                                                    type="text"
+                                                                    className={`form-control ${touch.quote && error.quote ? "is-invalid" : ""}`}
+                                                                    placeholder={props.user.quote}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                        <div className="col-8">
-                                                            <SelectWithLabel
-                                                                name="disciplines"
-                                                                value={data.disciplines}
-                                                                onChange={onChange}
-                                                            />
+                                                        <div className="row content-block">
+                                                            <div className="col-4">
+                                                                <strong>Disciplines</strong>
+                                                            </div>
+                                                            <div className="col-8">
+                                                                <CheckBoxWithLabel
+                                                                    name="services"
+                                                                    data={disciplinesList}
+                                                                    value={data.disciplines}
+                                                                    onChange={getDisciplinesItems}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </>
-                                            }
-                                            <div className="row content-block">
-                                                <div className="col-4">
-                                                    <strong>Phone</strong>
-                                                </div>
-                                                <div className="col-8">
-                                                    <InputWithLabel
-                                                        value={data.phone}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="phone"
-                                                        type="text"
-                                                        className={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
-                                                        placeholder={props.user.phone}
-                                                    />
-                                                </div>
+                                                    </>
+                                                }
                                             </div>
-                                            <div className="row content-block d-flex align-items-start">
-                                                <div className="col-4">
-                                                    <strong>Address</strong>
-                                                </div>
-                                                <div className="col-8">
-                                                    <InputWithLabel
-                                                        value={data.address}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="address"
-                                                        type="text"
-                                                        className={`form-control ${touch.address && error.address ? "is-invalid" : ""}`}
-                                                        placeholder={props.user.address}
-                                                    />
-                                                    <InputWithLabel
-                                                        value={data.city}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="city"
-                                                        type="text"
-                                                        className={`form-control ${touch.city && error.city ? "is-invalid" : ""}`}
-                                                        placeholder={props.user.city}
-                                                    />
-                                                    <InputWithLabel
-                                                        value={data.zipcode}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="zipcode"
-                                                        type="text"
-                                                        className={`form-control ${touch.zipcode && error.zipcode ? "is-invalid" : ""}`}
-                                                        placeholder={props.user.zipcode}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            {registerError && <div className="alert alert-danger">{registerError}</div>}
-
-                                            <Button className="button __yellow-btn" >Edit Profile</Button>
-
-                                            <Button onClick={showProfile} className="button __yellow-btn" >Cancel</Button>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             }
 
@@ -419,6 +455,20 @@ const MyInfo = (props) => {
                                                 <span>{profileData.role}</span>
                                             </div>
                                         </div>
+                                        {profileData.role === 'Gym' &&
+                                            <div className="row content-block">
+                                                <div className="col-4">
+                                                    <strong>Services</strong>
+                                                </div>
+                                                <div className="col-8">
+                                                    <ul>
+                                                        {
+                                                            console.log(props.user)
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        }
                                         <div className="row content-block">
                                             <div className="col-4">
                                                 <strong>Email</strong>
@@ -516,15 +566,15 @@ const MyInfo = (props) => {
                             </div>
                         </div>
                     </div>
-                    <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="Keep calm and move on" />
-                    <UserInfo title="My info"/>
+                    <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's a good news" />
+                    <UserInfo title="My info" />
                 </>
                 :
                 <>
                     <MyPlans plans={profileData.packages} />
                     <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
                     <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's a good news" />
-                    <UserInfo title="My info"/>
+                    <UserInfo title="My info" />
                 </>
             }
         </>

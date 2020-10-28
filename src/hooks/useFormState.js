@@ -21,7 +21,7 @@ export const useFormState = (initialState, validations) => {
     const onChange = e => {
         const {name, value, files} = e.target
         const valid = validations[name](value)
-        
+
         if (e.target.name === 'role') {
             setRole(e.target.value)
             setState(prev => {
