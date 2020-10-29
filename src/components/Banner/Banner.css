@@ -1,0 +1,22 @@
+.row-banner {
+  background: url(../../images/acordeon-bg.jpg) no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.row-banner h1 {
+  color: #fff;
+  font-size: 8rem;
+  position: relative;
+}
+
+.row-banner h1 span {
+  background: #ffcc00;
+  color: #333;
+  padding: 0.8rem;
+  position: absolute;
+  font-size: 1.8rem;
+  right: -4rem;
+  bottom: 0rem;
+}

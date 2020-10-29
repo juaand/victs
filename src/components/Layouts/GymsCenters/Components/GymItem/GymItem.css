@@ -1,0 +1,77 @@
+.gym-card {
+  font-size: 1.2rem;
+  border-top: solid 0.05rem #e8e8e8;
+  border-right: solid 0.05rem #e8e8e8;
+  padding: 3rem 2rem 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  color: #333;
+  text-decoration: none;
+}
+
+.gym-card:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.gym-card:hover .avatar {
+  opacity: 0.2;
+  transform: scale(1.2);
+}
+
+.gym-card .avatar {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  transform: scale(1);
+}
+
+.gym-card .address {
+  display: flex;
+  align-items: flex-start;
+}
+
+.gym-card .address:before {
+  content: '';
+  width: 1.4rem;
+  height: 1.4rem;
+  background: url(../../../../../images/address.svg) no-repeat center center/contain;
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.gym-card .phone {
+  display: flex;
+  align-items: flex-start;
+}
+
+.gym-card .phone:before {
+  content: '';
+  width: 1.4rem;
+  height: 1.4rem;
+  background: url(../../../../../images/phone.svg) no-repeat center center/contain;
+  display: inline-block;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+.gym-card .services {
+  display: flex;
+  align-items: flex-start;
+}
+
+.gym-card .services:before {
+  content: '';
+  width: 1.4rem;
+  height: 1.4rem;
+  background: url(../../../../../images/logo-res.svg) no-repeat center center/contain;
+  display: inline-block;
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+}

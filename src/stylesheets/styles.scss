@@ -3,6 +3,10 @@
 @import 'keyframes';
 @import 'responsive';
 
+.margin-top {
+  margin-top: $margin-top;
+}
+
 a {
   &.outline {
     padding: 0.8rem 4rem;
@@ -30,10 +34,10 @@ a {
 }
 
 .victs-logo {
-    background: url(../images/logo.svg) no-repeat center center / contain;
-    width: 20rem;
-    height: 5rem;
-    margin: auto;
+  background: url(../images/logo.svg) no-repeat center center / contain;
+  width: 20rem;
+  height: 5rem;
+  margin: auto;
 }
 
 .accordeon {

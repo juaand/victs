@@ -4,6 +4,7 @@ import AuthenticatedRoute from './AuthenticatedRoute'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import GymsCenters from './components/Layouts/GymsCenters/GymsCenters'
+import GymSingle from './components/Layouts/GymSingle/GymSingle'
 import Login from './components/Login/Login'
 import MyInfo from './components/MyInfo/MyInfoGuest/MyInfo'
 import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
@@ -27,6 +28,7 @@ function App() {
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
+        <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
         {!user && <Redirect to='/' />}
       </Switch>
     </div>
