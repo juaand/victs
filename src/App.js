@@ -3,6 +3,7 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import AuthenticatedRoute from './AuthenticatedRoute'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
+import GymsCenters from './components/Layouts/GymsCenters/GymsCenters'
 import Login from './components/Login/Login'
 import MyInfo from './components/MyInfo/MyInfoGuest/MyInfo'
 import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed />} />
+        <AuthenticatedRoute exact path="/gyms" render={(props) => <GymsCenters {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />

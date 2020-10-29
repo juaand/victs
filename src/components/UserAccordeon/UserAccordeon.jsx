@@ -60,12 +60,14 @@ const UserAccordeon = (props) => {
     )
 
     const {data, error, touch} = state
+
     const [edit, setEdit] = useState(false)
     const [passChange, setPassChange] = useState(false)
     const [registerError, setRegisterError] = useState(null)
     const [profileInfo, setProfileInfo] = useState(true)
-    const [profileData, setProfileData] = useState(props.user)
-    const [gymdata, setGymData] = useState(props.gym)
+    const [profileData, setProfileData] = useState(data)
+    const [gymData, setGymData] = useState(props.gymInfo)
+    const [instructorData, setInstructorData] = useState(props.instructorInfo)
     const [message, setMessage] = useState('')
     const [changeAvatar, setChangeAvatar] = useState(false)
     const [disciplinesList, setDisciplinesList] = useState([])
@@ -127,11 +129,12 @@ const UserAccordeon = (props) => {
     const updateProfile = async (event) => {
         event.preventDefault()
 
-        try {            
+        try {
             await updateUser(data)
                 .then(user => {
-                    console.log(user)
-                    setProfileData(user)
+                    setProfileData(user[0])
+                    setGymData(user[1])
+                    setInstructorData(user[2])
                 })
             showProfile()
             document.querySelector('.message').classList.remove('d-none')
@@ -169,19 +172,17 @@ const UserAccordeon = (props) => {
     const getServicesItems = (e) => {
         let newArray = [...data.services, e.target.id]
         if (data.services.includes(e.target.id)) {
-            newArray = newArray.filter(day => day !== e.target.id)
+            newArray = newArray.filter(el => el !== e.target.id)
         }
         data.services = newArray
-        console.log(newArray)
     }
 
     const getDisciplinesItems = (e) => {
         let newArray = [...data.disciplines, e.target.id]
         if (data.disciplines.includes(e.target.id)) {
-            newArray = newArray.filter(day => day !== e.target.id)
+            newArray = newArray.filter(el => el !== e.target.id)
         }
         data.disciplines = newArray
-        console.log(newArray)
     }
 
     useEffect(() => {
@@ -426,14 +427,14 @@ const UserAccordeon = (props) => {
                                         </div>
                                     </div>
                                     {!props.user.role === 'Guest' &&
-                                    <div className="row content-block">
-                                        <div className="col-4">
-                                            <strong>Packages</strong>
+                                        <div className="row content-block">
+                                            <div className="col-4">
+                                                <strong>Packages</strong>
+                                            </div>
+                                            <div className="col-8">
+                                                <span>{profileData.packages}</span>
+                                            </div>
                                         </div>
-                                        <div className="col-8">
-                                            <span>{profileData.packages}</span>
-                                        </div>
-                                    </div>
                                     }
                                     <div className="row content-block">
                                         <div className="col-4">
@@ -450,33 +451,33 @@ const UserAccordeon = (props) => {
                                             </div>
                                             <div className="col-8">
                                                 {
-                                                    props.gymInfo &&
-                                                    props.gymInfo.services.map(el => <p>{el}, </p>)
+                                                    gymData &&
+                                                    gymData.services.map(el => <p>{el}, </p>)
                                                 }
                                             </div>
                                         </div>
                                     }
                                     {profileData.role === 'Instructor' &&
-                                    <>
-                                        <div className="row content-block">
-                                            <div className="col-4">
-                                                <strong>Disciplines</strong>
+                                        <>
+                                            <div className="row content-block">
+                                                <div className="col-4">
+                                                    <strong>Disciplines</strong>
+                                                </div>
+                                                <div className="col-8">
+                                                    {
+                                                        instructorData &&
+                                                        instructorData.disciplines.map(el => <p>{el}, </p>)
+                                                    }
+                                                </div>
                                             </div>
-                                            <div className="col-8">
-                                                {
-                                                    props.instructorInfo &&
-                                                    props.instructorInfo.disciplines.map(el => <p>{el}, </p>)
-                                                }
+                                            <div className="row content-block">
+                                                <div className="col-4">
+                                                    <strong>Quote</strong>
+                                                </div>
+                                                <div className="col-8">
+                                                    <p>"{instructorData.quote}"</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="row content-block">
-                                            <div className="col-4">
-                                                <strong>Quote</strong>
-                                            </div>
-                                            <div className="col-8">
-                                                <p>"{props.instructorInfo.quote}"</p>
-                                            </div>
-                                        </div>
                                         </>
                                     }
                                     <div className="row content-block">

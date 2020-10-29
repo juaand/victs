@@ -53,7 +53,13 @@ const Header = () => {
                                 {user && user.role === 'Guest' &&
                                     <>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" to="/calendar">Calendar</NavLink>
+                                            <NavLink className="nav-link" to="/calendar">My Calendar</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/gyms">Gyms</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/instructors">Instructors</NavLink>
                                         </li>
                                     </> }
 
@@ -83,8 +89,6 @@ const Header = () => {
                                             <NavLink to="/" className="nav-link login" onClick={logout}>Logout</NavLink>
                                         </li>
                                     </span> }
-
-
                                 {!user &&
                                     <>
                                         <li className="nav-item">

@@ -52,7 +52,7 @@
 }
 
 .navbar .nav-item {
-  margin: 0 3rem;
+  margin-right: 3rem;
 }
 
 .navbar .nav-item a {
@@ -74,6 +74,7 @@
   padding: 0.8rem 3.2rem;
   border-radius: 2.6rem 2.1rem 1.7rem 2rem;
   position: relative;
+  margin-left: 3rem;
 }
 
 .navbar .user-logs .login.active {
