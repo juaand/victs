@@ -12,6 +12,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { stripeInfo } from "../../../services/ApiClient";
 
 
+
 // const PlanItem = ({ plan }) => {
 //   const stripeLaunch = () => {
 //     console.log("Stripe Launch here");
@@ -74,11 +75,12 @@ const Field = ({
   </div>
 );
 
-const SubmitButton = ({ processing, error, children, disabled }) => (
+const SubmitButton = ({ processing, error, children, disabled, onClick}) => (
   <button
     className={`SubmitButton ${error ? "SubmitButton--error" : ""}`}
     type="submit"
     disabled={processing || disabled}
+    onClick={onClick}
   >
     {processing ? "Processing..." : children}
   </button>
@@ -111,7 +113,7 @@ const ResetButton = ({ onClick }) => (
   </button>
 );
 
-const CheckoutForm = ({ plan }) => {
+const CheckoutForm = ({ plan, onClick }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -123,6 +125,9 @@ const CheckoutForm = ({ plan }) => {
     phone: "",
     name: "",
   });
+ 
+  const [kk2, setkk2] = useState([])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -152,10 +157,11 @@ const CheckoutForm = ({ plan }) => {
 
     if (!payload.error) {
         const {id} = payload.paymentMethod
-        const {data} = await stripeInfo({
+        const data = await stripeInfo({
             id,
-            amount: 10000
+            plan,
         })
+        // .then(kk => setkk2(kk))
         setPaymentMethod(payload.paymentMethod);
     } else {
       setError(payload.error);
@@ -182,6 +188,7 @@ const CheckoutForm = ({ plan }) => {
       <div className="ResultMessage">
         Thanks for trying Stripe Elements. No money was charged, but we
         generated a PaymentMethod: {paymentMethod.id}
+        
       </div>
       <ResetButton onClick={reset} />
     </div>
@@ -234,7 +241,7 @@ const CheckoutForm = ({ plan }) => {
         />
       </fieldset>
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
-      <SubmitButton processing={processing} error={error} disabled={!stripe}>
+      <SubmitButton processing={processing} error={error} disabled={!stripe} onClick={handleSubmit}>
         Pay € {plan.price}
       </SubmitButton>
     </form>
@@ -253,11 +260,13 @@ const ELEMENTS_OPTIONS = {
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe("pk_test_51HQGSzAht42ulJLICiMtO9fDINNmtf44YOqX7XKBoh7JStN8sNnYuIFAZHfMsYnux5ms4F02OJ2qomTIOnrkOob700aMj5mGjw");
 
-const PlanItem = ({ plan }) => {
+
+
+const PlanItem = ({ plan, onClick }) => {
   return (
     <div className="AppWrapper">
       <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-        <CheckoutForm plan={plan} />
+        <CheckoutForm plan={plan} onClick={onClick} />
       </Elements>
     </div>
   );
