@@ -1,7 +1,7 @@
 import React from 'react'
 import UserAccordeon from '../../UserAccordeon/UserAccordeon'
 
-export default function MyInfoGym(props) {
+const MyInfoGym = (props) => {
     return (
         <>
             <UserAccordeon user={props.user} gymInfo={props.gym} />
@@ -11,5 +11,7 @@ export default function MyInfoGym(props) {
         </>
     )
 }
+
+export default MyInfoGym
 
 

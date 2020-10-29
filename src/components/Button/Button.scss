@@ -1,18 +1,24 @@
 @import '../../stylesheets/variables';
 
 .button {
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
   &.__yellow-btn {
     background: $yellow;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 1.6rem;
     border: 0;
-    margin: 2rem;
-    padding: 1rem;
 
     &.disabled {
       pointer-events: none;
       color: rgba($text, 0.3);
     }
+  }
+
+  &.__follow-btn {
+    border: solid 0.1rem $yellow;
+    background: $white;
   }
 }

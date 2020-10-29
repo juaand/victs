@@ -1,0 +1,17 @@
+.gyms-bg {
+  background: url(../../../images/gyms-bg.jpg) no-repeat center -21rem/cover;
+  padding: 10rem 0;
+}
+
+.form-group {
+  margin: 2rem auto;
+}
+
+.form-group .form-control {
+  border: 0 !important;
+  outline: none;
+}
+
+.form-group .form-control:focus, .form-group .form-control:active {
+  outline: none;
+}

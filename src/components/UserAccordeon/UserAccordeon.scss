@@ -1,7 +1,6 @@
 @import '../../stylesheets/variables';
 
 .acordeon-bar {
-  margin-top: $margin-top;
   width: 100%;
   background: url(../../images/acordeon-bg.jpg) no-repeat top center / cover;
   text-align: center;
@@ -137,8 +136,7 @@
       top: 2rem;
       left: -5rem;
       content: '';
-      background: url(../../images/bars.svg) no-repeat center center /
-        contain;
+      background: url(../../images/bars.svg) no-repeat center center / contain;
     }
   }
 

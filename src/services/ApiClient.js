@@ -16,6 +16,10 @@ http.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
+export const getGymDetail = (id) => http.get(`/gym-detail/${id}`)
+
+export const getGyms = () => http.get('/gyms')
+
 export const getDisciplines = () => http.get('/disciplines')
 
 export const getServices = () => http.get('/services')

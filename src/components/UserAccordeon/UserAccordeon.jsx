@@ -205,7 +205,7 @@ const UserAccordeon = (props) => {
     }, [data.services])
 
     return (
-        <div className="container-fluid acordeon-bar">
+        <div className="container-fluid acordeon-bar margin-top">
             <a className="acordeon-toggle" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <h1 className="profile-title">{profileData.name}
                     <span className="role">{profileData.role}</span>
