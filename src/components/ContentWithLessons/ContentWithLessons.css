@@ -1,0 +1,38 @@
+.__title {
+  margin-top: 2rem;
+  font-size: 4rem;
+  font-weight: 900;
+  display: inline-block;
+  color: #ffcc00;
+}
+
+.row-block {
+  border-bottom: solid 0.1rem #e8e8e8;
+}
+
+.capacity {
+  font-size: 1.2rem;
+  color: #00a9ad;
+  margin-top: 2rem;
+  font-weight: 600;
+  display: flex !important;
+  align-items: center;
+}
+
+.capacity:before {
+  content: '';
+  display: inline-block;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 1rem;
+  background: url(../../images/users.svg) no-repeat center center/contain;
+}
+
+.capacity strong {
+  font-size: 1.4rem;
+  margin-left: 0.6rem;
+}
+
+.capacity strong.few {
+  color: #cb1b53;
+}

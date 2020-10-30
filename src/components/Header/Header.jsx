@@ -19,9 +19,9 @@ const Header = () => {
                             <Link className="navbar-brand" to="/">
                                 <div className="victs-logo"></div>
                             </Link>
-                            {user && user.role === 'Guest' && <div className="user-hi">Hi {user.name}</div>}
-                            {user && user.role === 'Gym' && <div className="user-hi">Hi {user.user.name}</div>}
-                            {user && user.role === 'Instructor' && <div className="user-hi">Hi {user.user.name}</div>}
+                            {user && user.role === 'Guest' && <Link to='/my-info' className="user-hi">Hi {user.name}</Link>}
+                            {user && user.role === 'Gym' && <Link to='/my-info' className="user-hi">Hi {user.user.name}</Link>}
+                            {user && user.role === 'Instructor' && <Link to='/my-info' className="user-hi">Hi {user.user.name}</Link>}
                         </div>
                         <button
                             className="navbar-toggler"

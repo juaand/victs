@@ -1,0 +1,77 @@
+@import '../../stylesheets/variables';
+
+.instructor-item {
+  padding-top: 2rem;
+  border-right: solid 0.1rem $light-gray;
+  border-bottom: solid 0.1rem $light-gray;
+  min-height: 20rem;
+  overflow: hidden;
+  position: relative;
+  color: $text;
+  text-decoration: none;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $yellow;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: $white;
+    position: relative;
+    text-decoration: none;
+
+    &:before {
+      opacity: 0.8;
+    }
+
+    .instructor {
+      &.__avatar {
+        width: 26rem;
+        height: 26rem;
+        bottom: -4rem;
+        right: -2rem;
+      }
+
+      &.__discipline {
+        color: rgba($white, 0.6);
+      }
+    }
+  }
+
+  .instructor {
+    &.__name {
+      font-size: 3rem;
+    }
+
+    &.__discipline {
+      font-weight: 400;
+      color: rgba($text, 0.6);
+      font-size: 1.8rem;
+    }
+
+    &.__avatar {
+      width: 12rem;
+      height: 12rem;
+      display: block;
+      border-radius: 7.8rem 9.2rem 8.8rem 9.6rem;
+      border: solid 0.2rem $yellow;
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      z-index: -5;
+      transition: all 200ms ease-in-out;
+    }
+  }
+}

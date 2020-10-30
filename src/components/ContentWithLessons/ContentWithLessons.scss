@@ -1,0 +1,40 @@
+@import '../../stylesheets/variables';
+
+.__title {
+  margin-top: 2rem;
+  font-size: 4rem;
+  font-weight: 900;
+  display: inline-block;
+  color: $yellow;
+}
+
+.row-block {
+  border-bottom: solid 0.1rem $light-gray;
+}
+
+.capacity {
+  font-size: 1.2rem;
+  color: $blue;
+  margin-top: 2rem;
+  font-weight: 600;
+  display: flex !important;
+  align-items: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 1rem;
+    background: url(../../images/users.svg) no-repeat center center / contain;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    margin-left: 0.6rem;
+
+    &.few {
+      color: $pink;
+    }
+  }
+}

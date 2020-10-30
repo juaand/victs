@@ -1,34 +1,51 @@
-{
-    "id":"5f996327611443b67cdc5caf",
-    "name":"Cleo Quitzon II",
-    "role":"Gym",
-    "services":["Elevator","Free weight"],
-    "packages":0,
-    "phone":"1-895-050-9543 x449",
-    "address":"96718 Maggio Inlet",
-    "city":"Volkmanfurtgerb",
-    "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mastermindesign/128.jpg",
-    "zipcode":28104,
-    "password":"$2b$10$aaLdji9b.afO3a.ZLSHzS.VMa98XGcnTrwXSrMoHQyLSKXpqLyYh6",
-    "newpassword":""
-}
-
-{
-    "services":["Elevator","Free weight"],
-    "role":"Gym",
-    "user":{
-        "activation":{
-            "active":true,"token":"Lwe0e2m4otZRBPpchl1WDEBKr"},
-            "packages":0,
-            "role":"Gym",
-            "name":"Cleo Quitzon II",
-            "email":"laney.lynch@hotmail.com",
-            "password":"$2b$10$aaLdji9b.afO3a.ZLSHzS.VMa98XGcnTrwXSrMoHQyLSKXpqLyYh6",
-            "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/mastermindesign/128.jpg",
-            "address":"96718 Maggio Inlet",
-            "zipcode":28104,
-            "city":"Volkmanfurtgerb",
-            "phone":"1-895-050-9543 x449",
-            "id":"5f996327611443b67cdc5caf"},
-            "id":"5f996327611443b67cdc5ceb"
-        }
+{activation: {…}, packages: 0, following: Array(7), followers: Array(0), role: "Guest", …}
+activation: {active: true, token: "8y5k9vi6AQIE7F9FRMWhiBTyG"}
+address: "421 Jaylin Mews"
+avatar: "https://res.cloudinary.com/dutvbml2i/image/upload/v1603784830/victs/foto-perfil.jpg"
+city: "South Ewellberg"
+email: "lawson.wisozk@gmail.com"
+followers: []
+following: Array(7)
+0: "5f9c179d222c3712de2e8114"
+1: "5f9c179d222c3712de2e811b"
+2: "5f9c179d222c3712de2e8115"
+3: "5f9c179d222c3712de2e8117"
+4: "5f9c179d222c3712de2e8113"
+5: "5f9c179d222c3712de2e8111"
+6: "5f9c179d222c3712de2e8119"
+length: 7
+__proto__: Array(0)
+id: "5f9c179d222c3712de2e80ed"
+lessons: Array(7)
+0:
+address: "9838 Orion Knoll"
+capacity: 19
+city: "Starkshire"
+classroom: {rows: Array(4), discipline: Array(1), gym: "5f9c179e222c3712de2e8147", user: "5f9c179d222c3712de2e810b", name: "Mind & body", …}
+date: "2021-02-03T15:45:49.536Z"
+details: "Mollitia totam repudiandae totam."
+discipline: ["Conditioning"]
+endhour: "2021-05-29T21:44:54.067Z"
+gym: {services: Array(1), role: "Gym", user: {…}, id: "5f9c179f222c3712de2e815c"}
+id: "5f9c179f222c3712de2e81d9"
+inithour: "2021-03-02T08:25:44.954Z"
+instructor: {disciplines: Array(1), role: "Instructor", user: {…}, quote: "Quia ut harum a.", id: "5f9c179f222c3712de2e816a"}
+name: "Wendy Terry"
+user: {activation: {…}, packages: 0, following: Array(7), followers: Array(0), role: "Guest", …}
+zipcode: 28474
+__proto__: Object
+1: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
+2: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
+3: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
+4: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
+5: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
+6: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
+length: 7
+__proto__: Array(0)
+name: "Torey Hoeger"
+packages: 0
+password: "$2b$10$pkT0hHLjqyFYSa2miC6OKeuh3t44z.JgUnupcR2JcyooPo9Vw.N5a"
+phone: "142.971.9248"
+role: "Guest"
+zipcode: 28119
+__proto__: Object
