@@ -1,5 +1,5 @@
 .navbar.dark {
-  background: #211E35;
+  background: #211e35;
 }
 
 .login-block {
@@ -11,7 +11,7 @@
 .alert.alert-danger {
   background: none;
   border: 0;
-  color: #211E35;
+  color: #211e35;
   margin: 2rem auto;
   text-align: center;
 }

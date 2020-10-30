@@ -2,17 +2,16 @@ import './GymSingle.css'
 import React, {useState, useEffect} from 'react'
 import {getGymDetail} from '../../../services/ApiClient'
 import Banner from '../../Banner/Banner'
-import Button from '../../Button/Button'
+import ContactBlock from '../../ContactBlock/ContactBlock'
+import AttendedLessons from '../AttendedLessons/AttendedLessons'
+import ContentWithLessons from '../../ContentWithLessons/ContentWithLessons'
+import ContentWithInstructors from '../../ContentWithInstructors/ContentWithInstructors'
 
 export default function GymSingle(props) {
 
     const [gymData, setGymdata] = useState([])
 
     const gym = props.location.state.gym
-
-    const follow = () => {
-        console.log('follow')
-    }
 
     useEffect(() => {
         getGymDetail(props.location.state.id)
@@ -26,21 +25,12 @@ export default function GymSingle(props) {
     return (
         <div className="container-fluid margin-top">
             <Banner name={gym.name} city={gym.city} />
-            <div className="container">
-                <div className="row">
-                    <div className="col-4 gym-info">
-                        <span className="address">{gym.address}</span>
-                        <span className="contact">
-                            <strong>P</strong> {gym.phone}<br />
-                            <strong>M</strong> {gym.email}
-                        </span>
-                        <Button onClick={follow} className="button __follow-btn">follow {gym.name}</Button>
-                    </div>
-                </div>
-            </div>
-            {gymData.map(gym =>
-                <p>{gym.name}</p>
-            )}
+            <ContactBlock contactInfo={gym} />
+            {!gymData.length &&
+                <AttendedLessons title="Upcoming lessons" message="Oops no lessons added" strong="come back soon to add new ones" />
+            }
+            {gymData ? <ContentWithLessons title="Upcoming lessons" data={gymData} /> : 'Loading'}
+            <ContentWithInstructors title="Instructors" data={gymData} />
         </div>
     )
 }

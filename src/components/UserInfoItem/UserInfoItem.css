@@ -5,6 +5,7 @@
 
 .title {
   font-weight: 800;
+  font-size: 2rem;
 }
 
 .title.__yellow-title {
@@ -16,5 +17,5 @@
 }
 
 .title.__purple-title {
-  color: #7A0054;
+  color: #7a0054;
 }

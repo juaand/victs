@@ -1,0 +1,30 @@
+.gym-info {
+  padding: 4rem 0;
+  border-bottom: solid 0.1rem #e8e8e8;
+}
+
+.gym-info .address {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+.gym-info .address:before {
+  content: '';
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  margin-right: 1rem;
+  background: url(../../images/address.svg) no-repeat center center/contain;
+}
+
+.gym-info .contact strong {
+  margin-left: 1.2rem;
+}
+
+.gym-info .button {
+  display: block;
+  margin-left: 1.2rem;
+}

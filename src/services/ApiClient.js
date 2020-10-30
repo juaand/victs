@@ -46,4 +46,4 @@ export const updatePassword = ({password, newpassword, id}) => http.post(`/updat
 
 export const stripeInfo = ({data, id, plan}) => http.post('/stripe/checkout', {id, plan, data})
 
-export const followInfo = ({id}) => http.post(`/follow/${id}`, {id})
+export const followInfo = (id) => http.post(`/follow/${id}`, {id})

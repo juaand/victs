@@ -4,6 +4,10 @@ import UserInfoItem from '../../UserInfoItem/UserInfoItem'
 
 const UserInfo = ({title, data}) => {
 
+    console.log(data.following)
+
+
+
     return (
         <div className="container user-info">
             <div className="row">

@@ -5,7 +5,7 @@ const UserInfoItem = ({title, data, className}) => {
     return (
         <div className="col-3 user-info-item">
             <h4 className={`title __${className}`}>My {title}</h4>
-            {!data && <p>Yoy don´t follow any {title} yet</p>}
+            {!data && <p>No {title} yet</p>}
         </div>
     )
 }
