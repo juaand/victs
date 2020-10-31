@@ -1,9 +1,15 @@
-@import '../../../stylesheets/variables';
+@import '../../stylesheets/variables';
 
 .calendar-item {
   font-size: 1.4rem;
   border-right: solid 0.1rem $light-gray;
   min-height: 20rem;
+
+  &.false-link {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   span {
     display: block;

@@ -2,7 +2,7 @@ import './ContentWithLessons.css'
 import React, {useState} from 'react'
 import CalendarItem from '../CalendarItem/CalendarItem'
 
-export default function ContentWithLessons({title, data}) {
+export default function ContentWithLessons({title, data, onClick}) {
 
     const [bool, setSBool] = useState(false)
 
@@ -23,22 +23,16 @@ export default function ContentWithLessons({title, data}) {
                         <div className="row p-0">
                             {data.slice(0, 4).map(gym =>
                                 <CalendarItem
-                                    lessonInstructor={gym.instructor.user.name}
-                                    lessonDate={gym.inithour}
-                                    lessonHour={gym.inithour}
-                                    InstructorAvatar={gym.instructor.user.avatar}
-                                    lessonDiscipline={gym.name}
-                                    lessonCapacity={gym.capacity} />
+                                    data={gym}
+                                    capacity={gym.capacity}
+                                    onClick={onClick} />
                             )}
                         </div> : <div className="row p-0">
                             {data.map(gym =>
                                 <CalendarItem
-                                    lessonInstructor={gym.instructor.user.name}
-                                    lessonDate={gym.inithour}
-                                    lessonHour={gym.inithour}
-                                    InstructorAvatar={gym.instructor.user.avatar}
-                                    lessonDiscipline={gym.name}
-                                    lessonCapacity={gym.capacity}
+                                    data={gym}
+                                    capacity={gym.capacity}
+                                    onClick={onClick}
                                     borderBottom={bool} />
                             )}
                         </div>}

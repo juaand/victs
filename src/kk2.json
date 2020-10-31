@@ -1,51 +1,62 @@
-{activation: {…}, packages: 0, following: Array(7), followers: Array(0), role: "Guest", …}
-activation: {active: true, token: "8y5k9vi6AQIE7F9FRMWhiBTyG"}
-address: "421 Jaylin Mews"
-avatar: "https://res.cloudinary.com/dutvbml2i/image/upload/v1603784830/victs/foto-perfil.jpg"
-city: "South Ewellberg"
-email: "lawson.wisozk@gmail.com"
-followers: []
-following: Array(7)
-0: "5f9c179d222c3712de2e8114"
-1: "5f9c179d222c3712de2e811b"
-2: "5f9c179d222c3712de2e8115"
-3: "5f9c179d222c3712de2e8117"
-4: "5f9c179d222c3712de2e8113"
-5: "5f9c179d222c3712de2e8111"
-6: "5f9c179d222c3712de2e8119"
-length: 7
-__proto__: Array(0)
-id: "5f9c179d222c3712de2e80ed"
-lessons: Array(7)
-0:
-address: "9838 Orion Knoll"
-capacity: 19
-city: "Starkshire"
-classroom: {rows: Array(4), discipline: Array(1), gym: "5f9c179e222c3712de2e8147", user: "5f9c179d222c3712de2e810b", name: "Mind & body", …}
-date: "2021-02-03T15:45:49.536Z"
-details: "Mollitia totam repudiandae totam."
-discipline: ["Conditioning"]
-endhour: "2021-05-29T21:44:54.067Z"
-gym: {services: Array(1), role: "Gym", user: {…}, id: "5f9c179f222c3712de2e815c"}
-id: "5f9c179f222c3712de2e81d9"
-inithour: "2021-03-02T08:25:44.954Z"
-instructor: {disciplines: Array(1), role: "Instructor", user: {…}, quote: "Quia ut harum a.", id: "5f9c179f222c3712de2e816a"}
-name: "Wendy Terry"
-user: {activation: {…}, packages: 0, following: Array(7), followers: Array(0), role: "Guest", …}
-zipcode: 28474
-__proto__: Object
-1: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
-2: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
-3: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
-4: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
-5: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
-6: {discipline: Array(1), gym: {…}, user: {…}, classroom: {…}, instructor: {…}, …}
-length: 7
-__proto__: Array(0)
-name: "Torey Hoeger"
+{
+"address": "60234 Klein View",
+"capacity": 30,
+"city": "North Estelbury",
+"classroom":,
+"discipline": ["Express workout"],
+gym: "5f9c179e222c3712de2e8147",
+id: "5f9c179e222c3712de2e814b",
+name: "Aqua",
+rows: (4) [3, 2, 3, 4],
+user: "5f9c179d222c3712de2e810b",
+
+date: "2021-10-22T17:29:35.039Z",
+details: "Suscipit ex voluptates ducimus sit iure qui.",
+discipline: ["Dance"],
+endhour: "2020-12-18T01:13:35.243Z",
+gym:,
+id: "5f9c179f222c3712de2e8153",
+role: "Gym",
+services: ["Adapted access"],
+user:,
+
+address: "2219 Bins Estate"
+avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/melvindidit/128.jpg"
+city: "Lake Kailynburgh"
+email: "lela.ledner@gmail.com"
+followers: (3) ["5f9c179d222c3712de2e80ed", "5f9c179d222c3712de2e80ed", "5f9c179d222c3712de2e80ed"]
+following: []
+id: "5f9c179d222c3712de2e810f"
+name: "Kamryn Cremin"
 packages: 0
-password: "$2b$10$pkT0hHLjqyFYSa2miC6OKeuh3t44z.JgUnupcR2JcyooPo9Vw.N5a"
-phone: "142.971.9248"
-role: "Guest"
-zipcode: 28119
+password: "$2b$10$NUx3aeirX.kZ1tyYUTCBEe81SDfvXkCGayeFeurp71fXtI4xhc5P2"
+phone: "1-491-278-9746 x6904"
+role: "Gym"
+zipcode: 28212
+id: "5f9c179f222c3712de2e81fc"
+inithour: "2021-07-08T21:30:19.469Z"
+instructor:
+disciplines: ["Express workout"]
+id: "5f9c179f222c3712de2e817e"
+quote: "Omnis dignissimos aliquam sit voluptas fuga libero laboriosam."
+role: "Instructor"
+user:
+activation: {active: true, token: "RcPd1TSknM4CROAmRkrHwlKV8"}
+address: "285 Ferry Drive"
+avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/_victa/128.jpg"
+city: "Yvonnebury"
+email: "ozella17@hotmail.com"
+followers: []
+following: []
+id: "5f9c179d222c3712de2e813f"
+name: "Miss Millie Schamberger"
+packages: 0
+password: "$2b$10$7KxI.mNTBKDqcInPgsOhke.DA/uh5lqQQ5nZiJi2GZG0poxrJrzbS"
+phone: "(958) 399-0342 x4820"
+role: "Instructor"
+zipcode: 28024
 __proto__: Object
+__proto__: Object
+name: "Eryn Hand IV"
+zipcode: 28715
+}

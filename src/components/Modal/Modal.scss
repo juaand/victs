@@ -1,0 +1,32 @@
+@import '../../stylesheets/variables';
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba($white, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-body {
+    background: $white;
+    padding: 3rem;
+    border: solid 0.1rem $yellow;
+  }
+
+  .close {
+    position: absolute;
+    font-size: 4rem;
+    top: 3rem;
+    right: 3rem;
+    font-weight: 300;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

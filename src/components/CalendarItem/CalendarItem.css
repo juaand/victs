@@ -4,6 +4,10 @@
   min-height: 20rem;
 }
 
+.calendar-item.false-link:hover {
+  cursor: pointer;
+}
+
 .calendar-item span {
   display: block;
 }

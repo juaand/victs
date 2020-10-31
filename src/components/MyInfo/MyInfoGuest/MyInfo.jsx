@@ -1,11 +1,12 @@
 import './MyInfo.css'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import CalendarItem from '../../CalendarItem/CalendarItem'
 import MyPlans from '../../Layouts/MyPlans/MyPlans'
 import AttendedLessons from '../../Layouts/AttendedLessons/AttendedLessons'
 import WaitingLessons from '../../Layouts/WaitingLessons/WaitingLessons'
 import UserInfo from '../../Layouts/UserInfo/UserInfo'
 import UserAccordeon from '../../UserAccordeon/UserAccordeon'
+import Modal from '../../Modal/Modal'
 
 const MyInfo = (props) => {
 
@@ -19,12 +20,20 @@ const MyInfo = (props) => {
         return acc
     }, {})
 
+    const [bool, setBool] = useState(false)
+
+    const showModal = (data) => {
+        console.log(data)
+        setBool(!bool)
+    }
+
     useEffect(() => {
         document.querySelector('.navbar').classList.add('__grayHeader')
     }, [])
 
     return (
         <>
+            {bool && <Modal onClick={showModal} />}
             <UserAccordeon user={props.user} />
             <MyPlans plans={props.user.packages} />
             <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
@@ -43,14 +52,13 @@ const MyInfo = (props) => {
                                             {Object.keys(byLessons).map(key =>
                                                 key === el.gym.id &&
                                                 byLessons[key].map(el =>
+
                                                     <CalendarItem
-                                                        lessonInstructor={el.instructor.user.name}
-                                                        lessonDate={el.inithour}
-                                                        lessonHour={el.inithour}
-                                                        lessonDiscipline={el.discipline}
-                                                        InstructorAvatar={el.instructor.user.avatar}
-                                                        lessonCapacity={el.capacity}
+                                                        capacity={el.capacity}
+                                                        data={el}
+                                                        onClick={showModal}
                                                     />
+
                                                 )
                                             )}
                                         </div>
@@ -63,7 +71,7 @@ const MyInfo = (props) => {
             }
             <>
                 <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's good news" />
-                <UserInfo title="My info" data={props.user}/>
+                <UserInfo title="My info" data={props.user} />
             </>
         </>
     )

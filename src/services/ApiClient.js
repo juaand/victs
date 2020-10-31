@@ -47,3 +47,7 @@ export const updatePassword = ({password, newpassword, id}) => http.post(`/updat
 export const stripeInfo = ({data, id, plan}) => http.post('/stripe/checkout', {id, plan, data})
 
 export const followInfo = (id) => http.post(`/follow/${id}`, {id})
+
+export const lessonInfo = (id) => http.get(`/lesson/${id}`, {id})
+
+export const booking = (id, row, seat) => http.post(`/book/${id}`, {id, row, seat})
