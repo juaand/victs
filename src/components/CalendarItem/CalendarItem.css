@@ -29,6 +29,8 @@
 .calendar-item .cal-item.__instructor {
   font-weight: 600;
   font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 1rem;
 }
@@ -45,3 +47,4 @@
   border: solid 0.2rem #ffcc00;
   border-radius: 3.9rem 4.1rem 4.4rem 4.3rem;
 }
+/*# sourceMappingURL=CalendarItem.css.map */

@@ -5,7 +5,9 @@
 .login-block {
   background: rgba(255, 255, 255, 0.8);
   padding: 6rem;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .alert.alert-danger {
@@ -29,3 +31,4 @@
   padding-right: 1rem;
   margin-right: 1rem;
 }
+/*# sourceMappingURL=Login.css.map */

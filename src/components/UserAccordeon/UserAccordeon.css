@@ -33,8 +33,12 @@
 }
 
 .acordeon-bar .card-body .profile-info .content-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 2rem 0;
   font-size: 1.8rem;
 }
@@ -46,6 +50,8 @@
 }
 
 .acordeon-bar .card-body .profile-info .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -54,9 +60,16 @@
 }
 
 .acordeon-bar .card-body .profile-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .acordeon-bar .card-body .profile-avatar .avatar {
@@ -109,7 +122,8 @@
   left: 0;
   padding: 4rem 0;
   z-index: 5;
-  animation: fadein 2s linear;
+  -webkit-animation: fadein 2s linear;
+          animation: fadein 2s linear;
   opacity: 0;
 }
 
@@ -165,6 +179,21 @@ small {
   height: 20rem;
 }
 
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;
@@ -179,3 +208,4 @@ small {
     opacity: 0;
   }
 }
+/*# sourceMappingURL=UserAccordeon.css.map */
