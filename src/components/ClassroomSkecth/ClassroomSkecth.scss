@@ -1,3 +1,56 @@
-.blocked {
-  background: red;
+@import '../../stylesheets/variables';
+
+.blockedSeat {
+  background: $dark-blue url(../../images/logo-res.svg) no-repeat center 1rem /
+    contain;
+  background-size: 3rem 3rem;
+  position: relative;
+
+  &:before {
+    content: 'reserved';
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $white;
+    margin: auto;
+    left: 50%;
+    margin-left: -2rem;
+  }
 }
+
+.classroom-place {
+  display: block;
+  border: 0;
+  margin: 1rem;
+  width: 5rem;
+  height: 8rem;
+}
+
+.instructor-info {
+  position: relative;
+  margin: 2rem auto;
+  margin-top: 4rem;
+
+  .avatar {
+    width: 6rem;
+    height: 6rem;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 3.9rem 4.1rem 4.4rem 4.3rem;
+    border: solid 0.2rem $yellow;
+  }
+
+  .name {
+    position: absolute;
+    bottom: -1rem;
+    background: $white;
+    display: block;
+    width: 60%;
+    left: 50%;
+    margin-left: -30%;
+    text-align: center;
+    font-weight: 600;
+    color: $yellow;
+    border-top: solid 0.1rem $yellow
+  }

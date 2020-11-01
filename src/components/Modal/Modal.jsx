@@ -3,12 +3,10 @@ import React, {useState} from 'react'
 import Button from '../Button/Button'
 import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
 
-export default function Modal({data, onClick, reservationData}) {
+export default function Modal({data, onClick, seats}) {
 
-    const [bool, setBool] = useState(false)
-
-    const showClassroom = () => {
-        setBool(!bool)
+    const cancelReservation = () => {
+        console.log('cancel reservation')
     }
 
     return (
@@ -18,17 +16,14 @@ export default function Modal({data, onClick, reservationData}) {
                     <div className="col-6 modal-body">
                         <span className="close" onClick={onClick}></span>
                         <h1>{data.name}</h1>
-                        <p><strong>Instructor</strong> {data.instructor.user.name}</p>
-                        <p><strong>Seats lefts</strong> {data.capacity}</p>
-                        <p>{data.classroom.discipline}</p>
-                        <p>{data.details}</p>
+                        <p className="discipline">{data.classroom.discipline}</p>
+                        <p><strong>Lesson detail</strong> {data.details}</p>
 
-                        {!data.classroom.rows.length ? <Button onClick className="button __yellow-btn">Book lesson</Button> :
-                            <Button onClick={showClassroom} className="button __yellow-btn">Select seat</Button>}
+                        <ClassroomSkecth rows={data.classroom.rows} lesson={data} seats={seats} />
 
-                        {bool && <ClassroomSkecth reservationData={reservationData} rows={data.classroom.rows} lesson={data} />}
+                        <Button className="button __yellow-btn" onClick={cancelReservation}>Cancel reservation</Button>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     )
