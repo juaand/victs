@@ -13,13 +13,48 @@
     background-size: 3rem;
   }
 
+  &.Martial {
+    background: url(../../images/martial.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
+  &.Dance {
+    background: url(../../images/dance.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
+  &.Aqua {
+    background: url(../../images/aqua.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
+  &.Mind {
+    background: url(../../images/mind.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
+  &.Express {
+    background: url(../../images/express.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
+  &.Conditioning {
+    background: url(../../images/conditioning.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
+  &.Other {
+    background: url(../../images/logo-res.svg) no-repeat center center / contain;
+    background-size: 3rem;
+  }
+
   &.blockedSeat {
     background: $dark-blue url(../../images/logo-res.svg) no-repeat center 1rem /
       contain;
     background-size: 3rem 3rem;
     position: relative;
     border: 0;
-  
+
     &:before {
       content: 'reserved';
       position: absolute;
