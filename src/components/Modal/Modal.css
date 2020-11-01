@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+.modal .discipline {
+  font-weight: 400;
+  color: rgba(51, 51, 51, 0.6);
+  font-size: 1.8rem;
+}
+
 .modal .modal-body {
   background: #fff;
   padding: 3rem;
@@ -30,4 +36,8 @@
 
 .modal .close:hover {
   cursor: pointer;
+}
+
+.modal .classroom-place {
+  pointer-events: none;
 }

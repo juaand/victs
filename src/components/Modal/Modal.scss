@@ -12,6 +12,12 @@
   justify-content: center;
   align-items: center;
 
+  .discipline {
+    font-weight: 400;
+    color: rgba(51, 51, 51, 0.6);
+    font-size: 1.8rem;
+  }
+
   .modal-body {
     background: $white;
     padding: 3rem;
@@ -31,5 +37,9 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .classroom-place {
+    pointer-events: none;
   }
 }
