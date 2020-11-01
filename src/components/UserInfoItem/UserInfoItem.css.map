@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAC;EACd,WAAW,EAAE,KAAK,CAAC,MAAM,CCDd,OAAO;EDElB,UAAU,EAAE,KAAK;CAClB;;AAED,AAAA,MAAM,CAAC;EACH,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;CAalB;;AAfD,AAII,MAJE,AAID,eAAe,CAAC;EACb,KAAK,ECRJ,OAAO;CDSX;;AANL,AAQI,MARE,AAQD,aAAa,CAAC;EACX,KAAK,ECXN,OAAO;CDYT;;AAVL,AAYI,MAZE,AAYD,eAAe,CAAC;EACb,KAAK,ECZJ,OAAO;CDaX",
+    "sources": [
+        "UserInfoItem.scss",
+        "../../stylesheets/_variables.scss"
+    ],
+    "names": [],
+    "file": "UserInfoItem.css"
+}

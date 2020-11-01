@@ -2,6 +2,7 @@
   padding: 0.8rem 3.2rem;
   margin: auto;
   display: block;
+  -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
 }
 
@@ -23,3 +24,4 @@ button:disabled {
   opacity: 0.3;
   background: #211e35;
 }
+/*# sourceMappingURL=FormButton.css.map */

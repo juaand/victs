@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,WAAW,CAAC;EACR,aAAa,EAAE,IAAI;CACtB;;AAED,AAAA,IAAI,CAAC;EACD,OAAO,EAAE,QAAQ;CACpB",
+    "sources": [
+        "CheckBoxWithLabel.scss"
+    ],
+    "names": [],
+    "file": "CheckBoxWithLabel.css"
+}

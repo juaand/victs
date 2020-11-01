@@ -7,6 +7,10 @@ export default function ClassroomSkecth({rows, lesson, seats}) {
     console.log(lesson)
     console.log(seats)
 
+
+    console.log(reservationData)
+    const [error, setError] = useState('')
+    
     const drawSeats = (num) => {
         const seatsArr = []
         for (let i = 0; i < num; i++) {
@@ -22,8 +26,17 @@ export default function ClassroomSkecth({rows, lesson, seats}) {
             const reservation = await booking(lesson.id, row, seat)
             console.log(reservation)
 
+            const filteredAllBookings = reservation.filter(book => book.row == 3)
+            console.log(filteredAllBookings)
+
+            if (filteredAllBookings.length) {
+                document.getElementsByTagName("Button")[0].setAttribute("className", "blocked")
+            }
+
+            
         } catch (err) {
             console.log(err)
+            setError(err.response?.data?.message)
         }
     }
 
@@ -36,6 +49,7 @@ export default function ClassroomSkecth({rows, lesson, seats}) {
 
     return (
         <>
+ {error && <div>{error}</div>}
             <div className="instructor-info">
                 <span className="avatar" style={{background: `url(${lesson.instructor.user.avatar}) no-repeat center center / cover`}}></span>
                 <span className="name">{lesson.instructor.user.name}</span></div>
@@ -46,6 +60,7 @@ export default function ClassroomSkecth({rows, lesson, seats}) {
                     )}
                 </div>
             )}
+
         </>
     )
 }
