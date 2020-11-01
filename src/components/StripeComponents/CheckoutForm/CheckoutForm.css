@@ -1,0 +1,87 @@
+.cc {
+  box-shadow: none;
+  background: url(../../../images/cc.svg) no-repeat top left/cover;
+  border-radius: 1.4rem;
+  border: solid 0.2rem #ffcc00;
+  color: #fff;
+  min-height: 17rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.cc .__name {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  width: 100%;
+  background: transparent;
+}
+
+.cc .__name input {
+  border: 0;
+  background: transparent;
+  width: 90%;
+}
+
+.cc .__name input:focus {
+  background: transparent;
+}
+
+.cc .__name label {
+  display: none;
+}
+
+input:-internal-autofill-selected {
+  background-color: #fff !important;
+}
+
+label {
+  display: block;
+  margin: 0 !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.FormRow {
+  padding: 0;
+}
+
+.FormRowInput {
+  margin-bottom: 1rem;
+}
+
+.FormRowInput input {
+  background: #fff;
+  font-size: 1.6rem;
+  border: solid 0.1rem rgba(51, 51, 51, 0.5);
+  border-radius: 0;
+  height: 4rem;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.SubmitButton, .btn {
+  background: #ffcc00;
+  border: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 1rem auto;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.Result .ResultTitle {
+  color: #00a9ad;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Result .ResultMessage {
+  font-size: 1.2rem;
+}

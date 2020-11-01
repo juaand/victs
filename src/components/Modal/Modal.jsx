@@ -13,10 +13,10 @@ export default function Modal({data, onClick, reservationData}) {
 
     return (
         <div className="modal">
-            <span className="close" onClick={onClick}>X</span>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-6 modal-body">
+                        <span className="close" onClick={onClick}></span>
                         <h1>{data.name}</h1>
                         <p><strong>Instructor</strong> {data.instructor.user.name}</p>
                         <p><strong>Seats lefts</strong> {data.capacity}</p>
