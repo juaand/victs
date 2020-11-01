@@ -1,5 +1,5 @@
 import './ClassroomSkecth.css'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Button from '../Button/Button'
 import {booking} from '../../services/ApiClient'
 
@@ -7,8 +7,6 @@ export default function ClassroomSkecth({rows, lesson, seats}) {
     console.log(lesson)
     console.log(seats)
 
-
-    console.log(reservationData)
     const [error, setError] = useState('')
     
     const drawSeats = (num) => {
