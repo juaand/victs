@@ -1,0 +1,90 @@
+@import '../../../stylesheets/variables';
+
+.cc {
+  box-shadow: none;
+  background: url(../../../images/cc.svg) no-repeat top left / cover;
+  border-radius: 1.4rem;
+  border: solid 0.2rem $yellow;
+  color: $white;
+  min-height: 17rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 2rem;
+
+  .__name {
+    position: absolute;
+    bottom: 1rem;
+    left: 2rem;
+    width: 100%;
+    background: transparent;
+
+    input {
+      border: 0;
+      background: transparent;
+      width: 90%;
+
+      &:focus {
+        background: transparent;
+      }
+    }
+
+    label {
+      display: none;
+    }
+  }
+}
+
+input:-internal-autofill-selected {
+  background-color: $white !important;
+}
+
+label {
+  display: block;
+  margin: 0 !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.FormRow {
+  padding: 0;
+}
+
+.FormRowInput {
+    margin-bottom: 1rem;
+
+  input {
+    background: #fff;
+    font-size: 1.6rem;
+    border: solid 0.1rem rgba(51, 51, 51, 0.5);
+    border-radius: 0;
+    height: 4rem;
+    width: 100%;
+    padding-left: 1rem;
+  }
+}
+
+.SubmitButton, .btn {
+  background: $yellow;
+  border: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 1rem auto;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.Result {
+    .ResultTitle {
+        color: $blue;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .ResultMessage {
+        font-size: 1.2rem;
+    }
+}

@@ -33,7 +33,7 @@ const MyInfo = (props) => {
 
     return (
         <>
-            {bool && <Modal onClick={showModal} />}
+            {bool && <Modal onClick={showModal} data={byLessons} />}
             <UserAccordeon user={props.user} />
             <MyPlans plans={props.user.packages} />
             <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />

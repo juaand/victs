@@ -3,6 +3,7 @@
 .plans-item {
   border-left: solid 0.1rem $light-gray;
   min-height: 20rem;
+  position: relative;
 
   .button {
     transition: all 200ms ease;

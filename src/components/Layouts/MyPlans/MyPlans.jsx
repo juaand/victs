@@ -2,6 +2,7 @@ import './MyPlans.css'
 import React, {useState} from 'react'
 import plansData from '../../../data/plans'
 import PlanItem from '../PlanItem/PlanItem'
+import StripeModal from '../../StripeComponents/StripeModal/StripeModal'
 
 
 
@@ -9,17 +10,29 @@ const MyPlans = ({plans}) => {
 
     const [showPackages, setShowPackages] = useState(false)
     const [userPlans, setUserPlans] = useState(plans)
+    const [bool, setBool] = useState(false)
+    const [planInfo, setPlanInfo] = useState()
+
     const updatePlan = (value) => {
         setUserPlans(value)
     }
-
 
     const showPlans = () => {
         setShowPackages(true)
     }
 
+    const showModal = (plan) => {
+        setBool(!bool)
+        setPlanInfo(plan)
+    }
+
+    const onCloseModal = () => {
+        setBool(!bool)
+    }
+
 
     return (
+        <>
         <div className="container-fluid my-plans">
             <div className="container">
                 <div className="row">
@@ -36,7 +49,7 @@ const MyPlans = ({plans}) => {
                         <div className="col-8 plans-block">
                             <div className="row">
                                 {plansData.map(plan =>
-                                    <PlanItem plan={plan} onClick={updatePlan} userPlans={userPlans} />
+                                    <PlanItem plan={plan} onModal={showModal} />
                                 )}
                             </div>
                         </div>
@@ -44,6 +57,8 @@ const MyPlans = ({plans}) => {
                 </div>
             </div>
         </div>
+        {bool && <StripeModal onClick={updatePlan} plan={planInfo} onCloseModal={onCloseModal} />}
+        </>
     )
 }
 

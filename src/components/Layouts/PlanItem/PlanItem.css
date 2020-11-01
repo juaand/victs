@@ -1,6 +1,7 @@
 .plans-item {
   border-left: solid 0.1rem #e8e8e8;
   min-height: 20rem;
+  position: relative;
 }
 
 .plans-item .button {

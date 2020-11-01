@@ -19,10 +19,13 @@
 
 .modal .close {
   position: absolute;
-  font-size: 4rem;
-  top: 3rem;
-  right: 3rem;
+  font-size: 2rem;
+  top: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
   font-weight: 300;
+  background: url(../../images/close.svg) no-repeat center center/contain;
 }
 
 .modal .close:hover {
