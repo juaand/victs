@@ -1,7 +1,7 @@
 @import '../../stylesheets/variables';
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -37,9 +37,5 @@
     &:hover {
       cursor: pointer;
     }
-  }
-
-  .classroom-place {
-    pointer-events: none;
   }
 }

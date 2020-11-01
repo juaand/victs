@@ -45,7 +45,7 @@ export default function GymSingle(props) {
 
     return (
         <>
-            {bool && <Modal onClick={hideModal} data={lessonData} seats={reservationData} />}
+            {bool && <Modal onClick={hideModal} data={lessonData} reservations={reservationData} />}
             <div className="container-fluid margin-top">
                 <Banner name={gym.name} city={gym.city} />
                 <ContactBlock contactInfo={gym} />
