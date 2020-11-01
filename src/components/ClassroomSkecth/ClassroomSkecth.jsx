@@ -1,10 +1,12 @@
-import React from 'react'
+import './ClassroomSkecth.css'
+import React, {useState} from 'react'
 import Button from '../Button/Button'
 import {booking} from '../../services/ApiClient'
 
 export default function ClassroomSkecth({rows, lesson, reservationData}) {
 
     console.log(reservationData)
+    const [error, setError] = useState('')
     
     const drawSeats = (num) => {
         const seatsArr = []
@@ -24,8 +26,17 @@ export default function ClassroomSkecth({rows, lesson, reservationData}) {
             const reservation = await booking(lesson.id, row, seat)
             console.log(reservation)
 
+            const filteredAllBookings = reservation.filter(book => book.row == 3)
+            console.log(filteredAllBookings)
+
+            if (filteredAllBookings.length) {
+                document.getElementsByTagName("Button")[0].setAttribute("className", "blocked")
+            }
+
+            
         } catch (err) {
             console.log(err)
+            setError(err.response?.data?.message)
         }
 
     }
@@ -33,7 +44,8 @@ export default function ClassroomSkecth({rows, lesson, reservationData}) {
     return (
         <>
             <div className="instructor">Instructor</div>
-            {rows.map((el, i) => <div row={i} className="row justify-content-center">{drawSeats(el).map((el, j) => <Button row={i} seat={j} onClick={bookSeat}>{el}</Button>)}</div>)}
+            {rows.map((el, i) => <div row={i} className="row justify-content-center">{drawSeats(el).map((el, j) => <Button className="" row={i} seat={j} onClick={bookSeat}>{el}</Button>)}</div>)}
+    {error && <div>{error}</div>}
         </>
     )
 }
