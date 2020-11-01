@@ -12,7 +12,7 @@ const MyInfo = (props) => {
 
     const [bool, setBool] = useState(false)
     const [modalData, setModalData] = useState([])
-    const [seatsData, setSeatsData] = useState([])
+    const [reservationData, setReservationData] = useState([])
 
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
@@ -26,7 +26,7 @@ const MyInfo = (props) => {
 
     const checkSeat = (lessonData) => {
         const reservedSeats = props.user.reservations.filter(el => el.lesson === lessonData.id)
-        setSeatsData(reservedSeats)
+        setReservationData(reservedSeats)
     }
 
     const showModal = (lessonData) => {
@@ -45,13 +45,13 @@ const MyInfo = (props) => {
 
     return (
         <>
-            {bool && <Modal onClick={hideModal} data={modalData} seats={seatsData} />}
             <UserAccordeon user={props.user} />
             <MyPlans plans={props.user.packages} />
             <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
 
             {props.user.lessons.length &&
-                <div className="container my-info" >
+                <div className="container my-info">
+                    {bool && <Modal onClick={hideModal} data={modalData} reservations={reservationData} />}
                     <div className="row">
                         <div className="col-12">
                             {getGymName(props.user.lessons).map(el =>

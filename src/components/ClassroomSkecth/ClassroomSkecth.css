@@ -1,10 +1,25 @@
-.blockedSeat {
+.classroom-place {
+  display: block;
+  border: 0;
+  margin: 1rem;
+  width: 5rem;
+  height: 8rem;
+  border: solid 0.1rem #ffcc00;
+}
+
+.classroom-place.Cycle {
+  background: url(../../images/cycle.svg) no-repeat center center/contain;
+  background-size: 3rem;
+}
+
+.classroom-place.blockedSeat {
   background: #211e35 url(../../images/logo-res.svg) no-repeat center 1rem/contain;
   background-size: 3rem 3rem;
   position: relative;
+  border: 0;
 }
 
-.blockedSeat:before {
+.classroom-place.blockedSeat:before {
   content: 'reserved';
   position: absolute;
   bottom: 1rem;
@@ -14,14 +29,6 @@
   margin: auto;
   left: 50%;
   margin-left: -2rem;
-}
-
-.classroom-place {
-  display: block;
-  border: 0;
-  margin: 1rem;
-  width: 5rem;
-  height: 8rem;
 }
 
 .instructor-info {

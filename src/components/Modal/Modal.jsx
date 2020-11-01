@@ -1,10 +1,10 @@
 import './Modal.css'
-import React, {useState} from 'react'
+import React from 'react'
 import Button from '../Button/Button'
 import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
 
-export default function Modal({data, onClick, seats}) {
-
+export default function Modal({data, onClick, seats, reservations}) {
+    
     const cancelReservation = () => {
         console.log('cancel reservation')
     }
@@ -19,11 +19,12 @@ export default function Modal({data, onClick, seats}) {
                         <p className="discipline">{data.classroom.discipline}</p>
                         <p><strong>Lesson detail</strong> {data.details}</p>
 
-                        <ClassroomSkecth rows={data.classroom.rows} lesson={data} seats={seats} />
+                        <ClassroomSkecth rows={data.classroom.rows} lesson={data} reservations={reservations} seats={seats} />
 
-                        <Button className="button __yellow-btn" onClick={cancelReservation}>Cancel reservation</Button>
+                        <div className="col-12 d-flex justify-content-center">
+                            <Button className="button __yellow-btn" onClick={cancelReservation}>Cancel reservation</Button></div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     )
