@@ -52,4 +52,4 @@ export const lessonInfo = (id) => http.get(`/lesson/${id}`, {id})
 
 export const booking = (id, row, seat) => http.post(`/book/${id}`, {id, row, seat})
 
-export const unbooking = (id, row, seat) => http.post(`/unbook`, {id, row, seat})
+export const unbooking = (reservations) => http.post(`/unbook`, {reservations})
