@@ -12,12 +12,14 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 
 const MyInfo = (props) => {
 
-    const {updateInfoUser} = useAuthContext()
+    const {login} = useAuthContext()
 
     const [bool, setBool] = useState(false)
     const [modalData, setModalData] = useState([])
     const [reservationData, setReservationData] = useState([])
     const [userStatus, setUserStatus] = useState(props.user)
+
+    console.log(props.user)
 
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
@@ -49,6 +51,10 @@ const MyInfo = (props) => {
         document.querySelector('.navbar').classList.add('__grayHeader')
     }, [])
 
+    useEffect(() => {
+        setUserStatus(props.user)
+    }, [props.user])
+
     const [messageOnCancel, setMessageOnCancel] = useState('')
 
 
@@ -59,7 +65,7 @@ const MyInfo = (props) => {
         updateUser(unbook[3])
             .then(user => {
                 console.log(user[0])
-                updateInfoUser(user[0])
+                login(user[0])
                 setUserStatus(user[0])
             })
         setTimeout(() => {

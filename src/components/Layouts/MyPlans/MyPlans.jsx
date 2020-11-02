@@ -1,5 +1,5 @@
 import './MyPlans.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import plansData from '../../../data/plans'
 import PlanItem from '../PlanItem/PlanItem'
 import StripeModal from '../../StripeComponents/StripeModal/StripeModal'
@@ -9,9 +9,10 @@ const MyPlans = ({plans}) => {
     const [showPackages, setShowPackages] = useState(false)
     const [userPlans, setUserPlans] = useState(plans)
     const [bool, setBool] = useState(false)
-    const [planInfo, setPlanInfo] = useState()
+    const [planInfo, setPlanInfo] = useState([])
 
     const updatePlan = (value) => {
+        console.log(value)
         setUserPlans(value)
     }
 
@@ -27,6 +28,10 @@ const MyPlans = ({plans}) => {
     const onCloseModal = () => {
         setBool(!bool)
     }
+
+    useEffect(() => {
+        setUserPlans(plans)
+    }, [plans])
 
 
     return (

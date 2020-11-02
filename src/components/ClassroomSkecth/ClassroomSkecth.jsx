@@ -13,7 +13,7 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
     const [bool, setBool] = useState(true)
 
     const {user} = useAuthContext()
-    const {updateInfoUser} = useAuthContext()
+    const {login} = useAuthContext()
 
     const drawSeats = (num) => {
         const seatArr = []
@@ -33,7 +33,7 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
             setReservationsInfo(reservation[3])
             updateUser(reservation[4])
                 .then(user => {
-                    updateInfoUser(user[0])
+                    login(user[0])
                 })
             setMessage('You booked a seat in this classroom sucessfully.')
 
@@ -46,6 +46,7 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
     useEffect(() => {
         const check = reservationsInfo.filter(el => el.user.id === user.id)
         if (check.length) setBool(!bool)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

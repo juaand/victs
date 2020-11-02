@@ -2,6 +2,7 @@ import './CheckoutForm.css'
 import React, {useState} from 'react'
 import {useStripe, CardElement, useElements} from "@stripe/react-stripe-js"
 import {stripeInfo} from "../../../services/ApiClient"
+import {useAuthContext} from '../../../contexts/AuthContext'
 
 
 const CardField = ({onChange}) => (
@@ -71,7 +72,7 @@ const ErrorMessage = ({children}) => (
 )
 
 const CheckoutForm =
-    ({plan, onClick}) => {
+    ({plan}) => {
         const stripe = useStripe()
         const elements = useElements()
         const [error, setError] = useState(null)
@@ -84,7 +85,7 @@ const CheckoutForm =
             name: "",
         })
 
-        const [kk2, setkk2] = useState([])
+        const {login} = useAuthContext()
 
 
         const handleSubmit = async (event) => {
@@ -119,11 +120,10 @@ const CheckoutForm =
                     id,
                     plan,
                 })
-                // .then(kk => setkk2(kk))
+                login(data)
                 setPaymentMethod(payload.paymentMethod)
             } else {
                 setError(payload.error)
-
             }
         }
 

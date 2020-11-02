@@ -20,11 +20,7 @@ export const AuthContextProvider = ({children}) => {
     document.querySelector('.__grayHeader').classList.remove('__grayHeader')
   }, [])
 
-  const updateInfoUser = useCallback((data) => {
-    setUser(data)
-  }, [])
-
-  const value = {user, login, logout, updateInfoUser}
+  const value = {user, login, logout}
 
   return (
     <AuthContext.Provider value={value}>

@@ -9,12 +9,12 @@ const ContactBlock = ({contactInfo}) => {
     const {user} = useAuthContext()
 
     const [bool, setBool] = useState(false)
-    const {updateInfoUser} = useAuthContext()
+    const {login} = useAuthContext()
 
     const follow = () => {
         followInfo(contactInfo.id)
             .then((res) => {
-                updateInfoUser(res[0])
+                login(res[0])
                 setBool(!bool)
             })
             .catch((e) => console.log(e))
