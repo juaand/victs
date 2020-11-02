@@ -3,8 +3,10 @@ import React from 'react'
 import Button from '../Button/Button'
 import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
 
-export default function Modal({data, onClick, seats, reservations}) {
-    
+export default function Modal({data, onClick, seats, reservations, hideCancel}) {
+
+    console.log(data)
+
     const cancelReservation = () => {
         console.log('cancel reservation')
     }
@@ -18,11 +20,12 @@ export default function Modal({data, onClick, seats, reservations}) {
                         <h1>{data.name}</h1>
                         <p className="discipline">{data.classroom.discipline}</p>
                         <p><strong>Lesson detail</strong> {data.details}</p>
-
+                        <hr />
                         <ClassroomSkecth rows={data.classroom.rows} lesson={data} reservations={reservations} seats={seats} />
-
-                        <div className="col-12 d-flex justify-content-center">
-                            <Button className="button __yellow-btn" onClick={cancelReservation}>Cancel reservation</Button></div>
+                        {!hideCancel &&
+                            <div className="col-12 d-flex justify-content-center">
+                                <Button className="button __yellow-btn" onClick={cancelReservation}>Cancel reservation</Button></div>
+                        }
                     </div>
                 </div>
             </div>

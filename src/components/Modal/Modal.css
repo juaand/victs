@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.modal hr {
+  margin-top: 2rem;
+}
+
 .modal .discipline {
   font-weight: 400;
   color: rgba(51, 51, 51, 0.6);

@@ -39,7 +39,8 @@
   }
 
   &.Conditioning {
-    background: url(../../images/conditioning.svg) no-repeat center center / contain;
+    background: url(../../images/conditioning.svg) no-repeat center center /
+      contain;
     background-size: 3rem;
   }
 
@@ -48,23 +49,55 @@
     background-size: 3rem;
   }
 
-  &.blockedSeat {
+  &.blockedSeat,
+  &:hover {
     background: $dark-blue url(../../images/logo-res.svg) no-repeat center 1rem /
       contain;
     background-size: 3rem 3rem;
     position: relative;
     border: 0;
+  }
 
+  &.blockedSeat {
+    pointer-events: none;
+  }
+
+  &.blockedSeat {
     &:before {
-      content: 'reserved';
+      content: 'booked';
       position: absolute;
       bottom: 1rem;
       font-size: 1rem;
       font-weight: 600;
       color: $white;
       margin: auto;
-      left: 50%;
-      margin-left: -2rem;
+      width: 5rem;
+      text-align: center;
+      left: 0;
+    }
+  }
+
+  &:hover {
+    &:before {
+      content: 'book';
+      position: absolute;
+      bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: $white;
+      margin: auto;
+      width: 5rem;
+      text-align: center;
+      left: 0;
+    }
+  }
+
+  img {
+    &.avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      border: solid 0.2rem $yellow;
     }
   }
 }
@@ -72,7 +105,7 @@
 .instructor-info {
   position: relative;
   margin: 2rem auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
 
   .avatar {
     width: 6rem;
@@ -96,4 +129,10 @@
     color: $yellow;
     border-top: solid 0.1rem $yellow;
   }
+}
+
+.message {
+  font-weight: 600;
+  color: $blue;
+  text-align: center;
 }
