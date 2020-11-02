@@ -44,6 +44,8 @@ export const updateUserAvatar = (data, id) => {
 
 export const updatePassword = ({password, newpassword, id}) => http.post(`/update-password/${id}`, {password, newpassword})
 
+export const deleteUser = (id) => http.get(`/user/${id}/delete`)
+
 export const stripeInfo = ({data, id, plan}) => http.post('/stripe/checkout', {id, plan, data})
 
 export const followInfo = (id) => http.post(`/follow/${id}`, {id})
@@ -53,3 +55,11 @@ export const lessonInfo = (id) => http.get(`/lesson/${id}`, {id})
 export const booking = (id, row, seat) => http.post(`/book/${id}`, {id, row, seat})
 
 export const unbooking = (reservations) => http.post(`/unbook`, {reservations})
+
+export const createLesson = () => http.post('/lesson') 
+
+export const readLesson = (id) => http.post(`/lesson/${id}`)
+
+export const updateLesson = (id) => http.post(`/lesson/${id}/edit`)
+
+export const deleteLesson = (id) => http.post(`/lesson/${id}/delete`)
