@@ -47,29 +47,54 @@
   background-size: 3rem;
 }
 
-.classroom-place.blockedSeat {
+.classroom-place.blockedSeat, .classroom-place:hover {
   background: #211e35 url(../../images/logo-res.svg) no-repeat center 1rem/contain;
   background-size: 3rem 3rem;
   position: relative;
   border: 0;
 }
 
+.classroom-place.blockedSeat {
+  pointer-events: none;
+}
+
 .classroom-place.blockedSeat:before {
-  content: 'reserved';
+  content: 'booked';
   position: absolute;
   bottom: 1rem;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
   margin: auto;
-  left: 50%;
-  margin-left: -2rem;
+  width: 5rem;
+  text-align: center;
+  left: 0;
+}
+
+.classroom-place:hover:before {
+  content: 'book';
+  position: absolute;
+  bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: auto;
+  width: 5rem;
+  text-align: center;
+  left: 0;
+}
+
+.classroom-place img.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: solid 0.2rem #ffcc00;
 }
 
 .instructor-info {
   position: relative;
   margin: 2rem auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .instructor-info .avatar {
@@ -93,4 +118,10 @@
   font-weight: 600;
   color: #ffcc00;
   border-top: solid 0.1rem #ffcc00;
+}
+
+.message {
+  font-weight: 600;
+  color: #00a9ad;
+  text-align: center;
 }

@@ -5,10 +5,9 @@ import {booking} from '../../services/ApiClient'
 
 export default function ClassroomSkecth({rows, lesson, reservations}) {
 
-    console.log(lesson)
-    console.log(reservations)
-
     const [error, setError] = useState('')
+    const [reservationsInfo, setReservationsInfo] = useState(reservations)
+    const [message, setMessage] = useState('')
 
     const drawSeats = (num) => {
         const seatArr = []
@@ -25,14 +24,8 @@ export default function ClassroomSkecth({rows, lesson, reservations}) {
             const row = e.target.getAttribute('row')
             const seat = e.target.getAttribute('seat')
             const reservation = await booking(lesson.id, row, seat)
-            console.log(reservation)
-
-            const filteredAllBookings = reservation.filter(book => book.row == 3)
-            console.log(filteredAllBookings)
-
-            if (filteredAllBookings.length) {
-                document.getElementsByTagName("Button")[0].setAttribute("className", "blocked")
-            }
+            setReservationsInfo(reservation[3])
+            setMessage('You booked a seat in this classroom sucessfully.')
 
 
         } catch (err) {
@@ -42,28 +35,38 @@ export default function ClassroomSkecth({rows, lesson, reservations}) {
     }
 
     useEffect(() => {
-        if (reservations.length) {
-            for (let i = 0; i < reservations.length; i++) {
-                const allButtons = document.querySelectorAll(`[seat="${reservations[i].column}"][row="${reservations[i].row}"]`)
+        if (reservationsInfo.length) {
+            // const avatar = document.createElement('img')
+            // avatar.classList.add('avatar')
+            for (let i = 0; i < reservationsInfo.length; i++) {
+                const allButtons = document.querySelectorAll(`[seat="${reservationsInfo[i].column}"][row="${reservationsInfo[i].row}"]`)
                 allButtons[0].classList.add('blockedSeat')
+                // avatar.setAttribute('src', `${reservationsInfo[i].user.avatar}`)
+                // allButtons.appendChild(avatar)
             }
         }
-    }, [])
+    }, [reservationsInfo])
 
     return (
         <>
-            {error && <div>{error}</div>}
-            <div className="instructor-info">
-                <span className="avatar" style={{background: `url(${lesson.instructor.user.avatar}) no-repeat center center / cover`}}></span>
-                <span className="name">{lesson.instructor.user.name}</span></div>
-            {rows.map((el, i) =>
-                <div row={i} className="row justify-content-center">
-                    {drawSeats(el).map((el, j) =>
-                        <Button className={`classroom-place ${lesson.classroom.discipline}`} row={i} seat={j} onClick={bookSeat}>{el}</Button>
+            {error && <div className="message alert">{error}</div>}
+            {message && <div className="message">{message}</div>}
+            {!message &&
+                <>
+                    <div className="instructor-info">
+                        <span className="avatar" style={{background: `url(${lesson.instructor.user.avatar}) no-repeat center center / cover`}}></span>
+                        <span className="name">{lesson.instructor.user.name}</span>
+                    </div>
+                    {rows.map((el, i) =>
+                        <div row={i} className="row justify-content-center">
+                            {drawSeats(el).map((el, j) =>
+                                <Button className={`classroom-place ${lesson.classroom.discipline}`} row={i} seat={j} onClick={bookSeat}>{el}</Button>
+                            )}
+                        </div>
                     )}
-                </div>
-            )}
-
+                    <p className="text-center">Select a seat to make a reservation.</p>
+                </>
+            }
         </>
     )
 }
