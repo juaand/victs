@@ -2,13 +2,19 @@ import './Modal.css'
 import React from 'react'
 import Button from '../Button/Button'
 import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
+import { unbooking } from '../../services/ApiClient'
+
 
 export default function Modal({data, onClick, seats, reservations, hideCancel}) {
 
-    console.log(data)
+    const reservationId = reservations.id
+    const lessonId = reservations.lesson
 
-    const cancelReservation = () => {
-        console.log('cancel reservation')
+    const cancelReservation = async () => {
+
+        const unbook = await unbooking(reservations)
+        console.log(unbook)
+
     }
 
     return (

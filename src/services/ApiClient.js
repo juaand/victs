@@ -51,3 +51,5 @@ export const followInfo = (id) => http.post(`/follow/${id}`, {id})
 export const lessonInfo = (id) => http.get(`/lesson/${id}`, {id})
 
 export const booking = (id, row, seat) => http.post(`/book/${id}`, {id, row, seat})
+
+export const unbooking = (reservations) => http.post(`/unbook`, {reservations})

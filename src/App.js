@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {<Header />}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
@@ -29,6 +29,7 @@ function App() {
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
+        {user && <Redirect to='/my-info'/>}
         {!user && <Redirect to='/' />}
       </Switch>
     </div>
