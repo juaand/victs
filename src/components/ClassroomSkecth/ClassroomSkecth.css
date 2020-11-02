@@ -120,8 +120,12 @@
   border-top: solid 0.1rem #ffcc00;
 }
 
-.message {
+.ClassroomSkecth__message {
   font-weight: 600;
   color: #00a9ad;
   text-align: center;
+}
+
+.ClassroomSkecth__message.alert {
+  color: #cb1b53;
 }

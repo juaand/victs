@@ -4,8 +4,6 @@ import plansData from '../../../data/plans'
 import PlanItem from '../PlanItem/PlanItem'
 import StripeModal from '../../StripeComponents/StripeModal/StripeModal'
 
-
-
 const MyPlans = ({plans}) => {
 
     const [showPackages, setShowPackages] = useState(false)

@@ -2,20 +2,8 @@ import './Modal.css'
 import React from 'react'
 import Button from '../Button/Button'
 import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
-import { unbooking } from '../../services/ApiClient'
 
-
-export default function Modal({data, onClick, seats, reservations, hideCancel}) {
-
-    const reservationId = reservations.id
-    const lessonId = reservations.lesson
-
-    const cancelReservation = async () => {
-
-        const unbook = await unbooking(reservations)
-        console.log(unbook)
-
-    }
+export default function Modal({data, onClick, onCancel, seats, reservations, hideCancel, hideSelectSeat}) {
 
     return (
         <div className="modal">
@@ -27,10 +15,10 @@ export default function Modal({data, onClick, seats, reservations, hideCancel}) 
                         <p className="discipline">{data.classroom.discipline}</p>
                         <p><strong>Lesson detail</strong> {data.details}</p>
                         <hr />
-                        <ClassroomSkecth rows={data.classroom.rows} lesson={data} reservations={reservations} seats={seats} />
+                        <ClassroomSkecth rows={data.classroom.rows} lesson={data} reservations={reservations} seats={seats} hideSelectSeat={hideSelectSeat} />
                         {!hideCancel &&
                             <div className="col-12 d-flex justify-content-center">
-                                <Button className="button __yellow-btn" onClick={cancelReservation}>Cancel reservation</Button></div>
+                                <Button className="button __yellow-btn" onClick={onCancel}>Cancel reservation</Button></div>
                         }
                     </div>
                 </div>

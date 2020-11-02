@@ -12,10 +12,10 @@ const UserInfo = ({title, data}) => {
                 </div>
                 <div className="col-8 message">
                     <div className="row">
-                        <UserInfoItem title="gyms"/>
-                        <UserInfoItem className="yellow-title" title="instructors"/>
-                        <UserInfoItem className="blue-title" title="friends"/>
-                        <UserInfoItem className="purple-title" title="badgets"/>
+                        <UserInfoItem title="gyms" />
+                        <UserInfoItem className="yellow-title" title="instructors" />
+                        <UserInfoItem className="blue-title" title="friends" />
+                        <UserInfoItem className="purple-title" title="badgets" />
                     </div>
 
                 </div>

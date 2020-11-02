@@ -7,25 +7,30 @@ import WaitingLessons from '../../Layouts/WaitingLessons/WaitingLessons'
 import UserInfo from '../../Layouts/UserInfo/UserInfo'
 import UserAccordeon from '../../UserAccordeon/UserAccordeon'
 import Modal from '../../Modal/Modal'
+import {unbooking, updateUser} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
 
 const MyInfo = (props) => {
+
+    const {updateInfoUser} = useAuthContext()
 
     const [bool, setBool] = useState(false)
     const [modalData, setModalData] = useState([])
     const [reservationData, setReservationData] = useState([])
+    const [userStatus, setUserStatus] = useState(props.user)
 
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
     }
 
-    const byLessons = props.user.lessons.reduce((acc, e) => {
+    const byLessons = userStatus.lessons.reduce((acc, e) => {
         acc[e.gym.id] = (acc[e.gym.id] || [])
         acc[e.gym.id].push(e)
         return acc
     }, {})
 
     const checkSeat = (lessonData) => {
-        const reservedSeats = props.user.reservations.filter(el => el.lesson === lessonData.id)
+        const reservedSeats = userStatus.reservations.filter(el => el.lesson === lessonData.id)
         setReservationData(reservedSeats)
     }
 
@@ -33,6 +38,7 @@ const MyInfo = (props) => {
         checkSeat(lessonData)
         setModalData(lessonData)
         setBool(!bool)
+        setMessageOnCancel('')
     }
 
     const hideModal = () => {
@@ -43,18 +49,42 @@ const MyInfo = (props) => {
         document.querySelector('.navbar').classList.add('__grayHeader')
     }, [])
 
+    const [messageOnCancel, setMessageOnCancel] = useState('')
+
+
+    const cancelReservation = async () => {
+        setMessageOnCancel('Your book has been cancelled successfully.')
+        const unbook = await unbooking(reservationData)
+        setBool(!bool)
+        updateUser(unbook[3])
+            .then(user => {
+                console.log(user[0])
+                updateInfoUser(user[0])
+                setUserStatus(user[0])
+            })
+        setTimeout(() => {
+            setMessageOnCancel('')
+        }, 3000)
+    }
+
+
     return (
         <>
-            <UserAccordeon user={props.user} />
-            <MyPlans plans={props.user.packages} />
+            <UserAccordeon user={userStatus} />
+            {messageOnCancel &&
+                <div className="cancel-message">
+                    <p className="juan-la-mamarracha">{messageOnCancel}</p>
+                </div>
+            }
+            <MyPlans plans={userStatus.packages} />
             <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
 
-            {props.user.lessons.length &&
+            {userStatus.lessons.length &&
                 <div className="container my-info">
-                    {bool && <Modal onClick={hideModal} data={modalData} reservations={reservationData} />}
+                    {bool && <Modal onClick={hideModal} data={modalData} reservations={reservationData} onCancel={cancelReservation} hideSelectSeat />}
                     <div className="row">
                         <div className="col-12">
-                            {getGymName(props.user.lessons).map(el =>
+                            {getGymName(userStatus.lessons).map(el =>
                                 <div className="row gym-name">
                                     <div className="col-4">
                                         <h1 className="big-yellow">Upcoming classes scheduled in <span>{el.gym.user.name}</span></h1>
@@ -81,7 +111,7 @@ const MyInfo = (props) => {
             }
             <>
                 <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's good news" />
-                <UserInfo title="My info" data={props.user} />
+                <UserInfo title="My info" data={userStatus} />
             </>
         </>
     )

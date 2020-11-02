@@ -9,12 +9,12 @@ const ContactBlock = ({contactInfo}) => {
     const {user} = useAuthContext()
 
     const [bool, setBool] = useState(false)
-    const {updateUser} = useAuthContext()
+    const {updateInfoUser} = useAuthContext()
 
     const follow = () => {
         followInfo(contactInfo.id)
             .then((res) => {
-                updateUser(res[0])
+                updateInfoUser(res[0])
                 setBool(!bool)
             })
             .catch((e) => console.log(e))
@@ -23,7 +23,6 @@ const ContactBlock = ({contactInfo}) => {
     useEffect(() => {
         if (user.following.includes(contactInfo.id)) {
             setBool(!bool)
-            console.log(user)
         }
     }, [user])
 

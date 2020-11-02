@@ -2,12 +2,18 @@ import './ClassroomSkecth.css'
 import React, {useEffect, useState} from 'react'
 import Button from '../Button/Button'
 import {booking} from '../../services/ApiClient'
+import {useAuthContext} from '../../contexts/AuthContext'
+import {updateUser} from '../../services/ApiClient'
 
-export default function ClassroomSkecth({rows, lesson, reservations}) {
+export default function ClassroomSkecth({rows, lesson, reservations, hideSelectSeat}) {
 
     const [error, setError] = useState('')
     const [reservationsInfo, setReservationsInfo] = useState(reservations)
     const [message, setMessage] = useState('')
+    const [bool, setBool] = useState(true)
+
+    const {user} = useAuthContext()
+    const {updateInfoUser} = useAuthContext()
 
     const drawSeats = (num) => {
         const seatArr = []
@@ -25,14 +31,22 @@ export default function ClassroomSkecth({rows, lesson, reservations}) {
             const seat = e.target.getAttribute('seat')
             const reservation = await booking(lesson.id, row, seat)
             setReservationsInfo(reservation[3])
+            updateUser(reservation[4])
+                .then(user => {
+                    updateInfoUser(user[0])
+                })
             setMessage('You booked a seat in this classroom sucessfully.')
-
 
         } catch (err) {
             console.log(err)
             setError(err.response?.data?.message)
         }
     }
+
+    useEffect(() => {
+        const check = reservationsInfo.filter(el => el.user.id === user.id)
+        if (check.length) setBool(!bool)
+    }, [])
 
     useEffect(() => {
         if (reservationsInfo.length) {
@@ -49,8 +63,8 @@ export default function ClassroomSkecth({rows, lesson, reservations}) {
 
     return (
         <>
-            {error && <div className="message alert">{error}</div>}
-            {message && <div className="message">{message}</div>}
+            {error && <div className="ClassroomSkecth__message alert">{error}</div>}
+            {message && <div className="ClassroomSkecth__message">{message}</div>}
             {!message &&
                 <>
                     <div className="instructor-info">
@@ -64,7 +78,9 @@ export default function ClassroomSkecth({rows, lesson, reservations}) {
                             )}
                         </div>
                     )}
-                    <p className="text-center">Select a seat to make a reservation.</p>
+                    {(bool && !hideSelectSeat) &&
+                        <p className="text-center">Select a seat to make a reservation.</p>
+                    }
                 </>
             }
         </>
