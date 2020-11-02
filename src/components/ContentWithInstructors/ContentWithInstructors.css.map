@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AACE,SADO,AACN,MAAM,CAAC;EACN,MAAM,EAAE,OAAO;CAChB",
-    "sources": [
-        "ContentWithInstructors.scss"
-    ],
-    "names": [],
-    "file": "ContentWithInstructors.css"
-}

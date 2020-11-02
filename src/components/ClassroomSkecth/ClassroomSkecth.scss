@@ -131,8 +131,12 @@
   }
 }
 
-.message {
+.ClassroomSkecth__message {
   font-weight: 600;
   color: $blue;
   text-align: center;
+
+  &.alert {
+    color: $pink;
+  }
 }
