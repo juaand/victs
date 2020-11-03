@@ -3,7 +3,6 @@ import {useState} from 'react'
 export const useFormState = (initialState, validations) => {
 
     const [state, setState] = useState(initialState)
-    const [role, setRole] = useState('')
 
     const onBlur = e => {
         const {name} = e.target
@@ -22,8 +21,6 @@ export const useFormState = (initialState, validations) => {
         const {name, value, files} = e.target
         const valid = validations[name](value)
 
-        if (e.target.name === 'role') {
-            setRole(e.target.value)
             setState(prev => {
                 return {
                     ...prev,
@@ -37,22 +34,7 @@ export const useFormState = (initialState, validations) => {
                     }
                 }
             })
-        } else {
-            setState(prev => {
-                return {
-                    ...prev,
-                    data: {
-                        ...prev.data,
-                        [name]: files ? files[0] : value
-                    },
-                    error: {
-                        ...prev.error,
-                        [name]: !valid
-                    }
-                }
-            })
-        }
     }
 
-    return {state, onBlur, onChange, role}
+    return {state, onBlur, onChange}
 }

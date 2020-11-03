@@ -7,7 +7,6 @@ import {useAuthContext} from '../../contexts/AuthContext'
 const Header = () => {
 
     const {user} = useAuthContext()
-
     const {logout} = useAuthContext()
 
     return (
@@ -20,7 +19,7 @@ const Header = () => {
                                 <div className="victs-logo"></div>
                             </Link>
                             {user && user.role === 'Guest' && <Link to='/my-info' className="user-hi">Hi {user.name}</Link>}
-                            {user && user.role === 'Gym' && <Link to='/my-info' className="user-hi">Hi {user.user.name}</Link>}
+                            {user && user.role === 'Gym' && <Link to='/my-info-gym' className="user-hi">Hi {user.user.name}</Link>}
                             {user && user.role === 'Instructor' && <Link to='/my-info' className="user-hi">Hi {user.user.name}</Link>}
                         </div>
                         <button
@@ -66,10 +65,10 @@ const Header = () => {
                                 {user && user.user && user.user.role === 'Gym' &&
                                     <>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" to="/lessons">Add lesson</NavLink>
+                                            <NavLink activeClassName="active" className="nav-link" to="/lessons">Add lesson</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" to="/instructors">My Instructors</NavLink>
+                                            <NavLink activeClassName="active" className="nav-link" to="/instructors">Add classroom</NavLink>
                                         </li>
                                     </>}
 

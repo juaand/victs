@@ -36,11 +36,11 @@
   display: none;
 }
 
-input:-internal-autofill-selected {
+.Form input:-internal-autofill-selected {
   background-color: #fff !important;
 }
 
-label {
+.Form label {
   display: block;
   margin: 0 !important;
   font-weight: 700;
@@ -65,7 +65,8 @@ label {
   padding-left: 1rem;
 }
 
-.SubmitButton, .btn {
+.SubmitButton,
+.btn {
   background: #ffcc00;
   border: 0;
   font-weight: 700;

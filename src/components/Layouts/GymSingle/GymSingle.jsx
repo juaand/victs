@@ -47,7 +47,7 @@ export default function GymSingle(props) {
         <>
             {bool && <Modal onClick={hideModal} data={lessonData} reservations={reservationData} hideCancel/>}
             <div className="container-fluid margin-top gym-single">
-                <Banner name={gym.name} city={gym.city} />
+                <Banner title={gym.name} subtitle={gym.city} />
                 <ContactBlock contactInfo={gym} />
                 {!gymData.length &&
                     <AttendedLessons title="Upcoming lessons" message="Oops no lessons added" strong="come back soon to add new ones" />

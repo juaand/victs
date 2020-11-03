@@ -14,7 +14,7 @@ import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
 const UserAccordeon = (props) => {
 
-    const {state, onBlur, onChange, role} = useFormState(
+    const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 id: props.user.id,
@@ -74,7 +74,7 @@ const UserAccordeon = (props) => {
     const [servicesList, setServicesList] = useState([])
 
     const hideProfile = () => {
-        setEdit(true)
+        setEdit(!edit)
         setProfileInfo(false)
     }
 
@@ -200,7 +200,7 @@ const UserAccordeon = (props) => {
     useEffect(() => {
         getServices()
             .then(res => {
-                setServicesList(res)
+                setServicesList(res[0])
             })
     }, [data.services])
 
@@ -237,23 +237,6 @@ const UserAccordeon = (props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            {props.user && props.user.role === 'Guest' &&
-                                                <div className="row content-block">
-                                                    <div className="col-4">
-                                                        <strong>Role</strong>
-                                                    </div>
-                                                    <div className="col-8">
-
-                                                        <SelectWithLabel
-                                                            name="role"
-                                                            value={data.role}
-                                                            onChange={onChange}
-                                                            options={['Guest', 'Gym', 'Instructor']}
-                                                        />
-
-                                                    </div>
-                                                </div>
-                                            }
                                             <div className="row content-block">
                                                 <div className="col-4">
                                                     <strong>Phone</strong>
@@ -313,7 +296,7 @@ const UserAccordeon = (props) => {
 
                                         </div>
                                         <div className="col-12 col-sm-6 profile-info">
-                                            {(props.user.role === 'Gym' || role === 'Gym') &&
+                                            {(props.user.role === 'Gym') &&
                                                 <div className="row content-block d-flex align-items-start">
                                                     <div className="col-4">
                                                         <strong className="mt-5">Services</strong>
@@ -328,7 +311,7 @@ const UserAccordeon = (props) => {
                                                     </div>
                                                 </div>
                                             }
-                                            {(props.user.role === 'Instructor' || role === 'Instructor') &&
+                                            {(props.user.role === 'Instructor') &&
                                                 <>
                                                     <div className="row content-block">
                                                         <div className="col-4">
@@ -353,7 +336,7 @@ const UserAccordeon = (props) => {
                                                         </div>
                                                         <div className="col-8">
                                                             <CheckBoxWithLabel
-                                                                name="services"
+                                                                name="disciplines"
                                                                 data={disciplinesList}
                                                                 value={data.disciplines}
                                                                 onChange={getDisciplinesItems}

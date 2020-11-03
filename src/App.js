@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import GymsCenters from './components/Layouts/GymsCenters/GymsCenters'
 import GymSingle from './components/Layouts/GymSingle/GymSingle'
+import Lessons from './components/Layouts/Lessons/Lessons'
 import Login from './components/Login/Login'
 import MyInfo from './components/MyInfo/MyInfoGuest/MyInfo'
 import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      {<Header />}
+      {<Header addLesson />}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
@@ -29,6 +30,7 @@ function App() {
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
+        <AuthenticatedRoute path='/lessons' render={(props) => <Lessons {...props} user={user} />} />
         {user && <Redirect to='/my-info'/>}
         {!user && <Redirect to='/' />}
       </Switch>

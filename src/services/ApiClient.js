@@ -18,7 +18,11 @@ http.interceptors.response.use(function (response) {
 
 export const getGymDetail = (id) => http.get(`/gym-detail/${id}`)
 
+export const getGymClassrooms = (id) => http.get(`/gym-classrooms/${id}`)
+
 export const getGyms = () => http.get('/gyms')
+
+export const getInstructors = () => http.get(`/instructors`)
 
 export const getDisciplines = () => http.get('/disciplines')
 

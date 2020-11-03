@@ -27,10 +27,9 @@ export default function GymsCenters() {
     })
 
     return (
-        <div className="container-fluid margin-top">
+        <div className="container-fluid margin-top gym-centers">
             <div className="row p-0">
-                <div className="col-12 gyms-bg">
-                </div>
+                <div className="col-12 gyms-bg"></div>
             </div>
             <div className="row">
                 <div className="col-12 form-group">
