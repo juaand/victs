@@ -52,12 +52,6 @@ export const updatePassword = ({password, newpassword, id}) => http.post(`/updat
 export const deleteUser = (id) => http.get(`/user/${id}/delete`)
 
 
-
-
-
-
-
-
 //lesson.routes
 export const createLesson = () => http.post('/lesson')
 export const lessonInfo = (id) => http.get(`/lesson/${id}`, {id})

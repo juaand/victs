@@ -5,7 +5,6 @@
 }
 
 .plans-item .button {
-  -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
 }
 
@@ -35,4 +34,3 @@
   font-size: 2rem;
   color: #ffcc00;
 }
-/*# sourceMappingURL=PlanItem.css.map */

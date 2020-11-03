@@ -1,6 +1,7 @@
 import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import AuthenticatedRoute from './AuthenticatedRoute'
+import Classroom from './components/Layouts/Classrooms/Classrooms'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import GymsCenters from './components/Layouts/GymsCenters/GymsCenters'
@@ -31,6 +32,7 @@ function App() {
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
         <AuthenticatedRoute path='/lessons' render={(props) => <Lessons {...props} user={user} />} />
+        <AuthenticatedRoute path='/classrooms' render={(props) => <Classroom {...props} user={user} />} />
         {user && <Redirect to='/my-info'/>}
         {!user && <Redirect to='/' />}
       </Switch>

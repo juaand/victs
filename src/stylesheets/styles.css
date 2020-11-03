@@ -34,6 +34,11 @@ h1.big-yellow {
   color: #ffcc00;
 }
 
+h1.big-yellow.big {
+  font-size: 4rem;
+  margin-top: 3rem;
+}
+
 h1 span {
   display: block;
 }

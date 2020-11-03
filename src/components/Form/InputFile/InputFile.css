@@ -7,21 +7,12 @@ input {
   color: #fff;
   border-radius: 0;
   height: 3.8rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .file-group .custom-file-input {
   height: 4rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
 }
-/*# sourceMappingURL=InputFile.css.map */

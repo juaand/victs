@@ -1,11 +1,7 @@
 .row-banner {
   background: url(../../images/acordeon-bg.jpg) no-repeat center center/cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 4rem 0;
 }
 
@@ -24,4 +20,3 @@
   right: -4rem;
   bottom: 0rem;
 }
-/*# sourceMappingURL=Banner.css.map */
