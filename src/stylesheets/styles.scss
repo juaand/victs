@@ -33,6 +33,11 @@ a {
   }
 }
 
+label:not(.form-check-label) {
+  font-weight: 700;
+  margin-left: 0;
+}
+
 .victs-logo {
   background: url(../images/logo.svg) no-repeat center center / contain;
   width: 20rem;

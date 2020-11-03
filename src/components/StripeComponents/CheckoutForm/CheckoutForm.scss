@@ -38,15 +38,17 @@
   }
 }
 
-input:-internal-autofill-selected {
-  background-color: $white !important;
-}
+.Form {
+  input:-internal-autofill-selected {
+    background-color: $white !important;
+  }
 
-label {
-  display: block;
-  margin: 0 !important;
-  font-weight: 700;
-  font-size: 1.2rem;
+  label {
+    display: block;
+    margin: 0 !important;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
 }
 
 .FormRow {
@@ -54,7 +56,7 @@ label {
 }
 
 .FormRowInput {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
   input {
     background: #fff;
@@ -67,7 +69,8 @@ label {
   }
 }
 
-.SubmitButton, .btn {
+.SubmitButton,
+.btn {
   background: $yellow;
   border: 0;
   font-weight: 700;
@@ -79,12 +82,12 @@ label {
 }
 
 .Result {
-    .ResultTitle {
-        color: $blue;
-        font-size: 2rem;
-        margin-bottom: 2rem;
-    }
-    .ResultMessage {
-        font-size: 1.2rem;
-    }
+  .ResultTitle {
+    color: $blue;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .ResultMessage {
+    font-size: 1.2rem;
+  }
 }

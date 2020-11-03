@@ -1,3 +1,4 @@
+import './MyInfoGym.css'
 import React from 'react'
 import UserAccordeon from '../../UserAccordeon/UserAccordeon'
 
