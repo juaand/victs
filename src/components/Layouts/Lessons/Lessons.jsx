@@ -166,7 +166,10 @@ export default function Lessons({user}) {
             </section>
             <section className="container add-lesson">
                 <div className="row justify-content-center">
-                    <div className="col-6">
+                    <div className="col-12 col-sm-4 d-flex justify-content-end">
+                        <h1 className="big-yellow big">Add lesson</h1>
+                    </div>
+                    <div className="col-sm-6 col-12">
                         <form onSubmit={handleSubmit}>
 
                             <>
@@ -300,7 +303,7 @@ export default function Lessons({user}) {
                                                     <input type="text" className="form-control" placeholder="Search by instructor name" onChange={handleChange} value={search} /></div>
                                             </div>
                                             <div className="row">
-                                                {filteredInstructors.map(el => <div className="col-sm-6 col-12 instructor-row" onClick={instructorSelected}  id={el.id}>
+                                                {filteredInstructors.map(el => <div className="col-sm-6 col-12 instructor-row" onClick={instructorSelected} id={el.id}>
                                                     <div className="avatar" style={{background: `url(${el.user.avatar}) no-repeat center center / contain`}} id={el.id}></div>
                                                     {el.user.name}
                                                 </div>)}
@@ -319,7 +322,7 @@ export default function Lessons({user}) {
                                             </div>
                                             <div className="row">
                                                 {filteredClassroom.map(el => <div className="col-sm-6 col-12 instructor-row" id={el.id} data-rows={el.rows} onClick={classroomSelected}>
-                                                {el.name} room
+                                                    {el.name} room
                                                 </div>)}
                                             </div>
                                         </>

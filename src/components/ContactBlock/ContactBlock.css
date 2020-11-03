@@ -5,12 +5,8 @@
 
 .gym-info .address {
   font-size: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   font-weight: 300;
   margin-bottom: 1.2rem;
 }
@@ -32,4 +28,3 @@
   display: block;
   margin-left: 1.2rem;
 }
-/*# sourceMappingURL=ContactBlock.css.map */

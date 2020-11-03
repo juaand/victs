@@ -25,12 +25,8 @@
 
 .my-plans .add-plans {
   color: #333;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .my-plans .add-plans:after {
@@ -40,7 +36,6 @@
   background: url(../../../images/next.svg) no-repeat center center/contain;
   display: block;
   margin-left: 0.6rem;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
@@ -56,4 +51,3 @@
 .my-plans .plans-block .plans-item {
   padding: 2rem;
 }
-/*# sourceMappingURL=MyPlans.css.map */

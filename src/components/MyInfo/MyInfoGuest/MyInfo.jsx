@@ -85,7 +85,7 @@ const MyInfo = (props) => {
             <MyPlans plans={userStatus.packages} />
             <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
 
-            {userStatus.lessons.length &&
+            {userStatus.lessons &&
                 <div className="container my-info">
                     {bool && <Modal onClick={hideModal} data={modalData} reservations={reservationData} onCancel={cancelReservation} hideSelectSeat />}
                     <div className="row">

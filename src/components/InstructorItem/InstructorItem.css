@@ -22,7 +22,6 @@
   top: 0;
   left: 0;
   opacity: 0;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   z-index: -1;
 }
@@ -68,7 +67,5 @@
   bottom: -1rem;
   right: -1rem;
   z-index: -5;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
-/*# sourceMappingURL=InstructorItem.css.map */

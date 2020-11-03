@@ -33,6 +33,11 @@ h1 {
     text-transform: initial;
     margin-top: 2rem;
     color: $yellow;
+
+    &.big {
+      font-size: 4rem;
+      margin-top: 3rem;
+    }
   }
 
   span {
