@@ -10,6 +10,9 @@ import ContentWithClassrooms from '../../ContentWithClassrooms/ContentWithClassr
 
 const MyInfoGym = ({user, gym}) => {
 
+    console.log(user)
+    console.log(gym)
+
     const [userStatus, setUserStatus] = useState(user)
     const [gymLessons, setGymLessons] = useState([])
     const [gymClassrooms, setGymClassrooms] = useState([])
