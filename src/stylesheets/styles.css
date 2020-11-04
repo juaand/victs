@@ -73,6 +73,21 @@ h3 {
   }
 }
 
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 576px) {
   html {
     font-size: 8px;

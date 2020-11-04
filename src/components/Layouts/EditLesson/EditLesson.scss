@@ -1,0 +1,36 @@
+@import '../../../stylesheets/variables';
+@import '../../../stylesheets/keyframes';
+
+.delete-block {
+  border-top: solid 0.1rem $light-gray;
+  margin-top: 4rem;
+  padding-top: 2rem;
+
+  .Button {
+      margin-top: 4rem;
+  }
+}
+
+.delete-btn {
+  padding-top: 4rem;
+}
+
+.EditLesson {
+    &.message {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba($white, 0.8);
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        animation: fadein 3s linear;
+
+        .content {
+            padding: 4rem;
+            border: solid 0.1rem $yellow;
+            background: $white;
+        }
+    }
+}

@@ -2,21 +2,19 @@ import './EditLesson.css'
 import React, {useState, useEffect} from 'react'
 import Banner from '../../Banner/Banner'
 import {useFormState} from '../../../hooks/useFormState'
-import {getDisciplines, getInstructors, getGymClassrooms, updateLesson} from '../../../services/ApiClient'
+import {getDisciplines, getInstructors, getGymClassrooms, updateLesson, getLessonGuests, deleteLesson} from '../../../services/ApiClient'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Button/Button'
 import DateTimePicker from 'react-datetime-picker'
 import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
-import { useHistory } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
+import LessonGuests from '../../LessonGuests/LessonGuests'
 
 
 export default function EditLesson(props) {
 
     const user = props.user
     const lesson = props.location.state.lesson
-
-    console.log(lesson)
-    console.log(user)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -69,8 +67,10 @@ export default function EditLesson(props) {
     const [instructorName, setInstructorName] = useState(lesson.instructor.user.name)
     const [classroomName, setClassroomName] = useState(lesson.classroom.name)
     const [search, setSearch] = useState('')
+    const [lessonGuests, setLessonGuests] = useState([])
+    const [isMessage, setIsMessage] = useState('')
 
-    const history = useHistory();
+    const history = useHistory()
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -96,17 +96,24 @@ export default function EditLesson(props) {
 
     const setTime = (e) => {
         setDate(e)
-        console.log(e)
         data.date = e
     }
 
     useEffect(() => {
         getDisciplines()
             .then(res => {
-                console.log(res)
                 setDisciplinesList(res[0])
             })
     }, [])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const guests = await getLessonGuests(lesson.id)
+            setLessonGuests(guests)
+        }
+        fetchData()
+    }, [lesson.id])
+
 
     const isError = Object.values(error).some(err => err)
 
@@ -117,7 +124,6 @@ export default function EditLesson(props) {
         setClassroomBool(false)
         getInstructors()
             .then((instructors) => setInstructorsData(instructors))
-        console.log('select instructor')
     }
 
     const selectClassroom = (event) => {
@@ -126,7 +132,6 @@ export default function EditLesson(props) {
         setInstructorBool(false)
         getGymClassrooms(user.id)
             .then(classrooms => setClassroomData(classrooms))
-        console.log('select classroom')
     }
 
     const goBackInstructors = (e) => {
@@ -170,10 +175,22 @@ export default function EditLesson(props) {
         )
     })
 
+    const lessonDelete = async (lessonId) => {
+        deleteLesson(lessonId)
+        setIsMessage('Lesson deleted successfully')
+        setTimeout(() => {
+            history.push('/my-info-gym')
+        }, 3000)
+    }
+
     return (
         <>
+            {isMessage && <div className="EditLesson message">
+                <div className="content">{isMessage}</div>
+            </div>}
             <section className="container-fluid margin-top EditLesson">
-                <Banner title="Edit lesson" subtitle={user.user.name} />
+                <Banner title="Lesson detail" subtitle={data.name} />
+                {lessonGuests ? lessonGuests.map(el => <LessonGuests guest={el} />) : 'Loading'}
             </section>
             <section className="container add-lesson">
                 <div className="row justify-content-center">
@@ -347,6 +364,16 @@ export default function EditLesson(props) {
                                 disabled={isError}
                             >Edit lesson</Button>
                         </form>
+                    </div>
+                </div>
+                <div className="delete-row delete-block row justify-content-center">
+                    <div className="col-12 col-sm-4 d-flex justify-content-end">
+                        <h1 className="big-yellow big">Delete lesson</h1>
+                    </div>
+                    <div className={lessonGuests.length > 0 ? 'col-sm-6 col-12 delete-btn' : 'col-sm-6 col-12'}>
+                        {lessonGuests.length > 0 && <smal>Cannot delete a lesson if any user will attending it</smal>}
+
+                        <Button className={lessonGuests.length > 0 ? 'Button Button__enter disabled' : 'Button Button__enter'} onClick={() => lessonDelete(lesson.id)}>Delete lesson</Button>
                     </div>
                 </div>
             </section>

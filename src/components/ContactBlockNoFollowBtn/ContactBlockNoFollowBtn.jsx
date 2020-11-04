@@ -3,8 +3,6 @@ import React from 'react'
 
 const ContactBlockNoFollowBtn = ({contactInfo}) => {
 
-    console.log(contactInfo)
-
     return (
         <div className="container gym-info">
             <div className="row">

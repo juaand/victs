@@ -4,8 +4,6 @@ import {Link} from 'react-router-dom'
 
 export default function ContentWithClassrooms({data, title}) {
 
-    console.log(data)
-
     const [bool, setSBool] = useState(false)
 
     const showAll = () => {

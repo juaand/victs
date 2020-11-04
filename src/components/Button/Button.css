@@ -11,12 +11,12 @@
   border: 0;
 }
 
-.button.__yellow-btn.disabled {
-  pointer-events: none;
-  color: rgba(51, 51, 51, 0.3);
-}
-
 .button.__follow-btn {
   border: solid 0.1rem #ffcc00;
   background: #fff;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
 }

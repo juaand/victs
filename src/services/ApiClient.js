@@ -146,6 +146,7 @@ export const updateLesson = ({
   });
 
 export const deleteLesson = (id) => http.post(`/lesson/${id}/delete`);
+export const getLessonGuests = (id) => http.get(`/lesson-guests/${id}`);
 
 //classroom routes
 
