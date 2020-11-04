@@ -1,0 +1,25 @@
+.class-card {
+  color: #333;
+  min-height: 13rem;
+  border-bottom: solid 0.1rem #e8e8e8;
+  border-right: solid 0.1rem #e8e8e8;
+  padding: 2rem;
+  position: relative;
+  transition: all 200ms ease-in-out;
+}
+
+.class-card:hover {
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0, 169, 173, 0.5);
+}
+
+.class-card h1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.class-card .capacity {
+  position: absolute;
+  bottom: 1rem;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import AuthenticatedRoute from './AuthenticatedRoute'
-import Classroom from './components/Layouts/Classrooms/Classrooms'
+import Classroom from './components/Layouts/Classrooms/Classroom'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import GymsCenters from './components/Layouts/GymsCenters/GymsCenters'
@@ -13,7 +13,8 @@ import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
 import MyInfoInstructor from './components/MyInfo/MyInfoInstructor/MyInfoInstructor'
 import Register from './components/Register/Register'
 import {useAuthContext} from './contexts/AuthContext'
-import EditLesson from './components/EditLesson/EditLesson'
+import EditLesson from './components/Layouts/EditLesson/EditLesson'
+import EditClassroom from './components/Layouts/EditClassroom/EditClassroom'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
         <AuthenticatedRoute path='/edit-lesson' render={(props) => <EditLesson {...props} user={user} />} />
         <AuthenticatedRoute path='/lessons' render={(props) => <Lessons {...props} user={user} />} />
+        <AuthenticatedRoute path='/edit-classroom' render={(props) => <EditClassroom {...props} user={user} />} />
         <AuthenticatedRoute path='/classrooms' render={(props) => <Classroom {...props} user={user} />} />
         {user && <Redirect to='/my-info'/>}
         {!user && <Redirect to='/' />}

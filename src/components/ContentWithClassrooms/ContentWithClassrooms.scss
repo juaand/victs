@@ -1,0 +1,27 @@
+@import '../../stylesheets/variables';
+
+.class-card {
+    color: $text;
+    min-height: 13rem;
+    border-bottom: solid 0.1rem $light-gray;
+    border-right: solid 0.1rem $light-gray;
+    padding: 2rem;
+    position: relative;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+        color: $white;
+        text-decoration: none;
+        background: rgba($blue, 0.5);
+    }
+
+    h1 {
+        font-size: 2.4rem;
+        font-weight: 400;
+    }
+
+    .capacity {
+        position: absolute;
+        bottom: 1rem;
+    }
+}
