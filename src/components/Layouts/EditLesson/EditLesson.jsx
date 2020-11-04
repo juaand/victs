@@ -176,7 +176,7 @@ export default function EditLesson(props) {
     })
 
     const lessonDelete = async (lessonId) => {
-        deleteLesson(lessonId)
+        await deleteLesson(lessonId)
         setIsMessage('Lesson deleted successfully')
         setTimeout(() => {
             history.push('/my-info-gym')

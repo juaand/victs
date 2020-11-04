@@ -145,7 +145,7 @@ export const updateLesson = ({
     gym
   });
 
-export const deleteLesson = (id) => http.post(`/lesson/${id}/delete`);
+export const deleteLesson = (id) => http.get(`/lesson/${id}/delete`);
 export const getLessonGuests = (id) => http.get(`/lesson-guests/${id}`);
 
 //classroom routes
@@ -171,4 +171,4 @@ export const updateClassroom = ({ user, gym, name, rows, discipline, id }) =>
     id,
   });
 
-export const deleteClassroom = (id) => http.post(`/classroom/${id}/delete`);
+export const deleteClassroom = (id) => http.get(`/classroom/${id}/delete`);
