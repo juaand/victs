@@ -172,3 +172,5 @@ export const updateClassroom = ({ user, gym, name, rows, discipline, id }) =>
   });
 
 export const deleteClassroom = (id) => http.get(`/classroom/${id}/delete`);
+
+export const getClassroomLessons = (id) => http.get(`/classroom-lessons/${id}`)

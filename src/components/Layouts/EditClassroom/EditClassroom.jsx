@@ -2,19 +2,18 @@ import './EditClassroom.css'
 import React, {useState, useEffect} from 'react'
 import Banner from '../../Banner/Banner'
 import {useFormState} from '../../../hooks/useFormState'
-import {getDisciplines, updateClassroom} from '../../../services/ApiClient'
+import {getDisciplines, updateClassroom, getClassroomLessons, deleteClassroom} from '../../../services/ApiClient'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Button/Button'
 import {useHistory} from 'react-router-dom'
 import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
+import LessonGuests from '../../LessonGuests/LessonGuests'
+import ClassroomLessons from '../../ClassroomLessons/ClassroomLessons'
 
 export default function EditClassroom(props) {
 
     const user = props.user
     const classroomInfo = props.location.state.classroom
-
-    console.log(user)
-    console.log(classroomInfo)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -44,6 +43,8 @@ export default function EditClassroom(props) {
 
     const [disciplineList, setDisciplineList] = useState([])
     const [registerError, setRegisterError] = useState(null)
+    const [lessonList, setLessonList] = useState([])
+    const [isMessage, setIsMessage] = useState('')
 
 
     const handleSubmit = async (event) => {
@@ -74,6 +75,14 @@ export default function EditClassroom(props) {
         data.discipline = newArray
     }
 
+    const classroomDelete = async (classroomId) => {
+        await deleteClassroom(classroomId)
+        setIsMessage('Classroom deleted successfully')
+        setTimeout(() => {
+            history.push('/my-info-gym')
+        }, 3000)
+    }
+
 
     useEffect(() => {
         getDisciplines()
@@ -83,12 +92,26 @@ export default function EditClassroom(props) {
             })
     }, [])
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const lessons = await getClassroomLessons(classroomInfo.id)
+            setLessonList(lessons)
+        }
+        fetchData()
+    }, [classroomInfo.id])
+
     const isError = Object.values(error).some(err => err)
+
+    console.log(lessonList)
 
     return (
         <>
+            {isMessage && <div className="EditLesson message">
+                <div className="content">{isMessage}</div>
+            </div>}
             <section className="container-fluid margin-top">
                 <Banner title="Edit classroom" subtitle={user.user.name} />
+                {lessonList ? lessonList.map(el => <ClassroomLessons lesson={el} />) : 'Loading'}
             </section>
             <section className="container add-lesson">
                 <div className="row justify-content-center">
@@ -135,6 +158,16 @@ export default function EditClassroom(props) {
                                 disabled={isError}
                             >Edit classroom</Button>
                         </form>
+                    </div>
+                </div>
+                <div className="delete-row delete-block row justify-content-center">
+                    <div className="col-12 col-sm-4 d-flex justify-content-end">
+                        <h1 className="big-yellow big">Delete lesson</h1>
+                    </div>
+                    <div className={lessonList.length > 0 ? 'col-sm-6 col-12 delete-btn' : 'col-sm-6 col-12'}>
+                        {lessonList.length > 0 && <smal>Cannot delete a lesson if any user will attending it</smal>}
+
+                        <Button className={lessonList.length > 0 ? 'Button Button__enter disabled' : 'Button Button__enter'} onClick={() => classroomDelete(classroomInfo.id)}>Delete lesson</Button>
                     </div>
                 </div>
             </section>
