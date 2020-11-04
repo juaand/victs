@@ -18,20 +18,20 @@ export default function EditLesson(props) {
         {
             data: {
                 name: lesson.name,
-                address: lesson.addres,
+                address: lesson.address,
                 city: lesson.city,
                 zipcode: lesson.zipcode,
                 discipline: lesson.discipline,
                 details: lesson.details,
-                inithour: lesson.inithour,
-                instructor: lesson.instructor.user.name,
-                classroom: lesson.classroom.name,
+                date: new Date(lesson.date),
+                instructor: lesson.instructor.user.id,
+                classroom: lesson.classroom.id,
                 capacity: lesson.capacity,
                 duration: lesson.duration
             },
             error: {
                 name: true,
-                inithour: true
+                date: true
             },
             touch: {},
         },
@@ -42,25 +42,26 @@ export default function EditLesson(props) {
             zipcode: v => v.length,
             details: v => v.length,
             capacity: v => v.length,
-            inithour: v => v.length,
+            date: v => v.length,
             duration: v => v.length
         }
     )
 
     const {data, error, touch} = state
 
-    const [inithour, setInithour] = useState(new Date())
+    const [date, setDate] = useState(new Date())
     const [disciplinesList, setDisciplinesList] = useState([])
     const [registerError, setRegisterError] = useState(null)
-    const [bool, setBool] = useState(true)
     const [instructorBool, setInstructorBool] = useState(false)
     const [classroomBool, setClassroomBool] = useState(false)
     const [instructorsData, setInstructorsData] = useState([])
     const [classroomData, setClassroomData] = useState([])
     const [isInstructor, setIsInstructor] = useState(true)
     const [isClassroom, setIsClassroom] = useState(true)
-    const [instructorName, setInstructorName] = useState('')
-    const [classroomName, setClassroomName] = useState('')
+    const [instructorId, setInstructorId] = useState(data.instructor)
+    const [classroomId, setClassroomId] = useState(data.classroom)
+    const [instructorName, setInstructorName] = useState(lesson.instructor.user.name)
+    const [classroomName, setClassroomName] = useState(lesson.classroom.name)
     const [search, setSearch] = useState('')
 
     const handleSubmit = async (event) => {
@@ -68,6 +69,8 @@ export default function EditLesson(props) {
 
         try {
             console.log(data)
+            data.instructor = instructorId
+            data.classroom = classroomId
             // await updateLesson(data)
             // update user / user login cookie
             // history.push('/my-info-gym')
@@ -85,8 +88,9 @@ export default function EditLesson(props) {
     }
 
     const setTime = (e) => {
-        setInithour(e)
-        console.log(inithour)
+        setDate(e)
+        console.log(e)
+        data.date = e
     }
 
     useEffect(() => {
@@ -101,7 +105,6 @@ export default function EditLesson(props) {
 
     const selectInstructor = (event) => {
         event.preventDefault()
-        setBool(!bool)
         setInstructorBool(!instructorBool)
         data.instructor = ''
         setClassroomBool(false)
@@ -112,7 +115,6 @@ export default function EditLesson(props) {
 
     const selectClassroom = (event) => {
         event.preventDefault()
-        setBool(!bool)
         setClassroomBool(!classroomBool)
         setInstructorBool(false)
         getGymClassrooms(user.id)
@@ -122,20 +124,17 @@ export default function EditLesson(props) {
 
     const goBackInstructors = (e) => {
         e.preventDefault()
-        setBool(!bool)
         setInstructorBool(!instructorBool)
     }
 
     const goBackClassroom = (e) => {
         e.preventDefault()
-        setBool(!bool)
         setClassroomBool(!classroomBool)
     }
 
     const instructorSelected = (e) => {
         e.preventDefault()
-        data.instructor = e.target.id
-        setIsInstructor(!isInstructor)
+        setInstructorId(e.target.id)
         setInstructorBool(!instructorBool)
         setInstructorName(e.target.innerText)
     }
@@ -143,8 +142,7 @@ export default function EditLesson(props) {
     const classroomSelected = (e) => {
         e.preventDefault()
         data.capacity = e.target.getAttribute('data-rows').split(',').reduce((acc, el) => acc + parseInt(el), 0)
-        data.classroom = e.target.id
-        setIsClassroom(!isClassroom)
+        setClassroomId(e.target.id)
         setClassroomBool(!classroomBool)
         setClassroomName(e.target.innerText)
     }
@@ -233,7 +231,7 @@ export default function EditLesson(props) {
                                     <label className="label" htmlFor="date">Date</label>
                                     <DateTimePicker
                                         onChange={setTime}
-                                        value={data.inithour}
+                                        value={data.date}
                                         format="dd-MM-y h:mm a"
                                     />
                                 </div>
@@ -275,13 +273,13 @@ export default function EditLesson(props) {
                                     {isInstructor &&
                                         <div className="col-12 col-sm-6 instructor">
                                             <strong>Instructor</strong>
-                                            {data.instructor}
+                                            {instructorName}
                                         </div>
                                     }
                                     {isClassroom &&
                                         <div className="col-12 col-sm-6 instructor">
                                             <strong>Classroom</strong>
-                                            {data.classroom}
+                                            {classroomName}
                                         </div>
                                     }
                                 </div>
