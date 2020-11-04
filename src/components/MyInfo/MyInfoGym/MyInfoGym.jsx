@@ -10,7 +10,7 @@ import ContentWithClassrooms from '../../ContentWithClassrooms/ContentWithClassr
 
 const MyInfoGym = ({user, gym}) => {
 
-    console.log(user)
+
     console.log(gym)
 
     const [userStatus, setUserStatus] = useState(user)
@@ -32,7 +32,9 @@ const MyInfoGym = ({user, gym}) => {
     useEffect(() => {
         const fetchData = async () => {
             const lessons = await getGymLessons(gym.id)
+            console.log(lessons)
             setGymLessons(lessons)
+
         }
         fetchData()
     }, [gym.id])

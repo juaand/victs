@@ -129,7 +129,7 @@ export const updateLesson = ({
   classroom,
   gym
 }) =>
-  http.post(`/lesson/${id}/edit`, {
+  http.patch(`/lesson/${id}/edit`, {
     name,
     address,
     zipcode,

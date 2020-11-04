@@ -16,6 +16,7 @@ export default function EditLesson(props) {
     const lesson = props.location.state.lesson
 
     console.log(lesson)
+    console.log(user)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -27,7 +28,7 @@ export default function EditLesson(props) {
                 discipline: lesson.discipline,
                 details: lesson.details,
                 date: new Date(lesson.date),
-                instructor: lesson.instructor.user.id,
+                instructor: lesson.instructor.id,
                 classroom: lesson.classroom.id,
                 capacity: lesson.capacity,
                 duration: lesson.duration,
@@ -79,7 +80,6 @@ export default function EditLesson(props) {
             data.instructor = instructorId
             data.classroom = classroomId
             await updateLesson(data)
-            // update user / user login cookie
             history.push('/my-info-gym')
         } catch (err) {
             setRegisterError(err.response?.data?.message)
