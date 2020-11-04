@@ -1,24 +1,14 @@
 import './EditLesson.css'
 import React, {useState, useEffect} from 'react'
-<<<<<<< HEAD:src/components/Layouts/EditLesson/EditLesson.jsx
 import Banner from '../../Banner/Banner'
 import {useFormState} from '../../../hooks/useFormState'
-import {getDisciplines, getInstructors, getGymClassrooms} from '../../../services/ApiClient'
-
+import {getDisciplines, getInstructors, getGymClassrooms, updateLesson} from '../../../services/ApiClient'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Button/Button'
 import DateTimePicker from 'react-datetime-picker'
 import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
-=======
-import Banner from '../Banner/Banner'
-import {useFormState} from '../../hooks/useFormState'
-import {getDisciplines, getInstructors, getGymClassrooms, updateLesson} from '../../services/ApiClient'
-import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
-import Button from '../Button/Button'
-import DateTimePicker from 'react-datetime-picker'
-import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 import { useHistory } from 'react-router-dom'
->>>>>>> juan/rct039-update-lessons-in-gym-home:src/components/EditLesson/EditLesson.jsx
+
 
 export default function EditLesson(props) {
 
