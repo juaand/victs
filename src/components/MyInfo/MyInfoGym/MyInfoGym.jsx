@@ -10,9 +10,6 @@ import ContentWithClassrooms from '../../ContentWithClassrooms/ContentWithClassr
 
 const MyInfoGym = ({user, gym}) => {
 
-    console.log(user)
-    console.log(gym)
-
     const [userStatus, setUserStatus] = useState(user)
     const [gymLessons, setGymLessons] = useState([])
     const [gymClassrooms, setGymClassrooms] = useState([])
@@ -21,8 +18,8 @@ const MyInfoGym = ({user, gym}) => {
     const editLesson = async (lesson) => {
         history.push({
             pathname: '/edit-lesson',
-            state: { lesson: lesson }
-          })
+            state: {lesson: lesson}
+        })
     }
 
     useEffect(() => {
@@ -46,13 +43,13 @@ const MyInfoGym = ({user, gym}) => {
     }, [gym.id])
 
     return (
-        <>
+        <section className="MyInfoGym">
             <UserAccordeon user={userStatus} gymInfo={gym} />
             <ContactBlockNoFollowBtn contactInfo={gym} />
             {gymLessons ? <ContentWithLessons onClick={editLesson} title="Upcoming lessons" data={gymLessons} /> : 'Loading'}
-            <ContentWithInstructors title="Instructors" data={gymLessons} />
-            <ContentWithClassrooms title="Classrooms" data={gymClassrooms} />
-        </>
+            {gymLessons ? <ContentWithInstructors title="Instructors" data={gymLessons} /> : 'Loading'}
+            {gymClassrooms ? <ContentWithClassrooms title="Classrooms" data={gymClassrooms} /> : 'Loading'}
+        </section>
     )
 }
 

@@ -2,10 +2,54 @@
   font-size: 1.4rem;
   border-right: solid 0.1rem #e8e8e8;
   min-height: 20rem;
+  transition: all 200ms ease-in-out;
+  position: relative;
 }
 
 .calendar-item.false-link:hover {
   cursor: pointer;
+}
+
+.calendar-item.false-link:hover:before {
+  width: 2.6rem;
+  height: 2.6rem;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.calendar-item.false-link:hover:after {
+  width: 2rem;
+  height: 2rem;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.calendar-item:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../images/plus.svg) no-repeat center center/contain;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  transition: all 300ms ease-in-out;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.calendar-item:after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../images/next.svg) no-repeat center center/contain;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  transition: all 300ms ease-in-out;
+  transform: rotate(90deg);
+  opacity: 0;
 }
 
 .calendar-item span {

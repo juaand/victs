@@ -3,3 +3,21 @@
     background-position: -3300px 0px;
   }
 }
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

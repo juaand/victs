@@ -10,15 +10,15 @@
   &.__yellow-btn {
     background: $yellow;
     border: 0;
-
-    &.disabled {
-      pointer-events: none;
-      color: rgba($text, 0.3);
-    }
   }
 
   &.__follow-btn {
     border: solid 0.1rem $yellow;
     background: $white;
   }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
 }
