@@ -10,11 +10,13 @@ import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
 export default function Classroom({user}) {
 
+    console.log(user)
+
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
-                user: user.id,
-                gym: user.user.id,
+                user: user.user.id,
+                gym: user.id,
                 name: "",
                 rows: [],
                 discipline: []

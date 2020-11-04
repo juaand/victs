@@ -29,7 +29,9 @@ const MyInfoGym = ({user, gym}) => {
     useEffect(() => {
         const fetchData = async () => {
             const lessons = await getGymLessons(gym.id)
+            console.log(lessons)
             setGymLessons(lessons)
+
         }
         fetchData()
     }, [gym.id])

@@ -13,11 +13,14 @@ export default function EditClassroom(props) {
     const user = props.user
     const classroomInfo = props.location.state.classroom
 
+    console.log(user)
+    console.log(classroomInfo)
+
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
-                user: user.id,
-                gym: user.user.id,
+                user: user.user.id,
+                gym: user.id,
                 name: classroomInfo.name,
                 rows: classroomInfo.rows,
                 discipline: classroomInfo.discipline
@@ -56,9 +59,8 @@ export default function EditClassroom(props) {
         try {
             console.log(data)
             data.id = classroomInfo.id
-            const updClassroom = await updateClassroom(data)
-            console.log(updClassroom)
-            // history.push('/my-info-gym')
+            await updateClassroom(data)
+            history.push('/my-info-gym')
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
