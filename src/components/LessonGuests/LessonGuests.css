@@ -3,6 +3,10 @@
   display: flex;
   align-items: center;
   font-size: 1.6rem;
+  padding-top: 4rem;
+  border-bottom: solid 0.1rem #e8e8e8;
+  padding-bottom: 2rem;
+  font-size: 1.2rem;
 }
 
 .lesson-guest .guest-name .avatar {
@@ -12,4 +16,9 @@
   border-radius: 2rem;
   margin-right: 1rem;
   border: solid 0.2rem #ffcc00;
+}
+
+.lesson-guest .guest-mail {
+  display: flex;
+  flex-direction: column;
 }

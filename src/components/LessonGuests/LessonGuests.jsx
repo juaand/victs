@@ -2,6 +2,7 @@ import './LessonGuests.css'
 import React from 'react'
 
 export default function LessonGuests({guest}) {
+
     return (
         <>
             <div className="container-fluid my-plans LessonGuests">
@@ -14,7 +15,10 @@ export default function LessonGuests({guest}) {
                             <div className="row">
                                 <div className="guest-name col-4">
                                     <span className="avatar" style={{background: `url(${guest.user.avatar}) no-repeat center center / cover`}}></span>
-                                    {guest.user.name}
+                                    <span className="guest-mail">
+                                        {guest.user.name}
+                                        <span className="email">{guest.user.email}</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
