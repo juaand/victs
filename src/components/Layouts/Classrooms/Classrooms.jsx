@@ -2,7 +2,7 @@ import './Classrooms.css'
 import React, {useState, useEffect} from 'react'
 import Banner from '../../Banner/Banner'
 import {useFormState} from '../../../hooks/useFormState'
-import {getDisciplines} from '../../../services/ApiClient'
+import {getDisciplines, createClassroom} from '../../../services/ApiClient'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Button/Button'
 import {useHistory} from 'react-router-dom'
@@ -14,10 +14,10 @@ export default function Classroom({user}) {
         {
             data: {
                 user: user.id,
-                gym: user.id,
+                gym: user.user.id,
                 name: "",
                 rows: [],
-                disciplines: []
+                discipline: []
             },
             error: {
                 name: true,
@@ -28,7 +28,7 @@ export default function Classroom({user}) {
         {
             name: v => v.length,
             rows: v => v.length,
-            disciplines: v => v.length
+            discipline: v => v.length
         }
     )
 
@@ -36,7 +36,7 @@ export default function Classroom({user}) {
 
     const {data, error, touch} = state
 
-    const [disciplinesList, setDisciplinesList] = useState([])
+    const [disciplineList, setDisciplineList] = useState([])
     const [registerError, setRegisterError] = useState(null)
 
 
@@ -49,19 +49,19 @@ export default function Classroom({user}) {
 
         try {
             console.log(data)
-            // await register(data)
-            // history.push('/my-info-gym')
+            await createClassroom(data)
+            history.push('/my-info-gym')
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
     }
 
-    const getDisciplinesItems = (e) => {
-        let newArray = [...data.disciplines, e.target.id]
-        if (data.disciplines.includes(e.target.id)) {
+    const getDisciplineItems = (e) => {
+        let newArray = [...data.discipline, e.target.id]
+        if (data.discipline.includes(e.target.id)) {
             newArray = newArray.filter(el => el !== e.target.id)
         }
-        data.disciplines = newArray
+        data.discipline = newArray
     }
 
 
@@ -69,7 +69,7 @@ export default function Classroom({user}) {
         getDisciplines()
             .then(res => {
                 console.log(res)
-                setDisciplinesList(res[0])
+                setDisciplineList(res[0])
             })
     }, [])
 
@@ -101,8 +101,8 @@ export default function Classroom({user}) {
                                 />
 
                                 <div className="form-group">
-                                    <label className="label" htmlFor="disciplines">Disciplines</label>
-                                    <CheckBoxWithLabel data={disciplinesList} name="disciplines" onChange={getDisciplinesItems} />
+                                    <label className="label" htmlFor="discipline">Disciplines</label>
+                                    <CheckBoxWithLabel data={disciplineList} name="discipline" onChange={getDisciplineItems} />
                                 </div>
 
                                 <InputWithLabel
