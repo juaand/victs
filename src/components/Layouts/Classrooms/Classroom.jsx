@@ -1,4 +1,4 @@
-import './Classrooms.css'
+import './Classroom.css'
 import React, {useState, useEffect} from 'react'
 import Banner from '../../Banner/Banner'
 import {useFormState} from '../../../hooks/useFormState'
@@ -123,7 +123,7 @@ export default function Classroom({user}) {
                                 type="submit"
                                 className="Button Button__enter"
                                 disabled={isError}
-                            >Add classroom</Button>
+                            >Create classroom</Button>
                         </form>
                     </div>
                 </div>

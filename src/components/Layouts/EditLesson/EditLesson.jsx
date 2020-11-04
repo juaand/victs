@@ -1,13 +1,13 @@
 import './EditLesson.css'
 import React, {useState, useEffect} from 'react'
-import Banner from '../Banner/Banner'
-import {useFormState} from '../../hooks/useFormState'
-import {getDisciplines, getInstructors, getGymClassrooms} from '../../services/ApiClient'
+import Banner from '../../Banner/Banner'
+import {useFormState} from '../../../hooks/useFormState'
+import {getDisciplines, getInstructors, getGymClassrooms} from '../../../services/ApiClient'
 
-import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
-import Button from '../Button/Button'
+import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import Button from '../../Button/Button'
 import DateTimePicker from 'react-datetime-picker'
-import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
+import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
 export default function EditLesson(props) {
 

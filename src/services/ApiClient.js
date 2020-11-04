@@ -153,7 +153,7 @@ export const createClassroom = ({ user, gym, name, rows, discipline }) =>
 export const classroomInfo = (id) => http.get(`/classroom/${id}`, { id });
 
 export const updateClassroom = ({ user, gym, name, rows, discipline, id }) =>
-  http.post(`/classroom/${id}/edit`, {
+  http.patch(`/classroom/${id}/edit`, {
     user,
     gym,
     name,
