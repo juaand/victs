@@ -87,7 +87,6 @@ export default function EditClassroom(props) {
     useEffect(() => {
         getDisciplines()
             .then(res => {
-                console.log(res)
                 setDisciplineList(res[0])
             })
     }, [])
@@ -101,8 +100,6 @@ export default function EditClassroom(props) {
     }, [classroomInfo.id])
 
     const isError = Object.values(error).some(err => err)
-
-    console.log(lessonList)
 
     return (
         <>
