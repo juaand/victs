@@ -90,24 +90,28 @@ export const createLesson = ({
   address,
   zipcode,
   city,
-  disciplines,
+  discipline,
   date,
   duration,
   details,
   capacity,
   instructor,
+  gym,
+  classroom
 }) =>
   http.post("/lesson", {
     name,
     address,
     zipcode,
     city,
-    disciplines,
+    discipline,
     date,
     duration,
     details,
     capacity,
     instructor,
+    gym,
+    classroom
   });
 export const lessonInfo = (id) => http.get(`/lesson/${id}`, { id });
 export const updateLesson = ({
@@ -115,26 +119,30 @@ export const updateLesson = ({
   address,
   zipcode,
   city,
-  disciplines,
+  discipline,
   date,
   duration,
   details,
   capacity,
   instructor,
   id,
+  classroom,
+  gym
 }) =>
   http.post(`/lesson/${id}/edit`, {
     name,
     address,
     zipcode,
     city,
-    disciplines,
+    discipline,
     date,
     duration,
     details,
     capacity,
     instructor,
     id,
+    classroom,
+    gym
   });
 
 export const deleteLesson = (id) => http.post(`/lesson/${id}/delete`);

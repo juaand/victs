@@ -2,17 +2,19 @@ import './EditLesson.css'
 import React, {useState, useEffect} from 'react'
 import Banner from '../Banner/Banner'
 import {useFormState} from '../../hooks/useFormState'
-import {getDisciplines, getInstructors, getGymClassrooms} from '../../services/ApiClient'
-
+import {getDisciplines, getInstructors, getGymClassrooms, updateLesson} from '../../services/ApiClient'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Button/Button'
 import DateTimePicker from 'react-datetime-picker'
 import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
+import { useHistory } from 'react-router-dom'
 
 export default function EditLesson(props) {
 
     const user = props.user
     const lesson = props.location.state.lesson
+
+    console.log(lesson)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -27,7 +29,9 @@ export default function EditLesson(props) {
                 instructor: lesson.instructor.user.id,
                 classroom: lesson.classroom.id,
                 capacity: lesson.capacity,
-                duration: lesson.duration
+                duration: lesson.duration,
+                gym: lesson.gym,
+                id: lesson.id
             },
             error: {
                 name: true,
@@ -64,6 +68,8 @@ export default function EditLesson(props) {
     const [classroomName, setClassroomName] = useState(lesson.classroom.name)
     const [search, setSearch] = useState('')
 
+    const history = useHistory();
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -71,20 +77,20 @@ export default function EditLesson(props) {
             console.log(data)
             data.instructor = instructorId
             data.classroom = classroomId
-            // await updateLesson(data)
+            await updateLesson(data)
             // update user / user login cookie
-            // history.push('/my-info-gym')
+            history.push('/my-info-gym')
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
     }
 
     const getDisciplinesItems = (e) => {
-        let newArray = [...data.disciplines, e.target.id]
-        if (data.disciplines.includes(e.target.id)) {
+        let newArray = [...data.discipline, e.target.id]
+        if (data.discipline.includes(e.target.id)) {
             newArray = newArray.filter(el => el !== e.target.id)
         }
-        data.disciplines = newArray
+        data.discipline = newArray
     }
 
     const setTime = (e) => {
@@ -189,8 +195,8 @@ export default function EditLesson(props) {
                                 />
 
                                 <div className="form-group">
-                                    <label className="label" htmlFor="disciplines">Disciplines</label>
-                                    <CheckBoxWithLabel data={disciplinesList} name="disciplines" onChange={getDisciplinesItems} />
+                                    <label className="label" htmlFor="discipline">Disciplines</label>
+                                    <CheckBoxWithLabel data={disciplinesList} name="discipline" onChange={getDisciplinesItems} />
                                 </div>
 
                                 <InputWithLabel

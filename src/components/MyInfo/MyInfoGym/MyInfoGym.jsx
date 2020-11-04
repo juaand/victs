@@ -9,6 +9,9 @@ import {useHistory} from 'react-router-dom'
 
 const MyInfoGym = ({user, gym}) => {
 
+    console.log(user)
+    console.log(gym)
+
     const [userStatus, setUserStatus] = useState(user)
     const [gymLessons, setGymLessons] = useState([])
     const history = useHistory()
