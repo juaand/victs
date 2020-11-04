@@ -21,6 +21,7 @@ http.interceptors.response.use(function (response) {
 export const getGyms = () => http.get('/gyms')
 export const getGymDetail = (id) => http.get(`/gym-detail/${id}`)
 export const getGymClassrooms = (id) => http.get(`/gym-classrooms/${id}`)
+export const getGymLessons = (id) => http.get(`/gym-lessons/${id}`)
 
 //instructor.routes
 export const getInstructors = () => http.get(`/instructors`)

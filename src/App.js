@@ -13,6 +13,7 @@ import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
 import MyInfoInstructor from './components/MyInfo/MyInfoInstructor/MyInfoInstructor'
 import Register from './components/Register/Register'
 import {useAuthContext} from './contexts/AuthContext'
+import EditLesson from './components/EditLesson/EditLesson'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
+        <AuthenticatedRoute path='/edit-lesson' render={(props) => <EditLesson {...props} user={user} />} />
         <AuthenticatedRoute path='/lessons' render={(props) => <Lessons {...props} user={user} />} />
         <AuthenticatedRoute path='/classrooms' render={(props) => <Classroom {...props} user={user} />} />
         {user && <Redirect to='/my-info'/>}

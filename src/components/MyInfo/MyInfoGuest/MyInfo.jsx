@@ -18,8 +18,7 @@ const MyInfo = (props) => {
     const [modalData, setModalData] = useState([])
     const [reservationData, setReservationData] = useState([])
     const [userStatus, setUserStatus] = useState(props.user)
-
-    console.log(props.user)
+    const [messageOnCancel, setMessageOnCancel] = useState('')
 
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
@@ -54,8 +53,6 @@ const MyInfo = (props) => {
     useEffect(() => {
         setUserStatus(props.user)
     }, [props.user])
-
-    const [messageOnCancel, setMessageOnCancel] = useState('')
 
 
     const cancelReservation = async () => {
