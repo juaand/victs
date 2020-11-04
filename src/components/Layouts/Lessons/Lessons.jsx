@@ -2,12 +2,13 @@ import './Lessons.css'
 import React, {useState, useEffect} from 'react'
 import Banner from '../../Banner/Banner'
 import {useFormState} from '../../../hooks/useFormState'
-import {getDisciplines, getInstructors, getGymClassrooms} from '../../../services/ApiClient'
+import {getDisciplines, getInstructors, getGymClassrooms, createLesson} from '../../../services/ApiClient'
 
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Button/Button'
 import DateTimePicker from 'react-datetime-picker'
 import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
+import { useHistory } from 'react-router-dom'
 
 export default function Lessons({user}) {
 
@@ -19,7 +20,7 @@ export default function Lessons({user}) {
                 city: user.role === 'Gym' ? user.user.city : '',
                 zipcode: user.role === 'Gym' ? user.user.zipcode : '',
                 disciplines: [],
-                inithour: new Date(),
+                date: new Date(),
                 instructor: "",
                 classroom: "",
                 capacity: "",
@@ -27,7 +28,7 @@ export default function Lessons({user}) {
             },
             error: {
                 name: true,
-                inithour: true
+                date: true
             },
             touch: {},
         },
@@ -38,14 +39,14 @@ export default function Lessons({user}) {
             zipcode: v => v.length,
             details: v => v.length,
             capacity: v => v.length,
-            inithour: v => v.length,
+            date: v => v.length,
             duration: v => v.length
         }
     )
 
     const {data, error, touch} = state
 
-    const [inithour, setInithour] = useState(new Date())
+    const [date, setDate] = useState(new Date())
     const [disciplinesList, setDisciplinesList] = useState([])
     const [registerError, setRegisterError] = useState(null)
     const [bool, setBool] = useState(true)
@@ -59,13 +60,15 @@ export default function Lessons({user}) {
     const [classroomName, setClassroomName] = useState('')
     const [search, setSearch] = useState('')
 
+    const history = useHistory()
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         try {
             console.log(data)
-            // await register(data)
-            // history.push('/my-info-gym')
+            await createLesson(data)
+            history.push('/my-info-gym')
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
@@ -80,8 +83,9 @@ export default function Lessons({user}) {
     }
 
     const setTime = (e) => {
-        setInithour(e)
-        console.log(inithour)
+        setDate(e)
+        console.log(e)
+        data.date = e
     }
 
     useEffect(() => {
@@ -227,7 +231,7 @@ export default function Lessons({user}) {
                                     <label className="label" htmlFor="date">Date</label>
                                     <DateTimePicker
                                         onChange={setTime}
-                                        value={data.inithour}
+                                        value={data.date}
                                         format="dd-MM-y h:mm a"
                                     />
                                 </div>
