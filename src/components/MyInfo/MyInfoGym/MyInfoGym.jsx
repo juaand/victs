@@ -7,6 +7,7 @@ import ContentWithLessons from '../../ContentWithLessons/ContentWithLessons'
 import ContentWithInstructors from '../../ContentWithInstructors/ContentWithInstructors'
 import {useHistory} from 'react-router-dom'
 import ContentWithClassrooms from '../../ContentWithClassrooms/ContentWithClassrooms'
+import FollowInfoBar from '../../FollowInfoBar/FollowInfoBar'
 
 const MyInfoGym = ({user, gym}) => {
 
@@ -77,7 +78,8 @@ const MyInfoGym = ({user, gym}) => {
                 </section>
             }
             <UserAccordeon user={userStatus} gymInfo={gym} />
-            <ContactBlockNoFollowBtn contactInfo={gym} onClick={showFollowers} />
+            <FollowInfoBar followInfo={gym.user} onClick={showFollowers} />
+            <ContactBlockNoFollowBtn contactInfo={gym} />
             {gymLessons ? <ContentWithLessons onClick={editLesson} title="Upcoming lessons" data={gymLessons} /> : 'Loading'}
             {gymLessons ? <ContentWithInstructors title="Instructors" data={gymLessons} /> : 'Loading'}
             {gymClassrooms ? <ContentWithClassrooms title="Classrooms" data={gymClassrooms} /> : 'Loading'}
