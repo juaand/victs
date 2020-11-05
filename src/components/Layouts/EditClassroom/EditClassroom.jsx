@@ -7,7 +7,6 @@ import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Button/Button'
 import {useHistory} from 'react-router-dom'
 import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
-import LessonGuests from '../../LessonGuests/LessonGuests'
 import ClassroomLessons from '../../ClassroomLessons/ClassroomLessons'
 
 export default function EditClassroom(props) {
@@ -107,8 +106,21 @@ export default function EditClassroom(props) {
                 <div className="content">{isMessage}</div>
             </div>}
             <section className="container-fluid margin-top">
-                <Banner title="Edit classroom" subtitle={user.user.name} />
-                {lessonList ? lessonList.map(el => <ClassroomLessons lesson={el} />) : 'Loading'}
+                <Banner title="Edit classroom" subtitle={classroomInfo.name} />
+            </section>
+            <section className="container-fluid my-plans EditClassroom">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4 item">
+                            <h1>Lessons booked in this classroom</h1>
+                        </div>
+                        <div className="col-8 lesson-guest d-flex align-items-center">
+                            <div className="row w-100">
+                                {lessonList.length === 0 ? <h3 className="no-info">No lessons were booked in this classroom</h3> : lessonList.map(el => <ClassroomLessons lesson={el} />)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section className="container add-lesson">
                 <div className="row justify-content-center">
@@ -159,12 +171,12 @@ export default function EditClassroom(props) {
                 </div>
                 <div className="delete-row delete-block row justify-content-center">
                     <div className="col-12 col-sm-4 d-flex justify-content-end">
-                        <h1 className="big-yellow big">Delete lesson</h1>
+                        <h1 className="big-yellow big">Delete classroom</h1>
                     </div>
                     <div className={lessonList.length > 0 ? 'col-sm-6 col-12 delete-btn' : 'col-sm-6 col-12'}>
-                        {lessonList.length > 0 && <smal>Cannot delete a lesson if any user will attending it</smal>}
+                        {lessonList.length > 0 && <smal>Cannot delete classroom if any lesson were booked in it</smal>}
 
-                        <Button className={lessonList.length > 0 ? 'Button Button__enter disabled' : 'Button Button__enter'} onClick={() => classroomDelete(classroomInfo.id)}>Delete lesson</Button>
+                        <Button className={lessonList.length > 0 ? 'Button Button__enter disabled' : 'Button Button__enter'} onClick={() => classroomDelete(classroomInfo.id)}>Delete classroom</Button>
                     </div>
                 </div>
             </section>

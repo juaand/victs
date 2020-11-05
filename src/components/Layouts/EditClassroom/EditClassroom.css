@@ -1,1 +1,6 @@
-/* No CSS */
+.EditClassroom .guest-name {
+  margin-top: 0;
+  padding-top: 0rem;
+  border-bottom: 0;
+  border-right: solid 0.1rem #e8e8e8;
+}

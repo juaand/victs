@@ -190,7 +190,20 @@ export default function EditLesson(props) {
             </div>}
             <section className="container-fluid margin-top EditLesson">
                 <Banner title="Lesson detail" subtitle={data.name} />
-                {lessonGuests ? lessonGuests.map(el => <LessonGuests guest={el} />) : 'Loading'}
+            </section>
+            <section className="container-fluid my-plans EditClassroom">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4 item">
+                            <h1>Users booked in this lesson</h1>
+                        </div>
+                        <div className="col-8 lesson-guest d-flex align-items-center">
+                            <div className="row ">
+                                {lessonGuests.length === 0 ? <h3 className="no-info">No users booked in this lesson</h3> : lessonGuests.map(el => <LessonGuests guest={el} />)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section className="container add-lesson">
                 <div className="row justify-content-center">
