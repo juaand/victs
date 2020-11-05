@@ -2,6 +2,7 @@ import './CheckBoxWithLabel.css'
 import React from 'react'
 
 const CheckBoxWithLabel = ({data, name, onChange}) => {
+
     return (
         <div className="row">
             {
