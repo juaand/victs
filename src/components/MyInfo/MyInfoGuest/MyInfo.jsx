@@ -54,10 +54,11 @@ const MyInfo = (props) => {
         setUserStatus(props.user)
     }, [props.user])
 
+    console.log(modalData)
 
     const cancelReservation = async () => {
         setMessageOnCancel('Your book has been cancelled successfully.')
-        const unbook = await unbooking(reservationData)
+        const unbook = await unbooking(modalData.id, reservationData)
         setBool(!bool)
         updateUser(unbook[3])
             .then(user => {
