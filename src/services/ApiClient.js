@@ -41,6 +41,10 @@ export const booking = (id, row, seat) =>
   http.post(`/book/${id}`, { id, row, seat });
 export const unbooking = (reservations) =>
   http.post(`/unbook`, { reservations });
+  export const waitingList = (id) =>
+  http.post(`/waitinglist/${id}`, { id });
+export const unWaitingList = (id) =>
+  http.post(`/unwaitinglist`, { id });
 
 //data.routes
 export const getDisciplines = () => http.get("/disciplines");
