@@ -5,3 +5,30 @@
     padding: 0;
   }
 }
+
+.followers-content {
+  h1 {
+    font-weight: 900;
+    color: $yellow;
+  }
+
+  .follower {
+    display: flex;
+    align-items: center;
+    padding: 1.6rem 0;
+    border-bottom: solid 0.1rem $light-gray;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .avatar {
+      width: 3rem;
+      height: 3rem;
+      display: block;
+      border: solid 0.2rem $yellow;
+      margin-right: 1rem;
+      border-radius: 4rem;
+    }
+  }
+}

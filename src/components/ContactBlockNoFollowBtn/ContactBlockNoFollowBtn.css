@@ -1,1 +1,12 @@
-/* No CSS */
+.followers {
+  color: #ffcc00;
+  font-weight: 600;
+}
+
+.followers strong {
+  color: #333;
+}
+
+.followers:hover {
+  cursor: pointer;
+}
