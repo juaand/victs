@@ -50,6 +50,15 @@ const MyInfo = (props) => {
         setBool(!bool)
     }
 
+
+    useEffect(() => {
+        document.querySelector('.navbar').classList.add('__grayHeader')
+    }, [])
+
+    useEffect(() => {
+        setUserStatus(props.user)
+    }, [props.user])
+
     const showFollowers = async () => {
         setBool(!bool)
         const res = await getFollowersUsers(userStatus.following)
@@ -57,9 +66,10 @@ const MyInfo = (props) => {
         console.log(res)
     }
 
+
     const cancelReservation = async () => {
         setMessageOnCancel('Your book has been cancelled successfully.')
-        const unbook = await unbooking(reservationData)
+        const unbook = await unbooking(modalData.id, reservationData)
         setBool(!bool)
         updateUser(unbook[3])
             .then(user => {
