@@ -74,7 +74,7 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
                     {rows.map((el, i) =>
                         <div row={i} className="row justify-content-center">
                             {drawSeats(el).map((el, j) =>
-                                <Button className={`classroom-place ${lesson.classroom.discipline}`} row={i} seat={j} onClick={bookSeat}>{el}</Button>
+                                <Button className={`classroom-place ${lesson.discipline}`} row={i} seat={j} onClick={bookSeat}>{el}</Button>
                             )}
                         </div>
                     )}
