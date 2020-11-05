@@ -18,7 +18,7 @@ const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
     return (
         <div className={borderBottom ? 'false-link border-bottom calendar-item col-3' : 'false-link calendar-item col-3'} onClick={internalOnClick}>
             <span className="cal-item __date">{formatDate(data.date)}</span>
-            <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString()}</span>
+            <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
             <span className="cal-item __discipline">{data.name}</span>
             <span className="cal-item __instructor">
                 <span className="avatar" style={{background: `url(${data.instructor.user.avatar}) no-repeat center center / cover`}}></span>

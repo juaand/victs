@@ -1,4 +1,13 @@
 .lesson-name {
   font-weight: 600;
   font-size: 1.4rem;
+  color: #ffcc00;
+}
+
+.lesson-date, .lesson-hour {
+  display: block;
+}
+
+.instructor-email {
+  font-size: 1.2rem;
 }
