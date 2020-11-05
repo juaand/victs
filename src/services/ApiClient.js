@@ -39,9 +39,14 @@ export const stripeInfo = ({data, id, plan}) =>
 export const followInfo = (id) => http.post(`/follow/${id}`, {id})
 export const booking = (id, row, seat) =>
   http.post(`/book/${id}`, {id, row, seat})
-export const unbooking = (reservations) =>
-  http.post(`/unbook`, {reservations})
+export const unbooking = (reservations) => http.post(`/unbook`, {reservations})
 export const getFollowersUsers = (followers) => http.post('/followers-users', followers)
+
+  export const waitingList = (id) =>
+  http.post(`/waitinglist/${id}`, { id });
+export const unWaitingList = (id) =>
+  http.post(`/unwaitinglist`, { id });
+
 
 //data.routes
 export const getDisciplines = () => http.get("/disciplines")
