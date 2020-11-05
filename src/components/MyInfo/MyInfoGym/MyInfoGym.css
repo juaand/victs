@@ -2,9 +2,17 @@
   padding: 0;
 }
 
+.followers-modal {
+  background: rgba(0, 169, 173, 0.9);
+}
+
+.modal .modal-body {
+  border: solid 0.1rem #00a9ad;
+}
+
 .followers-content h1 {
   font-weight: 900;
-  color: #ffcc00;
+  color: #00a9ad;
 }
 
 .followers-content .follower {
@@ -22,7 +30,7 @@
   width: 3rem;
   height: 3rem;
   display: block;
-  border: solid 0.2rem #ffcc00;
+  border: solid 0.2rem #00a9ad;
   margin-right: 1rem;
   border-radius: 4rem;
 }

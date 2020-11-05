@@ -6,10 +6,20 @@
   }
 }
 
+.followers-modal {
+  background: rgba($blue, 0.9);
+}
+
+.modal {
+  .modal-body {
+    border: solid 0.1rem $blue;
+  }
+}
+
 .followers-content {
   h1 {
     font-weight: 900;
-    color: $yellow;
+    color: $blue;
   }
 
   .follower {
@@ -26,7 +36,7 @@
       width: 3rem;
       height: 3rem;
       display: block;
-      border: solid 0.2rem $yellow;
+      border: solid 0.2rem $blue;
       margin-right: 1rem;
       border-radius: 4rem;
     }
