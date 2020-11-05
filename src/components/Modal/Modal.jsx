@@ -6,7 +6,7 @@ import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
 export default function Modal({data, onClick, onCancel, seats, reservations, hideCancel, hideSelectSeat}) {
 
     console.log(data)
-    
+
     return (
         <div className="modal">
             <div className="container">
@@ -14,7 +14,7 @@ export default function Modal({data, onClick, onCancel, seats, reservations, hid
                     <div className="col-6 modal-body">
                         <span className="close" onClick={onClick}></span>
                         <h1>{data.name}</h1>
-                        <p className="discipline">{data.classroom.discipline}</p>
+                        <p className="discipline">{data.discipline}</p>
                         <p><strong>Lesson detail</strong> {data.details}</p>
                         <hr />
                         <ClassroomSkecth rows={data.classroom.rows} lesson={data} reservations={reservations} seats={seats} hideSelectSeat={hideSelectSeat} />
