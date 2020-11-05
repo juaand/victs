@@ -12,7 +12,6 @@ const MyPlans = ({plans}) => {
     const [planInfo, setPlanInfo] = useState([])
 
     const updatePlan = (value) => {
-        console.log(value)
         setUserPlans(value)
     }
 

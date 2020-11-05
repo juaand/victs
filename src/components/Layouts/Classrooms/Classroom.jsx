@@ -10,7 +10,6 @@ import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
 export default function Classroom({user}) {
 
-    console.log(user)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -50,7 +49,6 @@ export default function Classroom({user}) {
         } else {data.rows = data.rows.split(',').map(el => parseInt(el))}
 
         try {
-            console.log(data)
             await createClassroom(data)
             history.push('/my-info-gym')
         } catch (err) {
@@ -70,7 +68,6 @@ export default function Classroom({user}) {
     useEffect(() => {
         getDisciplines()
             .then(res => {
-                console.log(res)
                 setDisciplineList(res[0])
             })
     }, [])

@@ -61,7 +61,6 @@ const MyInfo = (props) => {
         setBool(!bool)
         updateUser(unbook[3])
             .then(user => {
-                console.log(user[0])
                 login(user[0])
                 setUserStatus(user[0])
             })

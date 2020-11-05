@@ -76,7 +76,6 @@ export default function EditLesson(props) {
         event.preventDefault()
 
         try {
-            console.log(data)
             data.instructor = instructorId
             data.classroom = classroomId
             await updateLesson(data)

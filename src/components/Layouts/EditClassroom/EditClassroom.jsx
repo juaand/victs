@@ -57,7 +57,6 @@ export default function EditClassroom(props) {
         }
 
         try {
-            console.log(data)
             data.id = classroomInfo.id
             await updateClassroom(data)
             history.push('/my-info-gym')

@@ -12,7 +12,6 @@ export default function ClassroomLessons({lesson}) {
         )
     }
 
-    console.log(lesson)
     return (
         <div className="guest-name col-6">
             <div className="row">

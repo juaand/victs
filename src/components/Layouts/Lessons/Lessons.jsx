@@ -73,9 +73,7 @@ export default function Lessons({ user }) {
     event.preventDefault();
 
     try {
-      console.log(data);
       const newLesson = await createLesson(data)
-      console.log(newLesson)
       history.push("/my-info-gym");
     } catch (err) {
       setRegisterError(err.response?.data?.message);
@@ -92,13 +90,11 @@ export default function Lessons({ user }) {
 
   const setTime = (e) => {
     setDate(e);
-    console.log(e);
     data.date = e;
   };
 
   useEffect(() => {
     getDisciplines().then((res) => {
-      console.log(res);
       setDisciplinesList(res[0]);
     });
   }, []);
@@ -111,7 +107,6 @@ export default function Lessons({ user }) {
     setInstructorBool(!instructorBool);
     setClassroomBool(false);
     getInstructors().then((instructors) => setInstructorsData(instructors));
-    console.log("select instructor");
   };
 
   const selectClassroom = (event) => {
@@ -122,7 +117,6 @@ export default function Lessons({ user }) {
     getGymClassrooms(user.id).then((classrooms) =>
       setClassroomData(classrooms)
     );
-    console.log("select classroom");
   };
 
   const goBackInstructors = (e) => {

@@ -38,7 +38,6 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
             setMessage('You booked a seat in this classroom sucessfully.')
 
         } catch (err) {
-            console.log(err)
             setError(err.response?.data?.message)
         }
     }
