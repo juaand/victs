@@ -5,6 +5,8 @@ import ClassroomSkecth from '../ClassroomSkecth/ClassroomSkecth'
 
 export default function Modal({data, onClick, onCancel, seats, reservations, hideCancel, hideSelectSeat}) {
 
+    console.log(data)
+    
     return (
         <div className="modal">
             <div className="container">
