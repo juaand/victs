@@ -1,0 +1,18 @@
+@import '../../stylesheets/variables';
+
+.followers, .following {
+  background: $blue;
+  padding: 0.8rem 3rem;
+  display: flex;
+  justify-content: flex-end;
+  color: $white;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    display: none;
+  }
+}

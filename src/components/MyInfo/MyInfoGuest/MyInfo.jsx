@@ -7,8 +7,9 @@ import WaitingLessons from '../../Layouts/WaitingLessons/WaitingLessons'
 import UserInfo from '../../Layouts/UserInfo/UserInfo'
 import UserAccordeon from '../../UserAccordeon/UserAccordeon'
 import Modal from '../../Modal/Modal'
-import {unbooking, updateUser} from '../../../services/ApiClient'
+import {unbooking, updateUser, getFollowersUsers} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
+import FollowInfoBar from '../../FollowInfoBar/FollowInfoBar'
 
 const MyInfo = (props) => {
 
@@ -19,6 +20,9 @@ const MyInfo = (props) => {
     const [reservationData, setReservationData] = useState([])
     const [userStatus, setUserStatus] = useState(props.user)
     const [messageOnCancel, setMessageOnCancel] = useState('')
+    const [followersList, setFollowersList] = useState([])
+
+    console.log(userStatus)
 
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
@@ -46,6 +50,7 @@ const MyInfo = (props) => {
         setBool(!bool)
     }
 
+
     useEffect(() => {
         document.querySelector('.navbar').classList.add('__grayHeader')
     }, [])
@@ -54,7 +59,13 @@ const MyInfo = (props) => {
         setUserStatus(props.user)
     }, [props.user])
 
-    console.log(modalData)
+    const showFollowers = async () => {
+        setBool(!bool)
+        const res = await getFollowersUsers(userStatus.following)
+        setFollowersList(res)
+        console.log(res)
+    }
+
 
     const cancelReservation = async () => {
         setMessageOnCancel('Your book has been cancelled successfully.')
@@ -70,15 +81,42 @@ const MyInfo = (props) => {
         }, 3000)
     }
 
+    useEffect(() => {
+        document.querySelector('.navbar').classList.add('__grayHeader')
+    }, [])
+
+    useEffect(() => {
+        setUserStatus(props.user)
+    }, [props.user])
+
 
     return (
         <>
+            {bool &&
+                <section className="followers-modal modal">
+                    <div className="container">
+                        <div className="row d-flex justify-content-center">
+                            <div className="col-sm-6 col-12 followers-content modal-body">
+                                <span className="close" onClick={hideModal}></span>
+                                <h1>{userStatus.name} <br />followers</h1>
+                                {followersList.map(el =>
+                                    <div className="follower">
+                                        <span className="avatar" style={{background: `url(${el.avatar}) no-repeat center center / cover`}}>
+                                        </span>
+                                        {el.name}
+                                    </div>)}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
             <UserAccordeon user={userStatus} />
             {messageOnCancel &&
                 <div className="cancel-message">
                     <p className="juan-la-mamarracha">{messageOnCancel}</p>
                 </div>
             }
+            <FollowInfoBar followInfo={userStatus} onClick={showFollowers} />
             <MyPlans plans={userStatus.packages} />
             <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
 

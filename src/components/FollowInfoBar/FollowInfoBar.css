@@ -1,0 +1,16 @@
+.followers, .following {
+  background: #00a9ad;
+  padding: 0.8rem 3rem;
+  display: flex;
+  justify-content: flex-end;
+  color: #fff;
+  font-weight: 600;
+}
+
+.followers:hover, .following:hover {
+  cursor: pointer;
+}
+
+.followers.disabled, .following.disabled {
+  display: none;
+}

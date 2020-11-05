@@ -10,9 +10,6 @@ const ContactBlockNoFollowBtn = ({contactInfo, onClick}) => {
                     <span className="contact">
                         <strong>P</strong> {contactInfo.user.phone}<br />
                         <strong>M</strong> {contactInfo.user.email}
-                        <div className="followers" onClick={onClick}>
-                            <strong>F</strong> {contactInfo.user.followers.length} followers
-                        </div>
                     </span>
                 </div>
             </div>
