@@ -74,7 +74,7 @@ export default function Lessons({user}) {
     console.log(data)
     try {
       await createLesson(data)
-      history.push("/my-info-gym")
+      history.push(`/my-info-${user.role}`)
     } catch (err) {
       setRegisterError(err.response?.data?.message)
     }

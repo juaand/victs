@@ -33,8 +33,8 @@ export default function InstructorLessons({title, data}) {
                                     <span className="cal-item __date">{formatDate(lesson.date)}</span>
                                     <span className="cal-item __hour">{new Date(lesson.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                                     <span className="cal-item __discipline">{lesson.name}</span>
-                                    <small><strong>gym</strong> {lesson.gym.user.name}</small>
-                                    <small><strong>capacity</strong>{lesson.classroom.rows.reduce((acc, el) => acc + parseInt(el), 0)}</small>
+                                    <small><strong>gym</strong> {lesson.gym?.user?.name}</small>
+                                    <small><strong>capacity</strong>{lesson.classroom?.rows?.reduce((acc, el) => acc + parseInt(el), 0)}</small>
                                 </div>
                             )}
                         </div> : <div className="row p-0">
@@ -43,8 +43,8 @@ export default function InstructorLessons({title, data}) {
                                     <span className="cal-item __date">{formatDate(lesson.date)}</span>
                                     <span className="cal-item __hour">{new Date(lesson.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                                     <span className="cal-item __discipline">{lesson.name}</span>
-                                    <small><strong>gym</strong> {lesson.gym.user.name}</small>
-                                    <small><strong>capacity</strong>{lesson.classroom.rows.reduce((acc, el) => acc + parseInt(el), 0)}</small>
+                                    <small><strong>gym</strong> {lesson.gym?.user?.name}</small>
+                                    <small><strong>capacity</strong>{lesson.classroom?.rows?.reduce((acc, el) => acc + parseInt(el), 0)}</small>
                                 </div>
                             )}
                         </div>}
