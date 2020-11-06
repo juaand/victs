@@ -51,9 +51,9 @@ export default function GymSingle(props) {
                 <Banner title={gym.name} subtitle={gym.city} />
                 <ContactBlock contactInfo={gym} />
                 {!gymData.length &&
-                    <AttendedLessons title="Upcoming lessons" message="Oops no lessons added" strong="come back soon to add new ones" />
+                    <AttendedLessons title="Upcoming lessons" message="Oops no lessons added" strong="what you're waiting for? add new ones!" />
                 }
-                {gymData ? <ContentWithLessons onClick={showModal} title="Upcoming lessons" data={gymData} /> : <p>Loading</p>}
+                {gymData.length ? <ContentWithLessons onClick={showModal} title="Upcoming lessons" data={gymData} /> : ""}
                 <ContentWithInstructors title="Instructors" data={gymData} />
             </div>
         </>
