@@ -292,6 +292,7 @@ footer {
   position: fixed;
   width: 100%;
   bottom: 0;
+  z-index: 5;
 
   strong {
     display: inline-block;

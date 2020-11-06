@@ -1,0 +1,16 @@
+.MyInfoInstructor .gym-info {
+  padding: 0;
+  padding-top: 6rem;
+}
+
+.MyInfoInstructor .quote {
+  background: #7a0054;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.MyInfoInstructor .quote h1 {
+  font-weight: 300;
+}

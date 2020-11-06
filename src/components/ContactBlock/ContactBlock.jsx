@@ -7,9 +7,9 @@ import {useAuthContext} from '../../contexts/AuthContext'
 const ContactBlock = ({contactInfo}) => {
 
     const {user} = useAuthContext()
+    const {login} = useAuthContext()
 
     const [bool, setBool] = useState(false)
-    const {login} = useAuthContext()
 
     const follow = () => {
         followInfo(contactInfo.id)
@@ -22,9 +22,9 @@ const ContactBlock = ({contactInfo}) => {
 
     useEffect(() => {
         if (user.following.includes(contactInfo.id)) {
-            setBool(!bool)
+            setBool(bool => !bool)
         }
-    }, [user])
+    }, [user.following, contactInfo.id])
 
     return (
         <div className="container gym-info">

@@ -1,1 +1,13 @@
-/* No CSS */
+.coach-avatar-row {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+}
+
+.coach-avatar-row .coach-avatar {
+  width: 25rem;
+  height: 25rem;
+  border: 0.6rem solid #ffcc00;
+  border-radius: 12.9rem 14rem 10.9rem 12.8rem;
+  position: absolute;
+}

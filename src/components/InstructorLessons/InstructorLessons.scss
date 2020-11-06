@@ -1,0 +1,10 @@
+@import '../../stylesheets/variables';
+
+small {
+    display: block;
+  strong {
+    color: $purple;
+    display: inline-block;
+    margin-right: 0.6rem;
+  }
+}

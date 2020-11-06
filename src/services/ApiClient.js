@@ -28,6 +28,7 @@ export const getGymLessons = (id) => http.get(`/gym-lessons/${id}`)
 
 //instructor.routes
 export const getInstructors = () => http.get(`/instructors`)
+export const getInstructorLessons = (id) => http.get(`/instructor-lessons/${id}`)
 
 //user.routes
 export const login = ({email, password}) =>
@@ -42,10 +43,10 @@ export const booking = (id, row, seat) =>
 export const unbooking = (id, reservations) => http.post(`/unbook/${id}`, {id, reservations})
 export const getFollowersUsers = (followers) => http.post('/followers-users', followers)
 
-  export const waitingList = (id) =>
-  http.post(`/waitinglist/${id}`, { id });
+export const waitingList = (id) =>
+  http.post(`/waitinglist/${id}`, {id})
 export const unWaitingList = (id) =>
-  http.post(`/unwaitinglist`, { id });
+  http.post(`/unwaitinglist`, {id})
 
 
 //data.routes

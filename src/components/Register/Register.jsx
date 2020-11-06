@@ -4,7 +4,6 @@ import {register} from '../../services/ApiClient'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Form/FormButton/FormButton'
 import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
-import backImage from '../../images/fondo-login.jpg'
 import {useHistory} from 'react-router-dom'
 import {useFormState} from '../../hooks/useFormState'
 

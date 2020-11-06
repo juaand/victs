@@ -9,7 +9,6 @@ import {getServices} from '../../services/ApiClient'
 import InputFile from '../Form/InputFile/InputFile'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Button/Button'
-import SelectWithLabel from '../Form/SelectWithLabel/SelectWithLabel'
 import CheckBoxWithLabel from '../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
 const UserAccordeon = (props) => {
@@ -337,7 +336,7 @@ const UserAccordeon = (props) => {
                                                         <div className="col-8">
                                                             <CheckBoxWithLabel
                                                                 name="disciplines"
-                                                                data={disciplinesList}
+                                                                data={disciplinesList[0]}
                                                                 value={data.disciplines}
                                                                 onChange={getDisciplinesItems}
                                                             />

@@ -1,0 +1,9 @@
+small {
+  display: block;
+}
+
+small strong {
+  color: #7a0054;
+  display: inline-block;
+  margin-right: 0.6rem;
+}

@@ -83,6 +83,11 @@
         position: absolute;
         bottom: -4rem;
         left: -2rem;
+
+        &.disabled {
+          opacity: 1;
+          color: rgba($text,0.5);
+        }
       }
 
       .cancel {

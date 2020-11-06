@@ -22,8 +22,6 @@ const MyInfo = (props) => {
     const [messageOnCancel, setMessageOnCancel] = useState('')
     const [followersList, setFollowersList] = useState([])
 
-    console.log(userStatus)
-
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
     }
