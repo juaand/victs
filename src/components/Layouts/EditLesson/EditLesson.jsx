@@ -193,10 +193,10 @@ export default function EditLesson(props) {
             <section className="container-fluid my-plans EditClassroom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-4 item">
+                        <div className="col-12 col-sm-4 item">
                             <h1>Users booked in this lesson</h1>
                         </div>
-                        <div className="col-8 lesson-guest d-flex align-items-center">
+                        <div className="col-12 col-sm-8 lesson-guest d-flex align-items-center">
                             <div className="row ">
                                 {lessonGuests.length === 0 ? <h3 className="no-info">No users booked in this lesson</h3> : lessonGuests.map(el => <LessonGuests guest={el} />)}
                             </div>
@@ -307,13 +307,13 @@ export default function EditLesson(props) {
 
                                 <div className="row justify-content-between class-instr-data">
                                     {isInstructor &&
-                                        <div className="col-12 col-sm-6 instructor">
+                                        <div className="col-6 col-sm-6 instructor">
                                             <strong>Instructor</strong>
                                             {instructorName}
                                         </div>
                                     }
                                     {isClassroom &&
-                                        <div className="col-12 col-sm-6 instructor">
+                                        <div className="col-6 col-sm-6 instructor">
                                             <strong>Classroom</strong>
                                             {classroomName}
                                         </div>
@@ -323,10 +323,14 @@ export default function EditLesson(props) {
                                 {registerError && <div className="alert alert-danger">{registerError}</div>}
 
                                 <div className="row justify-content-between">
+                                    <div className="col-6 d-flex justify-content-center">
+                                        <Button className="btn __yellow-btn m-0" onClick={selectInstructor}>Select instructor</Button>
+                                    </div>
+                                    <div className="col-6 d-flex justify-content-center">
 
-                                    <Button className="btn __yellow-btn" onClick={selectInstructor}>Select instructor</Button>
+                                        <Button className="btn __yellow-btn m-0" onClick={selectClassroom}>Select classroom</Button>
+                                    </div>
 
-                                    <Button className="btn __yellow-btn" onClick={selectClassroom}>Select classroom</Button>
                                 </div>
                             </>
 

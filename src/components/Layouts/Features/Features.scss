@@ -78,3 +78,12 @@
     background: $light-gray;
   }
 }
+
+@media (max-width: 576px) {
+  .Features {
+    h1 {
+      margin-top: 4rem;
+    }
+  }
+}
+

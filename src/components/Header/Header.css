@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+.navbar .logout {
+  color: #00a9ad;
+}
+
 .navbar.__grayHeader {
   background: #393939;
   padding-right: 2rem;
@@ -93,4 +97,40 @@
 
 .navbar .navbar-toggler svg {
   width: 2.4rem;
+}
+
+@media (max-width: 576px) {
+  .navbar .user-logs {
+    border-left: 0;
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.1rem #e8e8e8;
+  }
+  .navbar .user-logs .nav-item:first-child {
+    display: flex;
+  }
+  .navbar .user-logs .login {
+    margin-left: 0;
+    padding: 0;
+    padding-top: 1rem;
+    color: #ffcc00;
+    background: none;
+    font-weight: 900;
+  }
+  .navbar .navbar-collapse {
+    padding: 0 2rem;
+    position: absolute;
+    width: 100%;
+    top: 8.4rem;
+    left: 0;
+    z-index: 50;
+  }
+  .module.bg h1 {
+    margin-bottom: 4rem;
+    line-height: 3rem;
+    font-size: 10rem;
+  }
+  .module.bg h1 strong {
+    font-size: 7rem;
+  }
 }

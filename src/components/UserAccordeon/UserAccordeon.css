@@ -184,3 +184,16 @@ small {
     opacity: 0;
   }
 }
+
+@media (max-width: 576px) {
+  .acordeon-bar .acordeon-toggle h1 .role {
+    right: 8rem;
+  }
+  .acordeon-bar .profile-title:before {
+    top: -2rem;
+    left: 5rem;
+  }
+  .acordeon-bar .card-body .profile-info {
+    padding: 0;
+  }
+}

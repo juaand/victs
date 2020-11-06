@@ -45,3 +45,9 @@
   display: block;
   background: linear-gradient(330deg, rgba(255, 204, 0, 0.4) 0%, rgba(203, 27, 83, 0.2) 50%, rgba(0, 169, 173, 0.8) 100%);
 }
+
+@media (max-width: 576px) {
+  .options a:first-child {
+    border-right: 0;
+  }
+}

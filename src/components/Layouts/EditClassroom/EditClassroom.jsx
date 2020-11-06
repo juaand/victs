@@ -110,10 +110,10 @@ export default function EditClassroom(props) {
             <section className="container-fluid my-plans EditClassroom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-4 item">
+                        <div className="col-sm-4 col-12 item">
                             <h1>Lessons booked in this classroom</h1>
                         </div>
-                        <div className="col-8 lesson-guest d-flex align-items-center">
+                        <div className="col-sm-8 col-12 lesson-guest d-flex align-items-center">
                             <div className="row w-100">
                                 {lessonList.length === 0 ? <h3 className="no-info">No lessons were booked in this classroom</h3> : lessonList.map(el => <ClassroomLessons lesson={el} />)}
                             </div>

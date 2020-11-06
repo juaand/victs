@@ -148,7 +148,7 @@ label:not(.form-check-label) {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60rem;
+  padding: 6rem 2rem;
   font-size: 1.8rem;
   line-height: 3.6rem;
 
@@ -301,7 +301,7 @@ footer {
 }
 
 #features-block {
-  padding: 20rem 0;
+  padding: 20rem 2rem;
   a {
     background-color: transparent;
     padding: 1rem 3rem;
@@ -346,5 +346,11 @@ footer {
     &.top {
       margin-top: 8rem;
     }
+  }
+}
+
+.welcome-text {
+  h1 {
+    margin-top: 4rem;
   }
 }

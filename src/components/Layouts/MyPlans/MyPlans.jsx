@@ -16,7 +16,7 @@ const MyPlans = ({plans}) => {
     }
 
     const showPlans = () => {
-        setShowPackages(true)
+        setShowPackages(!showPackages)
     }
 
     const showModal = (plan) => {
@@ -38,7 +38,7 @@ const MyPlans = ({plans}) => {
         <div className="container-fluid my-plans">
             <div className="container">
                 <div className="row">
-                    <div className="col-4 item">
+                    <div className="col-sm-4 col-12 item">
                         <h1>My Lessons</h1>
                         {plans === 0 ?
                             <h4 className="purple">Opps you don't have any plans</h4>
@@ -48,7 +48,7 @@ const MyPlans = ({plans}) => {
                         <span className="add-plans" onClick={showPlans}>Wanna add more lessons?</span>
                     </div>
                     {showPackages &&
-                        <div className="col-8 plans-block">
+                        <div className="col-12 col-sm-8 plans-block">
                             <div className="row">
                                 {plansData.map(plan =>
                                     <PlanItem plan={plan} onModal={showModal} />

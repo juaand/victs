@@ -11,3 +11,15 @@
   font-weight: 400;
   text-transform: uppercase;
 }
+
+@media (max-width: 576px) {
+  .victorious-visuals {
+    width: 100%;
+  }
+  .gradient {
+    padding: 0 3rem;
+  }
+  .gradient .row {
+    padding: 0;
+  }
+}

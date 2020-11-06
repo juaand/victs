@@ -32,7 +32,7 @@ export default function InstructorLessons({title, data}) {
                         {!bool ?
                             <div className="row p-0">
                                 {data.filter(el => !el.gym).slice(0, 4).map(lesson =>
-                                    <div className="false-link calendar-item col-3">
+                                    <div className="false-link calendar-item col-sm-3 col-6">
                                         <span className="cal-item __date">{formatDate(lesson.date)}</span>
                                         <span className="cal-item __hour">{new Date(lesson.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                                         <span className="cal-item __discipline">{lesson.name}</span>
@@ -42,7 +42,7 @@ export default function InstructorLessons({title, data}) {
                                 )}
                             </div> : <div className="row p-0">
                                 {data.filter(el => !el.gym).map(lesson =>
-                                    <div className="false-link calendar-item col-3 border-bottom">
+                                    <div className="false-link calendar-item col-sm-3 col-6 border-bottom">
                                         <span className="cal-item __date">{formatDate(lesson.date)}</span>
                                         <span className="cal-item __hour">{new Date(lesson.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                                         <span className="cal-item __discipline">{lesson.name}</span>

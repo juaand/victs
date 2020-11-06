@@ -22,3 +22,13 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .row-banner {
+    h1 {
+      span {
+        right: 4rem;
+      }
+    }
+  }
+}

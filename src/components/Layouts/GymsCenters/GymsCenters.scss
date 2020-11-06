@@ -17,3 +17,11 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .gym-centers {
+    .gyms-bg {
+      background: url(../../../images/gyms-bg.jpg) no-repeat center center/cover;
+    }
+  }
+}

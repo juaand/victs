@@ -9,7 +9,7 @@ export default function Modal({data, onClick, onCancel, seats, reservations, hid
         <div className="modal">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-6 modal-body">
+                    <div className="col-sm-6 col-12 modal-body">
                         <span className="close" onClick={onClick}></span>
                         <h1>{data.name}</h1>
                         <p className="discipline">{data.discipline}</p>

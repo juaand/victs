@@ -29,7 +29,7 @@ const ContactBlock = ({contactInfo}) => {
     return (
         <div className="container gym-info">
             <div className="row">
-                <div className="col-4">
+                <div className="col-sm-4 col-12">
                     <span className="address">{contactInfo.address}</span>
                     <span className="contact">
                         <strong>P</strong> {contactInfo.phone}<br />

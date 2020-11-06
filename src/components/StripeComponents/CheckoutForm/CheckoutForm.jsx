@@ -144,8 +144,9 @@ const CheckoutForm =
                     Payment successful
         </div>
                 <div className="ResultMessage">
-                    Thanks for trying Stripe Elements. No money was charged, but we
-          generated a PaymentMethod: {paymentMethod.id}
+                    No money was charged, but we
+          generated a PaymentMethod: <br/>
+          <strong>{paymentMethod.id}</strong>
 
                 </div>
                 <ResetButton onClick={reset} />
