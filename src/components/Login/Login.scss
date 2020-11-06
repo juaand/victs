@@ -56,3 +56,11 @@
     );
   }
 }
+
+@media (max-width: 576px) {
+  .options {
+    a:first-child {
+      border-right: 0;
+    }
+  }
+}

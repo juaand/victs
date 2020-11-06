@@ -14,3 +14,16 @@
     text-transform: uppercase;
   }
 }
+
+@media (max-width: 576px) {
+  .victorious-visuals {
+    width: 100%;
+  }
+
+  .gradient {
+    padding: 0 3rem;
+    .row {
+      padding: 0;
+    }
+  }
+}

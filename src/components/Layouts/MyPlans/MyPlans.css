@@ -51,3 +51,14 @@
 .my-plans .plans-block .plans-item {
   padding: 2rem;
 }
+
+@media (max-width: 576px) {
+  .plans-block,
+  .plans-item {
+    padding: 0;
+  }
+  .plans-block .row,
+  .plans-item .row {
+    padding: 0;
+  }
+}

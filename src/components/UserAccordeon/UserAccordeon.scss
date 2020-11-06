@@ -86,7 +86,7 @@
 
         &.disabled {
           opacity: 1;
-          color: rgba($text,0.5);
+          color: rgba($text, 0.5);
         }
       }
 
@@ -191,5 +191,30 @@ small {
 
   100% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .acordeon-bar {
+    .acordeon-toggle {
+      h1 {
+        .role {
+          right: 8rem;
+        }
+      }
+    }
+
+    .profile-title {
+      &:before {
+        top: -2rem;
+        left: 5rem;
+      }
+    }
+
+    .card-body {
+      .profile-info {
+        padding: 0;
+      }
+    }
   }
 }

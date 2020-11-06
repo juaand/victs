@@ -82,7 +82,7 @@ const Header = () => {
                                 {user &&
                                     <span className="user-logs">
                                         <li>
-                                            <NavLink to="/" className="nav-link login" onClick={logout}>Logout</NavLink>
+                                            <NavLink to="/" className="nav-link logout" onClick={logout}>Logout</NavLink>
                                         </li>
                                     </span>}
                                 {!user &&

@@ -1,0 +1,13 @@
+.Home .module {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: 3.6rem;
+  height: 60rem;
+  padding: 0;
+}
+
+.Home .module.accordeon {
+  height: auto;
+}

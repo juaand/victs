@@ -22,7 +22,7 @@ export default function ContentWithClassrooms({data, title}) {
                     {!bool ?
                         <div className="row p-0">
                             {data.slice(0, 4).map(el =>
-                                <Link className="col-12 col-sm-3 class-card" to={{
+                                <Link className="col-6 col-sm-3 class-card" to={{
                                     pathname: '/edit-classroom',
                                     state: {
                                         classroom: el
@@ -36,7 +36,7 @@ export default function ContentWithClassrooms({data, title}) {
                         :
                         <div className="row p-0">
                             {data.map(el =>
-                                <Link className="col-12 col-sm-3 class-card" to={{
+                                <Link className="col-6 col-sm-3 class-card" to={{
                                     pathname: '/edit-classroom',
                                     state: {
                                         classroom: el

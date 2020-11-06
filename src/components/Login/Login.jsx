@@ -113,7 +113,7 @@ const Login = (props) => {
                         </form>
                         <div className="col-12 d-flex justify-content-center options">
                             <Link to="/register"><strong>Register here</strong></Link>
-                            <Link to="/forgot-password">forgot your password?</Link>
+                            {/* <Link to="/forgot-password">forgot your password?</Link> */}
                         </div>
                     </div>
                 </div>

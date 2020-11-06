@@ -1,4 +1,4 @@
-.button {
+.button, .btn {
   margin: 2rem;
   padding: 1rem;
   font-size: 1.6rem;
@@ -6,12 +6,12 @@
   text-transform: uppercase;
 }
 
-.button.__yellow-btn {
+.button.__yellow-btn, .btn.__yellow-btn {
   background: #ffcc00;
   border: 0;
 }
 
-.button.__follow-btn {
+.button.__follow-btn, .btn.__follow-btn {
   border: solid 0.1rem #ffcc00;
   background: #fff;
 }

@@ -72,3 +72,9 @@
 .Features #features-section {
   background: #e8e8e8;
 }
+
+@media (max-width: 576px) {
+  .Features h1 {
+    margin-top: 4rem;
+  }
+}

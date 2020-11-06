@@ -314,20 +314,24 @@ export default function Lessons({user}) {
                 )}
 
                 {user.role === "Gym" &&
-                  <div className="row justify-content-between">
-                    <Button
-                      className="button __yellow-btn"
-                      onClick={selectInstructor}
-                    >
-                      Select instructor
+                  <div className="row justify-content-between select-lesson-row">
+                    <div className="col-6 d-flex justify-content-center">
+                      <Button
+                        className="button __yellow-btn m-0"
+                        onClick={selectInstructor}
+                      >
+                        Select instructor
                   </Button>
+                    </div>
+                    <div className="col-6 d-flex justify-content-center">
 
-                    <Button
-                      className="button __yellow-btn"
-                      onClick={selectClassroom}
-                    >
-                      Select classroom
+                      <Button
+                        className="button __yellow-btn m-0"
+                        onClick={selectClassroom}
+                      >
+                        Select classroom
                   </Button>
+                    </div>
                   </div>
                 }
               </>

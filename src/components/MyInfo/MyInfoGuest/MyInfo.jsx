@@ -127,10 +127,10 @@ const MyInfo = (props) => {
                         <div className="col-12">
                             {getGymName(userStatus.lessons).map(el =>
                                 <div className="row gym-name">
-                                    <div className="col-4">
+                                    <div className="col-sm-4 col-12">
                                         <h1 className="big-yellow">Upcoming classes scheduled in <span>{el.gym.user.name}</span></h1>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-sm-8 col-12">
                                         <div className="row">
                                             {Object.keys(byLessons).map(key =>
                                                 key === el.gym.id &&

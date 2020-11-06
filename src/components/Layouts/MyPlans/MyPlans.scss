@@ -56,3 +56,14 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .plans-block,
+  .plans-item {
+    padding: 0;
+
+    .row {
+      padding: 0;
+    }
+  }
+}

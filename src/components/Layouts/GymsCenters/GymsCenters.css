@@ -15,3 +15,9 @@
 .gym-centers .form-group .form-control:focus, .gym-centers .form-group .form-control:active {
   outline: none;
 }
+
+@media (max-width: 576px) {
+  .gym-centers .gyms-bg {
+    background: url(../../../images/gyms-bg.jpg) no-repeat center center/cover;
+  }
+}

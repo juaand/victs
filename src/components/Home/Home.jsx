@@ -1,9 +1,10 @@
+import './Home.css'
 import React from 'react'
 import {Link} from 'react-router-dom'
 
 const Home = () => {
     return (
-        <>
+        <section className="Home">
             <div className="module banner">
                 <span className="welcome-text text-center">
                     <h1>THE FUTURE FOR ACTIVE, HEALTHY PEOPLE IS HERE</h1>
@@ -241,7 +242,7 @@ const Home = () => {
                 <h1><strong>shapes</strong> <br />your way</h1>
                 <div className="overlay"></div>
             </div>
-        </>
+        </section>
     )
 }
 

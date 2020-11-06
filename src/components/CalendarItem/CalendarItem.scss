@@ -95,3 +95,9 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .calendar-item {
+    border-bottom: solid 0.1rem $light-gray;
+  }
+}
