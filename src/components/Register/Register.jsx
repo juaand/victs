@@ -10,7 +10,7 @@ import {useFormState} from '../../hooks/useFormState'
 
 
 
-const Register = () => {
+const Register = (props) => {
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -56,15 +56,7 @@ const Register = () => {
 
     return (
         <>
-
-            <style>
-                {`
-                body {
-                    background: url(${backImage}) no-repeat top center / cover;
-                }
-                `}
-            </style>
-            <div className="container-fluid my-info">
+            <div className={props.login ? 'container-fluid my-info' : 'container-fluid my-info login-bg'}>
                 <div className="row center">
                     <div className="col-sm-6 col-xl-4 col-11 login-block">
                         <h1>Register</h1>

@@ -99,7 +99,7 @@ const Home = () => {
                                                 ever.
                     </p>
 
-                                            <Link to="#" className="outline">Trainers & Centers</Link>
+                                            <Link to="/trainers" className="outline">Trainers & Centers</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@ const Home = () => {
                         </p>
                                                 </div>
                                             </div>
-                                            <Link to="#" className="outline">Manifiesto</Link>
+                                            <Link to="/manifiesto" className="outline">Manifiesto</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -241,10 +241,6 @@ const Home = () => {
                 <h1><strong>shapes</strong> <br />your way</h1>
                 <div className="overlay"></div>
             </div>
-            <footer>
-                All rights reserved ©2020 | Designed and developed by
-      <strong> Andrés Martínez & Juan Romero</strong>
-            </footer>
         </>
     )
 }

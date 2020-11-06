@@ -49,6 +49,29 @@
     font-weight: 700;
     font-size: 1.2rem;
   }
+
+  .SubmitButton,
+  .btn {
+    background: $yellow;
+    border: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 1rem auto;
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .Result {
+    .ResultTitle {
+      color: $blue;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .ResultMessage {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .FormRow {
@@ -66,28 +89,5 @@
     height: 4rem;
     width: 100%;
     padding-left: 1rem;
-  }
-}
-
-.SubmitButton,
-.btn {
-  background: $yellow;
-  border: 0;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 1rem auto;
-  display: inline-block;
-  padding: 1rem;
-  font-size: 1.6rem;
-}
-
-.Result {
-  .ResultTitle {
-    color: $blue;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  .ResultMessage {
-    font-size: 1.2rem;
   }
 }

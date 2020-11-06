@@ -40,7 +40,7 @@ const Field = ({
 
 const ResetButton = ({onClick}) => (
     <button type="button" className="ResetButton btn" onClick={onClick}>
-    Make another payment
+        Make another payment
     </button>
 )
 
@@ -151,72 +151,71 @@ const CheckoutForm =
                 <ResetButton onClick={reset} />
             </div>
         ) : (
-                <>
-                    <form className="Form" onSubmit={handleSubmit}>
-                        <div className="cc">
-                            <fieldset className="FormGroup">
-                                <CardField
-                                    onChange={(e) => {
-                                        setError(e.error)
-                                        setCardComplete(e.complete)
-                                    }}
-                                />
-                            </fieldset>
-                            <fieldset className="FormGroup __name">
-                                <Field
-                                    className="FormRowInput"
-                                    label="Name"
-                                    id="name"
-                                    type="text"
-                                    placeholder="Insert your name here"
-                                    required
-                                    autoComplete="name"
-                                    value={billingDetails.name}
-                                    onChange={(e) => {
-                                        setBillingDetails({...billingDetails, name: e.target.value})
-                                    }}
-                                />
-                            </fieldset>
-                        </div>
-                        <fieldset className="FormGroup row">
-                            <Field
-                                className="FormRowInput col-12"
-                                label="Email"
-                                id="email"
-                                type="email"
-                                placeholder="janedoe@gmail.com"
-                                required
-                                autoComplete="email"
-                                value={billingDetails.email}
+
+                <form className="Form" onSubmit={handleSubmit}>
+                    <div className="cc">
+                        <fieldset className="FormGroup">
+                            <CardField
                                 onChange={(e) => {
-                                    setBillingDetails({...billingDetails, email: e.target.value})
-                                }}
-                            />
-                            <Field
-                                className="FormRowInput col-12"
-                                label="Phone"
-                                id="phone"
-                                type="tel"
-                                placeholder="(941) 555-0123"
-                                required
-                                autoComplete="tel"
-                                value={billingDetails.phone}
-                                onChange={(e) => {
-                                    setBillingDetails({...billingDetails, phone: e.target.value})
+                                    setError(e.error)
+                                    setCardComplete(e.complete)
                                 }}
                             />
                         </fieldset>
+                        <fieldset className="FormGroup __name">
+                            <Field
+                                className="FormRowInput"
+                                label="Name"
+                                id="name"
+                                type="text"
+                                placeholder="Insert your name here"
+                                required
+                                autoComplete="name"
+                                value={billingDetails.name}
+                                onChange={(e) => {
+                                    setBillingDetails({...billingDetails, name: e.target.value})
+                                }}
+                            />
+                        </fieldset>
+                    </div>
+                    <fieldset className="FormGroup row">
+                        <Field
+                            className="FormRowInput col-12"
+                            label="Email"
+                            id="email"
+                            type="email"
+                            placeholder="janedoe@gmail.com"
+                            required
+                            autoComplete="email"
+                            value={billingDetails.email}
+                            onChange={(e) => {
+                                setBillingDetails({...billingDetails, email: e.target.value})
+                            }}
+                        />
+                        <Field
+                            className="FormRowInput col-12"
+                            label="Phone"
+                            id="phone"
+                            type="tel"
+                            placeholder="(941) 555-0123"
+                            required
+                            autoComplete="tel"
+                            value={billingDetails.phone}
+                            onChange={(e) => {
+                                setBillingDetails({...billingDetails, phone: e.target.value})
+                            }}
+                        />
+                    </fieldset>
 
-                        {error && <ErrorMessage>{error.message}</ErrorMessage>}
+                    {error && <ErrorMessage>{error.message}</ErrorMessage>}
 
-                        <div className="d-flex justify-content-center">
-                            <SubmitButton processing={processing} error={error} disabled={!stripe} onClick={handleSubmit}>
-                                Pay € {plan.price}
-                            </SubmitButton>
-                        </div>
+                    <div className="d-flex justify-content-center">
+                        <SubmitButton processing={processing} error={error} disabled={!stripe} onClick={handleSubmit}>
+                            Pay € {plan.price}
+                        </SubmitButton>
+                    </div>
 
-                    </form>
-                </>
+                </form>
             )
     }
 

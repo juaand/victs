@@ -15,6 +15,10 @@ import Register from './components/Register/Register'
 import {useAuthContext} from './contexts/AuthContext'
 import EditLesson from './components/Layouts/EditLesson/EditLesson'
 import EditClassroom from './components/Layouts/EditClassroom/EditClassroom'
+import Footer from './components/Footer/Footer'
+import Manifiesto from './components/Layouts/Manifiesto/Manifiesto'
+import Trainers from './components/Layouts/Trainers/Trainers'
+import Features from './components/Layouts/Features/Features'
 
 function App() {
 
@@ -25,8 +29,11 @@ function App() {
       {<Header addLesson />}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" login component={Login} />
+        <Route exact path="/register" login component={Register} />
+        <Route exact path="/manifiesto" component={Manifiesto} />
+        <Route exact path="/trainers" component={Trainers} />
+        <Route exact path="/features" component={Features} />
         <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed />} />
         <AuthenticatedRoute exact path="/gyms" render={(props) => <GymsCenters {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
@@ -40,6 +47,7 @@ function App() {
         {user && <Redirect to='/my-info'/>}
         {!user && <Redirect to='/' />}
       </Switch>
+      <Footer />
     </div>
   )
 }

@@ -1,0 +1,13 @@
+.Trainers h1 {
+  text-transform: uppercase;
+}
+
+.Trainers h1.yellow-color {
+  color: #ffcc00;
+}
+
+.Trainers h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}

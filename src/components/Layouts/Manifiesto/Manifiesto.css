@@ -1,0 +1,7 @@
+.logo-res {
+  display: block;
+  background: url(../../../images/logo-res.svg) no-repeat center center/contain;
+  width: 6rem;
+  height: 6rem;
+  margin: 2rem auto;
+}

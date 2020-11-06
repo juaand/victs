@@ -1,0 +1,80 @@
+@import '../../../stylesheets/variables';
+
+.Features {
+  .features-top {
+      background: url(../../../images/features-top.jpg) no-repeat center top / cover;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    margin: 0 auto 4rem auto;
+
+    &.top {
+      margin-top: 4rem;
+    }
+
+    &.yellow-color {
+      color: $yellow;
+    }
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .calendar {
+    height: 40rem;
+    display: block;
+    margin: 3rem auto;
+    background: url(../../../images/calendario.png) no-repeat center center /
+      contain;
+  }
+
+  .details {
+    width: 60rem;
+    height: 40rem;
+    display: block;
+    margin: 3rem auto;
+    background: url(../../../images/details.png) no-repeat center center /
+      contain;
+    background-size: 80%;
+  }
+
+  .payment {
+    width: 60rem;
+    height: 40rem;
+    display: block;
+    margin: 3rem auto;
+    background: url(../../../images/payment.png) no-repeat center center /
+      contain;
+    background-size: 80%;
+  }
+
+  #power-block,
+  #core-block,
+  #blue-core-block {
+    padding: 10rem 0;
+  }
+
+  #core-block {
+    background: $yellow;
+    display: flex;
+    justify-content: center;
+  }
+
+  #blue-core-block {
+    background: $dark-blue;
+    color: $white;
+    display: flex;
+    justify-content: center;
+
+    p {
+      margin-bottom: 4rem;
+    }
+  }
+
+  #features-section {
+    background: $light-gray;
+  }
+}
