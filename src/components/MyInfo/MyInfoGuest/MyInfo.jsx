@@ -26,7 +26,9 @@ const MyInfo = (props) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
     }
 
-    const byLessons = userStatus.lessons.reduce((acc, e) => {
+    const byLessons2 = userStatus.lessons.filter((lesson) => new Date(lesson.date).getTime() > new Date().getTime())
+
+    const byLessons = byLessons2.reduce((acc, e) => {
         acc[e.gym.id] = (acc[e.gym.id] || [])
         acc[e.gym.id].push(e)
         return acc
