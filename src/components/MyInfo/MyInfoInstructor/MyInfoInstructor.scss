@@ -1,0 +1,19 @@
+@import '../../../stylesheets/variables';
+
+.MyInfoInstructor {
+  .gym-info {
+    padding: 0;
+    padding-top: 6rem;
+  }
+  .quote {
+    background: $purple;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+
+    h1 {
+      font-weight: 300;
+    }
+  }
+}

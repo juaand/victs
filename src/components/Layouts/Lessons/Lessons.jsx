@@ -1,23 +1,23 @@
-import "./Lessons.css";
-import React, { useState, useEffect } from "react";
-import Banner from "../../Banner/Banner";
-import { useFormState } from "../../../hooks/useFormState";
+import "./Lessons.css"
+import React, {useState, useEffect} from "react"
+import Banner from "../../Banner/Banner"
+import {useFormState} from "../../../hooks/useFormState"
 import {
   getDisciplines,
   getInstructors,
   getGymClassrooms,
   createLesson,
-} from "../../../services/ApiClient";
-import InputWithLabel from "../../Form/InputWithLabel/InputWithLabel";
-import Button from "../../Button/Button";
-import DateTimePicker from "react-datetime-picker";
-import CheckBoxWithLabel from "../../Form/CheckBoxWithLabel/CheckBoxWithLabel";
-import { useHistory } from "react-router-dom";
+} from "../../../services/ApiClient"
+import InputWithLabel from "../../Form/InputWithLabel/InputWithLabel"
+import Button from "../../Button/Button"
+import DateTimePicker from "react-datetime-picker"
+import CheckBoxWithLabel from "../../Form/CheckBoxWithLabel/CheckBoxWithLabel"
+import {useHistory} from "react-router-dom"
 
 
-export default function Lessons({ user }) {
+export default function Lessons({user}) {
 
-  const { state, onBlur, onChange } = useFormState(
+  const {state, onBlur, onChange} = useFormState(
     {
       data: {
         name: "",
@@ -26,7 +26,7 @@ export default function Lessons({ user }) {
         zipcode: user.role === "Gym" ? user.user.zipcode : "",
         discipline: [],
         date: new Date(),
-        instructor: "",
+        instructor: user.id,
         gym: user.id,
         classroom: "",
         capacity: "",
@@ -48,125 +48,125 @@ export default function Lessons({ user }) {
       date: (v) => v.length,
       duration: (v) => v.length,
     }
-  );
+  )
 
-  const { data, error, touch } = state;
+  const {data, error, touch} = state
 
-  const [date, setDate] = useState(new Date());
-  const [disciplinesList, setDisciplinesList] = useState([]);
-  const [registerError, setRegisterError] = useState(null);
-  const [bool, setBool] = useState(true);
-  const [instructorBool, setInstructorBool] = useState(false);
-  const [classroomBool, setClassroomBool] = useState(false);
-  const [instructorsData, setInstructorsData] = useState([]);
-  const [classroomData, setClassroomData] = useState([]);
-  const [isInstructor, setIsInstructor] = useState(false);
-  const [isClassroom, setIsClassroom] = useState(false);
-  const [instructorName, setInstructorName] = useState("");
-  const [classroomName, setClassroomName] = useState("");
-  const [search, setSearch] = useState("");
+  const [date, setDate] = useState(new Date())
+  const [disciplinesList, setDisciplinesList] = useState([])
+  const [registerError, setRegisterError] = useState(null)
+  const [bool, setBool] = useState(true)
+  const [instructorBool, setInstructorBool] = useState(false)
+  const [classroomBool, setClassroomBool] = useState(false)
+  const [instructorsData, setInstructorsData] = useState([])
+  const [classroomData, setClassroomData] = useState([])
+  const [isInstructor, setIsInstructor] = useState(false)
+  const [isClassroom, setIsClassroom] = useState(false)
+  const [instructorName, setInstructorName] = useState("")
+  const [classroomName, setClassroomName] = useState("")
+  const [search, setSearch] = useState("")
 
-  const history = useHistory();
+  const history = useHistory()
 
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-
+    event.preventDefault()
+    console.log(data)
     try {
-      const newLesson = await createLesson(data)
-      history.push("/my-info-gym");
+      await createLesson(data)
+      history.push("/my-info-gym")
     } catch (err) {
-      setRegisterError(err.response?.data?.message);
+      setRegisterError(err.response?.data?.message)
     }
-  };
+  }
 
   const getDisciplinesItems = (e) => {
-    let newArray = [...data.discipline, e.target.id];
+    let newArray = [...data.discipline, e.target.id]
     if (data.discipline.includes(e.target.id)) {
-      newArray = newArray.filter((el) => el !== e.target.id);
+      newArray = newArray.filter((el) => el !== e.target.id)
     }
-    data.discipline = newArray;
-  };
+    data.discipline = newArray
+  }
 
   const setTime = (e) => {
-    setDate(e);
-    data.date = e;
-  };
+    setDate(e)
+    data.date = e
+  }
 
   useEffect(() => {
     getDisciplines().then((res) => {
-      setDisciplinesList(res[0]);
-    });
-  }, []);
+      setDisciplinesList(res[0])
+    })
+  }, [])
 
-  const isError = Object.values(error).some((err) => err);
+  const isError = Object.values(error).some((err) => err)
 
   const selectInstructor = (event) => {
-    event.preventDefault();
-    setBool(!bool);
-    setInstructorBool(!instructorBool);
-    setClassroomBool(false);
-    getInstructors().then((instructors) => setInstructorsData(instructors));
-  };
+    event.preventDefault()
+    setBool(!bool)
+    setInstructorBool(!instructorBool)
+    setClassroomBool(false)
+    getInstructors().then((instructors) => setInstructorsData(instructors))
+  }
 
   const selectClassroom = (event) => {
-    event.preventDefault();
-    setBool(!bool);
-    setClassroomBool(!classroomBool);
-    setInstructorBool(false);
+    event.preventDefault()
+    setBool(!bool)
+    setClassroomBool(!classroomBool)
+    setInstructorBool(false)
     getGymClassrooms(user.id).then((classrooms) =>
       setClassroomData(classrooms)
-    );
-  };
+    )
+  }
 
   const goBackInstructors = (e) => {
-    e.preventDefault();
-    setBool(!bool);
-    setInstructorBool(!instructorBool);
-  };
+    e.preventDefault()
+    setBool(!bool)
+    setInstructorBool(!instructorBool)
+  }
 
   const goBackClassroom = (e) => {
-    e.preventDefault();
-    setBool(!bool);
-    setClassroomBool(!classroomBool);
-  };
+    e.preventDefault()
+    setBool(!bool)
+    setClassroomBool(!classroomBool)
+  }
 
   const instructorSelected = (e) => {
-    e.preventDefault();
-    data.instructor = e.target.id;
-    setIsInstructor(!isInstructor);
-    setInstructorBool(!instructorBool);
-    setInstructorName(e.target.innerText);
-  };
+    e.preventDefault()
+    data.instructor = e.target.id
+    setIsInstructor(!isInstructor)
+    setInstructorBool(!instructorBool)
+    setInstructorName(e.target.innerText)
+  }
 
   const classroomSelected = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     data.capacity = e.target
       .getAttribute("data-rows")
       .split(",")
-      .reduce((acc, el) => acc + parseInt(el), 0);
-    data.classroom = e.target.id;
-    setIsClassroom(!isClassroom);
-    setClassroomBool(!classroomBool);
-    setClassroomName(e.target.innerText);
-  };
+      .reduce((acc, el) => acc + parseInt(el), 0)
+    data.classroom = e.target.id
+    setIsClassroom(!isClassroom)
+    setClassroomBool(!classroomBool)
+    setClassroomName(e.target.innerText)
+  }
 
   const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
+    setSearch(e.target.value)
+  }
 
   const filteredInstructors = instructorsData.filter((instructor) => {
     return (
       instructor.user.name.toLowerCase().indexOf(search.toLocaleLowerCase()) >
       -1
-    );
-  });
+    )
+  })
 
   const filteredClassroom = classroomData.filter((classroom) => {
     return (
       classroom.user.name.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1
-    );
-  });
+    )
+  })
 
   return (
     <>
@@ -187,9 +187,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="name"
                   type="text"
-                  className={`form-control ${
-                    touch.name && error.name ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.name && error.name ? "is-invalid" : ""
+                    }`}
                   placeholder="Lesson name"
                 />
 
@@ -210,9 +209,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="address"
                   type="text"
-                  className={`form-control ${
-                    touch.address && error.address ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.address && error.address ? "is-invalid" : ""
+                    }`}
                   placeholder={
                     user.role === "Gym"
                       ? user.user.address
@@ -227,9 +225,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="city"
                   type="text"
-                  className={`form-control ${
-                    touch.city && error.city ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.city && error.city ? "is-invalid" : ""
+                    }`}
                   placeholder={
                     user.role === "Gym" ? user.user.city : "Enter lesson city"
                   }
@@ -242,9 +239,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="zipcode"
                   type="number"
-                  className={`form-control ${
-                    touch.zipcode && error.zipcode ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.zipcode && error.zipcode ? "is-invalid" : ""
+                    }`}
                   placeholder={
                     user.role === "Gym"
                       ? user.user.zipcode
@@ -270,9 +266,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="details"
                   type="text"
-                  className={`form-control ${
-                    touch.details && error.details ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.details && error.details ? "is-invalid" : ""
+                    }`}
                   placeholder="Enter lesson details"
                 />
 
@@ -282,9 +277,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="duration"
                   type="number"
-                  className={`form-control ${
-                    touch.duration && error.duration ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.duration && error.duration ? "is-invalid" : ""
+                    }`}
                   placeholder="Enter lesson duration in minutes (default 45min)"
                 />
 
@@ -294,9 +288,8 @@ export default function Lessons({ user }) {
                   onChange={onChange}
                   name="capacity"
                   type="number"
-                  className={`form-control ${
-                    touch.capacity && error.capacity ? "is-invalid" : ""
-                  }`}
+                  className={`form-control ${touch.capacity && error.capacity ? "is-invalid" : ""
+                    }`}
                   placeholder="Enter capacity"
                   role={user.role}
                 />
@@ -320,21 +313,23 @@ export default function Lessons({ user }) {
                   <div className="alert alert-danger">{registerError}</div>
                 )}
 
-                <div className="row justify-content-between">
-                  <Button
-                    className="btn __yellow-btn"
-                    onClick={selectInstructor}
-                  >
-                    Select instructor
+                {user.role === "Gym" &&
+                  <div className="row justify-content-between">
+                    <Button
+                      className="button __yellow-btn"
+                      onClick={selectInstructor}
+                    >
+                      Select instructor
                   </Button>
 
-                  <Button
-                    className="btn __yellow-btn"
-                    onClick={selectClassroom}
-                  >
-                    Select classroom
+                    <Button
+                      className="button __yellow-btn"
+                      onClick={selectClassroom}
+                    >
+                      Select classroom
                   </Button>
-                </div>
+                  </div>
+                }
               </>
 
               {user.role === "Gym" && (
@@ -428,5 +423,5 @@ export default function Lessons({ user }) {
         </div>
       </section>
     </>
-  );
+  )
 }

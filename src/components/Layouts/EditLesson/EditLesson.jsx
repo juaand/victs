@@ -53,15 +53,15 @@ export default function EditLesson(props) {
 
     const {data, error, touch} = state
 
-    const [date, setDate] = useState(new Date())
+    const [setDate] = useState(new Date())
     const [disciplinesList, setDisciplinesList] = useState([])
     const [registerError, setRegisterError] = useState(null)
     const [instructorBool, setInstructorBool] = useState(false)
     const [classroomBool, setClassroomBool] = useState(false)
     const [instructorsData, setInstructorsData] = useState([])
     const [classroomData, setClassroomData] = useState([])
-    const [isInstructor, setIsInstructor] = useState(true)
-    const [isClassroom, setIsClassroom] = useState(true)
+    const [isInstructor] = useState(true)
+    const [isClassroom] = useState(true)
     const [instructorId, setInstructorId] = useState(data.instructor)
     const [classroomId, setClassroomId] = useState(data.classroom)
     const [instructorName, setInstructorName] = useState(lesson.instructor.user.name)

@@ -1,3 +1,15 @@
 @import '../../stylesheets/variables';
 
+.coach-avatar-row {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  .coach-avatar {
+    width: 25rem;
+    height: 25rem;
+    border: 0.6rem solid $yellow;
+    border-radius: 12.9rem 14rem 10.9rem 12.8rem;
+    position: absolute;
 
+  }
+}

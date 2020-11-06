@@ -20,7 +20,7 @@ const Header = () => {
                             </div>
                             {user && user.role === 'Guest' && <Link to='/my-info' className="user-hi">Hi {user.name}</Link>}
                             {user && user.role === 'Gym' && <Link to='/my-info-gym' className="user-hi">Hi {user.user.name}</Link>}
-                            {user && user.role === 'Instructor' && <Link to='/my-info' className="user-hi">Hi {user.user.name}</Link>}
+                            {user && user.role === 'Instructor' && <Link to='/my-info-instructor' className="user-hi">Hi {user.user.name}</Link>}
                         </div>
                         <button
                             className="navbar-toggler"
@@ -76,9 +76,6 @@ const Header = () => {
                                     <>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/lessons">Add lesson</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink className="nav-link" to="/history">History</NavLink>
                                         </li>
                                     </>}
 

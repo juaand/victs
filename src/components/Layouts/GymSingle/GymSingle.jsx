@@ -53,7 +53,7 @@ export default function GymSingle(props) {
                 {!gymData.length &&
                     <AttendedLessons title="Upcoming lessons" message="Oops no lessons added" strong="come back soon to add new ones" />
                 }
-                {gymData ? <ContentWithLessons onClick={showModal} title="Upcoming lessons" data={gymData} /> : 'Loading'}
+                {gymData ? <ContentWithLessons onClick={showModal} title="Upcoming lessons" data={gymData} /> : <p>Loading</p>}
                 <ContentWithInstructors title="Instructors" data={gymData} />
             </div>
         </>
