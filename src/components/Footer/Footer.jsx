@@ -5,7 +5,7 @@ export default function Footer() {
     const year = new Date().getFullYear()
 
     return (
-        <footer className="containe-fluid">
+        <footer className="container-fluid">
             <div className="row">
                 <div className="col-12">
                     All rights reserved ©{year} | Designed and developed by

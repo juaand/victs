@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 export default function InstructorLessons({title, data}) {
 
-    
+    console.log(data)
 
     const [bool, setBool] = useState(false)
 

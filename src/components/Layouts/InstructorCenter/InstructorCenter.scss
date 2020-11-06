@@ -1,0 +1,21 @@
+.instructors-centers {
+  .instructor-bg {
+    padding: 10rem 0;
+    background: url(../../../images/fondo-atletas.jpg) no-repeat center top /
+      cover;
+    height: 30rem;
+  }
+  
+  .form-group {
+    margin: 2rem auto;
+    .form-control {
+      border: 0 !important;
+      outline: none;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+}

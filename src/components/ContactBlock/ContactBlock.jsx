@@ -24,18 +24,19 @@ const ContactBlock = ({contactInfo}) => {
         if (user.following.includes(contactInfo.id)) {
             setBool(bool => !bool)
         }
-    }, [user.following, contactInfo.id])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contactInfo.id])
 
     return (
         <div className="container gym-info">
             <div className="row">
                 <div className="col-sm-4 col-12">
-                    <span className="address">{contactInfo.address}</span>
+                    <span className="address">{contactInfo?.address}</span>
                     <span className="contact">
-                        <strong>P</strong> {contactInfo.phone}<br />
-                        <strong>M</strong> {contactInfo.email}
+                        <strong>P</strong> {contactInfo?.phone}<br />
+                        <strong>M</strong> {contactInfo?.email}
                     </span>
-                    <Button onClick={follow} className={!bool ? 'button __follow-btn' : 'button __yellow-btn'}>{!bool ? 'follow' : 'unfollow'} {contactInfo.name}</Button>
+                    <Button onClick={follow} className={!bool ? 'button __follow-btn' : 'button __yellow-btn'}>{!bool ? 'follow' : 'unfollow'} {contactInfo?.name}</Button>
                 </div>
             </div>
         </div>

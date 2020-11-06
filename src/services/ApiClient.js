@@ -28,6 +28,7 @@ export const getGymLessons = (id) => http.get(`/gym-lessons/${id}`)
 
 //instructor.routes
 export const getInstructors = () => http.get(`/instructors`)
+export const getInstructorInfo = (id) => http.post('/instructor-detail', {id})
 export const getInstructorLessons = (id) => http.get(`/instructor-lessons/${id}`)
 
 //user.routes

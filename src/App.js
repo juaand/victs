@@ -19,6 +19,8 @@ import Footer from './components/Footer/Footer'
 import Manifiesto from './components/Layouts/Manifiesto/Manifiesto'
 import Trainers from './components/Layouts/Trainers/Trainers'
 import Features from './components/Layouts/Features/Features'
+import InstructorCenter from './components/Layouts/InstructorCenter/InstructorCenter'
+import InstructorSingle from './components/Layouts/InstructorSingle/InstructorSingle'
 
 function App() {
 
@@ -36,15 +38,17 @@ function App() {
         <Route exact path="/features" component={Features} />
         <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed />} />
         <AuthenticatedRoute exact path="/gyms" render={(props) => <GymsCenters {...props} user={user} />} />
+        <AuthenticatedRoute exact path="/instructors" render={(props) => <InstructorCenter {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
+        <AuthenticatedRoute path='/instructor-detail' render={(props) => <InstructorSingle {...props} user={user} />} />
         <AuthenticatedRoute path='/edit-lesson' render={(props) => <EditLesson {...props} user={user} />} />
         <AuthenticatedRoute path='/lessons' render={(props) => <Lessons {...props} user={user} />} />
         <AuthenticatedRoute path='/edit-classroom' render={(props) => <EditClassroom {...props} user={user} />} />
         <AuthenticatedRoute path='/classrooms' render={(props) => <Classroom {...props} user={user} />} />
-        {user && <Redirect to='/my-info'/>}
+        {user && <Redirect to='/my-info' />}
         {!user && <Redirect to='/' />}
       </Switch>
       <Footer />

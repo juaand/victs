@@ -1,7 +1,5 @@
 import './CalendarItem.css'
 import React from 'react'
-import {Link} from 'react-router-dom'
-
 
 const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
 
@@ -22,7 +20,7 @@ const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
             <span className="cal-item __discipline">{data.name}</span>
             <span className="cal-item __instructor">
                 <span className="avatar" style={{background: `url(${data.instructor.user.avatar}) no-repeat center center / cover`}}></span>
-                <Link to="/instructor-detail">{data.instructor.user.name}</Link>
+                <span>{data.instructor.user.name}</span>
             </span>
             <span className="capacity">
                 {capacity = 0 ?
