@@ -1,0 +1,74 @@
+.Features .features-top {
+  background: url(../../../images/features-top.jpg) no-repeat center top/cover;
+}
+
+.Features h1 {
+  text-transform: uppercase;
+  margin: 0 auto 4rem auto;
+}
+
+.Features h1.top {
+  margin-top: 4rem;
+}
+
+.Features h1.yellow-color {
+  color: #ffcc00;
+}
+
+.Features h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.Features .calendar {
+  height: 40rem;
+  display: block;
+  margin: 3rem auto;
+  background: url(../../../images/calendario.png) no-repeat center center/contain;
+}
+
+.Features .details {
+  width: 60rem;
+  height: 40rem;
+  display: block;
+  margin: 3rem auto;
+  background: url(../../../images/details.png) no-repeat center center/contain;
+  background-size: 80%;
+}
+
+.Features .payment {
+  width: 60rem;
+  height: 40rem;
+  display: block;
+  margin: 3rem auto;
+  background: url(../../../images/payment.png) no-repeat center center/contain;
+  background-size: 80%;
+}
+
+.Features #power-block,
+.Features #core-block,
+.Features #blue-core-block {
+  padding: 10rem 0;
+}
+
+.Features #core-block {
+  background: #ffcc00;
+  display: flex;
+  justify-content: center;
+}
+
+.Features #blue-core-block {
+  background: #211e35;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.Features #blue-core-block p {
+  margin-bottom: 4rem;
+}
+
+.Features #features-section {
+  background: #e8e8e8;
+}

@@ -3,6 +3,10 @@
 @import 'keyframes';
 @import 'responsive';
 
+body {
+  padding-bottom: 8.2rem;
+}
+
 .margin-top {
   margin-top: $margin-top;
 }
@@ -118,7 +122,7 @@ label:not(.form-check-label) {
 }
 
 .only-text {
-  padding: 12rem 0;
+  padding: 12rem 0 6rem 0;
 
   h1 {
     color: $orange;
@@ -221,6 +225,31 @@ label:not(.form-check-label) {
       margin-top: 4rem;
     }
   }
+
+  &.trainers-top {
+    background: url(../images/trainers-centers-top.jpg) no-repeat center center /
+      cover;
+    color: $white;
+
+    img {
+      width: 8rem;
+      margin-top: 4rem;
+    }
+  }
+}
+
+hr {
+  margin: 3rem 0;
+  display: block;
+}
+
+.victorious-visuals {
+  width: 50rem;
+  height: 50rem;
+  background: url(../images/trainers-center-desktop.png) no-repeat center center /
+    contain;
+  display: block;
+  margin: 3rem auto;
 }
 
 #manifiesto {
@@ -258,4 +287,63 @@ footer {
   font-size: 1rem;
   display: flex;
   justify-content: flex-end;
+  border-top: solid 0.1rem $light-gray;
+  background: $white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+
+  strong {
+    display: inline-block;
+    margin-left: 0.4rem;
+  }
+}
+
+#features-block {
+  padding: 20rem 0;
+  a {
+    background-color: transparent;
+    padding: 1rem 3rem;
+    width: 25rem;
+    height: 5rem;
+    border: solid 1px $white;
+    color: $white;
+    text-transform: uppercase;
+    transition: all 200ms ease-in-out;
+    margin: 3rem auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $text;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+.gradient {
+  background: linear-gradient(
+    330deg,
+    rgba($orange, 1) 0%,
+    rgba($pink, 1) 50%,
+    rgba($purple, 1) 100%
+  );
+  color: $white;
+}
+
+#reserve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16rem 0;
+  background: $dark-blue;
+  color: $white;
+
+  h1 {
+    &.top {
+      margin-top: 8rem;
+    }
+  }
 }

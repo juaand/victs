@@ -62,6 +62,10 @@
         color: $yellow;
       }
     }
+
+    .active {
+      color: $yellow;
+    }
   }
 
   .user-logs {
@@ -75,6 +79,7 @@
       position: relative;
       margin-left: 3rem;
 
+      &:hover,
       &.active {
         color: $text;
       }

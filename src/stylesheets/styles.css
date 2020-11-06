@@ -101,6 +101,10 @@ h3 {
   }
 }
 
+body {
+  padding-bottom: 8.2rem;
+}
+
 .margin-top {
   margin-top: 8.5rem;
 }
@@ -210,7 +214,7 @@ label:not(.form-check-label) {
 }
 
 .only-text {
-  padding: 12rem 0;
+  padding: 12rem 0 6rem 0;
 }
 
 .only-text h1 {
@@ -306,6 +310,29 @@ label:not(.form-check-label) {
   margin-top: 4rem;
 }
 
+.module.trainers-top {
+  background: url(../images/trainers-centers-top.jpg) no-repeat center center/cover;
+  color: #fff;
+}
+
+.module.trainers-top img {
+  width: 8rem;
+  margin-top: 4rem;
+}
+
+hr {
+  margin: 3rem 0;
+  display: block;
+}
+
+.victorious-visuals {
+  width: 50rem;
+  height: 50rem;
+  background: url(../images/trainers-center-desktop.png) no-repeat center center/contain;
+  display: block;
+  margin: 3rem auto;
+}
+
 #manifiesto .block h1 {
   color: #fb9000;
 }
@@ -337,4 +364,57 @@ footer {
   font-size: 1rem;
   display: flex;
   justify-content: flex-end;
+  border-top: solid 0.1rem #e8e8e8;
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer strong {
+  display: inline-block;
+  margin-left: 0.4rem;
+}
+
+#features-block {
+  padding: 20rem 0;
+}
+
+#features-block a {
+  background-color: transparent;
+  padding: 1rem 3rem;
+  width: 25rem;
+  height: 5rem;
+  border: solid 1px #fff;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 200ms ease-in-out;
+  margin: 3rem auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#features-block a:hover {
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+.gradient {
+  background: linear-gradient(330deg, #fb9000 0%, #cb1b53 50%, #7a0054 100%);
+  color: #fff;
+}
+
+#reserve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16rem 0;
+  background: #211e35;
+  color: #fff;
+}
+
+#reserve h1.top {
+  margin-top: 8rem;
 }

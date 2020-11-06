@@ -1,5 +1,5 @@
 import './Header.css'
-import React  from 'react'
+import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import {useAuthContext} from '../../contexts/AuthContext'
 
@@ -15,9 +15,9 @@ const Header = () => {
                 <div className="row">
                     <nav className="navbar navbar-expand-lg">
                         <div className="header-user">
-                            <Link className="navbar-brand" to="/">
+                            <div className="navbar-brand">
                                 <div className="victs-logo"></div>
-                            </Link>
+                            </div>
                             {user && user.role === 'Guest' && <Link to='/my-info' className="user-hi">Hi {user.name}</Link>}
                             {user && user.role === 'Gym' && <Link to='/my-info-gym' className="user-hi">Hi {user.user.name}</Link>}
                             {user && user.role === 'Instructor' && <Link to='/my-info' className="user-hi">Hi {user.user.name}</Link>}
@@ -60,7 +60,7 @@ const Header = () => {
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/instructors">Instructors</NavLink>
                                         </li>
-                                    </> }
+                                    </>}
 
                                 {user && user.user && user.user.role === 'Gym' &&
                                     <>
@@ -87,17 +87,20 @@ const Header = () => {
                                         <li>
                                             <NavLink to="/" className="nav-link login" onClick={logout}>Logout</NavLink>
                                         </li>
-                                    </span> }
+                                    </span>}
                                 {!user &&
                                     <>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" to="/trainers">Trainers & Centers</NavLink>
+                                            <NavLink activeClassName="active" className="nav-link" to="/">Victs</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" to="/features">Features</NavLink>
+                                            <NavLink activeClassName="active" className="nav-link" to="/trainers">Trainers & Centers</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link" to="/manifiesto">Manifiesto</NavLink>
+                                            <NavLink activeClassName="active" className="nav-link" to="/features">Features</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink activeClassName="active" className="nav-link" to="/manifiesto">Manifiesto</NavLink>
                                         </li>
                                         <span className="user-logs">
                                             <li className="nav-item">

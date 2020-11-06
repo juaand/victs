@@ -6,7 +6,6 @@ import {activateUser} from '../../services/ApiClient'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Form/FormButton/FormButton'
 import {Link, Redirect} from 'react-router-dom'
-import backImage from '../../images/fondo-login.jpg'
 import {useFormState} from '../../hooks/useFormState'
 
 
@@ -73,14 +72,7 @@ const Login = (props) => {
 
     return (
         <>
-            <style>
-                {`
-                body {
-                    background: url(${backImage}) no-repeat top center / cover;
-                }
-                `}
-            </style>
-            <div className="container-fluid my-info">
+            <div className={props.login ? 'container-fluid my-info' : 'container-fluid my-info login-bg'}>
                 <div className="row center">
                     <div className="col-sm-6 col-xl-4 col-11 login-block">
                         <h1>log in</h1>

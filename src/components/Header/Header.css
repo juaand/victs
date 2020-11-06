@@ -64,6 +64,10 @@
   color: #ffcc00;
 }
 
+.navbar .nav-item .active {
+  color: #ffcc00;
+}
+
 .navbar .user-logs {
   border-left: solid 0.1rem #ffcc00;
   display: flex;
@@ -77,7 +81,7 @@
   margin-left: 3rem;
 }
 
-.navbar .user-logs .login.active {
+.navbar .user-logs .login:hover, .navbar .user-logs .login.active {
   color: #333;
 }
 

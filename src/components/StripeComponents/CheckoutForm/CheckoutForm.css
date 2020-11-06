@@ -47,6 +47,28 @@
   font-size: 1.2rem;
 }
 
+.Form .SubmitButton,
+.Form .btn {
+  background: #ffcc00;
+  border: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 1rem auto;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.Form .Result .ResultTitle {
+  color: #00a9ad;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Form .Result .ResultMessage {
+  font-size: 1.2rem;
+}
+
 .FormRow {
   padding: 0;
 }
@@ -63,26 +85,4 @@
   height: 4rem;
   width: 100%;
   padding-left: 1rem;
-}
-
-.SubmitButton,
-.btn {
-  background: #ffcc00;
-  border: 0;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 1rem auto;
-  display: inline-block;
-  padding: 1rem;
-  font-size: 1.6rem;
-}
-
-.Result .ResultTitle {
-  color: #00a9ad;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.Result .ResultMessage {
-  font-size: 1.2rem;
 }
