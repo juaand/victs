@@ -8,3 +8,9 @@ small {
     margin-right: 0.6rem;
   }
 }
+
+h1 {
+  &.purple {
+    color: $purple;
+  }
+}
