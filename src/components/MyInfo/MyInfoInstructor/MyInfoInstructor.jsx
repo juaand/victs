@@ -3,8 +3,9 @@ import React, {useState, useEffect} from 'react'
 import {getInstructorLessons, getFollowersUsers} from '../../../services/ApiClient'
 import ContactBlockNoFollowBtn from '../../ContactBlockNoFollowBtn/ContactBlockNoFollowBtn'
 import UserAccordeon from '../../UserAccordeon/UserAccordeon'
-import InstructorLessons from '../../InstructorLessons/InstructorLessons'
+import InstructorGymLessons from '../../InstructorGymLessons/InstructorGymLessons'
 import FollowInfoBar from '../../FollowInfoBar/FollowInfoBar'
+import InstructorLessons from '../../InstructorLessons/InstructorLessons'
 
 const MyInfoInstructor = ({user, instructor}) => {
 
@@ -57,7 +58,8 @@ const MyInfoInstructor = ({user, instructor}) => {
             <div className="container-fluid quote">
                 <h1>{instructor.quote}</h1>
             </div>
-            {lessonList ? <InstructorLessons title="Upcoming gym lessons" data={lessonList} /> : <p>Loading</p>}
+            {lessonList ? <InstructorGymLessons title="Upcoming gym lessons" data={lessonList} /> : <p>Loading</p>}
+            {lessonList ? <InstructorLessons title="My upcoming lessons" data={lessonList} /> : <p>Loading</p>}
         </section>
     )
 }
