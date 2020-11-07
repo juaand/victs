@@ -62,7 +62,7 @@ export default function Manifiesto() {
 
                             <p>
                                 Whatever everyone goal be, win a race, thirve a competition or
-                                simple stay active and healthy Victorius help with managing to
+                                simple stay active and healthy Victs help with managing to
                                 meet everyone’s personal ultimate goals.
             </p>
 

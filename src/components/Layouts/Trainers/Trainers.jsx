@@ -30,7 +30,7 @@ export default function Trainers() {
                     <p>Workout Easily. Manage Beautifully.<br />
           No software needed.<br />
           Quick to operate.</p>
-                    <div className="victorious-visuals"></div>
+                    <div className="victs-visuals"></div>
                 </div>
             </section>
             <section className="container-fluid gradient text-center" id="features-block">
@@ -45,12 +45,12 @@ export default function Trainers() {
                 </div>
             </section>
             <section className="container-fluid text-center" id="reserve">
-                    <div className="col-12 col-sm-6">
-                        <h1>Work with us</h1>
-                        <p>We were built to fit any workout agenda.</p>
-                        <h1 className="top">Are you and active person?</h1>
-                        <p className="distancia">Share the love. Notify your trainer or workout center</p>
-                    </div>
+                <div className="col-12 col-sm-6">
+                    <h1>Work with us</h1>
+                    <p>We were built to fit any workout agenda.</p>
+                    <h1 className="top">Are you and active person?</h1>
+                    <p className="distancia">Share the love. Notify your trainer or workout center</p>
+                </div>
             </section>
         </main>
     )

@@ -85,7 +85,7 @@ const Home = () => {
                                             </button>
                                             <h1>SIMPLE MANAGEMENT</h1>
                                             <p>
-                                                Victorius is a platform that simplifies the management of
+                                                Victs is a platform that simplifies the management of
                                                 your workout sessions with a digital agenda, className
                                                 bookings, payment tracking and so much more. Manage your
                                                 full business cycle with a moderm software platform, and

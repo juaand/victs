@@ -99,13 +99,13 @@ Support</p>
 
                     <p>Thinking ahead. Activite people wants freedom and it is more about them than about you.</p>
 
-                    <p>Through Victorius Community activist users uses their accounts as single sigon to access multiple trainers or workout centers to have a unify digital agenda. And access the comunity services.  </p>
+                    <p>Through Victs Community activist users uses their accounts as single sigon to access multiple trainers or workout centers to have a unify digital agenda. And access the comunity services.  </p>
 
                     <h2>Plan suscription setup</h2>
 
-                    <p>Victorius Platform is meant for a digital agenda of activities, management booking, services plans, customers and full business cycle ready to suit your custom needs.</p>
+                    <p>Victs Platform is meant for a digital agenda of activities, management booking, services plans, customers and full business cycle ready to suit your custom needs.</p>
 
-                    <p>If you are a brand with a business setup and requirements that need customized platform and services to satify custom business and brand requests you can access Victorius Platform throug Victorius Customization Services (CS). </p>
+                    <p>If you are a brand with a business setup and requirements that need customized platform and services to satify custom business and brand requests you can access Victs Platform throug Victs Customization Services (CS). </p>
                 </div>
             </section>
         </main>
