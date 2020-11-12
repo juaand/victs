@@ -23,13 +23,15 @@ export default function InstructorLessons({title, data}) {
                 <div className="row p-0 row-block">
                     <div className="col-12 col-sm-4">
                         <h1 className="__title purple">{title}</h1>
-                        <p className="show-all" onClick={showAll}>{!bool ? 'See' : 'Hide'} all</p>
+                        {data.lenght &&
+                            <p className="show-all" onClick={showAll}>{!bool ? 'See' : 'Hide'} all</p>
+                        }
                     </div>
                     <div className="col-12 col-sm-8">
 
                         {!bool ?
                             <div className="row p-0">
-                                {data.filter(el => !el.gym).slice(0, 4).map(lesson =>
+                                {data.lenght ? data.filter(el => !el.gym).slice(0, 4).map(lesson =>
                                     <div className="false-link calendar-item col-sm-3 col-6">
                                         <span className="cal-item __date">{formatDate(lesson.date)}</span>
                                         <span className="cal-item __hour">{new Date(lesson.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
@@ -37,7 +39,7 @@ export default function InstructorLessons({title, data}) {
                                         <small><strong>place</strong> {lesson.address}</small>
                                         <small><strong>capacity</strong>{lesson.capacity}</small>
                                     </div>
-                                )}
+                                ) : <h2>No personal lessons added <strong>what your waiting for?</strong></h2>}
                             </div> : <div className="row p-0">
                                 {data.filter(el => !el.gym).map(lesson =>
                                     <div className="false-link calendar-item col-sm-3 col-6 border-bottom">

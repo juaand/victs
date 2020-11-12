@@ -23,3 +23,12 @@
   position: absolute;
   bottom: 1rem;
 }
+
+.inner-link {
+  color: #00a9ad;
+}
+
+.inner-link:hover {
+  color: #ffcc00;
+  text-decoration: none;
+}
