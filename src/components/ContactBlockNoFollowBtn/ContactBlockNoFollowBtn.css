@@ -1,13 +1,19 @@
 .coach-avatar-row {
   position: relative;
   overflow: hidden;
-  min-height: 22rem;
+  min-height: 32rem;
 }
 
 .coach-avatar-row .coach-avatar {
-  width: 25rem;
-  height: 25rem;
-  border: 0.6rem solid #ffcc00;
-  border-radius: 12.9rem 14rem 10.9rem 12.8rem;
+  width: 40rem;
+  height: 40rem;
+  border: 0.8rem solid #ffcc00;
+  border-radius: 24.9rem 28rem 20.9rem 24.8rem;
   position: absolute;
+}
+
+h1.discipline {
+  font-weight: 900;
+  font-size: 4rem;
+  margin-bottom: 3rem;
 }

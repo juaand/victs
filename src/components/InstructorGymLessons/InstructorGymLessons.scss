@@ -1,1 +1,10 @@
 @import '../../stylesheets/variables';
+
+h2 {
+  min-height: 20rem;
+  padding-top: 3rem;
+
+  strong {
+      display: block;
+  }
+}
