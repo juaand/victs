@@ -3,8 +3,6 @@ import {Link} from 'react-router-dom'
 
 const InstructorItem = (props) => {
 
-    console.log(props)
-
     return (
         <Link className="col-12 col-sm-3 gym-card" to={{
             pathname: '/instructor-detail',

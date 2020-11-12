@@ -21,7 +21,6 @@ const MyInfoInstructor = ({user, instructor}) => {
         setBool(!bool)
         const res = await getFollowersUsers(user.followers)
         setFollowersList(res)
-        console.log(res)
     }
 
     useEffect(() => {

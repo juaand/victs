@@ -63,7 +63,6 @@ const MyInfo = (props) => {
         setBool(!bool)
         const res = await getFollowersUsers(userStatus.following)
         setFollowersList(res)
-        console.log(res)
     }
 
 

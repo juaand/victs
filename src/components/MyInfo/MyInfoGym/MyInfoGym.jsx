@@ -29,7 +29,6 @@ const MyInfoGym = ({user, gym}) => {
         setBool(!bool)
         const res = await getFollowersUsers(gym.user.followers)
         setFollowersList(res)
-        console.log(res)
     }
 
     const hideModal = () => {

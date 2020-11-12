@@ -71,7 +71,7 @@ export default function Lessons({user}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(data)
+
     try {
       await createLesson(data)
       history.push(`/my-info-${user.role}`)

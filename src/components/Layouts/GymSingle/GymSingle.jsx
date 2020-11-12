@@ -30,7 +30,6 @@ export default function GymSingle(props) {
 
         try {
             const lessonResult = await lessonInfo(data.id)
-            console.log(lessonResult)
             setLessonData(lessonResult[1])
             setReservationdata(lessonResult[0])
             setBool(!bool)
