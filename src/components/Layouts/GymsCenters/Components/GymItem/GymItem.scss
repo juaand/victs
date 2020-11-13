@@ -32,6 +32,10 @@
     transform: scale(1);
   }
 
+  h2 {
+    min-height: auto;
+  }
+
   .address {
     display: flex;
     align-items: flex-start;
