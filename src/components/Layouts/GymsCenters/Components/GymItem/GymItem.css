@@ -31,6 +31,10 @@
   transform: scale(1);
 }
 
+.gym-card h2 {
+  min-height: auto;
+}
+
 .gym-card .address {
   display: flex;
   align-items: flex-start;

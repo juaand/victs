@@ -16,7 +16,7 @@ const GymItem = (props) => {
             <h2>{props.info.user.name}</h2>
             <p className="address">{props.info.user.address}<br /> {props.info.user.city} - {props.info.user.zipcode}</p>
             <p className="phone">{props.info.user.phone}</p>
-            <p className="services">{props.info.services.map(el => <span>{el}</span>)}</p>
+            <p className="services">{props.info.services.map(el => <span>{el}, </span>)}</p>
         </Link>
     )
 }
