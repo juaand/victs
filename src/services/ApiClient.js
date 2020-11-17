@@ -155,6 +155,7 @@ export const updateLesson = ({
 
 export const deleteLesson = (id) => http.get(`/lesson/${id}/delete`)
 export const getLessonGuests = (id) => http.get(`/lesson-guests/${id}`)
+export const getAllLessons = () => http.get('/all-lessons')
 
 //classroom routes
 

@@ -1,0 +1,223 @@
+@import '../../../stylesheets/variables';
+
+.Calendar {
+  .dates-row {
+    min-height: 13rem;
+    align-items: stretch;
+
+    .col {
+      &.box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        padding: 0;
+        flex-direction: column;
+        min-height: 62vh;
+        border-left: solid 1px $light-gray;
+
+        .month {
+          position: absolute;
+          font-size: 1.6rem;
+          color: $text;
+          left: 50%;
+          top: 7rem;
+        }
+      }
+    }
+
+    .date-num {
+      font-size: 8rem;
+      height: 13rem;
+      display: flex;
+      align-items: center;
+      background: rgba($text, 0.4);
+      width: 100%;
+      justify-content: center;
+      font-family: 'MuseoModerno', cursive;
+      color: $yellow;
+
+      &.current {
+        color: $text;
+        background: $yellow;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 13rem;
+
+        .month {
+          color: $white;
+        }
+      }
+    }
+
+    hr {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .calendar-item {
+    max-width: 100%;
+    border-bottom: solid 0.1rem $light-gray;
+    border-right: 0;
+
+    .cal-item {
+      &.__date {
+        display: none;
+      }
+
+      &.__hour {
+        color: $text;
+        font-weight: 400;
+        margin-top: 3rem;
+      }
+
+      &.__discipline {
+        text-transform: uppercase;
+        margin-bottom: 1.6rem;
+      }
+
+      &.__instructor {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 400;
+        .avatar {
+          border: solid 0.1rem $yellow;
+        }
+      }
+
+      &.__gym {
+        color: rgba($text, 0.5);
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: rgba($text, 0.5);
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.6rem;
+
+        &:before {
+          width: 2rem;
+          height: 2rem;
+          display: inline-block;
+          background: url(../../../images/address.svg) no-repeat center center /
+            contain;
+          content: '';
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  .calendar-select {
+    background: $text;
+    padding: 2rem 0;
+    position: relative;
+
+    .form-group {
+      margin: 0;
+
+      select {
+        background: $text;
+        text-align: center;
+        color: $white;
+        border: 0;
+        position: relative;
+        padding-left: 4rem;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      background: url(../../../images/arrow-down.svg) no-repeat center center /
+        contain;
+      display: block;
+      left: 2rem;
+      top: 3rem;
+      color: $white;
+      z-index: 5;
+      transform: rotate(90deg);
+    }
+  }
+
+  .week-select {
+    background: rgba($text, 0.4);
+    padding: 2rem 0;
+    border-bottom: solid 0.1rem $white;
+
+    .btns-row {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      padding-right: 1rem;
+
+      &.today {
+        border-right: solid 0.1rem $text;
+        font-weight: 600;
+      }
+
+      &.prev,
+      &.next {
+        width: 4rem;
+        height: 1.6rem;
+        display: inline-block;
+
+        &.prev {
+          background: url(../../../images/next.svg) no-repeat center center /
+            contain;
+          transform: rotate(180deg);
+          border-left: solid 0.1rem $text;
+        }
+      }
+
+      &.next {
+        background: url(../../../images/next.svg) no-repeat center center /
+          contain;
+        border-right: solid 0.1rem $text;
+      }
+
+      &:hover {
+        opacity: 0.3;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Calendar {
+    .dates-row {
+      .col {
+        width: 33.33%;
+        flex-basis: auto;
+        flex-grow: unset;
+
+        &.box {
+          min-height: auto;
+          border-bottom: solid 1px $light-gray;
+
+          .month {
+            font-size: 1.4rem;
+            left: 40%;
+            top: 7rem;
+          }
+        }
+      }
+    }
+    .calendar-item {
+
+      &:last-child {
+          border-bottom: 0;
+      }
+    }
+  }
+}

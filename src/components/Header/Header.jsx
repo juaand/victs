@@ -51,9 +51,9 @@ const Header = () => {
                             <ul className="navbar-nav col-12 col-sm-10 p-0">
                                 {user && user.role === 'Guest' &&
                                     <>
-                                        {/* <li className="nav-item">
+                                        <li className="nav-item">
                                             <NavLink className="nav-link" to="/calendar">My Calendar</NavLink>
-                                        </li> */}
+                                        </li>
                                         <li className="nav-item">
                                             <NavLink className="nav-link" to="/gyms">Gyms</NavLink>
                                         </li>
