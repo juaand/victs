@@ -57,24 +57,31 @@
 }
 
 .calendar-item .cal-item.__date {
-  padding: 2rem 0 1rem 0;
+  padding: 2rem 0 0rem 0;
   font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .calendar-item .cal-item.__hour {
   font-weight: 600;
   color: #ffcc00;
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .calendar-item .cal-item.__discipline {
   font-weight: 900;
+  text-transform: uppercase;
+}
+
+.calendar-item .cal-item.__gym {
+  display: none;
 }
 
 .calendar-item .cal-item.__instructor {
   font-weight: 600;
   font-size: 1.2rem;
   display: flex;
-  margin-top: 1rem;
 }
 
 .calendar-item .cal-item.__instructor a {
@@ -83,11 +90,16 @@
 }
 
 .calendar-item .cal-item.__instructor .avatar {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   display: block;
-  border: solid 0.2rem #ffcc00;
+  border: solid 0.1rem #ffcc00;
   border-radius: 3.9rem 4.1rem 4.4rem 4.3rem;
+  margin-right: 1rem;
+}
+
+.calendar-item .capacity {
+  margin-top: 0;
 }
 
 @media (max-width: 576px) {

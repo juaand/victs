@@ -21,6 +21,7 @@ import Trainers from './components/Layouts/Trainers/Trainers'
 import Features from './components/Layouts/Features/Features'
 import InstructorCenter from './components/Layouts/InstructorCenter/InstructorCenter'
 import InstructorSingle from './components/Layouts/InstructorSingle/InstructorSingle'
+import Calendar from './components/Layouts/Calendar/Calendar'
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
         <AuthenticatedRoute path='/edit-lesson' render={(props) => <EditLesson {...props} user={user} />} />
         <AuthenticatedRoute path='/lessons' render={(props) => <Lessons {...props} user={user} />} />
         <AuthenticatedRoute path='/edit-classroom' render={(props) => <EditClassroom {...props} user={user} />} />
+        <AuthenticatedRoute path='/calendar' render={(props) => <Calendar {...props} user={user} />} />
         <AuthenticatedRoute path='/classrooms' render={(props) => <Classroom {...props} user={user} />} />
         {user && <Redirect to='/my-info' />}
         {!user && <Redirect to='/' />}

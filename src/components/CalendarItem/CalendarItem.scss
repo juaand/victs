@@ -61,24 +61,31 @@
 
   .cal-item {
     &.__date {
-      padding: 2rem 0 1rem 0;
+      padding: 2rem 0 0rem 0;
       font-weight: 400;
+      font-size: 1.2rem;
     }
 
     &.__hour {
       font-weight: 600;
       color: $yellow;
+      font-size: 1.2rem;
+      margin-top: 1rem;
     }
 
     &.__discipline {
       font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    &.__gym {
+      display: none;
     }
 
     &.__instructor {
       font-weight: 600;
       font-size: 1.2rem;
       display: flex;
-      margin-top: 1rem;
 
       a {
         color: $yellow;
@@ -86,13 +93,18 @@
       }
 
       .avatar {
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 2rem;
+        height: 2rem;
         display: block;
-        border: solid 0.2rem $yellow;
+        border: solid 0.1rem $yellow;
         border-radius: 3.9rem 4.1rem 4.4rem 4.3rem;
+        margin-right: 1rem;
       }
     }
+  }
+
+  .capacity {
+    margin-top: 0;
   }
 }
 
