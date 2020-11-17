@@ -34,6 +34,7 @@ export default function Calendar({user}) {
     const getLessons = async () => {
         const allLessons = await getAllLessons()
         setLessons(allLessons)
+        console.log(allLessons)
     }
 
     const changeLessonsView = (e) => {
