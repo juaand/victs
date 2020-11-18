@@ -2,7 +2,7 @@ import './CalendarItem.css'
 import React from 'react'
 
 const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
-console.log(data)
+
     const formatDate = (date) => {
         const format = (s) => (s < 10 ? '0' + s : s)
         var d = new Date(date)
