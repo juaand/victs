@@ -20,7 +20,7 @@ const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
                 {/* <span className="avatar" style={{background: `url(${data.instructor.user.avatar}) no-repeat center center / cover`}}></span> */}
                 <span>{data.instructor.user.name}</span>
             </span>
-            <span className="cal-item __gym">{data.gym.user.name}</span>
+            <span className="cal-item __gym">{data.gym?.user?.name}</span>
             <span className="capacity">
                 {capacity = 0 ?
                     <strong>No seats left</strong> :
