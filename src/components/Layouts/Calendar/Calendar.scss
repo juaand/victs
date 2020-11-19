@@ -16,12 +16,18 @@
         min-height: 62vh;
         border-left: solid 1px $light-gray;
 
-        .month {
+        .day {
           position: absolute;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           color: $text;
           left: 50%;
           top: 7rem;
+        }
+
+        .month {
+          position: absolute;
+          top: 3.2rem;
+          right: 3.2rem;
         }
       }
     }
@@ -47,7 +53,7 @@
         justify-content: center;
         height: 13rem;
 
-        .month {
+        .day {
           color: $white;
         }
       }
@@ -205,7 +211,7 @@
           min-height: auto;
           border-bottom: solid 1px $light-gray;
 
-          .month {
+          .day {
             font-size: 1.4rem;
             left: 40%;
             top: 7rem;
@@ -214,9 +220,8 @@
       }
     }
     .calendar-item {
-
       &:last-child {
-          border-bottom: 0;
+        border-bottom: 0;
       }
     }
   }

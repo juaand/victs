@@ -34,8 +34,7 @@ export default function ContentWithLessons({title, data, onClick}) {
                                 <CalendarItem
                                     data={gym}
                                     capacity={gym.capacity}
-                                    onClick={onClick}
-                                    borderBottom={bool} />
+                                    onClick={onClick} />
                             )}
                         </div>}
                 </div>
