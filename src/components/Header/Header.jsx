@@ -19,6 +19,7 @@ const Header = () => {
                                 <div className="victs-logo"></div>
                             </div>
                             {user && user.role === 'Guest' && <Link to='/my-info' className="user-hi">Hi {user.name}</Link>}
+                            {user && user.role === 'Admin' && <Link to='/my-info-admin' className="user-hi">Hi {user.name}</Link>}
                             {user && user.role === 'Gym' && <Link to='/my-info-gym' className="user-hi">Hi {user.user.name}</Link>}
                             {user && user.role === 'Instructor' && <Link to='/my-info-instructor' className="user-hi">Hi {user.user.name}</Link>}
                         </div>

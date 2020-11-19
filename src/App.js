@@ -9,6 +9,7 @@ import GymSingle from './components/Layouts/GymSingle/GymSingle'
 import Lessons from './components/Layouts/Lessons/Lessons'
 import Login from './components/Login/Login'
 import MyInfo from './components/MyInfo/MyInfoGuest/MyInfo'
+import MyInfoAdmin from './components/MyInfo/MyInfoAdmin/MyInfoAdmin'
 import MyInfoGym from './components/MyInfo/MyInfoGym/MyInfoGym'
 import MyInfoInstructor from './components/MyInfo/MyInfoInstructor/MyInfoInstructor'
 import Register from './components/Register/Register'
@@ -41,6 +42,7 @@ function App() {
         <AuthenticatedRoute exact path="/gyms" render={(props) => <GymsCenters {...props} user={user} />} />
         <AuthenticatedRoute exact path="/instructors" render={(props) => <InstructorCenter {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
+        <AuthenticatedRoute exact path="/my-info-admin" render={(props) => <MyInfoAdmin {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />
@@ -51,6 +53,7 @@ function App() {
         <AuthenticatedRoute path='/calendar' render={(props) => <Calendar {...props} user={user} />} />
         <AuthenticatedRoute path='/classrooms' render={(props) => <Classroom {...props} user={user} />} />
         {user && <Redirect to='/my-info' />}
+        {/* if user && user.role admin, gym, guest or instructor redirect to something different */}
         {!user && <Redirect to='/' />}
       </Switch>
       <Footer />
