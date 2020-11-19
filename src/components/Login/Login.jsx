@@ -63,6 +63,9 @@ const Login = (props) => {
     if (user && user.role === 'Guest') {
         return <Redirect to="/my-info" />
     }
+    if (user && user.role === 'Admin') {
+        return <Redirect to="/my-info-admin" />
+    }
     if (user && user.role === 'Instructor') {
         return <Redirect to="/my-info-instructor" />
     }
