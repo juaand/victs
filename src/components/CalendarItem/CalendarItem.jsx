@@ -1,7 +1,10 @@
 import './CalendarItem.css'
 import React from 'react'
+import {useAuthContext} from '../../contexts/AuthContext'
 
-const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
+const CalendarItem = ({data, capacity, onClick}) => {
+
+    const {user} = useAuthContext()
 
     const formatDate = (date) => {
         const format = (s) => (s < 10 ? '0' + s : s)
@@ -12,7 +15,7 @@ const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
     const internalOnClick = () => {onClick(data)}
 
     return (
-        <div className={borderBottom ? 'false-link border-bottom calendar-item col-3' : 'false-link calendar-item col-sm-3 col-6'} onClick={internalOnClick}>
+        <div className={data?.user?.includes(user.id) ? 'reserved-lesson false-link calendar-item col-3' : 'false-link calendar-item col-sm-3 col-6'} onClick={internalOnClick}>
             <span className="cal-item __date">{formatDate(data.date)}</span>
             <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
             <span className="cal-item __discipline">{data.discipline}</span>
@@ -27,7 +30,7 @@ const CalendarItem = ({data, borderBottom, capacity, onClick}) => {
                     <>
                         Seats left
             <strong className={capacity < 11 ?
-                            'few' : ''}>{capacity}</strong>
+                            'few' : ''}>{capacity ? capacity : data?.classroom?.rows.reduce((acc, el) => acc + parseInt(el), 0)}</strong>
                     </>
                 }
             </span>
