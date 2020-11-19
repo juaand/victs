@@ -70,6 +70,10 @@
     border-bottom: solid 0.1rem $light-gray;
     border-right: 0;
 
+    &.reserved-lesson{
+      border-bottom: solid 0.6rem $yellow;
+    }
+
     .cal-item {
       &.__date {
         display: none;

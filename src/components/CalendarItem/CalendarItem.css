@@ -52,10 +52,6 @@
   opacity: 0;
 }
 
-.calendar-item.reserved-lesson {
-  border-bottom: solid 0.6rem #ffcc00;
-}
-
 .calendar-item span {
   display: block;
 }

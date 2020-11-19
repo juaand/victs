@@ -66,6 +66,10 @@
   border-right: 0;
 }
 
+.Calendar .calendar-item.reserved-lesson {
+  border-bottom: solid 0.6rem #ffcc00;
+}
+
 .Calendar .calendar-item .cal-item.__date {
   display: none;
 }

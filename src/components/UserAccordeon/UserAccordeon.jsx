@@ -22,6 +22,7 @@ const UserAccordeon = (props) => {
                 disciplines: [],
                 services: [],
                 quote: '',
+                iban: props.user?.iban,
                 packages: props.user.packages,
                 phone: props.user.phone,
                 address: props.user.address,
@@ -47,6 +48,7 @@ const UserAccordeon = (props) => {
             role: v => v.length,
             disciplines: v => v.length,
             quote: v => v.quote,
+            iban: v => v.iban,
             services: v => v.length,
             phone: v => v.length,
             address: v => v.length,
@@ -296,19 +298,37 @@ const UserAccordeon = (props) => {
                                         </div>
                                         <div className="col-12 col-sm-6 profile-info">
                                             {(props.user.role === 'Gym') &&
-                                                <div className="row content-block d-flex align-items-start">
-                                                    <div className="col-4">
-                                                        <strong className="mt-5">Services</strong>
+                                                <>
+                                                    <div className="row content-block d-flex align-items-start">
+                                                        <div className="col-4">
+                                                            <strong className="mt-5">Services</strong>
+                                                        </div>
+                                                        <div className="col-8">
+                                                            <CheckBoxWithLabel
+                                                                name="services"
+                                                                data={servicesList}
+                                                                value={data.services}
+                                                                onChange={getServicesItems}
+                                                            />
+                                                        </div>
                                                     </div>
-                                                    <div className="col-8">
-                                                        <CheckBoxWithLabel
-                                                            name="services"
-                                                            data={servicesList}
-                                                            value={data.services}
-                                                            onChange={getServicesItems}
-                                                        />
+                                                    <div className="row content-block">
+                                                        <div className="col-4">
+                                                            <strong>IBAN</strong>
+                                                        </div>
+                                                        <div className="col-8">
+                                                            <InputWithLabel
+                                                                value={data.iban}
+                                                                onBlur={onBlur}
+                                                                onChange={onChange}
+                                                                name="iban"
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder={props.user.iban}
+                                                            />
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </>
                                             }
                                             {(props.user.role === 'Instructor') &&
                                                 <>
@@ -324,7 +344,7 @@ const UserAccordeon = (props) => {
                                                                 onChange={onChange}
                                                                 name="quote"
                                                                 type="text"
-                                                                className={`form-control ${touch.quote && error.quote ? "is-invalid" : ""}`}
+                                                                className="form-control"
                                                                 placeholder={props.user.quote}
                                                             />
                                                         </div>
@@ -339,6 +359,22 @@ const UserAccordeon = (props) => {
                                                                 data={disciplinesList[0]}
                                                                 value={data.disciplines}
                                                                 onChange={getDisciplinesItems}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="row content-block">
+                                                        <div className="col-4">
+                                                            <strong>IBAN</strong>
+                                                        </div>
+                                                        <div className="col-8">
+                                                            <InputWithLabel
+                                                                value={data.iban}
+                                                                onBlur={onBlur}
+                                                                onChange={onChange}
+                                                                name="iban"
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder={props.user.iban}
                                                             />
                                                         </div>
                                                     </div>
