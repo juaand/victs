@@ -1,19 +1,37 @@
-.button, .btn {
+.button,
+.btn {
   margin: 2rem;
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.button.__yellow-btn, .btn.__yellow-btn {
-  background: #ffcc00;
-  border: 0;
-}
-
-.button.__follow-btn, .btn.__follow-btn {
+  letter-spacing: 0.1rem;
   border: solid 0.1rem #ffcc00;
+  transition: all 200ms ease-in-out;
+}
+
+.button.__yellow-btn,
+.btn.__yellow-btn {
+  background: #ffcc00;
+}
+
+.button.__follow-btn,
+.btn.__follow-btn {
   background: #fff;
+}
+
+.button.__donate-btn,
+.btn.__donate-btn {
+  background: #ffcc00;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+
+.button:hover,
+.btn:hover {
+  background: transparent;
+  color: #ffcc00;
+  border: solid 0.1rem #ffcc00;
 }
 
 .disabled {

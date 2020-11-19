@@ -28,17 +28,24 @@ h6 {
 h1 {
   font-size: 3.2rem;
 
-  &.big-yellow {
+  &.big-yellow,
+  &.big-purple {
     font-size: 3rem;
     font-weight: 900;
     text-transform: initial;
     margin-top: 2rem;
-    color: $yellow;
 
     &.big {
       font-size: 4rem;
-      margin-top: 3rem;
     }
+  }
+
+  &.big-yellow {
+    color: $yellow;
+  }
+
+  &.big-purple {
+    color: $purple;
   }
 
   span {

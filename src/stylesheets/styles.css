@@ -27,17 +27,23 @@ h1 {
   font-size: 3.2rem;
 }
 
-h1.big-yellow {
+h1.big-yellow, h1.big-purple {
   font-size: 3rem;
   font-weight: 900;
   text-transform: initial;
   margin-top: 2rem;
+}
+
+h1.big-yellow.big, h1.big-purple.big {
+  font-size: 4rem;
+}
+
+h1.big-yellow {
   color: #ffcc00;
 }
 
-h1.big-yellow.big {
-  font-size: 4rem;
-  margin-top: 3rem;
+h1.big-purple {
+  color: #7a0054;
 }
 
 h1 span {

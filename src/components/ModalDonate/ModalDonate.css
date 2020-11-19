@@ -1,0 +1,33 @@
+.ModalDonate .banner {
+  width: 80%;
+  margin: auto;
+  height: 20rem;
+  display: block;
+  border-radius: 24.9rem 28rem 20.9rem 24.8rem;
+  background: url(../../images/wellness.jpg) no-repeat center center/cover;
+}
+
+.ModalDonate .title {
+  margin-top: 8rem;
+}
+
+.ModalDonate .modal-body {
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.ModalDonate .modal-body .avatar {
+  width: 18rem;
+  height: 8rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.ModalDonate .modal-body .description {
+  font-size: 1.2rem;
+}
+
+.ModalDonate .modal-body .url,
+.ModalDonate .modal-body .points {
+  display: block;
+}

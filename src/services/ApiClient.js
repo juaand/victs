@@ -53,6 +53,7 @@ export const unWaitingList = (id) =>
 //data.routes
 export const getDisciplines = () => http.get("/disciplines")
 export const getServices = () => http.get("/services")
+export const getOngs = () => http.get('/ongs')
 
 //crud.routes
 export const register = ({name, email, password, role}) =>
@@ -158,7 +159,6 @@ export const getLessonGuests = (id) => http.get(`/lesson-guests/${id}`)
 export const getAllLessons = () => http.get('/all-lessons')
 
 //classroom routes
-
 export const createClassroom = ({user, gym, name, rows, discipline}) =>
   http.post("/classroom", {
     user,
@@ -183,3 +183,5 @@ export const updateClassroom = ({user, gym, name, rows, discipline, id}) =>
 export const deleteClassroom = (id) => http.get(`/classroom/${id}/delete`)
 
 export const getClassroomLessons = (id) => http.get(`/classroom-lessons/${id}`)
+
+

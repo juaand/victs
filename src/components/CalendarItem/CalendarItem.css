@@ -102,6 +102,10 @@
   margin-top: 0;
 }
 
+.attended-lesson:before, .attended-lesson:after {
+  display: none !important;
+}
+
 @media (max-width: 576px) {
   .calendar-item {
     border-bottom: solid 0.1rem #e8e8e8;

@@ -117,7 +117,7 @@ const MyInfo = (props) => {
             }
             <FollowInfoBar followInfo={userStatus} onClick={showFollowers} />
             <MyPlans plans={userStatus.packages} />
-            <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" />
+            <AttendedLessons title="Attended lessons" message="Oops no lessons attended..." strong="Keep calm and move on" data={props.user} />
 
             {userStatus.lessons &&
                 <div className="container my-info">
