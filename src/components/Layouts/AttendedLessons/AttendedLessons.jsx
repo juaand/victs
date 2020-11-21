@@ -6,12 +6,15 @@ import ModalDonate from '../../ModalDonate/ModalDonate'
 const AttendedLessons = ({title, message, strong, data}) => {
 
     const today = new Date()
-    const attendedArr = data?.lessons?.filter(el => new Date(el.date).getDate() < today.getDate() && new Date(el.date).getMonth() === today.getMonth() && new Date(el.date).getFullYear() === today.getFullYear())
+
+    const attendedArr = data.reservations.filter(el => new Date(el.lesson?.date).getDate() < today.getDate() && new Date(el.lesson?.date).getMonth() === today.getMonth() && new Date(el.lesson?.date).getFullYear() === today.getFullYear())
 
     const [bool, setBool] = useState(false)
+    const [clickedLessonId, setClickedLessonId] = useState('')
 
-    const showModal = () => {
+    const showModal = (lessonId) => {
         setBool(!bool)
+        setClickedLessonId(lessonId)
     }
 
     const hideModal = () => {
@@ -20,7 +23,7 @@ const AttendedLessons = ({title, message, strong, data}) => {
 
     return (
         <>
-            {bool && <ModalDonate onClick={hideModal} />}
+            {bool && <ModalDonate onClick={hideModal} lessonId={clickedLessonId} />}
             {attendedArr && attendedArr.length < 0 ?
                 <div className="container empty-row">
                     <div className="row">
@@ -41,7 +44,7 @@ const AttendedLessons = ({title, message, strong, data}) => {
                         </div>
                         <div className="col-sm-8 col-12">
                             <div className="row">
-                                {attendedArr && attendedArr.map(el => <CalendarItem data={el} oldLessons={true} onClick={showModal} />)}
+                                {attendedArr && attendedArr.map(el => <CalendarItem data={el.lesson} points={el.points} oldLessons={true} onClick={(lessonId) => showModal(lessonId)} />)}
                             </div>
                         </div>
                     </div>
