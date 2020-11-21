@@ -31,3 +31,8 @@
 .DonateCard .list-group-item {
   border: 0;
 }
+
+.DonateCard hr {
+  margin: 0.2rem 0;
+  display: block;
+}
