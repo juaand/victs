@@ -3,9 +3,9 @@ import React, {useEffect, useState} from 'react'
 import Button from '../Button/Button'
 import {booking} from '../../services/ApiClient'
 import {useAuthContext} from '../../contexts/AuthContext'
-import {updateUser} from '../../services/ApiClient'
+import {updateUser, waitingList} from '../../services/ApiClient'
 
-export default function ClassroomSkecth({rows, lesson, reservations, hideSelectSeat}) {
+export default function ClassroomSkecth({rows, lesson, reservations, hideSelectSeat, isWaitingList}) {
 
     const [error, setError] = useState('')
     const [reservationsInfo, setReservationsInfo] = useState(reservations)
@@ -42,27 +42,28 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
         }
     }
 
+    const addToWaitingList = () => {
+        console.log('add me to waiting list')
+        // waitingList()
+    }
+
     useEffect(() => {
         const check = reservationsInfo.filter(el => el.user.id === user.id)
         if (check.length) setBool(!bool)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         if (reservationsInfo.length) {
-            // const avatar = document.createElement('img')
-            // avatar.classList.add('avatar')
             for (let i = 0; i < reservationsInfo.length; i++) {
                 const allButtons = document.querySelectorAll(`[seat="${reservationsInfo[i].column}"][row="${reservationsInfo[i].row}"]`)
                 allButtons[0].classList.add('blockedSeat')
-                // avatar.setAttribute('src', `${reservationsInfo[i].user.avatar}`)
-                // allButtons.appendChild(avatar)
             }
         }
     }, [reservationsInfo])
 
     return (
-        <>
+        <div className="ClassroomSkecth">
             {error && <div className="ClassroomSkecth__message alert">{error}</div>}
             {message && <div className="ClassroomSkecth__message">{message}</div>}
             {!message &&
@@ -78,11 +79,18 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
                             )}
                         </div>
                     )}
-                    {(bool && !hideSelectSeat) &&
+                    {(bool && !hideSelectSeat && !isWaitingList) &&
                         <p className="text-center">Select a seat to make a reservation.</p>
+                    }
+                    {isWaitingList &&
+                        <>
+                            <hr />
+                            <p className="text-center"><strong>No seats lefts for this classroom,</strong> get on the waiting list and we'll notify you if someone calcels their reservation.</p>
+                            <Button className="button __yellow-btn waiting" onClick={addToWaitingList}>Add to waiting list</Button>
+                        </>
                     }
                 </>
             }
-        </>
+        </div>
     )
 }

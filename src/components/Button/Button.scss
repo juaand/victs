@@ -13,6 +13,11 @@
 
   &.__yellow-btn {
     background: $yellow;
+
+    &.waiting {
+      display: block;
+      margin: auto;
+    }
   }
 
   &.__follow-btn {

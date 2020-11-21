@@ -6,11 +6,11 @@ import ModalDonate from '../../ModalDonate/ModalDonate'
 const AttendedLessons = ({title, message, strong, data}) => {
 
     const today = new Date()
+    const [bool, setBool] = useState(false)
+    const [clickedLessonId, setClickedLessonId] = useState('')
 
     const attendedArr = data.reservations.filter(el => new Date(el.lesson?.date).getDate() < today.getDate() && new Date(el.lesson?.date).getMonth() === today.getMonth() && new Date(el.lesson?.date).getFullYear() === today.getFullYear())
 
-    const [bool, setBool] = useState(false)
-    const [clickedLessonId, setClickedLessonId] = useState('')
 
     const showModal = (lessonId) => {
         setBool(!bool)

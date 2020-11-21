@@ -69,9 +69,13 @@
   margin-top: 1rem;
 }
 
-.calendar-item .cal-item.__discipline {
+.calendar-item .cal-item.__discipline, .calendar-item .cal-item.__name {
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.calendar-item .cal-item.__name {
+  color: rgba(51, 51, 51, 0.4);
 }
 
 .calendar-item .cal-item.__gym {
