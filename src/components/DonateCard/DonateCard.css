@@ -1,0 +1,33 @@
+.DonateCard button {
+  margin: 0;
+  padding: 0 0.8rem;
+  background: #fff !important;
+  color: #ffcc00;
+  margin-bottom: 0.1rem;
+}
+
+.DonateCard button.thanks {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border: 0;
+  padding-left: 0;
+}
+
+.DonateCard button.thanks.disabled {
+  opacity: 1;
+}
+
+.DonateCard .points-bar {
+  font-size: 1.2rem;
+}
+
+.DonateCard .points-bar .fill-bar {
+  background-color: #ffcc00;
+  padding: 0.2rem;
+  display: block;
+}
+
+.DonateCard .list-group-item {
+  border: 0;
+}
