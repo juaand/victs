@@ -60,7 +60,6 @@ const MyInfo = (props) => {
         setFollowersList(res)
     }
 
-
     const cancelReservation = async () => {
         setMessageOnCancel('Your book has been cancelled successfully.')
         const unbook = await unbooking(modalData.id, reservationData)
