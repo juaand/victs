@@ -1,4 +1,4 @@
-import './InstructorItem.css'
+import './InstructorsItem.css'
 import React from 'react'
 import {Link} from 'react-router-dom'
 
@@ -6,7 +6,7 @@ export default function InstructorItem({instructor}) {
 
     return (
         <Link to={{
-            pathname: '/instructor-detail',
+            pathname: '/edit-instructor',
             state: {
                 id: instructor?.id,
                 instructor: instructor?.user
