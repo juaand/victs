@@ -54,6 +54,7 @@ export const unWaitingList = (id) =>
 export const getDisciplines = () => http.get("/disciplines")
 export const getServices = () => http.get("/services")
 export const getOngs = () => http.get('/ongs')
+export const getAllData = () => http.get('/alldata')
 
 //crud.routes
 export const register = ({name, email, password, role}) =>
