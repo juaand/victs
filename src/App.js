@@ -42,7 +42,7 @@ function App() {
         <AuthenticatedRoute exact path="/gyms" render={(props) => <GymsCenters {...props} user={user} />} />
         <AuthenticatedRoute exact path="/instructors" render={(props) => <InstructorCenter {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info" render={(props) => <MyInfo {...props} user={user} />} />
-        <AuthenticatedRoute exact path="/my-info-admin" render={(props) => <MyInfoAdmin />} />
+        <AuthenticatedRoute exact path="/my-info-admin" render={(props) => <MyInfoAdmin {...props} user={user} />} />
         <AuthenticatedRoute exact path="/my-info-gym" render={(props) => <MyInfoGym {...props} user={user.user} gym={user} />} />
         <AuthenticatedRoute exact path="/my-info-instructor" render={(props) => <MyInfoInstructor {...props} user={user.user} instructor={user} />} />
         <AuthenticatedRoute path='/gym-detail' render={(props) => <GymSingle {...props} user={user} />} />

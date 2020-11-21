@@ -17,7 +17,6 @@ export const AuthContextProvider = ({children}) => {
     logOut()
     localStorage.removeItem('user')
     setUser(undefined)
-    document.querySelector('.__grayHeader').classList.remove('__grayHeader')
   }, [])
 
   const value = {user, login, logout}

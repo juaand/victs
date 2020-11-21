@@ -50,11 +50,6 @@ const MyInfo = (props) => {
         setBool(!bool)
     }
 
-
-    useEffect(() => {
-        document.querySelector('.navbar').classList.add('__grayHeader')
-    }, [])
-
     useEffect(() => {
         setUserStatus(props.user)
     }, [props.user])
@@ -79,10 +74,6 @@ const MyInfo = (props) => {
             setMessageOnCancel('')
         }, 3000)
     }
-
-    useEffect(() => {
-        document.querySelector('.navbar').classList.add('__grayHeader')
-    }, [])
 
     useEffect(() => {
         setUserStatus(props.user)

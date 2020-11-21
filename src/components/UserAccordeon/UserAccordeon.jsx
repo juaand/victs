@@ -187,7 +187,6 @@ const UserAccordeon = (props) => {
     }
 
     useEffect(() => {
-        document.querySelector('.navbar').classList.add('__grayHeader')
         setProfileData(data)
     }, [data])
 

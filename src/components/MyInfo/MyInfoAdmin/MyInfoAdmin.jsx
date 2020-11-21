@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { getAllData } from "../../../services/ApiClient";
+import React, {useEffect, useState} from "react"
+import {getAllData} from "../../../services/ApiClient"
 import {Link, NavLink} from 'react-router-dom'
-import AdminUsers from "./AdminUsers/AdminUsers";
-import AdminInstructors from "./AdminInstructors/AdminInstructors";
-import AdminGyms from "./AdminGyms/AdminGyms";
-import ModalEditUser from "../../ModalEditUser/ModalEditUser";
+import AdminUsers from "./AdminUsers/AdminUsers"
+import AdminInstructors from "./AdminInstructors/AdminInstructors"
+import AdminGyms from "./AdminGyms/AdminGyms"
+import ModalEditUser from "../../ModalEditUser/ModalEditUser"
 
 
 
 export default function MyInfoAdmin() {
-  const [allData, setAllData] = useState([]);
+  const [allData, setAllData] = useState([])
   const [userBool, setUserBool] = useState(false)
   const [instructorsBool, setInstructorsBool] = useState(false)
   const [gymsBool, setGymsBool] = useState(false)
@@ -19,12 +19,12 @@ export default function MyInfoAdmin() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getAllData();
-      setAllData(result);
-      console.log(result);
-    };
-    fetchData();
-  }, []);
+      const result = await getAllData()
+      setAllData(result)
+      console.log(result)
+    }
+    fetchData()
+  }, [])
 
   const showModal = (userId) => {
     setBool(!bool)
@@ -53,10 +53,10 @@ export default function MyInfoAdmin() {
 
   return (
     <>
-    {bool && <ModalEditUser user={userInfo} onClick={hideModal} />}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light margin-top">
+      {bool && <ModalEditUser user={userInfo} onClick={hideModal} />}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light margin-top">
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarTogglerDemo03"
@@ -64,47 +64,47 @@ export default function MyInfoAdmin() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a className="navbar-brand" href="#">
           VICTS Control
         </a>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Admin <span class="sr-only">(current)</span>
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li className="nav-item active">
+              <a className="nav-link" href="#">
+                Admin <span className="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-            <Link className="nav-link" onClick={showUsers} >Users</Link>
+            <li className="nav-item">
+              <Link className="nav-link" onClick={showUsers} >Users</Link>
             </li>
-            <li class="nav-item">
-            <Link className="nav-link" onClick={showInstructors} >Instructors</Link>
+            <li className="nav-item">
+              <Link className="nav-link" onClick={showInstructors} >Instructors</Link>
             </li>
-            <li class="nav-item">
-            <Link className="nav-link" onClick={showGyms} >Gyms</Link>
+            <li className="nav-item">
+              <Link className="nav-link" onClick={showGyms} >Gyms</Link>
             </li>
-            <li class="nav-item">
-            <NavLink activeClassName="active" className="nav-link" to="/admin-reservations">Reservations</NavLink>
+            <li className="nav-item">
+              <NavLink activeClassName="active" className="nav-link" to="/admin-reservations">Reservations</NavLink>
             </li>
-            <li class="nav-item">
-            <NavLink activeClassName="active" className="nav-link" to="/admin-orgs">ORG's</NavLink>
+            <li className="nav-item">
+              <NavLink activeClassName="active" className="nav-link" to="/admin-orgs">ORG's</NavLink>
             </li>
-            <li class="nav-item">
-            <NavLink activeClassName="active" className="nav-link" to="/admin-statistics">Statistics</NavLink>
+            <li className="nav-item">
+              <NavLink activeClassName="active" className="nav-link" to="/admin-statistics">Statistics</NavLink>
             </li>
-            <li class="nav-item">
-            <NavLink activeClassName="active" className="nav-link" to="/admin-invoices">Invoices</NavLink>
+            <li className="nav-item">
+              <NavLink activeClassName="active" className="nav-link" to="/admin-invoices">Invoices</NavLink>
             </li>
           </ul>
         </div>
       </nav>
-      { userBool && <AdminUsers onClick={(userId) => showModal(userId)} data={allData[0]}/>}
+      { userBool && <AdminUsers onClick={(userId) => showModal(userId)} data={allData[0]} />}
       { instructorsBool && <AdminInstructors data={allData[2]} />}
       { gymsBool && <AdminGyms data={allData[1]} />}
 
     </>
-  );
+  )
 }
