@@ -5,6 +5,8 @@ import AdminUsers from "./AdminUsers/AdminUsers"
 import AdminInstructors from "./AdminInstructors/AdminInstructors"
 import AdminGyms from "./AdminGyms/AdminGyms"
 import ModalEditUser from "../../ModalEditUser/ModalEditUser"
+import AdminReservations from "./AdminReservations/AdminReservations"
+import AdminLessons from "./AdminLessons/AdminLessons"
 
 
 
@@ -13,6 +15,8 @@ export default function MyInfoAdmin() {
   const [userBool, setUserBool] = useState(false)
   const [instructorsBool, setInstructorsBool] = useState(false)
   const [gymsBool, setGymsBool] = useState(false)
+  const [reservationsBool, setReservationsBool] = useState(false)
+  const [lessonsBool, setLessonsBool] = useState(false)
   const [bool, setBool] = useState(false)
   const [userInfo, setUserInfo] = useState([])
 
@@ -39,16 +43,38 @@ export default function MyInfoAdmin() {
     setUserBool(!userBool)
     setInstructorsBool(false)
     setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
   }
   const showInstructors = () => {
     setInstructorsBool(!instructorsBool)
     setUserBool(false)
     setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
   }
   const showGyms = () => {
     setGymsBool(!gymsBool)
-    setInstructorsBool(false)
     setUserBool(false)
+    setInstructorsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+  }
+
+  const showReservations = () => {
+    setReservationsBool(!reservationsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setLessonsBool(false)
+  }
+
+  const showLessons = () => {
+    setLessonsBool(!lessonsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
   }
 
   return (
@@ -87,10 +113,13 @@ export default function MyInfoAdmin() {
               <Link className="nav-link" onClick={showGyms} >Gyms</Link>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="active" className="nav-link" to="/admin-reservations">Reservations</NavLink>
+              <Link className="nav-link" onClick={showReservations} >Reservations</Link>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="active" className="nav-link" to="/admin-orgs">ORG's</NavLink>
+            <Link className="nav-link" onClick={showLessons} >Lessons</Link>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" className="nav-link" to="/admin-invoices">ORG's</NavLink>
             </li>
             <li className="nav-item">
               <NavLink activeClassName="active" className="nav-link" to="/admin-statistics">Statistics</NavLink>
@@ -104,7 +133,8 @@ export default function MyInfoAdmin() {
       { userBool && <AdminUsers onClick={(userId) => showModal(userId)} data={allData[0]} />}
       { instructorsBool && <AdminInstructors data={allData[2]} />}
       { gymsBool && <AdminGyms data={allData[1]} />}
-
+      { reservationsBool && <AdminReservations data={allData[4]} />}
+      { lessonsBool && <AdminLessons data={allData[3]} />}
     </>
   )
 }
