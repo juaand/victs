@@ -29,11 +29,20 @@ export default function DonateCard({data, lessonId}) {
                 <div className="card-body">
                     <p className="card-text">{socialData.description}</p>
                 </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item points-bar">
-                        <Button className="button __yellow-btn add-points" onClick={addPoints}>+ 10</Button>
-                        <span className="fill-bar" style={{width: `${socialData.points / 10}%`}}></span>points <strong>{socialData.points}</strong></li>
-                </ul>
+                {socialData.points === 1000 ?
+                    <ul className="list-group list-group-flush">
+                    <hr/>
+                        <li className="list-group-item">
+                            <strong>{socialData.name}</strong> will receive a donation of 100€!!!
+                        </li>
+                    </ul>
+                    :
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item points-bar">
+                            <Button className="button __yellow-btn add-points" onClick={addPoints}>+ 10</Button>
+                            <span className="fill-bar" style={{width: `${socialData.points / 10}%`}}></span>points <strong>{socialData.points}</strong>
+                        </li>
+                    </ul>}
             </div>
         </div>
     )
