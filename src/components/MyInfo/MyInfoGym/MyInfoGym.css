@@ -6,10 +6,6 @@
   background: rgba(0, 169, 173, 0.9);
 }
 
-.modal .modal-body {
-  border: solid 0.1rem #00a9ad;
-}
-
 .followers-content h1 {
   font-weight: 900;
   color: #00a9ad;

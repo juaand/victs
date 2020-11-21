@@ -11,3 +11,7 @@
 .Home .module.accordeon {
   height: auto;
 }
+
+.Home .btn {
+  border: 0;
+}

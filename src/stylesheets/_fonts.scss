@@ -29,7 +29,9 @@ h1 {
   font-size: 3.2rem;
 
   &.big-yellow,
-  &.big-purple {
+  &.big-purple,
+  &.big-blue,
+  &.big-gray {
     font-size: 3rem;
     font-weight: 900;
     text-transform: initial;
@@ -44,8 +46,16 @@ h1 {
     color: $yellow;
   }
 
+  &.big-gray {
+    color: $text;
+  }
+
   &.big-purple {
     color: $purple;
+  }
+
+  &.big-blue {
+    color: $blue;
   }
 
   span {

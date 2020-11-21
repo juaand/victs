@@ -6,8 +6,8 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  border: solid 0.1rem #ffcc00;
   transition: all 200ms ease-in-out;
+  border: solid 0.1rem #ffcc00;
 }
 
 .button.__yellow-btn,
@@ -27,11 +27,22 @@
   margin: 2rem 0;
 }
 
+.button.__donate-btn.disabled,
+.btn.__donate-btn.disabled {
+  opacity: 1;
+  background-color: #fff;
+  padding: 0;
+  color: #00a9ad;
+  text-align: left;
+  text-transform: none;
+  font-weight: 600;
+  border: 0;
+}
+
 .button:hover,
 .btn:hover {
   background: transparent;
   color: #ffcc00;
-  border: solid 0.1rem #ffcc00;
 }
 
 .disabled {

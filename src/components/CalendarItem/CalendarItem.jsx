@@ -3,7 +3,7 @@ import React from 'react'
 import {useAuthContext} from '../../contexts/AuthContext'
 import Button from '../Button/Button'
 
-const CalendarItem = ({data, capacity, onClick, oldLessons}) => {
+const CalendarItem = ({data, capacity, onClick, oldLessons, points}) => {
 
     const {user} = useAuthContext()
 
@@ -23,10 +23,12 @@ const CalendarItem = ({data, capacity, onClick, oldLessons}) => {
                     <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                     <span className="cal-item __discipline">{data.discipline}</span>
                     <span className="cal-item __instructor">
-                        <span>{data.instructor.user.name}</span>
+                        <span>{data.instructor?.user?.name}</span>
                     </span>
                     <span className="cal-item __gym">{data.gym?.user?.name}</span>
-                    <Button className="button __donate-btn" onClick={() => onClick(data)}>VICTS the world</Button>
+                    {(points && points > 0) ?
+                        <Button className="button __donate-btn" onClick={() => onClick(data.id)}>VICTS the world</Button> : <Button className="button __donate-btn disabled" onClick={() => onClick(data.id)}>Thanks for your vote!!</Button> 
+                    }
                 </div>
                 :
                 <div className={data?.user?.includes(user.id) ? 'reserved-lesson false-link calendar-item col-3' : 'false-link calendar-item col-sm-3 col-6'} onClick={internalOnClick}>

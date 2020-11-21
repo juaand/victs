@@ -1,10 +1,19 @@
 .ModalDonate .banner {
-  width: 80%;
+  width: 60%;
   margin: auto;
   height: 20rem;
   display: block;
   border-radius: 24.9rem 28rem 20.9rem 24.8rem;
   background: url(../../images/wellness.jpg) no-repeat center center/cover;
+}
+
+.ModalDonate strong {
+  font-size: 1.8rem;
+}
+
+.ModalDonate .big-gray {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .ModalDonate .title {
@@ -16,18 +25,47 @@
   overflow: scroll;
 }
 
-.ModalDonate .modal-body .avatar {
-  width: 18rem;
-  height: 8rem;
-  display: block;
-  margin-bottom: 1rem;
+.ModalDonate .modal-body .card {
+  margin-bottom: 3rem;
+  border: 0;
 }
 
-.ModalDonate .modal-body .description {
+.ModalDonate .modal-body .hero {
+  margin: 2rem auto 1rem auto;
+  width: 100%;
+  display: block;
+  height: 12rem;
+  border-radius: 24.9rem 28rem 20.9rem 24.8rem;
+  position: relative;
+  border: solid 0.2rem #ffcc00;
+}
+
+.ModalDonate .modal-body .hero .card-title {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+  background: #ffcc00;
+  display: inline;
+  padding: 0.4rem 2.4rem;
+  border-radius: 1.9rem 2rem 1.6rem 1.8rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.ModalDonate .modal-body .hero .card-title:hover {
+  text-decoration: none;
+}
+
+.ModalDonate .modal-body .card-text {
   font-size: 1.2rem;
 }
 
 .ModalDonate .modal-body .url,
 .ModalDonate .modal-body .points {
   display: block;
+}
+
+.ModalDonate .modal-body .url {
+  color: #ffcc00;
 }

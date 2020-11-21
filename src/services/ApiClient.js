@@ -54,10 +54,12 @@ export const unWaitingList = (id) =>
 export const getDisciplines = () => http.get("/disciplines")
 export const getServices = () => http.get("/services")
 export const getOngs = () => http.get('/ongs')
+export const earnedPoints = (id, lessonId) => http.post(`/addpoints/${id}`, {id, lessonId})
 
 //crud.routes
 export const register = ({name, email, password, role}) =>
   http.post("/register", {name, email, password, role})
+
 export const updateUser = ({
   name,
   role,
@@ -82,6 +84,7 @@ export const updateUser = ({
     services,
     disciplines,
   })
+
 export const updateUserAvatar = (data, id) => {
   let fd = new FormData()
   fd.append("file", data)
@@ -89,8 +92,10 @@ export const updateUserAvatar = (data, id) => {
   const config = {headers: {"Content-Type": "multipart/form-data"}}
   return http.post(`/user-profile/${id}/edit-avatar`, fd, config)
 }
+
 export const updatePassword = ({password, newpassword, id}) =>
   http.post(`/update-password/${id}`, {password, newpassword})
+
 export const deleteUser = (id) => http.get(`/user/${id}/delete`)
 
 //lesson.routes
