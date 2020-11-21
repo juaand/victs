@@ -1,4 +1,4 @@
-.classroom-place {
+.ClassroomSkecth .classroom-place {
   display: block;
   border: 0;
   margin: 1rem;
@@ -7,58 +7,58 @@
   border: solid 0.1rem #ffcc00;
 }
 
-.classroom-place.Cycle {
+.ClassroomSkecth .classroom-place.Cycle {
   background: url(../../images/cycle.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Martial {
+.ClassroomSkecth .classroom-place.Martial {
   background: url(../../images/martial.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Dance {
+.ClassroomSkecth .classroom-place.Dance {
   background: url(../../images/dance.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Aqua {
+.ClassroomSkecth .classroom-place.Aqua {
   background: url(../../images/aqua.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Mind {
+.ClassroomSkecth .classroom-place.Mind {
   background: url(../../images/mind.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Express {
+.ClassroomSkecth .classroom-place.Express {
   background: url(../../images/express.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Conditioning {
+.ClassroomSkecth .classroom-place.Conditioning {
   background: url(../../images/conditioning.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.Other {
+.ClassroomSkecth .classroom-place.Other {
   background: url(../../images/logo-res.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
 
-.classroom-place.blockedSeat, .classroom-place:hover {
+.ClassroomSkecth .classroom-place.blockedSeat, .ClassroomSkecth .classroom-place:hover {
   background: #211e35 url(../../images/logo-res.svg) no-repeat center 1rem/contain;
   background-size: 3rem 3rem;
   position: relative;
   border: 0;
 }
 
-.classroom-place.blockedSeat {
+.ClassroomSkecth .classroom-place.blockedSeat {
   pointer-events: none;
 }
 
-.classroom-place.blockedSeat:before {
+.ClassroomSkecth .classroom-place.blockedSeat:before {
   content: 'booked';
   position: absolute;
   bottom: 1rem;
@@ -71,7 +71,7 @@
   left: 0;
 }
 
-.classroom-place:hover:before {
+.ClassroomSkecth .classroom-place:hover:before {
   content: 'book';
   position: absolute;
   bottom: 1rem;
@@ -84,20 +84,20 @@
   left: 0;
 }
 
-.classroom-place img.avatar {
+.ClassroomSkecth .classroom-place img.avatar {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   border: solid 0.2rem #ffcc00;
 }
 
-.instructor-info {
+.ClassroomSkecth .instructor-info {
   position: relative;
   margin: 2rem auto;
   margin-top: 2rem;
 }
 
-.instructor-info .avatar {
+.ClassroomSkecth .instructor-info .avatar {
   width: 6rem;
   height: 6rem;
   display: block;
@@ -106,7 +106,7 @@
   border: solid 0.2rem #ffcc00;
 }
 
-.instructor-info .name {
+.ClassroomSkecth .instructor-info .name {
   position: absolute;
   bottom: -1rem;
   background: #fff;
@@ -120,12 +120,17 @@
   border-top: solid 0.1rem #ffcc00;
 }
 
-.ClassroomSkecth__message {
+.ClassroomSkecth .ClassroomSkecth__message {
   font-weight: 600;
   color: #00a9ad;
   text-align: center;
 }
 
-.ClassroomSkecth__message.alert {
+.ClassroomSkecth .ClassroomSkecth__message.alert {
   color: #cb1b53;
+}
+
+.ClassroomSkecth strong {
+  display: block;
+  text-transform: uppercase;
 }

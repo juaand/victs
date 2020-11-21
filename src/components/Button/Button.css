@@ -15,6 +15,12 @@
   background: #ffcc00;
 }
 
+.button.__yellow-btn.waiting,
+.btn.__yellow-btn.waiting {
+  display: block;
+  margin: auto;
+}
+
 .button.__follow-btn,
 .btn.__follow-btn {
   background: #fff;

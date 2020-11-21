@@ -27,7 +27,7 @@ const CalendarItem = ({data, capacity, onClick, oldLessons, points}) => {
                     </span>
                     <span className="cal-item __gym">{data.gym?.user?.name}</span>
                     {(points && points > 0) ?
-                        <Button className="button __donate-btn" onClick={() => onClick(data.id)}>VICTS the world</Button> : <Button className="button __donate-btn disabled" onClick={() => onClick(data.id)}>Thanks for your vote!!</Button> 
+                        <Button className="button __donate-btn" onClick={() => onClick(data.id)}>VICTS the world</Button> : <Button className="button __donate-btn disabled" onClick={() => onClick(data.id)}>Thanks for your vote!!</Button>
                     }
                 </div>
                 :
@@ -35,12 +35,13 @@ const CalendarItem = ({data, capacity, onClick, oldLessons, points}) => {
                     <span className="cal-item __date">{formatDate(data.date)}</span>
                     <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                     <span className="cal-item __discipline">{data.discipline}</span>
+                    <span className="cal-item __name">{data.name}</span>
                     <span className="cal-item __instructor">
                         <span>{data.instructor.user.name}</span>
                     </span>
                     <span className="cal-item __gym">{data.gym?.user?.name}</span>
                     <span className="capacity">
-                        {capacity = 0 ?
+                        {capacity === 0 ?
                             <strong>No seats left</strong> :
                             <>
                                 Seats left

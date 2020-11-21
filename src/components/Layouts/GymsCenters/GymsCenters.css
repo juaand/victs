@@ -1,5 +1,5 @@
 .gym-centers .gyms-bg {
-  background: url(../../../images/gyms-bg.jpg) no-repeat center -21rem/cover;
+  background: url(../../../images/gyms-bg.jpg) no-repeat center bottom/cover;
   padding: 10rem 0;
   height: 30rem;
 }

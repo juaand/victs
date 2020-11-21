@@ -73,9 +73,14 @@
       margin-top: 1rem;
     }
 
-    &.__discipline {
+    &.__discipline,
+    &.__name {
       font-weight: 900;
       text-transform: uppercase;
+    }
+
+    &.__name {
+      color: rgba($text, 0.4);
     }
 
     &.__gym {
