@@ -42,9 +42,15 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
         }
     }
 
-    const addToWaitingList = () => {
-        console.log('add me to waiting list')
-        // waitingList()
+    const addToWaitingList = async () => {
+        try {
+            const result = await waitingList(lesson.id)
+            console.log(result)
+            login(result[1])
+            setMessage('You were added to the waiting list sucessfully.')
+        } catch (err) {
+            setError(err.response?.data?.message)
+        }
     }
 
     useEffect(() => {
