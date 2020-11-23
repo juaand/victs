@@ -539,7 +539,7 @@ const UserAccordeon = (props) => {
                                                 <Button className="button __yellow-btn disabled" onClick={postAvatar}>Update</Button>
                                                 <Button className="button cancel __yellow-btn" onClick={cancelAvatarUpdate}>Cancel</Button>
                                             </> :
-                                            <Button className="button center __yellow-btn" onClick={updateAvatar}>Change avatar</Button>
+                                            <Button className="button center __yellow-btn change-avatar" onClick={updateAvatar}>Change avatar</Button>
                                         }
                                     </div>
                                     {changeAvatar &&

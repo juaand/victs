@@ -133,4 +133,6 @@
 .ClassroomSkecth strong {
   display: block;
   text-transform: uppercase;
+  color: #cb1b53;
+  letter-spacing: 0.1rem;
 }

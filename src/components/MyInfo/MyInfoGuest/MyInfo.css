@@ -10,6 +10,7 @@
 
 .gym-name {
   border-top: solid 0.1rem #e8e8e8;
+  padding: 0;
 }
 
 .gym-name:first-child {
