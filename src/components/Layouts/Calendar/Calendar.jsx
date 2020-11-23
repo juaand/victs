@@ -29,14 +29,16 @@ export default function Calendar({user}) {
             colArr.push(
                 <div className="col box">
                     <div className={(date.getDate() + i) === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear() ? 'date-num current' : 'date-num'}>
-                        {new Date(next).getDate()}
-                        <small className="month">/ <span>{new Date(next).getMonth() + 1}</span>
-                        </small>
-
+                        {<span className="big-date">
+                            {new Date(next).getDate()}
+                            <small className="month">/ <span>{new Date(next).getMonth() + 1}
+                            </span>
+                            </small>
+                        </span>}
                         <span className="day">{days[new Date(next).getDay()]}
                         </span>
                     </div>
-                    {lessons.filter(el => new Date(el.date).getDate() === date.getDate() + i && new Date(el.date).getMonth() === currentDay.getMonth() && new Date(el.date).getFullYear() === currentDay.getFullYear()).map(el => <CalendarItem data={el} onClick={showModal} />)}
+                    {lessons.filter(el => new Date(el.date).getDate() === date.getDate() + i && new Date(el.date).getMonth() === currentDay.getMonth() && new Date(el.date).getFullYear() === currentDay.getFullYear()).map(el => <CalendarItem data={el} capacity={el.capacity} onClick={showModal} />)}
                 </div>)
         }
 

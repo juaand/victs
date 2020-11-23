@@ -45,7 +45,6 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
     const addToWaitingList = async () => {
         try {
             const result = await waitingList(lesson.id)
-            console.log(result)
             login(result[1])
             setMessage('You were added to the waiting list sucessfully.')
         } catch (err) {
@@ -54,13 +53,13 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
     }
 
     useEffect(() => {
-        const check = reservationsInfo.filter(el => el.user.id === user.id)
-        if (check.length) setBool(!bool)
+        const check = reservationsInfo?.filter(el => el.user.id === user.id)
+        if (check?.length) setBool(!bool)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-        if (reservationsInfo.length) {
+        if (reservationsInfo?.length) {
             for (let i = 0; i < reservationsInfo.length; i++) {
                 const allButtons = document.querySelectorAll(`[seat="${reservationsInfo[i].column}"][row="${reservationsInfo[i].row}"]`)
                 allButtons[0].classList.add('blockedSeat')

@@ -10,6 +10,7 @@ import Modal from '../../Modal/Modal'
 import {unbooking, updateUser, getFollowersUsers} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import FollowInfoBar from '../../FollowInfoBar/FollowInfoBar'
+import {unWaitingList} from '../../../services/ApiClient'
 
 const MyInfo = (props) => {
 
@@ -21,14 +22,17 @@ const MyInfo = (props) => {
     const [userStatus, setUserStatus] = useState(props.user)
     const [messageOnCancel, setMessageOnCancel] = useState('')
     const [followersList, setFollowersList] = useState([])
+    const [useWaitingLessons, setUseWaitingLessons] = useState(userStatus.waitinglists)
+    const [successMessage, setSuccessMessage] = useState('')
+    const [error, setError] = useState('')
 
     const getGymName = (arr) => {
         return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
     }
 
-    const byLessons2 = userStatus.lessons.filter((lesson) => new Date(lesson.date).getTime() > new Date().getTime())
+    const upcomingLessons = userStatus.lessons.filter((lesson) => new Date(lesson.date).getTime() > new Date().getTime())
 
-    const byLessons = byLessons2.reduce((acc, e) => {
+    const byLessons = upcomingLessons.reduce((acc, e) => {
         acc[e.gym.id] = (acc[e.gym.id] || [])
         acc[e.gym.id].push(e)
         return acc
@@ -77,6 +81,12 @@ const MyInfo = (props) => {
     useEffect(() => {
         setUserStatus(props.user)
     }, [props.user])
+
+    const removeFromWaitingList = async (lessonId) => {
+        const result = await unWaitingList(lessonId)
+        login(result[1])
+        setUseWaitingLessons(result[1].waitinglists)
+    }
 
 
     return (
@@ -139,10 +149,8 @@ const MyInfo = (props) => {
                     </div>
                 </div>
             }
-            <>
-                <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's good news" />
-                <UserInfo title="My info" data={userStatus} />
-            </>
+            <WaitingLessons title="Waiting list lessons" message="No lessons on waiting list" strong="That's good news" data={useWaitingLessons} onClick={removeFromWaitingList} />
+            <UserInfo title="My info" data={userStatus} />
         </>
     )
 }

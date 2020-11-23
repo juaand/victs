@@ -251,6 +251,11 @@ label:not(.form-check-label) {
   color: #cb1b53;
 }
 
+.sucess {
+  color: #00a9ad;
+  font-weight: 600;
+}
+
 .module {
   display: flex;
   justify-content: center;
