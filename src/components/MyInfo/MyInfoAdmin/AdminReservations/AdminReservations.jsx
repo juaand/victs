@@ -11,7 +11,7 @@ export default function AdminReservations({data, onClick}) {
 
         const filteredReservations = data.filter(guest => {
             return (
-                (guest?.user?.name?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1
+                (guest?.user?.name?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1 || (guest?.user?.email?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1
             )
         })
     
@@ -22,7 +22,7 @@ export default function AdminReservations({data, onClick}) {
                 </div>
                 <div className="row">
                     <div className="col-12 form-group">
-                        <input type="text" className="form-control" placeholder="Search by user name" onChange={handleChange} value={search} /></div>
+                        <input type="text" className="form-control" placeholder="Search by user name or email" onChange={handleChange} value={search} /></div>
                 </div>
                 <div className="row p-0">
                     {filteredReservations.map(el =>
