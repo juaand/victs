@@ -62,7 +62,9 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
         if (reservationsInfo?.length) {
             for (let i = 0; i < reservationsInfo.length; i++) {
                 const allButtons = document.querySelectorAll(`[seat="${reservationsInfo[i].column}"][row="${reservationsInfo[i].row}"]`)
-                allButtons[0].classList.add('blockedSeat')
+                if (allButtons.length > 0) {
+                    allButtons[0].classList.add('blockedSeat')
+                }
             }
         }
     }, [reservationsInfo])
@@ -77,9 +79,9 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
                         <span className="avatar" style={{background: `url(${lesson.instructor.user.avatar}) no-repeat center center / cover`}}></span>
                         <span className="name">{lesson.instructor.user.name}</span>
                     </div>
-                    {rows.map((el, i) =>
+                    {rows?.map((el, i) =>
                         <div row={i} className="row justify-content-center">
-                            {drawSeats(el).map((el, j) =>
+                            {drawSeats.length && drawSeats(el).map((el, j) =>
                                 <Button className={`classroom-place ${lesson.discipline}`} row={i} seat={j} onClick={bookSeat}>{el}</Button>
                             )}
                         </div>

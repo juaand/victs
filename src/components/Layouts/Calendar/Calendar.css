@@ -73,12 +73,16 @@
 }
 
 .Calendar .calendar-item.waiting {
-  border-bottom: solid 0.6rem #7a0054;
+  border-bottom: solid 0.6rem #00a9ad;
   pointer-events: none;
 }
 
 .Calendar .calendar-item.reserved-lesson {
   border-bottom: solid 0.6rem #ffcc00;
+}
+
+.Calendar .calendar-item.instructor-lesson {
+  border-bottom: solid 0.6rem #cb1b53;
 }
 
 .Calendar .calendar-item .cal-item.__date {

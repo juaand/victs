@@ -20,7 +20,7 @@ export default function Modal({data, onClick, onRemoveWaitingLesson, onCancel, s
                         <p><strong>Lesson detail</strong> {data.details}</p>
                         <hr />
                         {!waitingList &&
-                            <ClassroomSkecth rows={data.classroom.rows} lesson={data} reservations={reservations} seats={seats} hideSelectSeat={hideSelectSeat} isWaitingList={filteredReservations?.length === classroomCapacity ? true : false} />
+                            <ClassroomSkecth rows={data.classroom?.rows} lesson={data} reservations={reservations} seats={seats} hideSelectSeat={hideSelectSeat} isWaitingList={filteredReservations?.length === classroomCapacity ? true : false} />
                         }
                         {!hideCancel && !waitingList &&
                             <div className="col-12 d-flex justify-content-center">
