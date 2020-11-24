@@ -4,9 +4,12 @@ import {Link, NavLink} from 'react-router-dom'
 import AdminUsers from "./AdminUsers/AdminUsers"
 import AdminInstructors from "./AdminInstructors/AdminInstructors"
 import AdminGyms from "./AdminGyms/AdminGyms"
-import ModalEditUser from "../../ModalEditUser/ModalEditUser"
 import AdminReservations from "./AdminReservations/AdminReservations"
 import AdminLessons from "./AdminLessons/AdminLessons"
+import AdminOrgs from "./AdminOrgs/AdminOrgs"
+import ModalEditUser from "../../ModalEditUser/ModalEditUser"
+import ModalEditInstructor from "../../ModalEditInstructor/ModalEditInstructor"
+import ModalEditGym from "../../ModalEditGym/ModalEditGym"
 
 
 
@@ -17,8 +20,13 @@ export default function MyInfoAdmin() {
   const [gymsBool, setGymsBool] = useState(false)
   const [reservationsBool, setReservationsBool] = useState(false)
   const [lessonsBool, setLessonsBool] = useState(false)
+  const [orgsBool, setOrgsBool] = useState(false)
   const [bool, setBool] = useState(false)
   const [userInfo, setUserInfo] = useState([])
+  const [instructorInfo, setInstructorInfo] = useState([])
+  const [gymInfo, setGymInfo] = useState([])
+
+
 
 
   useEffect(() => {
@@ -32,7 +40,17 @@ export default function MyInfoAdmin() {
 
   const showModal = (userId) => {
     setBool(!bool)
-    setUserInfo(userId)
+    setUserInfo(userId) || setInstructorInfo(userId)
+  }
+
+  const showModalInstructor = (userId) => {
+    setBool(!bool)
+    setInstructorInfo(userId)
+  }
+
+  const showModalGym = (userId) => {
+    setBool(!bool)
+    setGymInfo(userId)
   }
 
   const hideModal = () => {
@@ -45,6 +63,7 @@ export default function MyInfoAdmin() {
     setGymsBool(false)
     setReservationsBool(false)
     setLessonsBool(false)
+    setOrgsBool(false)
   }
   const showInstructors = () => {
     setInstructorsBool(!instructorsBool)
@@ -52,6 +71,7 @@ export default function MyInfoAdmin() {
     setGymsBool(false)
     setReservationsBool(false)
     setLessonsBool(false)
+    setOrgsBool(false)
   }
   const showGyms = () => {
     setGymsBool(!gymsBool)
@@ -59,6 +79,7 @@ export default function MyInfoAdmin() {
     setInstructorsBool(false)
     setReservationsBool(false)
     setLessonsBool(false)
+    setOrgsBool(false)
   }
 
   const showReservations = () => {
@@ -67,6 +88,7 @@ export default function MyInfoAdmin() {
     setInstructorsBool(false)
     setGymsBool(false)
     setLessonsBool(false)
+    setOrgsBool(false)
   }
 
   const showLessons = () => {
@@ -75,11 +97,25 @@ export default function MyInfoAdmin() {
     setInstructorsBool(false)
     setGymsBool(false)
     setReservationsBool(false)
+    setOrgsBool(false)
+  }
+
+  const showOrgs = () => {
+    setOrgsBool(!orgsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+
   }
 
   return (
     <>
-      {bool && <ModalEditUser user={userInfo} onClick={hideModal} />}
+      {bool && userBool && <ModalEditUser user={userInfo} onClick={hideModal} />}
+      {bool && instructorsBool && <ModalEditInstructor user={instructorInfo} onClick={hideModal} />}
+      {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
+
       <nav className="navbar navbar-expand-lg navbar-light bg-light margin-top">
         <button
           className="navbar-toggler"
@@ -119,7 +155,7 @@ export default function MyInfoAdmin() {
             <Link className="nav-link" onClick={showLessons} >Lessons</Link>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName="active" className="nav-link" to="/admin-invoices">ORG's</NavLink>
+            <Link className="nav-link" onClick={showOrgs} >ORG's</Link>
             </li>
             <li className="nav-item">
               <NavLink activeClassName="active" className="nav-link" to="/admin-statistics">Statistics</NavLink>
@@ -131,10 +167,12 @@ export default function MyInfoAdmin() {
         </div>
       </nav>
       { userBool && <AdminUsers onClick={(userId) => showModal(userId)} data={allData[0]} />}
-      { instructorsBool && <AdminInstructors data={allData[2]} />}
-      { gymsBool && <AdminGyms data={allData[1]} />}
+      { instructorsBool && <AdminInstructors onClick={(userId) => showModalInstructor(userId)} data={allData[2]} />}
+      { gymsBool && <AdminGyms onClick={(userId) => showModalGym(userId)} data={allData[1]} />}
       { reservationsBool && <AdminReservations data={allData[4]} />}
       { lessonsBool && <AdminLessons data={allData[3]} />}
+      { orgsBool && <AdminOrgs data={allData[5]} />}
+
     </>
   )
 }

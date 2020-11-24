@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
-import InstructorsItem from './InstructorsItem/InstructorsItem'
+import OrgsItem from './OrgsItem/OrgsItem'
 
-export default function AdminInstructors({data, onClick}) {
+export default function AdminOrgs({data, onClick}) {
 
         const [search, setSearch] = useState('')
     
         const handleChange = (e) => {
             setSearch(e.target.value)
         }
-    
-        const filteredInstructors = data.filter(guest => {
+
+        const filteredOrgs = data.filter(guest => {
             return (
-                (guest?.user?.name?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1
+                (guest?.name?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1 || (guest?.role?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1
             )
         })
     
@@ -22,11 +22,11 @@ export default function AdminInstructors({data, onClick}) {
                 </div>
                 <div className="row">
                     <div className="col-12 form-group">
-                        <input type="text" className="form-control" placeholder="Search by coach name" onChange={handleChange} value={search} /></div>
+                        <input type="text" className="form-control" placeholder="Search by user name or role" onChange={handleChange} value={search} /></div>
                 </div>
                 <div className="row p-0">
-                    {filteredInstructors.map(el =>
-                        <InstructorsItem onClick={ (userId) => onClick(userId)} instructor={el} />
+                    {filteredOrgs.map(el =>
+                        <OrgsItem onClick={ (userId) => onClick(userId)} org={el} />
                     )}
                 </div>
             </div>

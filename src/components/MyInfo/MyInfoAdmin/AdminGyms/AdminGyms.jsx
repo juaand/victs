@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import GymsItem from './GymsItem/GymsItem'
 
-export default function AdminGyms({data}) {
+export default function AdminGyms({onClick, data}) {
 
         const [search, setSearch] = useState('')
     
@@ -27,7 +27,7 @@ export default function AdminGyms({data}) {
                 </div>
                 <div className="row p-0">
                     {filteredGyms.map(el =>
-                        <GymsItem gym={el} />
+                        <GymsItem onClick={ (userId) => onClick(userId)} gym={el} />
                     )}
                 </div>
             </div>
