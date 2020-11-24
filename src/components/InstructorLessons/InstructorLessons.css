@@ -11,3 +11,18 @@ small strong {
 h1.purple {
   color: #7a0054;
 }
+
+.already-booked {
+  font-weight: 600;
+  color: #00a9ad;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.InstructorLessons .capacity {
+  margin: 1rem auto;
+}
+
+.InstructorLessons .btn {
+  margin: 1rem 0;
+}

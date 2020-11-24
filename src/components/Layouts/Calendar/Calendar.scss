@@ -76,12 +76,16 @@
     border-right: 0;
 
     &.waiting {
-      border-bottom: solid 0.6rem $purple;
+      border-bottom: solid 0.6rem $blue;
       pointer-events: none;
     }
 
     &.reserved-lesson {
       border-bottom: solid 0.6rem $yellow;
+    }
+
+    &.instructor-lesson {
+      border-bottom: solid 0.6rem $pink;
     }
 
     .cal-item {

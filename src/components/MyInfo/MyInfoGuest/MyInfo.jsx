@@ -23,18 +23,29 @@ const MyInfo = (props) => {
     const [messageOnCancel, setMessageOnCancel] = useState('')
     const [followersList, setFollowersList] = useState([])
     const [useWaitingLessons, setUseWaitingLessons] = useState(userStatus.waitinglists)
-    const [successMessage, setSuccessMessage] = useState('')
-    const [error, setError] = useState('')
+
 
     const getGymName = (arr) => {
-        return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem.gym.user.name === ele.gym.user.name))
+        return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem?.gym?.user?.name === ele?.gym?.user?.name))
     }
 
-    const upcomingLessons = userStatus.lessons.filter((lesson) => new Date(lesson.date).getTime() > new Date().getTime())
+    const getInstructorName = (arr) => {
+        return arr.filter((ele, ind) => ind === arr.findIndex(elem => elem?.instructor?.user?.name === ele?.instructor?.user?.name))
+    }
+
+    const upcomingLessons = userStatus.lessons.filter((lesson) => lesson.gym !== null && new Date(lesson.date).getTime() > new Date().getTime())
+
+    const upcomingCoachesLessons = userStatus.lessons.filter((lesson) => lesson.gym === null && new Date(lesson.date).getTime() > new Date().getTime())
 
     const byLessons = upcomingLessons.reduce((acc, e) => {
-        acc[e.gym.id] = (acc[e.gym.id] || [])
-        acc[e.gym.id].push(e)
+        acc[e.gym?.id] = (acc[e.gym?.id] || [])
+        acc[e.gym?.id].push(e)
+        return acc
+    }, {})
+
+    const byCoachLessons = upcomingCoachesLessons.reduce((acc, e) => {
+        acc[e.instructor?.id] = (acc[e.instructor?.id] || [])
+        acc[e.instructor?.id].push(e)
         return acc
     }, {})
 
@@ -124,16 +135,37 @@ const MyInfo = (props) => {
                     {bool && <Modal onClick={hideModal} data={modalData} reservations={reservationData} onCancel={cancelReservation} hideSelectSeat />}
                     <div className="row">
                         <div className="col-12">
-                            {getGymName(userStatus.lessons).map(el =>
+                            {byLessons && getGymName(upcomingLessons).map(el =>
                                 <div className="row gym-name">
                                     <div className="col-sm-4 col-12">
-                                        <h1 className="big-yellow">Upcoming classes scheduled in <span>{el.gym.user.name}</span></h1>
+                                        <h1 className="big-yellow">Upcoming classes scheduled in <span>{el.gym?.user?.name}</span></h1>
                                     </div>
                                     <div className="col-sm-8 col-12">
                                         <div className="row">
                                             {Object.keys(byLessons).map(key =>
-                                                key === el.gym.id &&
+                                                key === el.gym?.id &&
                                                 byLessons[key].map(el =>
+                                                    <CalendarItem
+                                                        capacity={el.capacity}
+                                                        data={el}
+                                                        onClick={() => showModal(el)}
+                                                    />
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                            {byCoachLessons && getInstructorName(upcomingCoachesLessons).map(el =>
+                                <div className="row gym-name">
+                                    <div className="col-sm-4 col-12">
+                                        <h1 className="big-pink">Upcoming classes scheduled with <span>{el.instructor?.user?.name}</span></h1>
+                                    </div>
+                                    <div className="col-sm-8 col-12">
+                                        <div className="row">
+                                            {Object.keys(byCoachLessons).map(key =>
+                                                key === el.instructor?.id &&
+                                                byCoachLessons[key].map(el =>
                                                     <CalendarItem
                                                         capacity={el.capacity}
                                                         data={el}

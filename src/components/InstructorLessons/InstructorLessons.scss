@@ -14,3 +14,20 @@ h1 {
     color: $purple;
   }
 }
+
+.already-booked  {
+  font-weight: 600;
+  color: $blue;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.InstructorLessons {
+  .capacity {
+    margin: 1rem auto;
+  }
+
+  .btn {
+    margin: 1rem 0;
+  }
+}

@@ -31,7 +31,8 @@ h1 {
   &.big-yellow,
   &.big-purple,
   &.big-blue,
-  &.big-gray {
+  &.big-gray,
+  &.big-pink  {
     font-size: 3rem;
     font-weight: 900;
     text-transform: initial;
@@ -52,6 +53,10 @@ h1 {
 
   &.big-purple {
     color: $purple;
+  }
+
+  &.big-pink {
+    color: $pink;
   }
 
   &.big-blue {

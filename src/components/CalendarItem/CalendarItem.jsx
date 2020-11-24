@@ -31,7 +31,7 @@ const CalendarItem = ({data, capacity, onClick, oldLessons, points, waitingList}
                     }
                 </div>
                 :
-                <div className={data?.user?.includes(user.id) ? `reserved-lesson false-link calendar-item col-3` : `${capacity === 0 ? "waiting" : ""} false-link calendar-item col-sm-3 col-6`} onClick={internalOnClick}>
+                <div className={data?.user?.includes(user.id) ? `${data.gym === null ? "instructor-lesson" : ""} reserved-lesson false-link calendar-item col-3` : `${capacity === 0 ? "waiting" : ""} false-link calendar-item col-sm-3 col-6`} onClick={internalOnClick}>
                     <span className="cal-item __date">{formatDate(data.date)}</span>
                     <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                     <span className="cal-item __discipline">{data.discipline}</span>
