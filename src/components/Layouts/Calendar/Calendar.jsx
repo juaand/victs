@@ -38,7 +38,7 @@ export default function Calendar({user}) {
                         <span className="day">{days[new Date(next).getDay()]}
                         </span>
                     </div>
-                    {lessons.filter(el => new Date(el.date).getDate() === date.getDate() + i && new Date(el.date).getMonth() === currentDay.getMonth() && new Date(el.date).getFullYear() === currentDay.getFullYear()).map(el => <CalendarItem data={el} capacity={el.capacity} onClick={showModal} />)}
+                    {lessons?.filter(el => new Date(el.date).getDate() === date.getDate() + i && new Date(el.date).getMonth() === currentDay.getMonth() && new Date(el.date).getFullYear() === currentDay.getFullYear()).map(el => <CalendarItem data={el} capacity={el.capacity} onClick={showModal} />)}
                 </div>)
         }
         return colArr
@@ -49,7 +49,7 @@ export default function Calendar({user}) {
         setLessons(allLessons)
     }
 
-    const changeLessonsView = (e) => {
+    const changeLessonsView = async (e) => {
         if (e.target.value === "My lessons") {
             setLessons(user?.lessons)
         } else if (e.target.value === "Mind & body") {
@@ -116,7 +116,8 @@ export default function Calendar({user}) {
                 <Banner title="My Calendar" subtitle={user.name} />
                 <div className="row calendar-select">
                     <div className="col-12">
-                        <SelectWithLabel options={["My lessons", "All lessons", "Aqua", "Conditioning", "Cycle", "Dance", "Express workout", "Martial arts", "Mind & body", "Other"]} onChange={changeLessonsView} />
+                        <SelectWithLabel options={["My lessons", "All lessons", "Aqua", "Conditioning", "Cycle", "Dance", "Express workout", "Martial arts", "Mind & body", "Other"]} 
+                        onChange={changeLessonsView} />
                     </div>
                 </div>
                 <div className="row week-select">

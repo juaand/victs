@@ -3,6 +3,7 @@
 .calendar-item {
   font-size: 1.4rem;
   border-right: solid 0.1rem $light-gray;
+  border-bottom: solid 0.1rem $light-gray;
   min-height: 20rem;
   transition: all 200ms ease-in-out;
   position: relative;
