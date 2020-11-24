@@ -13,7 +13,6 @@
         position: relative;
         padding: 0;
         flex-direction: column;
-        min-height: 62vh;
         border-left: solid 1px $light-gray;
 
         .day {
@@ -22,12 +21,6 @@
           color: $text;
           left: 50%;
           top: 7rem;
-        }
-
-        .month {
-          position: absolute;
-          top: 3.2rem;
-          right: 3.2rem;
         }
       }
     }
@@ -57,6 +50,18 @@
           color: $white;
         }
       }
+      .big-date {
+        position: relative;
+        display: flex;
+        height: 13rem;
+        align-items: center;
+
+        .month {
+          position: absolute;
+          top: 3.2rem;
+          right: -1.8rem;
+        }
+      }
     }
 
     hr {
@@ -70,8 +75,17 @@
     border-bottom: solid 0.1rem $light-gray;
     border-right: 0;
 
+    &.waiting {
+      border-bottom: solid 0.6rem $blue;
+      pointer-events: none;
+    }
+
     &.reserved-lesson {
       border-bottom: solid 0.6rem $yellow;
+    }
+
+    &.instructor-lesson {
+      border-bottom: solid 0.6rem $pink;
     }
 
     .cal-item {
@@ -82,7 +96,7 @@
       &.__hour {
         color: $text;
         font-weight: 400;
-        margin-top: 3rem;
+        margin-top: 2rem;
       }
 
       &.__discipline {

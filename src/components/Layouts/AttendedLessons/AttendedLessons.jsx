@@ -24,7 +24,7 @@ const AttendedLessons = ({title, message, strong, data}) => {
     return (
         <>
             {bool && <ModalDonate onClick={hideModal} lessonId={clickedLessonId} />}
-            {attendedArr && attendedArr.length < 0 ?
+            {attendedArr && attendedArr.length === 0 ?
                 <div className="container empty-row">
                     <div className="row">
                         <div className="col-sm-4 col-12">

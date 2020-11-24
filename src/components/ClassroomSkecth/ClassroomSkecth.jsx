@@ -42,22 +42,29 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
         }
     }
 
-    const addToWaitingList = () => {
-        console.log('add me to waiting list')
-        // waitingList()
+    const addToWaitingList = async () => {
+        try {
+            const result = await waitingList(lesson.id)
+            login(result[1])
+            setMessage('You were added to the waiting list sucessfully.')
+        } catch (err) {
+            setError(err.response?.data?.message)
+        }
     }
 
     useEffect(() => {
-        const check = reservationsInfo.filter(el => el.user.id === user.id)
-        if (check.length) setBool(!bool)
+        const check = reservationsInfo?.filter(el => el.user.id === user.id)
+        if (check?.length) setBool(!bool)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-        if (reservationsInfo.length) {
+        if (reservationsInfo?.length) {
             for (let i = 0; i < reservationsInfo.length; i++) {
                 const allButtons = document.querySelectorAll(`[seat="${reservationsInfo[i].column}"][row="${reservationsInfo[i].row}"]`)
-                allButtons[0].classList.add('blockedSeat')
+                if (allButtons.length > 0) {
+                    allButtons[0].classList.add('blockedSeat')
+                }
             }
         }
     }, [reservationsInfo])
@@ -72,9 +79,9 @@ export default function ClassroomSkecth({rows, lesson, reservations, hideSelectS
                         <span className="avatar" style={{background: `url(${lesson.instructor.user.avatar}) no-repeat center center / cover`}}></span>
                         <span className="name">{lesson.instructor.user.name}</span>
                     </div>
-                    {rows.map((el, i) =>
+                    {rows?.map((el, i) =>
                         <div row={i} className="row justify-content-center">
-                            {drawSeats(el).map((el, j) =>
+                            {drawSeats.length && drawSeats(el).map((el, j) =>
                                 <Button className={`classroom-place ${lesson.discipline}`} row={i} seat={j} onClick={bookSeat}>{el}</Button>
                             )}
                         </div>

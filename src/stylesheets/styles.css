@@ -27,14 +27,14 @@ h1 {
   font-size: 3.2rem;
 }
 
-h1.big-yellow, h1.big-purple, h1.big-blue, h1.big-gray {
+h1.big-yellow, h1.big-purple, h1.big-blue, h1.big-gray, h1.big-pink {
   font-size: 3rem;
   font-weight: 900;
   text-transform: initial;
   margin-top: 2rem;
 }
 
-h1.big-yellow.big, h1.big-purple.big, h1.big-blue.big, h1.big-gray.big {
+h1.big-yellow.big, h1.big-purple.big, h1.big-blue.big, h1.big-gray.big, h1.big-pink.big {
   font-size: 4rem;
 }
 
@@ -48,6 +48,10 @@ h1.big-gray {
 
 h1.big-purple {
   color: #7a0054;
+}
+
+h1.big-pink {
+  color: #cb1b53;
 }
 
 h1.big-blue {
@@ -249,6 +253,11 @@ label:not(.form-check-label) {
   font-weight: 300;
   text-transform: uppercase;
   color: #cb1b53;
+}
+
+.sucess {
+  color: #00a9ad;
+  font-weight: 600;
 }
 
 .module {

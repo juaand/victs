@@ -10,7 +10,6 @@
   position: relative;
   padding: 0;
   flex-direction: column;
-  min-height: 62vh;
   border-left: solid 1px #e8e8e8;
 }
 
@@ -20,12 +19,6 @@
   color: #333;
   left: 50%;
   top: 7rem;
-}
-
-.Calendar .dates-row .col.box .month {
-  position: absolute;
-  top: 3.2rem;
-  right: 3.2rem;
 }
 
 .Calendar .dates-row .date-num {
@@ -55,6 +48,19 @@
   color: #fff;
 }
 
+.Calendar .dates-row .date-num .big-date {
+  position: relative;
+  display: flex;
+  height: 13rem;
+  align-items: center;
+}
+
+.Calendar .dates-row .date-num .big-date .month {
+  position: absolute;
+  top: 3.2rem;
+  right: -1.8rem;
+}
+
 .Calendar .dates-row hr {
   margin: 0;
   width: 100%;
@@ -66,8 +72,17 @@
   border-right: 0;
 }
 
+.Calendar .calendar-item.waiting {
+  border-bottom: solid 0.6rem #00a9ad;
+  pointer-events: none;
+}
+
 .Calendar .calendar-item.reserved-lesson {
   border-bottom: solid 0.6rem #ffcc00;
+}
+
+.Calendar .calendar-item.instructor-lesson {
+  border-bottom: solid 0.6rem #cb1b53;
 }
 
 .Calendar .calendar-item .cal-item.__date {
@@ -77,7 +92,7 @@
 .Calendar .calendar-item .cal-item.__hour {
   color: #333;
   font-weight: 400;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .Calendar .calendar-item .cal-item.__discipline {

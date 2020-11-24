@@ -29,17 +29,18 @@ export default function Calendar({user}) {
             colArr.push(
                 <div className="col box">
                     <div className={(date.getDate() + i) === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear() ? 'date-num current' : 'date-num'}>
-                        {new Date(next).getDate()}
-                        <small className="month">/ <span>{new Date(next).getMonth() + 1}</span>
-                        </small>
-
+                        {<span className="big-date">
+                            {new Date(next).getDate()}
+                            <small className="month">/ <span>{new Date(next).getMonth() + 1}
+                            </span>
+                            </small>
+                        </span>}
                         <span className="day">{days[new Date(next).getDay()]}
                         </span>
                     </div>
-                    {lessons.filter(el => new Date(el.date).getDate() === date.getDate() + i && new Date(el.date).getMonth() === currentDay.getMonth() && new Date(el.date).getFullYear() === currentDay.getFullYear()).map(el => <CalendarItem data={el} onClick={showModal} />)}
+                    {lessons?.filter(el => new Date(el.date).getDate() === date.getDate() + i && new Date(el.date).getMonth() === currentDay.getMonth() && new Date(el.date).getFullYear() === currentDay.getFullYear()).map(el => <CalendarItem data={el} capacity={el.capacity} onClick={showModal} />)}
                 </div>)
         }
-
         return colArr
     }
 
@@ -48,8 +49,28 @@ export default function Calendar({user}) {
         setLessons(allLessons)
     }
 
-    const changeLessonsView = (e) => {
-        e.target.value === "My lessons" ? setLessons(user?.lessons) : getLessons()
+    const changeLessonsView = async (e) => {
+        if (e.target.value === "My lessons") {
+            setLessons(user?.lessons)
+        } else if (e.target.value === "Mind & body") {
+            setLessons(lessons.filter(el => el.discipline.includes('Mind & body')))
+        } else if (e.target.value === "Aqua") {
+            setLessons(lessons.filter(el => el.discipline.includes('Aqua')))
+        } else if (e.target.value === "Cycle") {
+            setLessons(lessons.filter(el => el.discipline.includes('Cycle')))
+        } else if (e.target.value === "Conditioning") {
+            setLessons(lessons.filter(el => el.discipline.includes('Conditioning')))
+        } else if (e.target.value === "Dance") {
+            setLessons(lessons.filter(el => el.discipline.includes('Dance')))
+        } else if (e.target.value === "Martial arts") {
+            setLessons(lessons.filter(el => el.discipline.includes('Martial arts')))
+        } else if (e.target.value === "Other") {
+            setLessons(lessons.filter(el => el.discipline.includes('Other')))
+        } else if (e.target.value === "Express workout") {
+            setLessons(lessons.filter(el => el.discipline.includes('Express workout')))
+        } else {
+            getLessons()
+        }
     }
 
     const nextWeek = () => {
@@ -61,7 +82,7 @@ export default function Calendar({user}) {
     const prevWeek = () => {
         setCurrentDay(new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate() - 7))
         drawColumns(currentDay)
-        if (today.getDate() === currentDay.getDate() - 7) {
+        if (today.getDate() === currentDay.getDate()) {
             setBool(!bool)
         }
     }
@@ -95,7 +116,8 @@ export default function Calendar({user}) {
                 <Banner title="My Calendar" subtitle={user.name} />
                 <div className="row calendar-select">
                     <div className="col-12">
-                        <SelectWithLabel options={["My lessons", "All lessons"]} onChange={changeLessonsView} />
+                        <SelectWithLabel options={["My lessons", "All lessons", "Aqua", "Conditioning", "Cycle", "Dance", "Express workout", "Martial arts", "Mind & body", "Other"]} 
+                        onChange={changeLessonsView} />
                     </div>
                 </div>
                 <div className="row week-select">

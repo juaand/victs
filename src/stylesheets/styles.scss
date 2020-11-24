@@ -144,6 +144,11 @@ label:not(.form-check-label) {
   }
 }
 
+.sucess {
+  color: $blue;
+  font-weight: 600;
+}
+
 .module {
   display: flex;
   justify-content: center;

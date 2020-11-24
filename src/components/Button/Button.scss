@@ -18,6 +18,12 @@
       display: block;
       margin: auto;
     }
+
+    &.change-avatar {
+      &:hover {
+        background: #7a7a7a;
+      }
+    }
   }
 
   &.__follow-btn {

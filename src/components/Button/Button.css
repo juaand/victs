@@ -21,6 +21,11 @@
   margin: auto;
 }
 
+.button.__yellow-btn.change-avatar:hover,
+.btn.__yellow-btn.change-avatar:hover {
+  background: #7a7a7a;
+}
+
 .button.__follow-btn,
 .btn.__follow-btn {
   background: #fff;

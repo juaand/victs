@@ -47,7 +47,7 @@ export const getFollowersUsers = (followers) => http.post('/followers-users', fo
 export const waitingList = (id) =>
   http.post(`/waitinglist/${id}`, {id})
 export const unWaitingList = (id) =>
-  http.post(`/unwaitinglist`, {id})
+  http.post(`/unwaitinglist/${id}`, {id})
 
 
 //data.routes

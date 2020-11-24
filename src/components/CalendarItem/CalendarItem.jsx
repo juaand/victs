@@ -3,7 +3,7 @@ import React from 'react'
 import {useAuthContext} from '../../contexts/AuthContext'
 import Button from '../Button/Button'
 
-const CalendarItem = ({data, capacity, onClick, oldLessons, points}) => {
+const CalendarItem = ({data, capacity, onClick, oldLessons, points, waitingList}) => {
 
     const {user} = useAuthContext()
 
@@ -31,25 +31,28 @@ const CalendarItem = ({data, capacity, onClick, oldLessons, points}) => {
                     }
                 </div>
                 :
-                <div className={data?.user?.includes(user.id) ? 'reserved-lesson false-link calendar-item col-3' : 'false-link calendar-item col-sm-3 col-6'} onClick={internalOnClick}>
+                <div className={data?.user?.includes(user.id) ? `${data.gym === null ? "instructor-lesson" : ""} reserved-lesson false-link calendar-item col-3` : `${capacity === 0 ? "waiting" : ""} false-link calendar-item col-sm-3 col-6`} onClick={internalOnClick}>
                     <span className="cal-item __date">{formatDate(data.date)}</span>
                     <span className="cal-item __hour">{new Date(data.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                     <span className="cal-item __discipline">{data.discipline}</span>
                     <span className="cal-item __name">{data.name}</span>
                     <span className="cal-item __instructor">
-                        <span>{data.instructor.user.name}</span>
+                        <span>{data?.instructor?.user?.name}</span>
                     </span>
                     <span className="cal-item __gym">{data.gym?.user?.name}</span>
-                    <span className="capacity">
-                        {capacity === 0 ?
-                            <strong>No seats left</strong> :
-                            <>
-                                Seats left
-            <strong className={capacity < 11 ?
-                                    'few' : ''}>{capacity ? capacity : data?.classroom?.rows.reduce((acc, el) => acc + parseInt(el), 0)}</strong>
-                            </>
-                        }
-                    </span>
+                    {!waitingList && capacity > 0 &&
+                        <span className="capacity">
+                            {capacity === 0 ?
+                                <strong>No seats left</strong> :
+                                <>
+                                    Seats left
+            <strong className={capacity < 11 ? 'few' : ''}>
+                                        {capacity ? capacity : data?.classroom?.rows?.reduce((acc, el) => acc + parseInt(el), 0)}
+                                    </strong>
+                                </>
+                            }
+                        </span>
+                    }
                 </div>
             }
         </>
