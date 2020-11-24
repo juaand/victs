@@ -1,6 +1,7 @@
 .calendar-item {
   font-size: 1.4rem;
   border-right: solid 0.1rem #e8e8e8;
+  border-bottom: solid 0.1rem #e8e8e8;
   min-height: 20rem;
   transition: all 200ms ease-in-out;
   position: relative;

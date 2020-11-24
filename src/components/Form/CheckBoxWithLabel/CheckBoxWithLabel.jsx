@@ -4,7 +4,7 @@ import React from 'react'
 const CheckBoxWithLabel = ({data, name, onChange}) => {
 
     return (
-        <div className="row">
+        <div className="CheckBoxWithLabel row">
             {
                 data.sort().map(el =>
                     <div className="form-check col-6">
