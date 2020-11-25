@@ -1,91 +1,91 @@
-import React, { useEffect, useState } from "react";
-import { getAllData } from "../../../services/ApiClient";
-import { Link, NavLink } from "react-router-dom";
-import AdminUsers from "./AdminUsers/AdminUsers";
-import AdminInstructors from "./AdminInstructors/AdminInstructors";
-import AdminGyms from "./AdminGyms/AdminGyms";
-import AdminReservations from "./AdminReservations/AdminReservations";
-import AdminLessons from "./AdminLessons/AdminLessons";
-import AdminOrgs from "./AdminOrgs/AdminOrgs";
-import ModalEditUser from "../../ModalEditUser/ModalEditUser";
-import ModalEditInstructor from "../../ModalEditInstructor/ModalEditInstructor";
-import ModalEditGym from "../../ModalEditGym/ModalEditGym";
-import ModalEditLesson from "../../ModalEditLesson/ModalEditLesson";
-import ModalEditReservation from "../../ModalEditReservation/ModalEditReservation";
-import ModalEditOrg from "../../ModalEditOrg/ModalEditOrg";
+import './MyInfoAdmin.css'
+import React, {useEffect, useState} from "react"
+import {getAllData} from "../../../services/ApiClient"
+import {Link, NavLink} from "react-router-dom"
+import AdminUsers from "./AdminUsers/AdminUsers"
+import AdminInstructors from "./AdminInstructors/AdminInstructors"
+import AdminGyms from "./AdminGyms/AdminGyms"
+import AdminReservations from "./AdminReservations/AdminReservations"
+import AdminLessons from "./AdminLessons/AdminLessons"
+import AdminOrgs from "./AdminOrgs/AdminOrgs"
+import ModalEditUser from "../../ModalEditUser/ModalEditUser"
+import ModalEditInstructor from "../../ModalEditInstructor/ModalEditInstructor"
+import ModalEditGym from "../../ModalEditGym/ModalEditGym"
+import ModalEditLesson from "../../ModalEditLesson/ModalEditLesson"
+import ModalEditReservation from "../../ModalEditReservation/ModalEditReservation"
+import ModalEditOrg from "../../ModalEditOrg/ModalEditOrg"
+import Banner from "../../Banner/Banner"
 
-export default function MyInfoAdmin() {
-  const [allData, setAllData] = useState([]);
+export default function MyInfoAdmin({user}) {
+  const [allData, setAllData] = useState([])
   const [homeBool, setHomeBool] = useState(true)
-  const [userBool, setUserBool] = useState(false);
-  const [instructorsBool, setInstructorsBool] = useState(false);
-  const [gymsBool, setGymsBool] = useState(false);
-  const [reservationsBool, setReservationsBool] = useState(false);
-  const [lessonsBool, setLessonsBool] = useState(false);
-  const [orgsBool, setOrgsBool] = useState(false);
-  const [bool, setBool] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
-  const [instructorInfo, setInstructorInfo] = useState([]);
-  const [gymInfo, setGymInfo] = useState([]);
-  const [lessonInfo, setLessonInfo] = useState([]);
-  const [reservationInfo, setReservationInfo] = useState([]);
-  const [orgInfo, setOrgInfo] = useState([]);
+  const [userBool, setUserBool] = useState(false)
+  const [instructorsBool, setInstructorsBool] = useState(false)
+  const [gymsBool, setGymsBool] = useState(false)
+  const [reservationsBool, setReservationsBool] = useState(false)
+  const [lessonsBool, setLessonsBool] = useState(false)
+  const [orgsBool, setOrgsBool] = useState(false)
+  const [bool, setBool] = useState(false)
+  const [userInfo, setUserInfo] = useState([])
+  const [instructorInfo, setInstructorInfo] = useState([])
+  const [gymInfo, setGymInfo] = useState([])
+  const [lessonInfo, setLessonInfo] = useState([])
+  const [reservationInfo, setReservationInfo] = useState([])
+  const [orgInfo, setOrgInfo] = useState([])
   const [adminHome, setAdminHome] = useState(true)
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getAllData();
-      setAllData(result);
-      console.log(result);
-    };
-    fetchData();
-  }, []);
+      const result = await getAllData()
+      setAllData(result)
+    }
+    fetchData()
+  }, [])
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getAllData();
-      setAllData(result);
-      console.log(result);
-    };
-    fetchData();
-  }, [!bool]);
+      const result = await getAllData()
+      setAllData(result)
+    }
+    fetchData()
+  }, [!bool])
 
   const showModal = (userId) => {
-    setBool(!bool);
-    setUserInfo(userId);
-  };
+    setBool(!bool)
+    setUserInfo(userId)
+  }
 
   const showModalInstructor = (userId) => {
-    setBool(!bool);
-    setInstructorInfo(userId);
-  };
+    setBool(!bool)
+    setInstructorInfo(userId)
+  }
 
   const showModalGym = (userId) => {
-    setBool(!bool);
-    setGymInfo(userId);
-  };
+    setBool(!bool)
+    setGymInfo(userId)
+  }
 
   const showModalLesson = (userId) => {
-    setBool(!bool);
-    setLessonInfo(userId);
-  };
+    setBool(!bool)
+    setLessonInfo(userId)
+  }
 
   const showModalReservation = (userId) => {
-    setBool(!bool);
-    setReservationInfo(userId);
-  };
+    setBool(!bool)
+    setReservationInfo(userId)
+  }
 
   const showModalOrg = (userId) => {
-    setBool(!bool);
-    setOrgInfo(userId);
-  };
+    setBool(!bool)
+    setOrgInfo(userId)
+  }
 
   const hideModal = async () => {
-    const result = await getAllData();
-    setAllData(result);
-    setBool(!bool);
-  };
+    const result = await getAllData()
+    setAllData(result)
+    setBool(!bool)
+  }
 
   const showUsers = () => {
     setUserBool(!userBool)
@@ -167,8 +167,10 @@ export default function MyInfoAdmin() {
       {bool && userBool && <ModalEditUser user={userInfo} onClick={hideModal} />}
       {bool && instructorsBool && <ModalEditInstructor user={instructorInfo} onClick={hideModal} />}
       {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
+      {bool && lessonsBool && <ModalEditLesson user={lessonInfo} onClick={hideModal} />}
+      {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} />}
+      {bool && orgsBool && <ModalEditOrg user={orgInfo} onClick={hideModal} />}
       <nav className="navbar navbar-expand-lg admin-nav ">
-
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -274,7 +276,6 @@ export default function MyInfoAdmin() {
           data={allData[5]}
         />
       )}
-    </>
     </section>
   )
 }
