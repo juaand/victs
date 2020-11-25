@@ -43,11 +43,11 @@ export const booking = (id, row, seat) =>
   http.post(`/book/${id}`, {id, row, seat})
 export const unbooking = (id, reservations) => http.post(`/unbook/${id}`, {id, reservations})
 export const getFollowersUsers = (followers) => http.post('/followers-users', followers)
-
 export const waitingList = (id) =>
   http.post(`/waitinglist/${id}`, {id})
 export const unWaitingList = (id) =>
   http.post(`/unwaitinglist/${id}`, {id})
+export const deleteCurrentReservation = (id) => http.post(`/delete-reservation/${id}`, {id})
 
 
 //data.routes
@@ -208,7 +208,16 @@ export const updateReservation = ({
     points
   })
 
-  export const updateOrg = ({
+export const updateOrg = ({
+  id,
+  name,
+  role,
+  description,
+  url,
+  avatar,
+  points
+}) =>
+  http.patch(`/org/${id}/edit`, {
     id,
     name,
     role,
@@ -216,13 +225,4 @@ export const updateReservation = ({
     url,
     avatar,
     points
-  }) =>
-    http.patch(`/org/${id}/edit`, {
-      id,
-      name,
-      role,
-      description,
-      url,
-      avatar,
-      points
-    })
+  })
