@@ -16,6 +16,7 @@ import ModalEditOrg from "../../ModalEditOrg/ModalEditOrg";
 
 export default function MyInfoAdmin() {
   const [allData, setAllData] = useState([]);
+  const [homeBool, setHomeBool] = useState(true)
   const [userBool, setUserBool] = useState(false);
   const [instructorsBool, setInstructorsBool] = useState(false);
   const [gymsBool, setGymsBool] = useState(false);
@@ -29,6 +30,7 @@ export default function MyInfoAdmin() {
   const [lessonInfo, setLessonInfo] = useState([]);
   const [reservationInfo, setReservationInfo] = useState([]);
   const [orgInfo, setOrgInfo] = useState([]);
+  const [adminHome, setAdminHome] = useState(true)
 
 
   useEffect(() => {
@@ -86,127 +88,109 @@ export default function MyInfoAdmin() {
   };
 
   const showUsers = () => {
-    setUserBool(!userBool);
-    setInstructorsBool(false);
-    setGymsBool(false);
-    setReservationsBool(false);
-    setLessonsBool(false);
-    setOrgsBool(false);
-  };
+    setUserBool(!userBool)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+    setOrgsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+  }
   const showInstructors = () => {
-    setInstructorsBool(!instructorsBool);
-    setUserBool(false);
-    setGymsBool(false);
-    setReservationsBool(false);
-    setLessonsBool(false);
-    setOrgsBool(false);
-  };
+    setInstructorsBool(!instructorsBool)
+    setUserBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+    setOrgsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+  }
   const showGyms = () => {
-    setGymsBool(!gymsBool);
-    setUserBool(false);
-    setInstructorsBool(false);
-    setReservationsBool(false);
-    setLessonsBool(false);
-    setOrgsBool(false);
-  };
+    setGymsBool(!gymsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+    setOrgsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+  }
 
   const showReservations = () => {
-    setReservationsBool(!reservationsBool);
-    setUserBool(false);
-    setInstructorsBool(false);
-    setGymsBool(false);
-    setLessonsBool(false);
-    setOrgsBool(false);
-  };
+    setReservationsBool(!reservationsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setLessonsBool(false)
+    setOrgsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+  }
 
   const showLessons = () => {
-    setLessonsBool(!lessonsBool);
-    setUserBool(false);
-    setInstructorsBool(false);
-    setGymsBool(false);
-    setReservationsBool(false);
-    setOrgsBool(false);
-  };
+    setLessonsBool(!lessonsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setOrgsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+  }
 
   const showOrgs = () => {
-    setOrgsBool(!orgsBool);
-    setUserBool(false);
-    setInstructorsBool(false);
-    setGymsBool(false);
-    setReservationsBool(false);
-    setLessonsBool(false);
-  };
+    setOrgsBool(!orgsBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+  }
+
+  const showHome = () => {
+    setHomeBool(!homeBool)
+    setOrgsBool(false)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+    setAdminHome(true)
+  }
 
   return (
-    <>
-      {bool && userBool && (
-        <ModalEditUser user={userInfo} onClick={hideModal} />
-      )}
-      {bool && instructorsBool && (
-        <ModalEditInstructor user={instructorInfo} onClick={hideModal} />
-      )}
+    <section className="MyInfoAdmin">
+      {bool && userBool && <ModalEditUser user={userInfo} onClick={hideModal} />}
+      {bool && instructorsBool && <ModalEditInstructor user={instructorInfo} onClick={hideModal} />}
       {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
-      {bool && lessonsBool && (
-        <ModalEditLesson user={lessonInfo} onClick={hideModal} />
-      )}
-      {bool && reservationsBool && (
-        <ModalEditReservation user={reservationInfo} onClick={hideModal} />
-      )}
-
-      {bool && orgsBool && <ModalEditOrg user={orgInfo} onClick={hideModal} />}
-
-      <nav className="navbar navbar-expand-lg navbar-light bg-light margin-top">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarTogglerDemo03"
-          aria-controls="navbarTogglerDemo03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <a className="navbar-brand" href="#">
-          VICTS Control
-        </a>
+      <nav className="navbar navbar-expand-lg admin-nav ">
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
-                Admin <span className="sr-only">(current)</span>
-              </a>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className={`nav-link ${homeBool && "active"}`} onClick={showHome} >Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" onClick={showUsers}>
-                Users
-              </Link>
+              <Link className={`nav-link ${userBool && "active"}`} onClick={showUsers} >Users</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" onClick={showInstructors}>
-                Instructors
-              </Link>
+              <Link className={`nav-link ${gymsBool && "active"}`} onClick={showGyms} >Gyms</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" onClick={showGyms}>
-                Gyms
-              </Link>
+              <Link className={`nav-link ${instructorsBool && "active"}`} onClick={showInstructors} >Instructors</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" onClick={showReservations}>
-                Reservations
-              </Link>
+              <Link className={`nav-link ${lessonsBool && "active"}`} onClick={showLessons} >Lessons</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" onClick={showLessons}>
-                Lessons
-              </Link>
+              <Link className={`nav-link ${reservationsBool && "active"}`} onClick={showReservations} >Reservations</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" onClick={showOrgs}>
-                ORG's
-              </Link>
+              <Link className={`nav-link ${orgsBool && "active"}`} onClick={showOrgs} >ORG's</Link>
             </li>
             <li className="nav-item">
               <NavLink
@@ -229,6 +213,34 @@ export default function MyInfoAdmin() {
           </ul>
         </div>
       </nav>
+
+      <Banner title={user.name} subtitle={user.role} className="margin-top" />
+      {adminHome && <div className="admin-content container">
+        <div className="row justify-content-between">
+          <div className="col-12 col-sm-5 admin-bg"></div>
+          <div className="col-12 col-sm-6">
+            <h1 className="big big-yellow">Global view</h1>
+            <div className="admin-info user-data" onClick={showUsers}>
+              <p>There are <strong>{allData[0]?.length} users</strong> registered right now <br /> <span>view more</span></p>
+            </div>
+            <div className="admin-info gyms-data" onClick={showGyms}>
+              <p>There are <strong>{allData[1]?.length} gyms</strong> registered right now <br /> <span>view more</span></p>
+            </div>
+            <div className="admin-info instructor-data" onClick={showInstructors}>
+              <p>There are <strong>{allData[2]?.length}  instructors</strong> registered right now <br /> <span>view more</span></p>
+            </div>
+            <div className="admin-info lessons-data" onClick={showLessons}>
+              <p>There are <strong>{allData[3]?.length} lessons</strong> created right now <br /> <span>view more</span></p>
+            </div>
+            <div className="admin-info reservations-data" onClick={showReservations}>
+              <p>There are <strong>{allData[4]?.length} reservations</strong> made right now <br /> <span>view more</span></p>
+            </div>
+            <div className="admin-info orgs-data" onClick={showOrgs}>
+              <p>There are <strong>{allData[5]?.length} ORGs</strong> added right now <br /> <span>view more</span></p>
+            </div>
+          </div>
+        </div>
+      </div>}
       {userBool && (
         <AdminUsers onClick={(userId) => showModal(userId)} data={allData[0]} />
       )}
@@ -263,5 +275,6 @@ export default function MyInfoAdmin() {
         />
       )}
     </>
-  );
+    </section>
+  )
 }

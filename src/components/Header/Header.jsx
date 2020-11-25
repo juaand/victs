@@ -63,31 +63,6 @@ const Header = () => {
                                         </li>
                                     </>}
 
-                                {user && user.role === 'Admin' &&
-                                    <>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-users">Users</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-instructors">Instructors</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-gyms">Gyms</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-reservations">Reservations</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-orgs">ORG's</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-statistics">Statistics</NavLink>
-                                        </li>
-                                        <li className="nav-item">
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-invoices">Invoices</NavLink>
-                                        </li>
-                                    </>}
-
                                 {user && user.user && user.user.role === 'Gym' &&
                                     <>
                                         <li className="nav-item">
