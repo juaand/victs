@@ -16,6 +16,7 @@ import ModalEditLesson from "../../ModalEditLesson/ModalEditLesson"
 import ModalEditReservation from "../../ModalEditReservation/ModalEditReservation"
 import ModalEditOrg from "../../ModalEditOrg/ModalEditOrg"
 import Banner from "../../Banner/Banner"
+import AdminInvoices from "./AdminInvoices/AdminInvoices"
 
 export default function MyInfoAdmin({user}) {
   const [allData, setAllData] = useState([])
@@ -27,6 +28,7 @@ export default function MyInfoAdmin({user}) {
   const [lessonsBool, setLessonsBool] = useState(false)
   const [orgsBool, setOrgsBool] = useState(false)
   const [statisticsBool, setStatisticsBool] = useState(false)
+  const [invoicesBool, setInvoicesBool] = useState(false)
   const [bool, setBool] = useState(false)
   const [userInfo, setUserInfo] = useState([])
   const [instructorInfo, setInstructorInfo] = useState([])
@@ -108,6 +110,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
   const showInstructors = () => {
     setInstructorsBool(!instructorsBool)
@@ -119,6 +122,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
   const showGyms = () => {
     setGymsBool(!gymsBool)
@@ -130,6 +134,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
 
   const showReservations = () => {
@@ -142,6 +147,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
 
   const showLessons = () => {
@@ -154,6 +160,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
 
   const showOrgs = () => {
@@ -166,6 +173,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
 
   const showHome = () => {
@@ -178,6 +186,7 @@ export default function MyInfoAdmin({user}) {
     setLessonsBool(false)
     setAdminHome(true)
     setStatisticsBool(false)
+    setInvoicesBool(false)
   }
 
   const showStatistics = () => {
@@ -190,7 +199,20 @@ export default function MyInfoAdmin({user}) {
     setOrgsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setInvoicesBool(false)
   }
+
+  const showInvoices = () => {
+    setInvoicesBool(!invoicesBool)
+    setUserBool(false)
+    setInstructorsBool(false)
+    setGymsBool(false)
+    setReservationsBool(false)
+    setLessonsBool(false)
+    setAdminHome(false)
+    setHomeBool(false)
+    setStatisticsBool(false)
+  }  
 
 
   return (
@@ -273,13 +295,12 @@ export default function MyInfoAdmin({user}) {
               </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                activeClassName="active"
-                className="nav-link"
-                to="/admin-invoices"
+            <Link
+                className={`nav-link ${invoicesBool && "active"}`}
+                onClick={showInvoices}
               >
-                Invoices
-              </NavLink>
+                Statistics
+              </Link>
             </li>
           </ul>
         </div>
@@ -352,6 +373,11 @@ export default function MyInfoAdmin({user}) {
       )}
       {statisticsBool && (
         <AdminStatistics
+          data={allData}
+        />
+      )}
+            {statisticsBool && (
+        <AdminInvoices
           data={allData}
         />
       )}
