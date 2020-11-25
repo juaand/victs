@@ -191,4 +191,38 @@ export const deleteClassroom = (id) => http.get(`/classroom/${id}/delete`)
 
 export const getClassroomLessons = (id) => http.get(`/classroom-lessons/${id}`)
 
+export const updateReservation = ({
+  id,
+  user,
+  lesson,
+  row,
+  column,
+  points
+}) =>
+  http.patch(`/reservation/${id}/edit`, {
+    id,
+    user,
+    lesson,
+    row,
+    column,
+    points
+  })
 
+  export const updateOrg = ({
+    id,
+    name,
+    role,
+    description,
+    url,
+    avatar,
+    points
+  }) =>
+    http.patch(`/org/${id}/edit`, {
+      id,
+      name,
+      role,
+      description,
+      url,
+      avatar,
+      points
+    })
