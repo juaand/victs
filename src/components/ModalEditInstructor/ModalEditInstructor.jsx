@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useFormState } from "../../hooks/useFormState";
 import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
 import Button from "../Button/Button";
-import CheckBoxWithLabel from "../Form/CheckBoxWithLabel/CheckBoxWithLabel";
+import { updateUser } from "../../services/ApiClient";
 
 export default function ModalEditInstructor({ onClick, user }) {
   const { state, onBlur, onChange } = useFormState(
     {
       data: {
-        id: user.id,
+        id: user.user.id,
         name: user.user.name,
         role: user.user.role,
         quote: user.quote,
@@ -49,17 +49,17 @@ export default function ModalEditInstructor({ onClick, user }) {
   const [disciplinesList, setDisciplinesList] = useState([]);
   const [message, setMessage] = useState("");
 
-  const updateProfile = () => {
-    console.log("whatever");
-  };
 
-  const getDisciplinesItems = (e) => {
-    let newArray = [...data?.disciplines, e.target.id];
-    if (data?.disciplines?.includes(e.target.id)) {
-      newArray = newArray.filter((el) => el !== e.target.id);
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    try {
+        await updateUser(data)
+
+    } catch (err) {
+        setRegisterError(err.response?.data?.message)
     }
-    data.disciplines = newArray;
-  };
+}
 
   return (
     <div className="modal">
@@ -68,7 +68,7 @@ export default function ModalEditInstructor({ onClick, user }) {
           <div className="col-sm-6 col-12 modal-body">
             <span className="close" onClick={onClick}></span>
             <div className="row edit-profile">
-              <form className="col-12" onSubmit={updateProfile}>
+              <form className="col-12" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-12 profile-info">
                     <div className="row content-block">
@@ -94,20 +94,6 @@ export default function ModalEditInstructor({ onClick, user }) {
                           type="text"
                           className="form-control"
                           placeholder={data.quote}
-                        />
-                      </div>
-                    </div>
-                    <div className="row content-block">
-                      <div className="col-12">
-                        <strong>Disciplines</strong>
-                      </div>
-                      <div className="col-8">
-                        {data.disciplines.map((el) => <p>{el}  </p>)}
-                        <CheckBoxWithLabel
-                          name="disciplines"
-                          data={disciplinesList[0]}
-                          value={data.disciplines}
-                          onChange={getDisciplinesItems}
                         />
                       </div>
                     </div>
@@ -169,7 +155,7 @@ export default function ModalEditInstructor({ onClick, user }) {
                         </div>
                       )}
                       <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">
+                        <Button className="button __yellow-btn" onClick={onClick}>
                           Edit Profile
                         </Button>
                       </div>

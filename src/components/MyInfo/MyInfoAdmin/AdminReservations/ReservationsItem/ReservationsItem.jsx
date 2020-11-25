@@ -9,6 +9,9 @@ export default function ReservationsItem({reservation, onClick}) {
             <div className="reservation __name">{reservation?.user?.name?.replace(/ .*/, '')}</div>
             <div className="reservation __discipline">{reservation?.user?.email}</div>
             <div className="reservation __discipline">{reservation?.lesson?.name}</div>
+            <div className="reservation __discipline">row: {reservation?.row}</div>
+            <div className="reservation __discipline">column: {reservation?.column}</div>
+            <div className="reservation __discipline">points: {reservation?.points}</div>
             <div className="reservation __avatar" style={{background: `url(${reservation?.user?.avatar}) no-repeat center center / cover`}} ></div>
         </div>
     )
