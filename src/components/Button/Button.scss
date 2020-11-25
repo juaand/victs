@@ -26,6 +26,29 @@
     }
   }
 
+  &.__delete-btn {
+    background: $text;
+    color: $white;
+    border-color: $text;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      content: '';
+      width: 2rem;
+      height: 2rem;
+      background: url(../../images/trash.svg) no-repeat center center / contain;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      background: $pink;
+      border-color: $pink;
+      color: $white;
+    }
+  }
+
   &.__follow-btn {
     background: $white;
   }

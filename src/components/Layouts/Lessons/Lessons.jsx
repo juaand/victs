@@ -52,6 +52,7 @@ export default function Lessons({user}) {
 
   const {data, error, touch} = state
 
+  // eslint-disable-next-line no-unused-vars
   const [date, setDate] = useState(new Date())
   const [disciplinesList, setDisciplinesList] = useState([])
   const [registerError, setRegisterError] = useState(null)

@@ -1,0 +1,74 @@
+@import '../../../../../stylesheets/variables';
+
+.GymsItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: solid 0.1rem $light-gray;
+  border-right: solid 0.1rem $light-gray;
+  border-top: solid 0.6rem $white;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    border-top: solid 0.6rem $yellow;
+
+    &:before {
+      width: 2.6rem;
+      height: 2.6rem;
+      transform: rotate(45deg);
+      opacity: 0;
+    }
+
+    &:after {
+      width: 2rem;
+      height: 2rem;
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  &:before {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: url(../../../../../images/plus.svg) no-repeat center center /
+      contain;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+    transition: all 300ms ease-in-out;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  &:after {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    background: url(../../../../../images/next.svg) no-repeat center center /
+      contain;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+    transition: all 300ms ease-in-out;
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  strong {
+      font-weight: 600;
+  }
+
+  .user {
+    &.__avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1.9rem 2.1rem 2.4rem 2.3rem;
+      margin-right: 1rem;
+      border: solid 0.1rem $yellow;
+    }
+  }
+}

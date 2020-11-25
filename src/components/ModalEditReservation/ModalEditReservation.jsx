@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { useFormState } from "../../hooks/useFormState";
-import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
-import Button from "../Button/Button";
-import { updateReservation, getAllLessons } from "../../services/ApiClient";
-import { useAuthContext } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import './ModalEditReservation.css'
+import React, {useState} from "react"
+import {useFormState} from "../../hooks/useFormState"
+import InputWithLabel from "../Form/InputWithLabel/InputWithLabel"
+import Button from "../Button/Button"
+import {updateReservation, getAllLessons} from "../../services/ApiClient"
 
-export default function ModalEditReservation({ onClick, user }) {
-  const {user2} = useAuthContext()
+export default function ModalEditReservation({onClick, user, deleteReservation}) {
 
-  const { state, onBlur, onChange } = useFormState(
+  const {state, onBlur, onChange} = useFormState(
     {
       data: {
         id: user.id,
@@ -35,71 +33,64 @@ export default function ModalEditReservation({ onClick, user }) {
       column: (v) => v.length,
       points: (v) => v.length,
     }
-  );
+  )
 
-  const { data, error, touch } = state;
+  const {data} = state
 
-  const [edit, setEdit] = useState(false);
-  const [registerError, setRegisterError] = useState(null);
-  const [profileInfo, setProfileInfo] = useState(true);
-  const [profileData, setProfileData] = useState(data);
-  const [message, setMessage] = useState("");
-  const [isLesson] = useState(true);
-  const [lessonName, setLessonName] = useState(user.lesson.name);
-  const [lessonBool, setLessonBool] = useState(false);
-  const [lessonsData, setLessonsData] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [registerError, setRegisterError] = useState(null)
+  const [isLesson] = useState(true)
+  const [lessonName, setLessonName] = useState(user.lesson.name)
+  const [lessonBool, setLessonBool] = useState(false)
+  const [lessonsData, setLessonsData] = useState([])
   const [lessonId, setLessonId] = useState(data.lesson)
   const [search, setSearch] = useState('')
-
-  const history = useHistory()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     try {
-        data.lesson = lessonId
-        await updateReservation(data)
+      data.lesson = lessonId
+      await updateReservation(data)
 
     } catch (err) {
-        setRegisterError(err.response?.data?.message)
+      setRegisterError(err.response?.data?.message)
     }
-}
+  }
 
   const selectLesson = (event) => {
-    event.preventDefault();
-    setLessonBool(!lessonBool);
-    data.lesson = "";
-    getAllLessons().then((lessons) => setLessonsData(lessons));
-    
-  };
+    event.preventDefault()
+    setLessonBool(!lessonBool)
+    data.lesson = ""
+    getAllLessons().then((lessons) => setLessonsData(lessons))
+
+  }
 
   const lessonSelected = (e) => {
-    e.preventDefault();
-    setLessonId(e.target.id);
-    setLessonBool(!lessonBool);
-    setLessonName(e.target.innerText);
-  };
+    e.preventDefault()
+    setLessonId(e.target.id)
+    setLessonBool(!lessonBool)
+    setLessonName(e.target.innerText)
+  }
 
   const goBackLessons = (e) => {
-    e.preventDefault();
-    setLessonBool(!lessonBool);
-  };
+    e.preventDefault()
+    setLessonBool(!lessonBool)
+  }
 
   const handleChange = (e) => {
     setSearch(e.target.value)
-}
-
-console.log(lessonsData)
+  }
 
   const filteredLessons = lessonsData.filter((lesson) => {
     return (
       lesson.name.toLowerCase().indexOf(search.toLocaleLowerCase()) >
       -1
-    );
-  });
+    )
+  })
 
   return (
-    <div className="modal">
+    <div className="modal ModalEditReservation">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-6 col-12 modal-body">
@@ -108,38 +99,8 @@ console.log(lessonsData)
               <form className="col-12" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-12 profile-info">
-                    <div className="row content-block">
-                      <div className="col-12">
-                        <InputWithLabel
-                          value={data.user}
-                          onBlur={onBlur}
-                          onChange={onChange}
-                          name="user"
-                          type="text"
-                          className="form-control"
-                          placeholder={data.user}
-                        />
-                      </div>
-                    </div>
-                    <div className="row content-block">
-                      <div className="col-12">
-                        <InputWithLabel
-                          value={data.lesson}
-                          onBlur={onBlur}
-                          onChange={onChange}
-                          name="lesson"
-                          type="text"
-                          className="form-control"
-                          placeholder={
-                            data.lesson
-                              ? data.lesson
-                              : "Insert the lesson"
-                          }
-                        />
-                      </div>
-                    </div>
                     <div className="row content-block d-flex align-items-start">
-                      <div className="col-12">
+                      <div className="col-6">
                         <InputWithLabel
                           value={data.row}
                           onBlur={onBlur}
@@ -151,6 +112,8 @@ console.log(lessonsData)
                             data.row ? data.row : "Insert the row"
                           }
                         />
+                      </div>
+                      <div className="col-6">
                         <InputWithLabel
                           value={data.column}
                           onBlur={onBlur}
@@ -162,85 +125,55 @@ console.log(lessonsData)
                             data.column ? data.column : "Insert the column"
                           }
                         />
-                        <InputWithLabel
-                          value={data.points}
-                          onBlur={onBlur}
-                          onChange={onChange}
-                          name="points"
-                          type="text"
-                          className="form-control"
-                          placeholder={
-                            data.points ? data.points : "Insert the zipcode"
-                          }
-                        />
                       </div>
-                      <div className="row justify-content-between class-instr-data">
-                        {isLesson && (
-                          <div className="col-6 col-sm-6 instructor">
+
+                      {isLesson && (
+                        <>
+                          <div className="col-12 instructor">
                             <strong>Lesson</strong>
+                          </div>
+                          <div className="col-12">
                             {lessonName}
                           </div>
-                        )}
-                      </div>
-                      {registerError && (
-                        <div className="alert alert-danger">
-                          {registerError}
-                        </div>
+                        </>
                       )}
 
-                      <div className="row justify-content-between">
-                        <div className="col-6 d-flex justify-content-center">
-                          <Button
-                            className="btn __yellow-btn m-0"
-                            onClick={selectLesson}
-                          >
-                            Select Lesson
-                          </Button>
-                        </div>
+
+                      <div className="col-12">
+                        <Button
+                          className="select-coach"
+                          onClick={selectLesson}
+                        >Change Lesson</Button>
                       </div>
 
-                      {user2.role === "Admin" && (
+                      {lessonBool && (
                         <>
-                          {lessonBool && (
-                            <>
-                              <h1 className="title">
-                                <div
-                                  className="go-back"
-                                  onClick={goBackLessons}
-                                ></div>
-                                back
-                              </h1>
-                              <div className="row">
-                                <div className="col-12 form-group">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Search by instructor name"
-                                    onChange={handleChange}
-                                    value={search}
-                                  />
-                                </div>
-                              </div>
-                              <div className="row">
-                                {filteredLessons.map((el) => (
-                                  <div
-                                    className="col-sm-6 col-12 instructor-row"
-                                    onClick={lessonSelected}
-                                    id={el.id}
-                                  >
-                                    <div
-                                      className="avatar"
-                                      style={{
-                                        background: `url(${el.instructor.user.avatar}) no-repeat center center / contain`,
-                                      }}
-                                      id={el.id}
-                                    ></div>
-                                    {el.name}
-                                  </div>
-                                ))}
-                              </div>
-                            </>
-                          )}
+                          <hr />
+
+                          <div className="col-12">
+                            <div
+                              className="go-back"
+                              onClick={goBackLessons}
+                            >close</div>
+                          </div>
+                          <div className="col-12 form-group">
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Search by lesson name"
+                              onChange={handleChange}
+                              value={search}
+                            />
+                          </div>
+                          {filteredLessons.map((el) => (
+                            <div
+                              className="col-sm-6 col-12 instructor-row"
+                              onClick={lessonSelected}
+                              id={el.id}
+                            >
+                              {el.name}
+                            </div>
+                          ))}
                         </>
                       )}
 
@@ -249,8 +182,8 @@ console.log(lessonsData)
                           Edit Reservation
                         </Button>
                       </div>
-                      <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">Cancel</Button>
+                      <div className="col-12 col-sm-6 d-flex justify-content-end">
+                        <Button className="button __delete-btn" onClick={() => deleteReservation(user)}>reservation</Button>
                       </div>
                     </div>
                   </div>
@@ -261,5 +194,5 @@ console.log(lessonsData)
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,0 +1,118 @@
+.ModalEditLesson .modal-body {
+  border: solid 0.3rem #ffcc00;
+  max-height: 80vh;
+  overflow: scroll;
+}
+
+.ModalEditLesson .button {
+  margin: 0;
+  margin-top: 2rem;
+}
+
+.ModalEditLesson .avatar {
+  width: 4rem;
+  height: 4rem;
+  display: block;
+  border-radius: 3.9rem 4.1rem 4.4rem 4.3rem;
+  border: solid 0.3rem #ffcc00;
+  margin-right: 1rem;
+}
+
+.ModalEditLesson .avatar.Cycle {
+  background: #fff url(../../images/cycle.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Mind {
+  background: #fff url(../../images/mind.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Express {
+  background: #fff url(../../images/express.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Aqua {
+  background: #fff url(../../images/aqua.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Other {
+  background: #fff url(../../images/logo-res.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Martial {
+  background: #fff url(../../images/martial.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Dance {
+  background: #fff url(../../images/dance.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .avatar.Conditioning {
+  background: #fff url(../../images/conditioning.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .select-coach {
+  margin: 0;
+  text-transform: capitalize;
+  background: transparent;
+  font-size: 1.4rem;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #00a9ad;
+  font-weight: 600;
+}
+
+.ModalEditLesson .select-coach:after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: all 200ms ease-in-out;
+  background: url(../../images/next.svg) no-repeat center center/contain;
+}
+
+.ModalEditLesson .select-coach:hover:after {
+  margin-left: 1rem;
+}
+
+.ModalEditLesson .instructor-row:hover {
+  cursor: pointer;
+  color: #00a9ad;
+}
+
+.ModalEditLesson hr {
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.ModalEditLesson .go-back {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: #00a9ad;
+  font-weight: 600;
+}
+
+.ModalEditLesson .go-back:hover {
+  cursor: pointer;
+}
+
+.ModalEditLesson .go-back:before {
+  content: '';
+  display: inline-block;
+  margin-right: 0.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: all 200ms ease-in-out;
+  background: url(../../images/plus.svg) no-repeat center center/contain;
+  transform: rotate(45deg);
+}
+
+.ModalEditLesson .lesson-info {
+  display: flex;
+  align-items: center;
+}

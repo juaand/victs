@@ -33,12 +33,14 @@ export default function MyInfoAdmin({user}) {
   const [reservationInfo, setReservationInfo] = useState([])
   const [orgInfo, setOrgInfo] = useState([])
   const [adminHome, setAdminHome] = useState(true)
+  const [bannerTitle, setBannerTitle] = useState('')
 
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getAllData()
       setAllData(result)
+      setBannerTitle('Victs Admin')
     }
     fetchData()
   }, [])
@@ -49,6 +51,7 @@ export default function MyInfoAdmin({user}) {
       setAllData(result)
     }
     fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!bool])
 
   const showModal = (userId) => {
@@ -87,6 +90,11 @@ export default function MyInfoAdmin({user}) {
     setBool(!bool)
   }
 
+  const deleteReservation = async (data) => {
+    console.log(data)
+    // const result = await deleteCurrentReservation()
+  }
+
   const showUsers = () => {
     setUserBool(!userBool)
     setInstructorsBool(false)
@@ -96,6 +104,7 @@ export default function MyInfoAdmin({user}) {
     setOrgsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setBannerTitle('Victs Users')
   }
   const showInstructors = () => {
     setInstructorsBool(!instructorsBool)
@@ -106,6 +115,7 @@ export default function MyInfoAdmin({user}) {
     setOrgsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setBannerTitle('Victs Instructors')
   }
   const showGyms = () => {
     setGymsBool(!gymsBool)
@@ -116,6 +126,7 @@ export default function MyInfoAdmin({user}) {
     setOrgsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setBannerTitle('Victs Gyms')
   }
 
   const showReservations = () => {
@@ -127,6 +138,7 @@ export default function MyInfoAdmin({user}) {
     setOrgsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setBannerTitle('Victs Reservations')
   }
 
   const showLessons = () => {
@@ -138,6 +150,7 @@ export default function MyInfoAdmin({user}) {
     setOrgsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setBannerTitle('Victs Lessons')
   }
 
   const showOrgs = () => {
@@ -149,6 +162,7 @@ export default function MyInfoAdmin({user}) {
     setLessonsBool(false)
     setAdminHome(false)
     setHomeBool(false)
+    setBannerTitle('Victs ORGs')
   }
 
   const showHome = () => {
@@ -160,6 +174,7 @@ export default function MyInfoAdmin({user}) {
     setReservationsBool(false)
     setLessonsBool(false)
     setAdminHome(true)
+    setBannerTitle('Victs Admin')
   }
 
   return (
@@ -168,7 +183,7 @@ export default function MyInfoAdmin({user}) {
       {bool && instructorsBool && <ModalEditInstructor user={instructorInfo} onClick={hideModal} />}
       {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
       {bool && lessonsBool && <ModalEditLesson user={lessonInfo} onClick={hideModal} />}
-      {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} />}
+      {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} deleteReservation={(data) => deleteReservation(data)} />}
       {bool && orgsBool && <ModalEditOrg user={orgInfo} onClick={hideModal} />}
       <nav className="navbar navbar-expand-lg admin-nav ">
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -216,7 +231,7 @@ export default function MyInfoAdmin({user}) {
         </div>
       </nav>
 
-      <Banner title={user.name} subtitle={user.role} className="margin-top" />
+      <Banner title={bannerTitle} subtitle="god" className="margin-top" />
       {adminHome && <div className="admin-content container">
         <div className="row justify-content-between">
           <div className="col-12 col-sm-5 admin-bg"></div>
@@ -244,7 +259,10 @@ export default function MyInfoAdmin({user}) {
         </div>
       </div>}
       {userBool && (
-        <AdminUsers onClick={(userId) => showModal(userId)} data={allData[0]} />
+        <AdminUsers
+          onClick={(userId) => showModal(userId)}
+          data={allData[0]}
+        />
       )}
       {instructorsBool && (
         <AdminInstructors

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useFormState } from "../../hooks/useFormState";
-import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
-import Button from "../Button/Button";
-import { updateUser } from "../../services/ApiClient";
+import './ModalEditGym.css'
+import React, {useState} from "react"
+import {useFormState} from "../../hooks/useFormState"
+import InputWithLabel from "../Form/InputWithLabel/InputWithLabel"
+import Button from "../Button/Button"
+import {updateUser} from "../../services/ApiClient"
 
-export default function ModalEditGym({ onClick, user }) {
-  const { state, onBlur, onChange } = useFormState(
+export default function ModalEditGym({onClick, user}) {
+  const {state, onBlur, onChange} = useFormState(
     {
       data: {
         id: user.user.id,
@@ -36,33 +37,33 @@ export default function ModalEditGym({ onClick, user }) {
       city: (v) => v.length,
       zipcode: (v) => v.length,
     }
-  );
+  )
 
-  const { data, error, touch } = state;
+  const {data} = state
 
-  const [edit, setEdit] = useState(false);
-  const [registerError, setRegisterError] = useState(null);
-  const [profileInfo, setProfileInfo] = useState(true);
-  const [profileData, setProfileData] = useState(data);
-  const [servicesList, setServicesList] = useState([]);
-  const [message, setMessage] = useState("");
+  const [registerError, setRegisterError] = useState(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     try {
-        await updateUser(data)
+      await updateUser(data)
 
     } catch (err) {
-        setRegisterError(err.response?.data?.message)
+      setRegisterError(err.response?.data?.message)
     }
-}
+  }
+
+  const deleteGym = () => {
+    console.log('del')
+  }
 
   return (
-    <div className="modal">
+    <div className="modal ModalEditGym">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-6 col-12 modal-body">
+            <div className="avatar" style={{background: `url(${user?.user?.avatar}) no-repeat center center / cover`}}></div>
             <span className="close" onClick={onClick}></span>
             <div className="row edit-profile">
               <form className="col-12" onSubmit={handleSubmit}>
@@ -143,8 +144,8 @@ export default function ModalEditGym({ onClick, user }) {
                           Edit Profile
                         </Button>
                       </div>
-                      <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">Cancel</Button>
+                      <div className="col-12 col-sm-6 d-flex justify-content-end">
+                        <Button className="button __delete-btn" onClick={deleteGym}>Delete gym</Button>
                       </div>
                     </div>
                   </div>
@@ -155,5 +156,5 @@ export default function ModalEditGym({ onClick, user }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
