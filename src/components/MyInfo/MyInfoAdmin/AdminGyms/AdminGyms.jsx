@@ -1,3 +1,4 @@
+import './AdminGyms.css'
 import React, {useState} from 'react'
 import GymsItem from './GymsItem/GymsItem'
 
@@ -17,10 +18,7 @@ export default function AdminGyms({onClick, data}) {
         })
     
         return (
-            <div className="container-fluid margin-top instructors-centers">
-                <div className="row p-0">
-                    <div className="col-12 instructor-bg"></div>
-                </div>
+            <div className="container-fluid instructors-centers AdminGyms">
                 <div className="row">
                     <div className="col-12 form-group">
                         <input type="text" className="form-control" placeholder="Search by gym name" onChange={handleChange} value={search} /></div>

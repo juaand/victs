@@ -1,0 +1,35 @@
+@import '../../../../stylesheets/variables';
+
+.AdminOrgs {
+  .row {
+    border-bottom: solid 0.1rem $light-gray;
+  }
+
+  .add-new-org {
+    background: $yellow;
+    color: $white;
+    display: flex;
+    align-items: center;
+
+    &:after {
+      content: '';
+      width: 3rem;
+      height: 3rem;
+      display: inline-block;
+      background: url(../../../../images/plus-white.svg) no-repeat center center /
+        contain;
+      margin-left: 1rem;
+      transform: rotate(0deg);
+      transition: all 200ms ease-in-out;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: $blue;
+
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

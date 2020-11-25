@@ -26,6 +26,32 @@
   background: #7a7a7a;
 }
 
+.button.__delete-btn,
+.btn.__delete-btn {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.button.__delete-btn:before,
+.btn.__delete-btn:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../images/trash.svg) no-repeat center center/contain;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.button.__delete-btn:hover,
+.btn.__delete-btn:hover {
+  background: #cb1b53;
+  border-color: #cb1b53;
+  color: #fff;
+}
+
 .button.__follow-btn,
 .btn.__follow-btn {
   background: #fff;

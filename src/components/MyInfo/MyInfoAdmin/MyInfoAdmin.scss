@@ -1,6 +1,10 @@
 @import '../../../stylesheets/variables';
 
 .MyInfoAdmin {
+  .margin-top {
+    margin: 8.5rem 0 0 0;
+  }
+
   .active {
     pointer-events: none;
   }

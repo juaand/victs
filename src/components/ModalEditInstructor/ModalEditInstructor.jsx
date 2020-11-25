@@ -1,3 +1,4 @@
+import './ModalEditInstructor.css'
 import React, { useState } from "react";
 import { useFormState } from "../../hooks/useFormState";
 import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
@@ -40,14 +41,8 @@ export default function ModalEditInstructor({ onClick, user }) {
     }
   );
 
-  const { data, error, touch } = state;
-
-  const [edit, setEdit] = useState(false);
+  const { data } = state;
   const [registerError, setRegisterError] = useState(null);
-  const [profileInfo, setProfileInfo] = useState(true);
-  const [profileData, setProfileData] = useState(data);
-  const [disciplinesList, setDisciplinesList] = useState([]);
-  const [message, setMessage] = useState("");
 
 
   const handleSubmit = async (event) => {
@@ -62,10 +57,11 @@ export default function ModalEditInstructor({ onClick, user }) {
 }
 
   return (
-    <div className="modal">
+    <div className="modal ModalEditInstructor">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-6 col-12 modal-body">
+            <div className="avatar" style={{background: `url(${user?.user?.avatar}) no-repeat center center / cover`}}></div>
             <span className="close" onClick={onClick}></span>
             <div className="row edit-profile">
               <form className="col-12" onSubmit={handleSubmit}>
@@ -159,8 +155,8 @@ export default function ModalEditInstructor({ onClick, user }) {
                           Edit Profile
                         </Button>
                       </div>
-                      <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">Cancel</Button>
+                      <div className="col-12 col-sm-6 d-flex justify-content-end">
+                        <Button className="button __delete-btn">Delete Coach</Button>
                       </div>
                     </div>
                   </div>

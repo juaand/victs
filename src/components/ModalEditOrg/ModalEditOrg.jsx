@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { useFormState } from "../../hooks/useFormState";
-import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
-import Button from "../Button/Button";
-import { updateOrg } from "../../services/ApiClient";
+import './ModalEditOrg.css'
+import React, {useState} from "react"
+import {useFormState} from "../../hooks/useFormState"
+import InputWithLabel from "../Form/InputWithLabel/InputWithLabel"
+import Button from "../Button/Button"
+import {updateOrg} from "../../services/ApiClient"
 
 
-export default function ModalEditOrg({ onClick, user }) {
-  const { state, onBlur, onChange } = useFormState(
+export default function ModalEditOrg({onClick, user}) {
+  const {state, onBlur, onChange} = useFormState(
     {
       data: {
         id: user.id,
@@ -35,33 +36,28 @@ export default function ModalEditOrg({ onClick, user }) {
       avatar: (v) => v.length,
       points: (v) => v.length,
     }
-  );
+  )
 
-  const { data, error, touch } = state;
-
-  const [edit, setEdit] = useState(false);
-  const [registerError, setRegisterError] = useState(null);
-  const [profileInfo, setProfileInfo] = useState(true);
-  const [profileData, setProfileData] = useState(data);
-  const [servicesList, setServicesList] = useState([]);
-  const [message, setMessage] = useState("");
+  const {data} = state
+  const [registerError, setRegisterError] = useState(null)
 
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
-      await updateOrg(data);
+      await updateOrg(data)
     } catch (err) {
-      setRegisterError(err.response?.data?.message);
+      setRegisterError(err.response?.data?.message)
     }
-  };
+  }
 
   return (
-    <div className="modal">
+    <div className="modal ModalEditOrg">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-6 col-12 modal-body">
+            <div className="avatar" style={{background: `url(${data?.avatar}) no-repeat center center / cover`}}></div>
             <span className="close" onClick={onClick}></span>
             <div className="row edit-profile">
               <form className="col-12" onSubmit={handleSubmit}>
@@ -156,8 +152,8 @@ export default function ModalEditOrg({ onClick, user }) {
                           Edit Org
                         </Button>
                       </div>
-                      <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">Cancel</Button>
+                      <div className="col-12 col-sm-6 d-flex justify-content-end">
+                        <Button className="button __delete-btn">Delete org</Button>
                       </div>
                     </div>
                   </div>
@@ -168,5 +164,5 @@ export default function ModalEditOrg({ onClick, user }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

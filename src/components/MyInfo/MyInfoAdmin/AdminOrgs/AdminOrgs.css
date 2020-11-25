@@ -1,0 +1,30 @@
+.AdminOrgs .row {
+  border-bottom: solid 0.1rem #e8e8e8;
+}
+
+.AdminOrgs .add-new-org {
+  background: #ffcc00;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.AdminOrgs .add-new-org:after {
+  content: '';
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  background: url(../../../../images/plus-white.svg) no-repeat center center/contain;
+  margin-left: 1rem;
+  transform: rotate(0deg);
+  transition: all 200ms ease-in-out;
+}
+
+.AdminOrgs .add-new-org:hover {
+  cursor: pointer;
+  background: #00a9ad;
+}
+
+.AdminOrgs .add-new-org:hover:after {
+  transform: rotate(180deg);
+}

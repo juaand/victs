@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { useFormState } from "../../hooks/useFormState";
-import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
-import Button from "../Button/Button";
-import { getInstructors, updateLesson, getAllData } from "../../services/ApiClient";
-import { useAuthContext } from "../../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import './ModalEditLesson.css'
+import React, {useState} from "react"
+import {useFormState} from "../../hooks/useFormState"
+import InputWithLabel from "../Form/InputWithLabel/InputWithLabel"
+import Button from "../Button/Button"
+import {getInstructors, updateLesson} from "../../services/ApiClient"
 
-export default function ModalEditLesson({ onClick, user }) {
-  const {user2} = useAuthContext()
+export default function ModalEditLesson({onClick, user}) {
 
-  const { state, onBlur, onChange } = useFormState(
+  const {state, onBlur, onChange} = useFormState(
     {
       data: {
         id: user.id,
@@ -41,68 +39,63 @@ export default function ModalEditLesson({ onClick, user }) {
       duration: (v) => v.length,
       details: (v) => v.length,
     }
-  );
+  )
 
-  const { data, error, touch } = state;
-
-  const [edit, setEdit] = useState(false);
-  const [registerError, setRegisterError] = useState(null);
-  const [profileInfo, setProfileInfo] = useState(true);
-  const [profileData, setProfileData] = useState(data);
-  const [message, setMessage] = useState("");
-  const [isInstructor] = useState(true);
-  const [instructorName, setInstructorName] = useState(user.instructor.name);
-  const [instructorBool, setInstructorBool] = useState(false);
-  const [instructorsData, setInstructorsData] = useState([]);
+  const {data} = state
+  
+  // eslint-disable-next-line no-unused-vars
+  const [registerError, setRegisterError] = useState(null)
+  const [isInstructor] = useState(true)
+  const [instructorName, setInstructorName] = useState(user?.instructor?.user?.name)
+  const [instructorBool, setInstructorBool] = useState(false)
+  const [instructorsData, setInstructorsData] = useState([])
   const [instructorId, setInstructorId] = useState(data.instructor)
   const [search, setSearch] = useState('')
-
-  const history = useHistory()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     try {
-        data.instructor = instructorId
-        await updateLesson(data)
+      data.instructor = instructorId
+      await updateLesson(data)
 
     } catch (err) {
-        setRegisterError(err.response?.data?.message)
+      setRegisterError(err.response?.data?.message)
     }
-}
+  }
 
   const selectInstructor = (event) => {
-    event.preventDefault();
-    setInstructorBool(!instructorBool);
-    data.instructor = "";
-    getInstructors().then((instructors) => setInstructorsData(instructors));
-  };
+    event.preventDefault()
+    setInstructorBool(!instructorBool)
+    data.instructor = ""
+    getInstructors().then((instructors) => setInstructorsData(instructors))
+  }
 
   const instructorSelected = (e) => {
-    e.preventDefault();
-    setInstructorId(e.target.id);
-    setInstructorBool(!instructorBool);
-    setInstructorName(e.target.innerText);
-  };
+    e.preventDefault()
+    setInstructorId(e.target.id)
+    setInstructorBool(!instructorBool)
+    setInstructorName(e.target.innerText)
+  }
 
   const goBackInstructors = (e) => {
-    e.preventDefault();
-    setInstructorBool(!instructorBool);
-  };
+    e.preventDefault()
+    setInstructorBool(!instructorBool)
+  }
 
   const handleChange = (e) => {
     setSearch(e.target.value)
-}
+  }
 
   const filteredInstructors = instructorsData.filter((instructor) => {
     return (
       instructor.user.name.toLowerCase().indexOf(search.toLocaleLowerCase()) >
       -1
-    );
-  });
+    )
+  })
 
   return (
-    <div className="modal">
+    <div className="modal ModalEditLesson">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-6 col-12 modal-body">
@@ -110,6 +103,11 @@ export default function ModalEditLesson({ onClick, user }) {
             <div className="row edit-profile">
               <form className="col-12" onSubmit={handleSubmit}>
                 <div className="row">
+                  <div className="col-12 lesson-info">
+                    <div className={`avatar ${user.discipline}`}>
+                    </div>
+                    <h1 className="big big-yellow">{user.discipline}</h1>
+                  </div>
                   <div className="col-12 profile-info">
                     <div className="row content-block">
                       <div className="col-12">
@@ -121,23 +119,6 @@ export default function ModalEditLesson({ onClick, user }) {
                           type="text"
                           className="form-control"
                           placeholder={data.name}
-                        />
-                      </div>
-                    </div>
-                    <div className="row content-block">
-                      <div className="col-12">
-                        <InputWithLabel
-                          value={data.instructor}
-                          onBlur={onBlur}
-                          onChange={onChange}
-                          name="instructor"
-                          type="text"
-                          className="form-control"
-                          placeholder={
-                            data.instructor
-                              ? data.instructor
-                              : "Insert the instructor"
-                          }
                         />
                       </div>
                     </div>
@@ -177,15 +158,6 @@ export default function ModalEditLesson({ onClick, user }) {
                           }
                         />
                         <InputWithLabel
-                          value={data.date}
-                          onBlur={onBlur}
-                          onChange={onChange}
-                          name="date"
-                          type="text"
-                          className="form-control"
-                          placeholder={data.date ? data.date : "Insert a date"}
-                        />
-                        <InputWithLabel
                           value={data.duration}
                           onBlur={onBlur}
                           onChange={onChange}
@@ -208,83 +180,64 @@ export default function ModalEditLesson({ onClick, user }) {
                           }
                         />
                       </div>
-                      <div className="row justify-content-between class-instr-data">
-                        {isInstructor && (
-                          <div className="col-6 col-sm-6 instructor">
+
+                      {isInstructor && (
+                        <>
+                          <div className="col-12 instructor">
                             <strong>Instructor</strong>
+                          </div>
+                          <div className="col-12">
                             {instructorName}
                           </div>
-                        )}
-                      </div>
-                      {registerError && (
-                        <div className="alert alert-danger">
-                          {registerError}
-                        </div>
-                      )}
-
-                      <div className="row justify-content-between">
-                        <div className="col-6 d-flex justify-content-center">
-                          <Button
-                            className="btn __yellow-btn m-0"
-                            onClick={selectInstructor}
-                          >
-                            Select instructor
-                          </Button>
-                        </div>
-                      </div>
-
-                      {user2.role === "Admin" && (
-                        <>
-                          {instructorBool && (
-                            <>
-                              <h1 className="title">
-                                <div
-                                  className="go-back"
-                                  onClick={goBackInstructors}
-                                ></div>
-                                back
-                              </h1>
-                              <div className="row">
-                                <div className="col-12 form-group">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Search by instructor name"
-                                    onChange={handleChange}
-                                    value={search}
-                                  />
-                                </div>
-                              </div>
-                              <div className="row">
-                                {filteredInstructors.map((el) => (
-                                  <div
-                                    className="col-sm-6 col-12 instructor-row"
-                                    onClick={instructorSelected}
-                                    id={el.id}
-                                  >
-                                    <div
-                                      className="avatar"
-                                      style={{
-                                        background: `url(${el.user.avatar}) no-repeat center center / contain`,
-                                      }}
-                                      id={el.id}
-                                    ></div>
-                                    {el.user.name}
-                                  </div>
-                                ))}
-                              </div>
-                            </>
-                          )}
                         </>
                       )}
+
+
+                      <div className="col-12">
+                        <Button
+                          className="select-coach"
+                          onClick={selectInstructor}
+                        >Change instructor</Button>
+                      </div>
+
+                      {instructorBool && (
+                        <>
+                          <hr />
+                          <div className="col-12">
+                            <div
+                              className="go-back"
+                              onClick={goBackInstructors}
+                            >close</div>
+                          </div>
+                          <div className="col-12 form-group">
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Search by instructor name"
+                              onChange={handleChange}
+                              value={search}
+                            />
+                          </div>
+                          {filteredInstructors.map((el) => (
+                            <div
+                              className="col-sm-6 col-12 instructor-row"
+                              onClick={instructorSelected}
+                              id={el.id}
+                            >
+                              {el.user.name}
+                            </div>
+                          ))}
+                        </>
+                      )}
+
 
                       <div className="col-12 col-sm-6">
                         <Button className="button __yellow-btn" onClick={onClick}>
                           Edit Lesson
                         </Button>
                       </div>
-                      <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">Cancel</Button>
+                      <div className="col-12 col-sm-6 d-flex justify-content-end">
+                        <Button className="button __delete-btn">Delete Lesson</Button>
                       </div>
                     </div>
                   </div>
@@ -295,5 +248,5 @@ export default function ModalEditLesson({ onClick, user }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
