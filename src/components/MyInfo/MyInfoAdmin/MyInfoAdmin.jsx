@@ -1,20 +1,21 @@
-import './MyInfoAdmin.css'
-import React, {useEffect, useState} from "react"
-import {getAllData} from "../../../services/ApiClient"
-import {Link, NavLink} from "react-router-dom"
-import AdminUsers from "./AdminUsers/AdminUsers"
-import AdminInstructors from "./AdminInstructors/AdminInstructors"
-import AdminGyms from "./AdminGyms/AdminGyms"
-import AdminReservations from "./AdminReservations/AdminReservations"
-import AdminLessons from "./AdminLessons/AdminLessons"
-import AdminOrgs from "./AdminOrgs/AdminOrgs"
-import ModalEditUser from "../../ModalEditUser/ModalEditUser"
-import ModalEditInstructor from "../../ModalEditInstructor/ModalEditInstructor"
-import ModalEditGym from "../../ModalEditGym/ModalEditGym"
-import ModalEditLesson from "../../ModalEditLesson/ModalEditLesson"
-import ModalEditReservation from "../../ModalEditReservation/ModalEditReservation"
-import ModalEditOrg from "../../ModalEditOrg/ModalEditOrg"
-import Banner from "../../Banner/Banner"
+import "./MyInfoAdmin.css";
+import React, { useEffect, useState } from "react";
+import { getAllData } from "../../../services/ApiClient";
+import { Link, NavLink } from "react-router-dom";
+import AdminUsers from "./AdminUsers/AdminUsers";
+import AdminInstructors from "./AdminInstructors/AdminInstructors";
+import AdminGyms from "./AdminGyms/AdminGyms";
+import AdminReservations from "./AdminReservations/AdminReservations";
+import AdminLessons from "./AdminLessons/AdminLessons";
+import AdminOrgs from "./AdminOrgs/AdminOrgs";
+import AdminStatistics from "./AdminStatistics/AdminStatistics";
+import ModalEditUser from "../../ModalEditUser/ModalEditUser";
+import ModalEditInstructor from "../../ModalEditInstructor/ModalEditInstructor";
+import ModalEditGym from "../../ModalEditGym/ModalEditGym";
+import ModalEditLesson from "../../ModalEditLesson/ModalEditLesson";
+import ModalEditReservation from "../../ModalEditReservation/ModalEditReservation";
+import ModalEditOrg from "../../ModalEditOrg/ModalEditOrg";
+import Banner from "../../Banner/Banner";
 
 export default function MyInfoAdmin({user}) {
   const [allData, setAllData] = useState([])
@@ -25,6 +26,7 @@ export default function MyInfoAdmin({user}) {
   const [reservationsBool, setReservationsBool] = useState(false)
   const [lessonsBool, setLessonsBool] = useState(false)
   const [orgsBool, setOrgsBool] = useState(false)
+  const [statisticsBool, setStatisticsBool] = useState(false)
   const [bool, setBool] = useState(false)
   const [userInfo, setUserInfo] = useState([])
   const [instructorInfo, setInstructorInfo] = useState([])
@@ -34,7 +36,6 @@ export default function MyInfoAdmin({user}) {
   const [orgInfo, setOrgInfo] = useState([])
   const [adminHome, setAdminHome] = useState(true)
   const [bannerTitle, setBannerTitle] = useState('')
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,40 +56,40 @@ export default function MyInfoAdmin({user}) {
   }, [!bool])
 
   const showModal = (userId) => {
-    setBool(!bool)
-    setUserInfo(userId)
-  }
+    setBool(!bool);
+    setUserInfo(userId);
+  };
 
   const showModalInstructor = (userId) => {
-    setBool(!bool)
-    setInstructorInfo(userId)
-  }
+    setBool(!bool);
+    setInstructorInfo(userId);
+  };
 
   const showModalGym = (userId) => {
-    setBool(!bool)
-    setGymInfo(userId)
-  }
+    setBool(!bool);
+    setGymInfo(userId);
+  };
 
   const showModalLesson = (userId) => {
-    setBool(!bool)
-    setLessonInfo(userId)
-  }
+    setBool(!bool);
+    setLessonInfo(userId);
+  };
 
   const showModalReservation = (userId) => {
-    setBool(!bool)
-    setReservationInfo(userId)
-  }
+    setBool(!bool);
+    setReservationInfo(userId);
+  };
 
   const showModalOrg = (userId) => {
-    setBool(!bool)
-    setOrgInfo(userId)
-  }
+    setBool(!bool);
+    setOrgInfo(userId);
+  };
 
   const hideModal = async () => {
-    const result = await getAllData()
-    setAllData(result)
-    setBool(!bool)
-  }
+    const result = await getAllData();
+    setAllData(result);
+    setBool(!bool);
+  };
 
   const deleteReservation = async (data) => {
     console.log(data)
@@ -96,91 +97,108 @@ export default function MyInfoAdmin({user}) {
   }
 
   const showUsers = () => {
-    setUserBool(!userBool)
-    setInstructorsBool(false)
-    setGymsBool(false)
-    setReservationsBool(false)
-    setLessonsBool(false)
-    setOrgsBool(false)
-    setAdminHome(false)
-    setHomeBool(false)
-    setBannerTitle('Victs Users')
-  }
+    setUserBool(!userBool);
+    setInstructorsBool(false);
+    setGymsBool(false);
+    setReservationsBool(false);
+    setLessonsBool(false);
+    setOrgsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+    setStatisticsBool(false);
+  };
   const showInstructors = () => {
-    setInstructorsBool(!instructorsBool)
-    setUserBool(false)
-    setGymsBool(false)
-    setReservationsBool(false)
-    setLessonsBool(false)
-    setOrgsBool(false)
-    setAdminHome(false)
-    setHomeBool(false)
-    setBannerTitle('Victs Instructors')
-  }
+    setInstructorsBool(!instructorsBool);
+    setUserBool(false);
+    setGymsBool(false);
+    setReservationsBool(false);
+    setLessonsBool(false);
+    setOrgsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+    setStatisticsBool(false);
+  };
   const showGyms = () => {
-    setGymsBool(!gymsBool)
-    setUserBool(false)
-    setInstructorsBool(false)
-    setReservationsBool(false)
-    setLessonsBool(false)
-    setOrgsBool(false)
-    setAdminHome(false)
-    setHomeBool(false)
-    setBannerTitle('Victs Gyms')
-  }
+    setGymsBool(!gymsBool);
+    setUserBool(false);
+    setInstructorsBool(false);
+    setReservationsBool(false);
+    setLessonsBool(false);
+    setOrgsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+    setStatisticsBool(false);
+  };
 
   const showReservations = () => {
-    setReservationsBool(!reservationsBool)
-    setUserBool(false)
-    setInstructorsBool(false)
-    setGymsBool(false)
-    setLessonsBool(false)
-    setOrgsBool(false)
-    setAdminHome(false)
-    setHomeBool(false)
-    setBannerTitle('Victs Reservations')
-  }
+    setReservationsBool(!reservationsBool);
+    setUserBool(false);
+    setInstructorsBool(false);
+    setGymsBool(false);
+    setLessonsBool(false);
+    setOrgsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+    setStatisticsBool(false);
+  };
 
   const showLessons = () => {
-    setLessonsBool(!lessonsBool)
-    setUserBool(false)
-    setInstructorsBool(false)
-    setGymsBool(false)
-    setReservationsBool(false)
-    setOrgsBool(false)
-    setAdminHome(false)
-    setHomeBool(false)
-    setBannerTitle('Victs Lessons')
-  }
+    setLessonsBool(!lessonsBool);
+    setUserBool(false);
+    setInstructorsBool(false);
+    setGymsBool(false);
+    setReservationsBool(false);
+    setOrgsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+    setStatisticsBool(false);
+  };
 
   const showOrgs = () => {
-    setOrgsBool(!orgsBool)
-    setUserBool(false)
-    setInstructorsBool(false)
-    setGymsBool(false)
-    setReservationsBool(false)
-    setLessonsBool(false)
-    setAdminHome(false)
-    setHomeBool(false)
-    setBannerTitle('Victs ORGs')
-  }
+    setOrgsBool(!orgsBool);
+    setUserBool(false);
+    setInstructorsBool(false);
+    setGymsBool(false);
+    setReservationsBool(false);
+    setLessonsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+    setStatisticsBool(false);
+  };
 
   const showHome = () => {
-    setHomeBool(!homeBool)
-    setOrgsBool(false)
-    setUserBool(false)
-    setInstructorsBool(false)
-    setGymsBool(false)
-    setReservationsBool(false)
-    setLessonsBool(false)
-    setAdminHome(true)
-    setBannerTitle('Victs Admin')
-  }
+    setHomeBool(!homeBool);
+    setOrgsBool(false);
+    setUserBool(false);
+    setInstructorsBool(false);
+    setGymsBool(false);
+    setReservationsBool(false);
+    setLessonsBool(false);
+    setAdminHome(true);
+    setStatisticsBool(false);
+  };
+
+  const showStatistics = () => {
+    setStatisticsBool(!statisticsBool);
+    setUserBool(false);
+    setInstructorsBool(false);
+    setGymsBool(false);
+    setReservationsBool(false);
+    setLessonsBool(false);
+    setOrgsBool(false);
+    setAdminHome(false);
+    setHomeBool(false);
+  };
+
 
   return (
     <section className="MyInfoAdmin">
-      {bool && userBool && <ModalEditUser user={userInfo} onClick={hideModal} />}
-      {bool && instructorsBool && <ModalEditInstructor user={instructorInfo} onClick={hideModal} />}
+      {bool && userBool && (
+        <ModalEditUser user={userInfo} onClick={hideModal} />
+      )}
+      {bool && instructorsBool && (
+        <ModalEditInstructor user={instructorInfo} onClick={hideModal} />
+      )}
       {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
       {bool && lessonsBool && <ModalEditLesson user={lessonInfo} onClick={hideModal} />}
       {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} deleteReservation={(data) => deleteReservation(data)} />}
@@ -189,34 +207,68 @@ export default function MyInfoAdmin({user}) {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className={`nav-link ${homeBool && "active"}`} onClick={showHome} >Home</Link>
+              <Link
+                className={`nav-link ${homeBool && "active"}`}
+                onClick={showHome}
+              >
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${userBool && "active"}`} onClick={showUsers} >Users</Link>
+              <Link
+                className={`nav-link ${userBool && "active"}`}
+                onClick={showUsers}
+              >
+                Users
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${gymsBool && "active"}`} onClick={showGyms} >Gyms</Link>
+              <Link
+                className={`nav-link ${gymsBool && "active"}`}
+                onClick={showGyms}
+              >
+                Gyms
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${instructorsBool && "active"}`} onClick={showInstructors} >Instructors</Link>
+              <Link
+                className={`nav-link ${instructorsBool && "active"}`}
+                onClick={showInstructors}
+              >
+                Instructors
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${lessonsBool && "active"}`} onClick={showLessons} >Lessons</Link>
+              <Link
+                className={`nav-link ${lessonsBool && "active"}`}
+                onClick={showLessons}
+              >
+                Lessons
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${reservationsBool && "active"}`} onClick={showReservations} >Reservations</Link>
+              <Link
+                className={`nav-link ${reservationsBool && "active"}`}
+                onClick={showReservations}
+              >
+                Reservations
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${orgsBool && "active"}`} onClick={showOrgs} >ORG's</Link>
+              <Link
+                className={`nav-link ${orgsBool && "active"}`}
+                onClick={showOrgs}
+              >
+                ORG's
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                activeClassName="active"
-                className="nav-link"
-                to="/admin-statistics"
+              <Link
+                className={`nav-link ${statisticsBool && "active"}`}
+                onClick={showStatistics}
               >
                 Statistics
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
               <NavLink
@@ -257,7 +309,7 @@ export default function MyInfoAdmin({user}) {
             </div>
           </div>
         </div>
-      </div>}
+      )}
       {userBool && (
         <AdminUsers
           onClick={(userId) => showModal(userId)}
@@ -294,6 +346,11 @@ export default function MyInfoAdmin({user}) {
           data={allData[5]}
         />
       )}
+      {statisticsBool && (
+        <AdminStatistics
+          data={allData}
+        />
+      )}
     </section>
-  )
+  );
 }
