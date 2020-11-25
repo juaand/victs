@@ -1,6 +1,6 @@
 import "./MyInfoAdmin.css"
 import React, {useEffect, useState} from "react"
-import {getAllData} from "../../../services/ApiClient"
+import {getAllData, deleteCurrentReservation} from "../../../services/ApiClient"
 import {Link, NavLink} from "react-router-dom"
 import AdminUsers from "./AdminUsers/AdminUsers"
 import AdminInstructors from "./AdminInstructors/AdminInstructors"
@@ -91,9 +91,11 @@ export default function MyInfoAdmin({user}) {
     setBool(!bool)
   }
 
-  const deleteReservation = async (data) => {
-    console.log(data)
-    // const result = await deleteCurrentReservation()
+  const deleteReservation = async (reservation) => {
+    console.log(reservation.id)
+    await deleteCurrentReservation(reservation.id)
+    // setAllData(allData)
+    setBool(!bool)
   }
 
   const showUsers = () => {
@@ -201,7 +203,7 @@ export default function MyInfoAdmin({user}) {
       )}
       {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
       {bool && lessonsBool && <ModalEditLesson user={lessonInfo} onClick={hideModal} />}
-      {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} deleteReservation={(data) => deleteReservation(data)} />}
+      {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} deleteReservation={(reservation) => deleteReservation(reservation)} />}
       {bool && orgsBool && <ModalEditOrg user={orgInfo} onClick={hideModal} />}
       <nav className="navbar navbar-expand-lg admin-nav ">
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
