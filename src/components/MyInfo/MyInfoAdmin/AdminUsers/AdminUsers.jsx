@@ -16,10 +16,7 @@ export default function AdminUsers({data, onClick}) {
         })
     
         return (
-            <div className="container-fluid margin-top instructors-centers">
-                <div className="row p-0">
-                    <div className="col-12 instructor-bg"></div>
-                </div>
+            <div className="container-fluid instructors-centers">
                 <div className="row">
                     <div className="col-12 form-group">
                         <input type="text" className="form-control" placeholder="Search by user name" onChange={handleChange} value={search} /></div>

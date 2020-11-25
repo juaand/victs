@@ -1,0 +1,128 @@
+@import '../../../stylesheets/variables';
+
+.MyInfoAdmin {
+  .active {
+    pointer-events: none;
+  }
+
+  h1 {
+    &.big-yellow {
+      margin-top: 0;
+    }
+  }
+
+  .admin-nav {
+    height: 8.5rem;
+    display: flex;
+    width: auto;
+    position: absolute;
+    top: 0;
+    right: 8rem;
+  }
+
+  .admin-content {
+    margin-top: 6rem;
+
+    .admin-bg {
+      height: 50vh;
+      background: url(../../../images/admin-bg.png) no-repeat center center /
+        contain;
+    }
+  }
+
+  .admin-info {
+    padding: 2rem 0;
+    border-bottom: solid 0.1rem $light-gray;
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0;
+
+      strong {
+        font-size: 2rem;
+        color: $blue;
+      }
+
+      span {
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+
+        &:after {
+          content: '';
+          display: inline-block;
+          margin-left: 0.4rem;
+          width: 1rem;
+          height: 1rem;
+          background: url(../../../images/next.svg) no-repeat center center /
+            contain;
+          transition: all 200ms ease-in-out;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      p {
+        span {
+          &:after {
+            margin-left: 1.4rem;
+          }
+        }
+      }
+    }
+
+    &[class*='-data'] {
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 2rem;
+      }
+    }
+
+    &.instructor-data {
+      &:before {
+        background: url(../../../images/dance.svg) no-repeat center center /
+          contain;
+      }
+    }
+
+    &.user-data {
+      &:before {
+        background: url(../../../images/mind.svg) no-repeat center center /
+          contain;
+      }
+    }
+
+    &.gyms-data {
+      &:before {
+        background: url(../../../images/conditioning.svg) no-repeat center
+          center / contain;
+      }
+    }
+
+    &.orgs-data {
+      &:before {
+        background: url(../../../images/org.svg) no-repeat center center /
+          contain;
+      }
+    }
+
+    &.lessons-data {
+      &:before {
+        background: url(../../../images/cycle.svg) no-repeat center center /
+          contain;
+      }
+    }
+
+    &.reservations-data {
+      &:before {
+        background: url(../../../images/express.svg) no-repeat center center /
+          contain;
+      }
+    }
+  }
+}
