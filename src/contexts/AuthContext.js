@@ -7,13 +7,10 @@ export const useAuthContext = () => useContext(AuthContext)
 
 export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
-  const [user2, setUser2] = useState(JSON.parse(localStorage.getItem('user')))
-  
+
   const login = useCallback(user => {
     localStorage.setItem('user', JSON.stringify(user))
     setUser(user)
-    setUser2(user)
-
   }, [])
 
   const logout = useCallback(() => {
@@ -22,7 +19,7 @@ export const AuthContextProvider = ({children}) => {
     setUser(undefined)
   }, [])
 
-  const value = {user, login, logout, user2}
+  const value = {user, login, logout}
 
   return (
     <AuthContext.Provider value={value}>

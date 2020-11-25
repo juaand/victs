@@ -1,8 +1,9 @@
+import './ModalEditUser.css'
 import React, {useState} from 'react'
 import {useFormState} from '../../hooks/useFormState'
 import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
 import Button from '../Button/Button'
-import { updateUser } from '../../services/ApiClient'
+import {updateUser} from '../../services/ApiClient'
 
 
 export default function ModalEditUser({onClick, user}) {
@@ -40,31 +41,30 @@ export default function ModalEditUser({onClick, user}) {
     }
   )
 
-  const {data, error, touch} = state
-
-  const [edit, setEdit] = useState(false)
+  const {data} = state
   const [registerError, setRegisterError] = useState(null)
-  const [profileInfo, setProfileInfo] = useState(true)
-  const [profileData, setProfileData] = useState(data)
-  const [message, setMessage] = useState('')
-
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     try {
-        await updateUser(data)
+      await updateUser(data)
 
     } catch (err) {
-        setRegisterError(err.response?.data?.message)
+      setRegisterError(err.response?.data?.message)
     }
-}
+  }
+
+  const deleteUser = () => {
+    console.log('del')
+  }
 
   return (
-    <div className="modal">
+    <div className="modal ModalEditUser">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-sm-6 col-12 modal-body">
+            <div className="avatar" style={{background: `url(${user?.avatar}) no-repeat center center / cover`}}></div>
             <span className="close" onClick={onClick}></span>
             <div className="row edit-profile">
               <form className="col-12" onSubmit={handleSubmit}>
@@ -151,12 +151,8 @@ export default function ModalEditUser({onClick, user}) {
                           Edit Profile
                     </Button>
                       </div>
-                      <div className="col-12 col-sm-6">
-                        <Button
-                          className="button __yellow-btn"
-                        >
-                          Cancel
-                    </Button>
+                      <div className="col-12 col-sm-6 d-flex justify-content-end">
+                        <Button className="button __delete-btn" onClick={deleteUser}>Delete user</Button>
                       </div>
                     </div>
                   </div>

@@ -1,72 +1,78 @@
-.reservation-item {
-    padding-top: 2rem;
-    border-right: solid 0.1rem #e8e8e8;
-    border-bottom: solid 0.1rem #e8e8e8;
-    min-height: 20rem;
-    overflow: hidden;
-    position: relative;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .reservation-item:last-child {
-    border-bottom: 0;
-  }
-  
-  .reservation-item:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #ffcc00;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: all 200ms ease-in-out;
-    z-index: -1;
-  }
-  
-  .reservation-item:hover {
-    color: #fff;
-    position: relative;
-    text-decoration: none;
-  }
-  
-  .reservation-item:hover:before {
-    opacity: 0.8;
-  }
-  
-  .reservation-item:hover .reservation.__avatar {
-    width: 26rem;
-    height: 26rem;
-    bottom: -4rem;
-    right: -2rem;
-  }
-  
-  .reservation-item:hover .reservation.__discipline {
-    color: rgba(255, 255, 255, 0.6);
-  }
-  
-  .reservation-item .reservation.__name {
-    font-size: 3rem;
-  }
-  
-  .reservation-item .reservation.__discipline {
-    font-weight: 400;
-    color: rgba(51, 51, 51, 0.6);
-    font-size: 1.8rem;
-  }
-  
-  .reservation-item .reservation.__avatar {
-    width: 12rem;
-    height: 12rem;
-    display: block;
-    border-radius: 7.8rem 9.2rem 8.8rem 9.6rem;
-    border: solid 0.2rem #ffcc00;
-    position: absolute;
-    bottom: -1rem;
-    right: -1rem;
-    z-index: -5;
-    transition: all 200ms ease-in-out;
-  }
-  
+.ReservationsItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: solid 0.1rem #e8e8e8;
+  border-right: solid 0.1rem #e8e8e8;
+  border-top: solid 0.6rem #fff;
+  position: relative;
+}
+
+.ReservationsItem .row {
+  border: 0;
+}
+
+.ReservationsItem:hover {
+  cursor: pointer;
+  border-top: solid 0.6rem #ffcc00;
+}
+
+.ReservationsItem:hover:before {
+  width: 2.6rem;
+  height: 2.6rem;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.ReservationsItem:hover:after {
+  width: 2rem;
+  height: 2rem;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.ReservationsItem:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../../../../images/plus.svg) no-repeat center center/contain;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  transition: all 300ms ease-in-out;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.ReservationsItem:after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../../../../images/next.svg) no-repeat center center/contain;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  transition: all 300ms ease-in-out;
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.ReservationsItem strong {
+  font-weight: 600;
+}
+
+.ReservationsItem .user.__avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.9rem 2.1rem 2.4rem 2.3rem;
+  margin-right: 1rem;
+  border: solid 0.1rem #ffcc00;
+}
+
+.ReservationsItem .reservation.__lesson {
+  font-size: 1.8rem;
+  color: #ffcc00;
+  font-weight: 900;
+}

@@ -1,0 +1,134 @@
+@import '../../stylesheets/variables';
+
+.ModalEditLesson {
+  .modal-body {
+    border: solid 0.3rem $yellow;
+    max-height: 80vh;
+    overflow: scroll;
+  }
+
+  .button {
+    margin: 0;
+    margin-top: 2rem;
+  }
+
+  .avatar {
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    border-radius: 3.9rem 4.1rem 4.4rem 4.3rem;
+    border: solid 0.3rem $yellow;
+    margin-right: 1rem;
+
+    &.Cycle {
+      background: $white url(../../images/cycle.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Mind {
+      background: $white url(../../images/mind.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Express {
+      background: $white url(../../images/express.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Aqua {
+      background: $white url(../../images/aqua.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Other {
+      background: $white url(../../images/logo-res.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Martial {
+      background: $white url(../../images/martial.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Dance {
+      background: $white url(../../images/dance.svg) no-repeat center center /
+        contain;
+    }
+
+    &.Conditioning {
+      background: $white url(../../images/conditioning.svg) no-repeat center
+        center / contain;
+    }
+  }
+
+  .select-coach {
+    margin: 0;
+    text-transform: capitalize;
+    background: transparent;
+    font-size: 1.4rem;
+    border: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: $blue;
+    font-weight: 600;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      margin-left: 0.4rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      transition: all 200ms ease-in-out;
+      background: url(../../images/next.svg) no-repeat center center / contain;
+    }
+
+    &:hover {
+      &:after {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .instructor-row {
+    &:hover {
+      cursor: pointer;
+      color: $blue;
+    }
+  }
+
+  hr {
+    display: block;
+    width: 100%;
+    margin: 0;
+    margin-top: 1rem;
+  }
+
+  .go-back {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    color: $blue;
+    font-weight: 600;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:before {
+      content: '';
+      display: inline-block;
+      margin-right: 0.4rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      transition: all 200ms ease-in-out;
+      background: url(../../images/plus.svg) no-repeat center center / contain;
+      transform: rotate(45deg);
+    }
+  }
+
+  .lesson-info {
+      display: flex;
+      align-items: center;
+  }
+}

@@ -1,3 +1,7 @@
+.MyInfoAdmin .margin-top {
+  margin: 8.5rem 0 0 0;
+}
+
 .MyInfoAdmin .active {
   pointer-events: none;
 }

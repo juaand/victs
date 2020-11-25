@@ -1,72 +1,154 @@
-.lesson-item {
-    padding-top: 2rem;
-    border-right: solid 0.1rem #e8e8e8;
-    border-bottom: solid 0.1rem #e8e8e8;
-    min-height: 20rem;
-    overflow: hidden;
-    position: relative;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .lesson-item:last-child {
-    border-bottom: 0;
-  }
-  
-  .lesson-item:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #ffcc00;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: all 200ms ease-in-out;
-    z-index: -1;
-  }
-  
-  .lesson-item:hover {
-    color: #fff;
-    position: relative;
-    text-decoration: none;
-  }
-  
-  .lesson-item:hover:before {
-    opacity: 0.8;
-  }
-  
-  .lesson-item:hover .lesson.__avatar {
-    width: 26rem;
-    height: 26rem;
-    bottom: -4rem;
-    right: -2rem;
-  }
-  
-  .lesson-item:hover .lesson.__discipline {
-    color: rgba(255, 255, 255, 0.6);
-  }
-  
-  .lesson-item .lesson.__name {
-    font-size: 3rem;
-  }
-  
-  .lesson-item .lesson.__discipline {
-    font-weight: 400;
-    color: rgba(51, 51, 51, 0.6);
-    font-size: 1.8rem;
-  }
-  
-  .lesson-item .lesson.__avatar {
-    width: 12rem;
-    height: 12rem;
-    display: block;
-    border-radius: 7.8rem 9.2rem 8.8rem 9.6rem;
-    border: solid 0.2rem #ffcc00;
-    position: absolute;
-    bottom: -1rem;
-    right: -1rem;
-    z-index: -5;
-    transition: all 200ms ease-in-out;
-  }
-  
+.LessonsItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: solid 0.1rem #e8e8e8;
+  border-right: solid 0.1rem #e8e8e8;
+  border-top: solid 0.6rem #fff;
+  position: relative;
+}
+
+.LessonsItem:hover {
+  cursor: pointer;
+  border-top: solid 0.6rem #ffcc00;
+}
+
+.LessonsItem:hover:before {
+  width: 2.6rem;
+  height: 2.6rem;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.LessonsItem:hover:after {
+  width: 2rem;
+  height: 2rem;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.LessonsItem:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../../../../images/plus.svg) no-repeat center center/contain;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  transition: all 300ms ease-in-out;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.LessonsItem:after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../../../../images/next.svg) no-repeat center center/contain;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: block;
+  transition: all 300ms ease-in-out;
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.LessonsItem .Mind,
+.LessonsItem .Express,
+.LessonsItem .Cycle,
+.LessonsItem .Other,
+.LessonsItem .Aqua,
+.LessonsItem .Dance,
+.LessonsItem .Conditioning,
+.LessonsItem .Martial {
+  position: absolute;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  bottom: 1rem;
+  right: 1rem;
+  opacity: 0.3;
+}
+
+.LessonsItem .Mind {
+  background: url(../../../../../images/mind.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Express {
+  background: url(../../../../../images/express.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Cycle {
+  background: url(../../../../../images/cycle.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Other {
+  background: url(../../../../../images/logo-res.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Aqua {
+  background: url(../../../../../images/aqua.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Dance {
+  background: url(../../../../../images/dance.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Conditioning {
+  background: url(../../../../../images/conditioning.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem .Martial {
+  background: url(../../../../../images/martial.svg) no-repeat bottom right/contain;
+}
+
+.LessonsItem strong {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.LessonsItem .user.__avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.9rem 2.1rem 2.4rem 2.3rem;
+  margin-right: 1rem;
+  border: solid 0.1rem #ffcc00;
+}
+
+.LessonsItem .__discipline {
+  font-weight: 600;
+  color: rgba(51, 51, 51, 0.4);
+  font-size: 1.6rem;
+}
+
+.LessonsItem .__gym,
+.LessonsItem .__time,
+.LessonsItem .__capacity {
+  display: flex;
+  align-items: center;
+  margin: 0.6rem 0;
+}
+
+.LessonsItem .__gym:before,
+.LessonsItem .__time:before,
+.LessonsItem .__capacity:before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+.LessonsItem .__gym:before {
+  background: url(../../../../../images/address.svg) no-repeat center center/contain;
+}
+
+.LessonsItem .__time:before {
+  background: url(../../../../../images/express.svg) no-repeat center center/contain;
+}
+
+.LessonsItem .__capacity:before {
+  background: url(../../../../../images/users.svg) no-repeat center center/contain;
+}

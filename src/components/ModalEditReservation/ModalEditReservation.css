@@ -1,0 +1,77 @@
+.ModalEditReservation .modal-body {
+  border: solid 0.3rem #ffcc00;
+  max-height: 80vh;
+  overflow: scroll;
+}
+
+.ModalEditReservation .button {
+  margin: 0;
+  margin-top: 2rem;
+}
+
+.ModalEditReservation .select-coach {
+  margin: 0;
+  text-transform: capitalize;
+  background: transparent;
+  font-size: 1.4rem;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #00a9ad;
+  font-weight: 600;
+}
+
+.ModalEditReservation .select-coach:after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: all 200ms ease-in-out;
+  background: url(../../images/next.svg) no-repeat center center/contain;
+}
+
+.ModalEditReservation .select-coach:hover:after {
+  margin-left: 1rem;
+}
+
+.ModalEditReservation .instructor-row:hover {
+  cursor: pointer;
+  color: #00a9ad;
+}
+
+.ModalEditReservation hr {
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.ModalEditReservation .go-back {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: #00a9ad;
+  font-weight: 600;
+}
+
+.ModalEditReservation .go-back:hover {
+  cursor: pointer;
+}
+
+.ModalEditReservation .go-back:before {
+  content: '';
+  display: inline-block;
+  margin-right: 0.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: all 200ms ease-in-out;
+  background: url(../../images/plus.svg) no-repeat center center/contain;
+  transform: rotate(45deg);
+}
+
+.ModalEditReservation .lesson-info {
+  display: flex;
+  align-items: center;
+}
