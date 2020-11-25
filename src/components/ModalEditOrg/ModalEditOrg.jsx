@@ -1,64 +1,61 @@
-import React, {useState} from 'react'
-import {useFormState} from '../../hooks/useFormState'
-import InputWithLabel from '../Form/InputWithLabel/InputWithLabel'
-import Button from '../Button/Button'
-import { updateUser } from '../../services/ApiClient'
+import React, { useState } from "react";
+import { useFormState } from "../../hooks/useFormState";
+import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
+import Button from "../Button/Button";
+import { updateOrg } from "../../services/ApiClient";
 
 
-export default function ModalEditUser({onClick, user}) {
-
-  const {state, onBlur, onChange} = useFormState(
+export default function ModalEditOrg({ onClick, user }) {
+  const { state, onBlur, onChange } = useFormState(
     {
       data: {
         id: user.id,
         name: user.name,
         role: user.role,
-        packages: user.packages,
-        phone: user.phone,
-        address: user.address,
-        city: user.city,
-        zipcode: user.zipcode,
-
+        description: user.description,
+        url: user.url,
+        avatar: user.avatar,
+        points: user.points,
       },
       error: {
         name: true,
-        phone: true,
-        address: true,
-        city: true,
-        zipcode: true,
+        role: true,
+        description: true,
+        url: true,
+        avatar: true,
+        points: true,
       },
       touch: {},
     },
     {
-      name: v => v.length,
-      role: v => v.length,
-      phone: v => v.length,
-      address: v => v.length,
-      city: v => v.length,
-      zipcode: v => v.length,
-
+      name: (v) => v.length,
+      role: (v) => v.length,
+      description: (v) => v.length,
+      url: (v) => v.length,
+      avatar: (v) => v.length,
+      points: (v) => v.length,
     }
-  )
+  );
 
-  const {data, error, touch} = state
+  const { data, error, touch } = state;
 
-  const [edit, setEdit] = useState(false)
-  const [registerError, setRegisterError] = useState(null)
-  const [profileInfo, setProfileInfo] = useState(true)
-  const [profileData, setProfileData] = useState(data)
-  const [message, setMessage] = useState('')
+  const [edit, setEdit] = useState(false);
+  const [registerError, setRegisterError] = useState(null);
+  const [profileInfo, setProfileInfo] = useState(true);
+  const [profileData, setProfileData] = useState(data);
+  const [servicesList, setServicesList] = useState([]);
+  const [message, setMessage] = useState("");
 
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     try {
-        await updateUser(data)
-
+      await updateOrg(data);
     } catch (err) {
-        setRegisterError(err.response?.data?.message)
+      setRegisterError(err.response?.data?.message);
     }
-}
+  };
 
   return (
     <div className="modal">
@@ -86,16 +83,16 @@ export default function ModalEditUser({onClick, user}) {
                     <div className="row content-block">
                       <div className="col-12">
                         <InputWithLabel
-                          value={data.phone}
+                          value={data.role}
                           onBlur={onBlur}
                           onChange={onChange}
-                          name="phone"
+                          name="role"
                           type="text"
                           className="form-control"
                           placeholder={
-                            data.phone
-                              ? data.phone
-                              : "Insert your phone"
+                            data.role
+                              ? data.role
+                              : "Insert your role: Pyme or ONG"
                           }
                         />
                       </div>
@@ -103,60 +100,64 @@ export default function ModalEditUser({onClick, user}) {
                     <div className="row content-block d-flex align-items-start">
                       <div className="col-12">
                         <InputWithLabel
-                          value={data.address}
+                          value={data.description}
                           onBlur={onBlur}
                           onChange={onChange}
-                          name="address"
+                          name="description"
                           type="text"
                           className="form-control"
                           placeholder={
-                            data.address
-                              ? data.address
-                              : "Insert your address"
+                            data.description
+                              ? data.description
+                              : "Insert your description"
                           }
                         />
                         <InputWithLabel
-                          value={data.city}
+                          value={data.url}
                           onBlur={onBlur}
                           onChange={onChange}
-                          name="city"
+                          name="url"
                           type="text"
                           className="form-control"
-                          placeholder={
-                            data.city
-                              ? data.city
-                              : "Insert your city"
-                          }
+                          placeholder={data.url ? data.url : "Insert your url"}
                         />
                         <InputWithLabel
-                          value={data.zipcode}
+                          value={data.points}
                           onBlur={onBlur}
                           onChange={onChange}
-                          name="zipcode"
+                          name="points"
+                          type="text"
+                          className="form-control"
+                          placeholder={data.points ? data.points : "Insert the points"}
+                        />
+                        <InputWithLabel
+                          value={data.avatar}
+                          onBlur={onBlur}
+                          onChange={onChange}
+                          name="avatar"
                           type="text"
                           className="form-control"
                           placeholder={
-                            data.zipcode
-                              ? data.zipcode
-                              : "Insert your zipcode"
+                            data.avatar ? data.avatar : "Insert your avatar"
                           }
                         />
                       </div>
 
                       {registerError && (
-                        <div className="alert alert-danger">{registerError}</div>
+                        <div className="alert alert-danger">
+                          {registerError}
+                        </div>
                       )}
-                      <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn" onClick={onClick}>
-                          Edit Profile
-                    </Button>
-                      </div>
                       <div className="col-12 col-sm-6">
                         <Button
                           className="button __yellow-btn"
+                          onClick={onClick}
                         >
-                          Cancel
-                    </Button>
+                          Edit Org
+                        </Button>
+                      </div>
+                      <div className="col-12 col-sm-6">
+                        <Button className="button __yellow-btn">Cancel</Button>
                       </div>
                     </div>
                   </div>
@@ -167,5 +168,5 @@ export default function ModalEditUser({onClick, user}) {
         </div>
       </div>
     </div>
-  )
+  );
 }

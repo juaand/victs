@@ -3,7 +3,6 @@ import React from 'react'
 
 export default function LessonsItem({lesson, onClick}) {
 
-    console.log(lesson)
     return (
         <div className="lesson-item col-sm-3 col-6" onClick={() => onClick(lesson)}>
             <div className="lesson __name">{lesson?.name?.replace(/ .*/, '')}</div>

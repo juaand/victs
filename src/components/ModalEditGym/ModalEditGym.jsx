@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useFormState } from "../../hooks/useFormState";
 import InputWithLabel from "../Form/InputWithLabel/InputWithLabel";
 import Button from "../Button/Button";
-import CheckBoxWithLabel from "../Form/CheckBoxWithLabel/CheckBoxWithLabel";
+import { updateUser } from "../../services/ApiClient";
 
 export default function ModalEditGym({ onClick, user }) {
   const { state, onBlur, onChange } = useFormState(
     {
       data: {
-        id: user.id,
+        id: user.user.id,
         name: user.user.name,
         role: user.user.role,
         services: user.services,
@@ -47,17 +47,16 @@ export default function ModalEditGym({ onClick, user }) {
   const [servicesList, setServicesList] = useState([]);
   const [message, setMessage] = useState("");
 
-  const updateProfile = () => {
-    console.log("whatever");
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
-  const getServicesItems = (e) => {
-    let newArray = [...data.services, e.target.id];
-    if (data.services.includes(e.target.id)) {
-      newArray = newArray.filter((el) => el !== e.target.id);
+    try {
+        await updateUser(data)
+
+    } catch (err) {
+        setRegisterError(err.response?.data?.message)
     }
-    data.services = newArray;
-  };
+}
 
   return (
     <div className="modal">
@@ -66,7 +65,7 @@ export default function ModalEditGym({ onClick, user }) {
           <div className="col-sm-6 col-12 modal-body">
             <span className="close" onClick={onClick}></span>
             <div className="row edit-profile">
-              <form className="col-12" onSubmit={updateProfile}>
+              <form className="col-12" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-12 profile-info">
                     <div className="row content-block">
@@ -140,7 +139,7 @@ export default function ModalEditGym({ onClick, user }) {
                         </div>
                       )}
                       <div className="col-12 col-sm-6">
-                        <Button className="button __yellow-btn">
+                        <Button className="button __yellow-btn" onClick={onClick}>
                           Edit Profile
                         </Button>
                       </div>

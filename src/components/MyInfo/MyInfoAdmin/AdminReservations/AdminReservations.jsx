@@ -9,7 +9,7 @@ export default function AdminReservations({data, onClick}) {
             setSearch(e.target.value)
         }
 
-        const filteredReservations = data.filter(guest => {
+        const filteredReservations = data?.filter(guest => {
             return (
                 (guest?.user?.name?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1 || (guest?.user?.email?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1
             )
@@ -26,7 +26,7 @@ export default function AdminReservations({data, onClick}) {
                 </div>
                 <div className="row p-0">
                     {filteredReservations.map(el =>
-                        <ReservationsItem onClick={ (userId) => onClick(userId)} reservation={el} />
+                        <ReservationsItem onClick={(userId) => onClick(userId)} reservation={el} />
                     )}
                 </div>
             </div>
