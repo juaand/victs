@@ -200,7 +200,6 @@ export default function AdminStatistics({data}) {
     ]
   }
 
-
   ///// Most Discipline Reserved
   const allDisciplinesReservationData = []
   reservations.forEach((reservation) => {
