@@ -110,7 +110,6 @@ const Header = () => {
                                         </span>
                                     </>
                                 }
-
                             </ul>
                         </div>
                     </nav>
@@ -119,5 +118,4 @@ const Header = () => {
         </>
     )
 }
-
 export default Header
