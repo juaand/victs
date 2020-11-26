@@ -195,12 +195,8 @@ export default function MyInfoAdmin({user}) {
 
   return (
     <section className="MyInfoAdmin">
-      {bool && userBool && (
-        <ModalEditUser user={userInfo} onClick={hideModal} />
-      )}
-      {bool && instructorsBool && (
-        <ModalEditInstructor user={instructorInfo} onClick={hideModal} />
-      )}
+      {bool && userBool && <ModalEditUser user={userInfo} onClick={hideModal} />}
+      {bool && instructorsBool && <ModalEditInstructor user={instructorInfo} onClick={hideModal} />}
       {bool && gymsBool && <ModalEditGym user={gymInfo} onClick={hideModal} />}
       {bool && lessonsBool && <ModalEditLesson user={lessonInfo} onClick={hideModal} />}
       {bool && reservationsBool && <ModalEditReservation user={reservationInfo} onClick={hideModal} deleteReservation={(reservation) => deleteReservation(reservation)} />}
