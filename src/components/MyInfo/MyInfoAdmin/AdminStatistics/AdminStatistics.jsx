@@ -1,7 +1,6 @@
 import './AdminStatistics.css'
 import React from 'react'
 import {Doughnut, Line} from 'react-chartjs-2'
-// 
 
 export default function AdminStatistics({data}) {
 
@@ -27,14 +26,7 @@ export default function AdminStatistics({data}) {
     return orgQuantity
   }, {})
 
-
-
   const sortedOrgs = Object.keys(orgsQuantity).sort((a, b) => orgsQuantity[b] - orgsQuantity[a])
-
-  // console.log(JSON.stringify(Object.keys(petsQuantity)))
-  // console.log(JSON.stringify(Object.values(petsQuantity)))
-
-
   const orgsRole = {
     labels: Object.keys(orgsQuantity),
     datasets: [
@@ -45,7 +37,6 @@ export default function AdminStatistics({data}) {
       }
     ]
   }
-
 
   // Lessons Disciplines
 
@@ -61,10 +52,6 @@ export default function AdminStatistics({data}) {
     },
     {}
   )
-
-  // console.log(JSON.stringify(disciplinesQuantity))
-  // console.log(JSON.stringify(Object.keys(disciplinesQuantity)))
-  // console.log(JSON.stringify(Object.values(disciplinesQuantity)))
 
   const sortedDisciplines = Object.keys(disciplinesQuantity).sort((a, b) => disciplinesQuantity[b] - disciplinesQuantity[a])
 
@@ -107,10 +94,6 @@ export default function AdminStatistics({data}) {
     {}
   )
 
-  // console.log(JSON.stringify(citiesUsersQuantity))
-  // console.log(JSON.stringify(Object.keys(citiesUsersQuantity)))
-  // console.log(JSON.stringify(Object.values(citiesUsersQuantity)))
-
   const sortedUsersCities = Object.keys(citiesUsersQuantity).sort((a, b) => citiesUsersQuantity[b] - citiesUsersQuantity[a])
 
   const citiesUsersData = {
@@ -150,10 +133,6 @@ export default function AdminStatistics({data}) {
     },
     {}
   )
-
-  // console.log(JSON.stringify(citiesGymsQuantity))
-  // console.log(JSON.stringify(Object.keys(citiesGymsQuantity)))
-  // console.log(JSON.stringify(Object.values(citiesGymsQuantity)))
 
   const sortedGymsCities = Object.keys(citiesGymsQuantity).sort((a, b) => citiesGymsQuantity[b] - citiesGymsQuantity[a])
 
@@ -195,10 +174,6 @@ export default function AdminStatistics({data}) {
     {}
   )
 
-  // console.log(JSON.stringify(citiesInstructorsQuantity))
-  // console.log(JSON.stringify(Object.keys(citiesInstructorsQuantity)))
-  // console.log(JSON.stringify(Object.values(citiesInstructorsQuantity)))
-
   const sortedInstructorsCities = Object.keys(citiesInstructorsQuantity).sort((a, b) => citiesInstructorsQuantity[b] - citiesInstructorsQuantity[a])
 
   const citiesInstructorsData = {
@@ -239,10 +214,6 @@ export default function AdminStatistics({data}) {
     },
     {}
   )
-
-  // console.log(JSON.stringify(disciplinesReservationQuantity))
-  // console.log(JSON.stringify(Object.keys(disciplinesReservationQuantity)))
-  // console.log(JSON.stringify(Object.values(disciplinesReservationQuantity)))
 
   const sortedDisciplinesReservation = Object.keys(disciplinesReservationQuantity).sort((a, b) => disciplinesReservationQuantity[b] - disciplinesReservationQuantity[a])
 
@@ -288,9 +259,6 @@ export default function AdminStatistics({data}) {
 
   numberOfUsers = Object.values(numberOfDates)
 
-  // console.log(numberOfDates)
-  // console.log(numberOfUsers)
-
   let gymDates = []
   let numberOfGyms = []
 
@@ -305,9 +273,6 @@ export default function AdminStatistics({data}) {
 
   numberOfGyms = Object.values(numberOfGymDates)
 
-  // console.log(gymDates)
-  // console.log(numberOfGyms)
-
   let instructorDates = []
   let numberOfInstructors = []
 
@@ -321,9 +286,6 @@ export default function AdminStatistics({data}) {
   }, {})
 
   numberOfInstructors = Object.values(numberOfInstructorDates)
-
-  // console.log(instructorDates)
-  // console.log(numberOfInstructors)
 
   const usersGymsInstructorsMonth = {
     labels: [
@@ -423,3 +385,4 @@ export default function AdminStatistics({data}) {
     </div>
   )
 }
+
