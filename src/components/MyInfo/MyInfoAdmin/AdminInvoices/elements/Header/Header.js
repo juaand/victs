@@ -1,8 +1,8 @@
+import './Header.css';
 import React from 'react';
 import format from 'date-fns/format';
+import logoSrc from '../../../../../../images/logo.svg';
 
-import logoSrc from './logo.png';
-import './Header.css';
 
 function Header({ date, number }) {
   return (

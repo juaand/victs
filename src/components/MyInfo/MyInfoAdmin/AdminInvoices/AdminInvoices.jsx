@@ -1,49 +1,39 @@
 import "./AdminInvoices.css"
-import React, { useEffect } from 'react'
-import Header from './elements/Header/Header';
-import Address from './elements/Address/Address';
-import List from './elements/List/List';
-import SelectWithLabel from "../../../Form/SelectWithLabel/SelectWithLabel";
-import { useState } from "react";
+import React from 'react'
+import Header from './elements/Header/Header'
+import Address from './elements/Address/Address'
+import List from './elements/List/List'
+import SelectWithLabel from "../../../Form/SelectWithLabel/SelectWithLabel"
+import {useState} from "react"
 
 export default function AdminInvoices({data}) {
 
-const reservations = data[4]
-const gyms = data[1]
+  const reservations = data[4]
+  const gyms = data[1]
 
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const years = [2019, 2020]
 
-console.log(reservations)
-console.log(gyms)
+  const [monthSelected, setMonthSelected] = useState('')
+  const [yearSelected, setYearSelected] = useState('')
+  const [gymSelected, setGymSelected] = useState('')
+  const [sameGymName, setSameGymName] = useState([])
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const years = [2019, 2020]
-
-const [monthSelected, setMonthSelected] = useState('')
-const [yearSelected, setYearSelected] = useState('')
-const [gymSelected, setGymSelected] = useState('')
-const [invoiceNumberSelected, setinvoiceNumberSelected] = useState('')
-const [sameGymName, setSameGymName] = useState('')
-
-const filterByMonthAndYear = reservations.filter(
-  (reservation) => new Date(reservation?.lesson?.date).getFullYear() == yearSelected 
+  const filterByMonthAndYear = reservations.filter(
+    (reservation) => new Date(reservation?.lesson?.date).getFullYear() === yearSelected
   )
-  
-console.log(filterByMonthAndYear)
-console.log(sameGymName)
 
-const checkInReservations = filterByMonthAndYear.filter(
-  (reservation) => reservation?.lesson?.gym?.user?.id == sameGymName?.user?.id )
+  const checkInReservations = filterByMonthAndYear.filter(
+    (reservation) => reservation?.lesson?.gym?.user?.id === sameGymName?.user?.id)
 
-console.log(checkInReservations)
+  const gymsName = gyms.map(el => el.user.name)
 
-const gymsName = gyms.map(el => el.user.name)
-
-const data2 = { 
+  const data2 = {
     date: new Date().toISOString(),
-    number: `${invoiceNumberSelected}`,
+    number: `${Math.floor(Math.random() * (1 - (100)) + (100))}`,
     recipient: {
       displayName: `${gymSelected}`,
-      addressLine: `${sameGymName[0]?.user?.address},\n${sameGymName[0]?.user?.city},\n${sameGymName[0]?.user?.zipcode},\n${sameGymName[0]?.user?.iban}`,
+      addressLine: `${sameGymName && sameGymName[0]?.user?.address} \n${sameGymName && sameGymName[0]?.user?.city} \n${sameGymName && sameGymName[0]?.user?.zipcode}`,
     },
     emitter: {
       displayName: 'VICTS',
@@ -58,7 +48,7 @@ const data2 = {
     ],
     tax: 0.21,
 
-};
+  }
 
   const changeMonth = (e) => {
     setMonthSelected(e.target.value)
@@ -67,37 +57,44 @@ const data2 = {
   const changeYear = (e) => {
     setYearSelected(e.target.value)
   }
-  
-  
-  
-  const changeGymName = async (e) => {
+
+  const changeGymName = (e) => {
     setGymSelected(e.target.value)
-    const newGym = await gyms.filter(
-      (gym) => gym.user.name == gymSelected
-    )
-    setSameGymName(newGym)
+    console.log(gyms.filter(
+      (gym) => gym.user.name === gymSelected))
+    // setSameGymName(gyms.filter(
+    //   (gym) => gym.user.name === gymSelected))
   }
 
-  // useEffect(() => {
-  //   const fetchData = () => {
-  //     setSameGymName(newGym)
-  //   }
-  //   fetchData()
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])  
-
-  console.log(sameGymName[0]?.user?.address)
-
-    return (
-        <div className="Invoice">
-         <div className="container"> 
-         <SelectWithLabel options={months} onChange={changeMonth} />
-         <SelectWithLabel options={years} onChange={changeYear} />
-         <SelectWithLabel options={gymsName} onChange={changeGymName} />
-        <Header date={data2.date} number={data2.number} />
-        <Address recipient={data2.recipient} emitter={data2.emitter} />
-        <List list={data2.list} tax={data2.tax} />
+  return (
+    <div className="Invoice AdminInvoices">
+      <div className="container">
+        <h4>Select gym, month & year</h4>
+        <div className="row">
+          <div className="col-12 col-sm-4">
+            <SelectWithLabel options={months} name="Month" onChange={changeMonth} />
+          </div>
+          <div className="col-12 col-sm-4">
+            <SelectWithLabel options={years} name="Year" onChange={changeYear} />
+          </div>
+          <div className="col-12 col-sm-4">
+            <SelectWithLabel options={gymsName} name="Gym" onChange={changeGymName} />
+          </div>
         </div>
       </div>
-    )
+      <div className="container-fluid header-info">
+        <div className="container">
+          <Header date={data2.date} number={data2.number} />
+        </div>
+      </div>
+      <div className="container-fluid address-info">
+        <div className="container">
+          <Address recipient={data2.recipient} emitter={data2.emitter} />
+        </div>
+      </div>
+      <div className="container">
+        <List list={data2.list} tax={data2.tax} />
+      </div>
+    </div>
+  )
 }

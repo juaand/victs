@@ -200,11 +200,10 @@ export default function AdminStatistics({data}) {
     ]
   }
 
-
   ///// Most Discipline Reserved
   const allDisciplinesReservationData = []
   reservations.forEach((reservation) => {
-    allDisciplinesReservationData.push(reservation.lesson.discipline)
+    allDisciplinesReservationData.push(reservation?.lesson?.discipline)
   })
 
   const disciplinesReservationQuantity = allDisciplinesReservationData.reduce(
