@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import './List.css';
+import './List.css'
 
 function formatPrice(n) {
   return n.toLocaleString('en', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }) + ' $';
+  }) + ' €'
 }
 
-function List({ list, tax }) {
+function List({list, tax}) {
   const subtotal = list?.reduce((acc, item) => (
     acc + (item.quantity * item.unitPrice)
-  ), 0);
-  const taxes = subtotal * tax;
+  ), 0)
+  const taxes = subtotal * tax
 
   return (
     <div className="List">
@@ -62,8 +62,8 @@ function List({ list, tax }) {
         </tbody>
       </table>
     </div>
-  );
+  )
 }
 
-export default List;
+export default List
 
