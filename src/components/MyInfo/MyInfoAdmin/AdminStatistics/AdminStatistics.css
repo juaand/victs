@@ -1,0 +1,20 @@
+.AdminStatistics {
+  background: #f7f7f7;
+}
+
+.AdminStatistics h1.big {
+  margin-bottom: 3rem;
+  font-weight: 900;
+}
+
+.AdminStatistics .canvas {
+  margin-top: 6rem;
+  border-bottom: solid 0.1rem #e8e8e8;
+  padding-bottom: 6rem;
+}
+
+.AdminStatistics .info {
+  text-align: center;
+  margin-top: 6rem;
+  font-size: 1.6rem;
+}
