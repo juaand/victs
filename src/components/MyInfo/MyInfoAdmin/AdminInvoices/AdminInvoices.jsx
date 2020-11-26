@@ -33,7 +33,7 @@ export default function AdminInvoices({data}) {
     number: `${Math.floor(Math.random() * (1 - (100)) + (100))}`,
     recipient: {
       displayName: `${gymSelected}`,
-      addressLine: `${sameGymName && sameGymName[0]?.user?.address} \n${sameGymName && sameGymName[0]?.user?.city} \n${sameGymName && sameGymName[0]?.user?.zipcode}`,
+      // addressLine: `${sameGymName && sameGymName[0]?.user?.address} \n${sameGymName && sameGymName[0]?.user?.city} \n${sameGymName && sameGymName[0]?.user?.zipcode}`,
     },
     emitter: {
       displayName: 'VICTS',
@@ -62,8 +62,8 @@ export default function AdminInvoices({data}) {
     setGymSelected(e.target.value)
     console.log(gyms.filter(
       (gym) => gym.user.name === gymSelected))
-    // setSameGymName(gyms.filter(
-    //   (gym) => gym.user.name === gymSelected))
+    setSameGymName(gyms.filter(
+      (gym) => gym.user.name === gymSelected))
   }
 
   return (
