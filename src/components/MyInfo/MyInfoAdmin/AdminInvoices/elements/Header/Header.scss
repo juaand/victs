@@ -1,3 +1,5 @@
+@import '../../../../../../stylesheets/_variables.scss';
+
 .Header {
   padding: 3rem 0;
 }
@@ -19,7 +21,7 @@
 .Header-title {
   float: right;
   font-size: 1.8rem;
-  color: #333;
+  color: $text;
   line-height: 1.5;
 }
 
@@ -27,5 +29,5 @@
   float: right;
   clear: right;
   font-size: 1.4rem;
-  color: #333;
+  color: $text;
 }

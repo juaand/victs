@@ -1,0 +1,36 @@
+@import '../../../../stylesheets/variables';
+
+.AdminInvoices {
+  padding: 3rem 0 20rem 0;
+
+  h4 {
+    font-weight: 600;
+    color: $blue;
+  }
+
+  .address-info,
+  .Address {
+    background: $yellow;
+    margin-top: 0;
+    padding: 2rem 5rem;
+  }
+
+  .Address-Block-address {
+    color: $text;
+  }
+
+  .header-info {
+    background: $text;
+    margin-top: 3rem;
+  }
+
+  .Header-title,
+  .Header-date {
+    color: $white;
+  }
+
+  .List {
+    margin-top: 3rem;
+    width: 100%;
+  }
+}
