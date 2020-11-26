@@ -1,5 +1,5 @@
 import './AdminReservations.css'
-import React, {useState} from 'react'
+import React from 'react'
 import ReservationsItem from './ReservationsItem/ReservationsItem'
 
 export default function AdminReservations({data, onClick}) {
