@@ -1,7 +1,7 @@
 import "./MyInfoAdmin.css"
 import React, {useEffect, useState} from "react"
 import {getAllData, deleteCurrentReservation} from "../../../services/ApiClient"
-import {Link, NavLink} from "react-router-dom"
+import {Link} from "react-router-dom"
 import AdminUsers from "./AdminUsers/AdminUsers"
 import AdminInstructors from "./AdminInstructors/AdminInstructors"
 import AdminGyms from "./AdminGyms/AdminGyms"
@@ -299,7 +299,7 @@ export default function MyInfoAdmin({user}) {
                 className={`nav-link ${invoicesBool && "active"}`}
                 onClick={showInvoices}
               >
-                Statistics
+                Invoices
               </Link>
             </li>
           </ul>
@@ -376,7 +376,7 @@ export default function MyInfoAdmin({user}) {
           data={allData}
         />
       )}
-            {statisticsBool && (
+            {invoicesBool && (
         <AdminInvoices
           data={allData}
         />

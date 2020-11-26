@@ -1,6 +1,6 @@
 import React, {useState, Component} from 'react'
 import { Doughnut, Line } from 'react-chartjs-2';
-// 
+
 
 export default function AdminStatistics({data}) {
 
@@ -26,13 +26,7 @@ const orgs = data[5]
     return orgQuantity
   }, {})
 
-
-
   const sortedOrgs = Object.keys(orgsQuantity).sort((a, b) => orgsQuantity[b] - orgsQuantity[a])
-
-  // console.log(JSON.stringify(Object.keys(petsQuantity)))
-  // console.log(JSON.stringify(Object.values(petsQuantity)))
-
 
         const orgsRole = {
             labels: Object.keys(orgsQuantity),
@@ -60,11 +54,7 @@ const orgs = data[5]
       },
       {}
     )
-  
-    // console.log(JSON.stringify(disciplinesQuantity))
-    // console.log(JSON.stringify(Object.keys(disciplinesQuantity)))
-    // console.log(JSON.stringify(Object.values(disciplinesQuantity)))
-  
+
     const sortedDisciplines = Object.keys(disciplinesQuantity).sort((a, b) => disciplinesQuantity[b] - disciplinesQuantity[a])
   
     const disciplinesData = {
@@ -92,7 +82,7 @@ const orgs = data[5]
     }
   
 
-    ///// User's Cities
+///// User's Cities
     const allUsersCitiesData = []
     users.forEach((user) => {
       allUsersCitiesData.push(user.city)
@@ -105,10 +95,6 @@ const orgs = data[5]
       },
       {}
     )
-  
-    // console.log(JSON.stringify(citiesUsersQuantity))
-    // console.log(JSON.stringify(Object.keys(citiesUsersQuantity)))
-    // console.log(JSON.stringify(Object.values(citiesUsersQuantity)))
   
     const sortedUsersCities = Object.keys(citiesUsersQuantity).sort((a, b) => citiesUsersQuantity[b] - citiesUsersQuantity[a])
   
@@ -136,7 +122,7 @@ const orgs = data[5]
       ]
     }
 
-        ///// Gym's Cities
+///// Gym's Cities
         const allGymsCitiesData = []
         gyms.forEach((gym) => {
           allGymsCitiesData.push(gym.user.city)
@@ -149,11 +135,7 @@ const orgs = data[5]
           },
           {}
         )
-      
-        // console.log(JSON.stringify(citiesGymsQuantity))
-        // console.log(JSON.stringify(Object.keys(citiesGymsQuantity)))
-        // console.log(JSON.stringify(Object.values(citiesGymsQuantity)))
-      
+
         const sortedGymsCities = Object.keys(citiesGymsQuantity).sort((a, b) => citiesGymsQuantity[b] - citiesGymsQuantity[a])
       
         const citiesGymsData = {
@@ -180,7 +162,7 @@ const orgs = data[5]
           ]
         }
 
-        ///// Instructor's Cities
+///// Instructor's Cities
         const allInstructorsCitiesData = []
         instructors.forEach((instructor) => {
           allInstructorsCitiesData.push(instructor.user.city)
@@ -193,11 +175,7 @@ const orgs = data[5]
           },
           {}
         )
-      
-        // console.log(JSON.stringify(citiesInstructorsQuantity))
-        // console.log(JSON.stringify(Object.keys(citiesInstructorsQuantity)))
-        // console.log(JSON.stringify(Object.values(citiesInstructorsQuantity)))
-      
+
         const sortedInstructorsCities = Object.keys(citiesInstructorsQuantity).sort((a, b) => citiesInstructorsQuantity[b] - citiesInstructorsQuantity[a])
       
         const citiesInstructorsData = {
@@ -225,7 +203,7 @@ const orgs = data[5]
         }
 
 
-                ///// Most Discipline Reserved
+///// Most Discipline Reserved
                 const allDisciplinesReservationData = []
                 reservations.forEach((reservation) => {
                   allDisciplinesReservationData.push(reservation.lesson.discipline)
@@ -238,11 +216,7 @@ const orgs = data[5]
                   },
                   {}
                 )
-              
-                // console.log(JSON.stringify(disciplinesReservationQuantity))
-                // console.log(JSON.stringify(Object.keys(disciplinesReservationQuantity)))
-                // console.log(JSON.stringify(Object.values(disciplinesReservationQuantity)))
-              
+
                 const sortedDisciplinesReservation = Object.keys(disciplinesReservationQuantity).sort((a, b) => disciplinesReservationQuantity[b] - disciplinesReservationQuantity[a])
               
                 const disciplinesReservationData = {
@@ -278,17 +252,12 @@ const orgs = data[5]
         userDates.push(new Date(user.createdAt).getMonth())
       })
 
-      console.log(userDates)
-
       const numberOfDates = userDates.reduce((el, date) => {
         el[date] = (el[date] || 0) + 1
         return el
       }, {})
 
       numberOfUsers = Object.values(numberOfDates)
-
-      // console.log(numberOfDates)
-      // console.log(numberOfUsers)
 
       let gymDates = []
       let numberOfGyms = []
@@ -377,8 +346,7 @@ const orgs = data[5]
       }
     }
     };
-
-    
+ 
         return (
             <div className="container-fluid margin-top instructors-centers">
             <div className="container-fluid row margin-top instructors-centers">
