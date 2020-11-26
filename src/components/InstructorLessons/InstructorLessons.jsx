@@ -48,11 +48,8 @@ export default function InstructorLessons({title, data}) {
                                         <span className="cal-item __hour">{new Date(lesson.date).toLocaleTimeString().replace(/:\d+ /, ' ')}</span>
                                         <span className="cal-item __discipline">{lesson.name}</span>
                                         <span>{lesson.address}</span>
-                                        <span className="capacity">{lesson.capacity}</span>
-                                        {console.log(user.reservations.filter(el => el.lesson === lesson.id))}
-                                        {console.log(user.reservations)}
-                                        {console.log(lesson.id)}
-                                        {user.reservations.filter(el => el.lesson?.id === lesson.id).length && user.role === 'Guest' ?
+                                        <span className="capacity">{lesson?.capacity}</span>
+                                        {user?.reservations?.filter(el => el.lesson?.id === lesson.id).length && user.role === 'Guest' ?
                                             <span className="already-booked">Already booked</span>
                                             :
                                             <Button className="btn __yellow-btn" onClick={() => bookInstructorLesson(lesson.id)}>Book</Button>
