@@ -19,7 +19,7 @@ export default function InstructorGymLessons({title, data}) {
 
     return (
         <>
-            <div className="container">
+            <div className="container InstructorGymLessons">
                 <div className="row p-0 row-block">
                     <div className="col-12 col-sm-4">
                         <h1 className="__title">{title}</h1>
