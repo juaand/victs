@@ -23,6 +23,7 @@ export default function AdminInvoices({data}) {
     (reservation) => new Date(reservation?.lesson?.date).getFullYear() === yearSelected
   )
 
+  // eslint-disable-next-line no-unused-vars
   const checkInReservations = filterByMonthAndYear.filter(
     (reservation) => reservation?.lesson?.gym?.user?.id === sameGymName?.user?.id)
 
