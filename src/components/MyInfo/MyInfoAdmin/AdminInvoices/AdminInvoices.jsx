@@ -30,7 +30,7 @@ export default function AdminInvoices({data}) {
 
   const data2 = {
     date: new Date().toISOString(),
-    number: `${Math.floor(Math.random() * (1 - (100)) + (100))}`,
+    number: `${4}`,
     recipient: {
       displayName: `${gymSelected}`,
       // addressLine: `${sameGymName && sameGymName[0]?.user?.address} \n${sameGymName && sameGymName[0]?.user?.city} \n${sameGymName && sameGymName[0]?.user?.zipcode}`,
