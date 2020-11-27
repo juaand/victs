@@ -5,8 +5,6 @@ import Button from '../Button/Button'
 
 const CalendarItem = ({data, capacity, onClick, oldLessons, points, waitingList}) => {
 
-    console.log(data)
-
     const {user} = useAuthContext()
 
     const formatDate = (date) => {
