@@ -9,6 +9,10 @@
   border-top: solid 0.6rem $white;
   position: relative;
 
+  &.instructor-lesson {
+    border-bottom: solid 0.6rem $pink;
+  }
+
   .row {
     border: 0;
   }
@@ -79,8 +83,22 @@
   .reservation {
     &.__lesson {
       font-size: 1.8rem;
-      color: $yellow;
-      font-weight: 900;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    &.__gym {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      &:before {
+        content: '';
+        width: 2rem;
+        height: 2rem;
+        background: url(../../../../../images/address.svg) no-repeat center center / contain;
+        display: inline-block;
+        margin-right: 1rem;
+      }
     }
   }
 }

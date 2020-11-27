@@ -60,8 +60,6 @@ export default function AdminInvoices({data}) {
 
   const changeGymName = (e) => {
     setGymSelected(e.target.value)
-    console.log(gyms.filter(
-      (gym) => gym.user.name === gymSelected))
     setSameGymName(gyms.filter(
       (gym) => gym.user.name === gymSelected))
   }

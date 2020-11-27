@@ -1,7 +1,7 @@
 @import '../../../../stylesheets/variables';
 
 .AdminStatistics {
-    background: #f7f7f7;
+  background: #f7f7f7;
   h1 {
     &.big {
       margin-bottom: 3rem;
@@ -10,14 +10,21 @@
   }
 
   .canvas {
-      margin-top: 6rem;
-      border-bottom: solid 0.1rem $light-gray;
-      padding-bottom: 6rem;
+    margin-top: 6rem;
+    border-bottom: solid 0.1rem $light-gray;
+    padding-bottom: 6rem;
+    border: solid 0.1rem $light-gray;
+    background: $white;
+    padding: 6rem 3rem;
+
+    &:last-child {
+      margin-bottom: 6rem;
+    }
   }
 
   .info {
-      text-align: center;
-      margin-top: 6rem;
-      font-size: 1.6rem;
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 1.6rem;
   }
 }

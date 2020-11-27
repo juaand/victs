@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.ReservationsItem.instructor-lesson {
+  border-bottom: solid 0.6rem #cb1b53;
+}
+
 .ReservationsItem .row {
   border: 0;
 }
@@ -73,6 +77,21 @@
 
 .ReservationsItem .reservation.__lesson {
   font-size: 1.8rem;
-  color: #ffcc00;
-  font-weight: 900;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.ReservationsItem .reservation.__gym {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.ReservationsItem .reservation.__gym:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  background: url(../../../../../images/address.svg) no-repeat center center/contain;
+  display: inline-block;
+  margin-right: 1rem;
 }

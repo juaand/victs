@@ -58,6 +58,14 @@
     opacity: 0;
   }
 
+  &.waiting-list {
+    border-bottom: solid 0.6rem $blue;
+  }
+
+  &.instructor-lesson {
+    border-bottom: solid 0.6rem $pink;
+  }
+
   .Mind,
   .Express,
   .Cycle,
@@ -106,8 +114,8 @@
   }
 
   .Conditioning {
-    background: url(../../../../../images/conditioning.svg) no-repeat bottom right /
-      contain;
+    background: url(../../../../../images/conditioning.svg) no-repeat bottom
+      right / contain;
   }
 
   .Martial {

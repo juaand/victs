@@ -22,14 +22,15 @@ export default function ContentWithInstructors({data, title}) {
             <div className="row p-0 row-block">
                 <div className="col-12 col-sm-4">
                     <h1 className="__title">{title}</h1>
-                    {Object.keys(byInstructors).lenght &&
+                    {Object.keys(byInstructors).length &&
                         <p className="show-all" onClick={showAll}>{!bool ? 'See' : 'Hide'} all</p>
                     }
                 </div>
                 <div className="col-12 col-sm-8">
                     {!bool ?
                         <div className="row p-0">
-                            {Object.keys(byInstructors).lenght ? Object.keys(byInstructors).slice(0, 4).map(key => byInstructors[key][0]).map(el => <InstructorItem instructor={el.instructor} />) : <h2>No coaches yet...<strong>keep calm and <Link className="inner-link" to="lessons">find one</Link></strong></h2>}
+                            {Object.keys(byInstructors).length ?
+                                Object.keys(byInstructors).slice(0, 4).map(key => byInstructors[key][0]).map(el => <InstructorItem instructor={el.instructor} />) : <h2>No coaches yet...<strong>keep calm and <Link className="inner-link" to="lessons">find one</Link></strong></h2>}
                         </div> : <div className="row p-0">
                             {Object.keys(byInstructors).map(key => byInstructors[key][0]).map(el => <InstructorItem instructor={el.instructor} />)}
                         </div>

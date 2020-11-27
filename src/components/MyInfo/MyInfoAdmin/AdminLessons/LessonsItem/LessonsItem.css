@@ -55,6 +55,14 @@
   opacity: 0;
 }
 
+.LessonsItem.waiting-list {
+  border-bottom: solid 0.6rem #00a9ad;
+}
+
+.LessonsItem.instructor-lesson {
+  border-bottom: solid 0.6rem #cb1b53;
+}
+
 .LessonsItem .Mind,
 .LessonsItem .Express,
 .LessonsItem .Cycle,

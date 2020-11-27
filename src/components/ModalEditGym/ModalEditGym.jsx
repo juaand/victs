@@ -55,7 +55,7 @@ export default function ModalEditGym({onClick, user}) {
   }
 
   const deleteGym = () => {
-    console.log('del')
+    console.log('gym deleted')
   }
 
   return (

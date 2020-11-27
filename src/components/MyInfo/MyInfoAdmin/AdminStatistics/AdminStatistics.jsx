@@ -4,8 +4,6 @@ import {Doughnut, Line} from 'react-chartjs-2'
 
 export default function AdminStatistics({data}) {
 
-  console.log(data)
-
   const users = data[0]
   const gyms = data[1]
   const instructors = data[2]
@@ -248,8 +246,6 @@ export default function AdminStatistics({data}) {
   users.forEach((user) => {
     userDates.push(new Date(user.createdAt).getMonth())
   })
-
-  console.log(userDates)
 
   const numberOfDates = userDates.reduce((el, date) => {
     el[date] = (el[date] || 0) + 1

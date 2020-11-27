@@ -11,7 +11,6 @@ export default function AdminLessons({data, onClick}) {
         }
 
         const filteredLessons = data.filter(guest => {
-            console.log(guest?.instructor?.disciplines)
             return (
                 (guest?.name?.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1 || (guest?.instructor?.user?.name.toLowerCase()).indexOf(search.toLocaleLowerCase()) > -1
             )

@@ -56,7 +56,7 @@ export default function ModalEditUser({onClick, user}) {
   }
 
   const deleteUser = () => {
-    console.log('del')
+    console.log('user deleted')
   }
 
   return (

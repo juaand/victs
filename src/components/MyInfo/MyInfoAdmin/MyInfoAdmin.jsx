@@ -94,7 +94,6 @@ export default function MyInfoAdmin({user}) {
   }
 
   const deleteReservation = async (reservation) => {
-    console.log(reservation.id)
     await deleteCurrentReservation(reservation.id)
     // setAllData(allData)
     setBool(!bool)
@@ -111,6 +110,7 @@ export default function MyInfoAdmin({user}) {
     setHomeBool(false)
     setStatisticsBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs Users')
   }
   const showInstructors = () => {
     setInstructorsBool(!instructorsBool)
@@ -123,6 +123,7 @@ export default function MyInfoAdmin({user}) {
     setHomeBool(false)
     setStatisticsBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs Instructors')
   }
   const showGyms = () => {
     setGymsBool(!gymsBool)
@@ -135,6 +136,7 @@ export default function MyInfoAdmin({user}) {
     setHomeBool(false)
     setStatisticsBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs Gyms')
   }
 
   const showReservations = () => {
@@ -148,6 +150,7 @@ export default function MyInfoAdmin({user}) {
     setHomeBool(false)
     setStatisticsBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs Reservations')
   }
 
   const showLessons = () => {
@@ -161,6 +164,7 @@ export default function MyInfoAdmin({user}) {
     setHomeBool(false)
     setStatisticsBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs Lessons')
   }
 
   const showOrgs = () => {
@@ -174,6 +178,7 @@ export default function MyInfoAdmin({user}) {
     setHomeBool(false)
     setStatisticsBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs ORGs')
   }
 
   const showHome = () => {
@@ -200,6 +205,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setInvoicesBool(false)
+    setBannerTitle('Victs Statistics')
   }
 
   const showInvoices = () => {
@@ -212,6 +218,7 @@ export default function MyInfoAdmin({user}) {
     setAdminHome(false)
     setHomeBool(false)
     setStatisticsBool(false)
+    setBannerTitle('Victs Invoices')
   }  
 
 

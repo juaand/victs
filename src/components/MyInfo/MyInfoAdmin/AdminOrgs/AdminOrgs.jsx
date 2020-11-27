@@ -17,7 +17,7 @@ export default function AdminOrgs({data, onClick}) {
     })
 
     const addNewOrg = () => {
-        console.log('add new')
+        console.log('new org added')
     }
 
     return (
