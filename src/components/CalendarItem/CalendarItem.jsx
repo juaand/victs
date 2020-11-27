@@ -5,6 +5,8 @@ import Button from '../Button/Button'
 
 const CalendarItem = ({data, capacity, onClick, oldLessons, points, waitingList}) => {
 
+    console.log(data)
+
     const {user} = useAuthContext()
 
     const formatDate = (date) => {
@@ -39,7 +41,8 @@ const CalendarItem = ({data, capacity, onClick, oldLessons, points, waitingList}
                     <span className="cal-item __instructor">
                         <span>{data?.instructor?.user?.name}</span>
                     </span>
-                    <span className="cal-item __gym">{data.gym?.user?.name}</span>
+                    {data.gym === null ? <span className="cal-item __gym">{data?.address}</span> : <span className="cal-item __gym">{data.gym?.user?.name}</span>}
+                    
                     {!waitingList && capacity > 0 &&
                         <span className="capacity">
                             {capacity === 0 ?

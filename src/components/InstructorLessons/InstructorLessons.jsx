@@ -52,7 +52,7 @@ export default function InstructorLessons({title, data}) {
                                         {user?.reservations?.filter(el => el.lesson?.id === lesson.id).length && user.role === 'Guest' ?
                                             <span className="already-booked">Already booked</span>
                                             :
-                                            <Button className="btn __yellow-btn" onClick={() => bookInstructorLesson(lesson.id)}>Book</Button>
+                                            <Button className={`${user.role === 'Instructor' && "d-none"} btn __yellow-btn`} onClick={() => bookInstructorLesson(lesson.id)}>Book</Button>
                                         }
                                     </div>
                                 ) : <h2>No personal lessons added <strong>what your waiting for?</strong></h2>}
@@ -67,7 +67,7 @@ export default function InstructorLessons({title, data}) {
                                         {user.reservations.filter(el => el.lesson === lesson.id) && user.role === 'Guest' ?
                                             <span className="already-booked">Already booked</span>
                                             :
-                                            <Button className="btn __yellow-btn" onClick={() => bookInstructorLesson(lesson.id)}>Book</Button>
+                                            <Button className={`${user.role === 'Instructor' && "d-none"} btn __yellow-btn`} onClick={() => bookInstructorLesson(lesson.id)}>Book</Button>
                                         }
                                     </div>
                                 )}

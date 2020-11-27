@@ -43,15 +43,26 @@
 
   .juan-la-mamarracha {
     padding: 4rem;
-    border: solid 0.1rem $text;
+    border: solid 0.1rem $yellow;
     font-size: 1.8rem;
     background: $white;
+
+    &:before {
+      content: '';
+      display: block;
+      height: 6rem;
+      width: 6rem;
+      background: url(../../../images/check.svg) no-repeat center center /
+        contain;
+      margin: 0 auto 2rem auto;
+    }
   }
 }
 
 @keyframes fadein {
   0% {
     opacity: 0;
+    top: -10rem;
   }
 
   10% {
@@ -64,7 +75,9 @@
 
   100% {
     opacity: 0;
+    top: 0;
   }
 }
 
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+}
