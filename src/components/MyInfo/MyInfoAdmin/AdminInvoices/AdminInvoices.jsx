@@ -42,7 +42,7 @@ export default function AdminInvoices({data}) {
     list: [
       {
         name: `${monthSelected} ${yearSelected} Reservations`,
-        quantity: `${checkInReservations?.length}`,
+        quantity: `${filterByMonthAndYear?.length}`,
         unitPrice: 150,
       },
     ],
