@@ -2,12 +2,12 @@
 [https://victs.herokuapp.com](https://victs.herokuapp.com).
 
 ## Login as guest user
-*U* carolanne76@hotmail.com
-*P* Victsuser123
+User. carolanne76@hotmail.com
+Pass. Victsuser123
 
 ## Login as Gym user
-*U* domenick98@yahoo.com
-*P* Victsgym123
+User. domenick98@yahoo.com
+Pass. Victsgym123
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
